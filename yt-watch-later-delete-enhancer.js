@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YT Watch Later Delete Enhancer
-// @version      0.2
+// @version      0.3
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-watch-later-delete-enhancer
@@ -152,6 +152,7 @@ class GMScript {
 
     getVideosIdsToDelete(watchTimeValue, playlistVideos) {
         const idsToDelete = playlistVideos
+            .filter((itm) => !!itm?.playlistVideoRenderer?.thumbnailOverlays)
             .filter(
                 ({playlistVideoRenderer: { thumbnailOverlays: [ overlay, ] }}) => (
                     // If it's not the first element in array, the videos haven't been played yet
@@ -180,7 +181,7 @@ class GMScript {
                 <div class="style-scope ytd-menu-service-item-renderer" role="option" tabindex="0" aria-disabled="false">
                     <p>Remove all videos who has been watched at more or equal X percent</p>
                     <input id="removeVideosEnhancerValue" type="number" min="0" max="100" value="99">
-                    <button id="removeVideosEnhancerButton" disabled>Remove !</button>
+                    <button id="removeVideosEnhancerButton">Remove !</button>
                 </div>
             </div>`
         );
@@ -251,7 +252,9 @@ window.addEventListener('yt-navigate-finish',()=>{
 
 window.addEventListener('locationchange', function(){
     if (window.location.pathname === '/playlist' && window.location.search === '?list=WL') {
-        const pagedata = window.getPageData(); // Prefetched initial datas present in the page
+        // TODO sometimes getPageData isn't included into the page, don't know why.
+        // Use ytInitialData as fallback option.
+        const pagedata = window.getPageData ? window.getPageData() : { data: { response:  window.ytInitialData } }; // Prefetched initial datas present in the page
         const ytcfgdata = window.ytcfg.data_; // configuration of youtube app containing auth tokens
         const twoColumnBrowseResultsRenderer = pagedata.data.response.contents.twoColumnBrowseResultsRenderer; // 100 videos data from playlist loaded by youtube
         const script = new GMScript(ytcfgdata, twoColumnBrowseResultsRenderer);
