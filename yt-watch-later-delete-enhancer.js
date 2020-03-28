@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YT Watch Later Delete Enhancer
-// @version      0.6
+// @version      0.7
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-watch-later-delete-enhancer
@@ -20,8 +20,8 @@
 
 class GMScript {
 
-    constructor(ytcfgdata, twoColumnBrowseResultsRenderer) {
-        this.twoColumnBrowseResultsRenderer = twoColumnBrowseResultsRenderer;
+    constructor(ytcfgdata, playlistVideoRenderer) {
+        this.playlistVideoRenderer = playlistVideoRenderer;
         this.ytcfgdata = ytcfgdata;
         this.playlistVideos = [];
     }
@@ -68,34 +68,9 @@ class GMScript {
         })}`;
     }
 
-    async getFirstPlaylistData() {
-        const url = 'https://www.youtube.com/playlist?list=WL&pbj=1';
-        let resp = await fetch(url, {
-            "credentials": "include",
-            "headers": {
-                "X-YouTube-Client-Name": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
-                "X-YouTube-Client-Version": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
-                "X-YouTube-Device": this.ytcfgdata["DEVICE"],
-                "X-Youtube-Identity-Token": this.ytcfgdata["ID_TOKEN"],
-                "X-YouTube-Page-CL": this.ytcfgdata["PAGE_CL"],
-                "X-YouTube-Page-Label": this.ytcfgdata["PAGE_BUILD_LABEL"],
-                "X-YouTube-Variants-Checksum": this.ytcfgdata["VARIANTS_CHECKSUM"],
-            },
-            "referrer": "https://www.youtube.com/playlist?list=WL",
-            "method": "GET",
-            "mode": "cors"
-        });
-        const jsondata = await resp.json();
-        return _.get({jsondata}, 'jsondata[1].response.contents.twoColumnBrowseResultsRenderer');
-    }
-
     async getAllPlaylistVideos() {
-        if (!!this.twoColumnBrowseResultsRenderer) {
-            // If the playlist data isn't already loaded into the page, load it
-            this.twoColumnBrowseResultsRenderer = await this.getFirstPlaylistData();
-        }
-        let continuations = this.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer.continuations;
-        let playlistContent = this.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer.contents;
+        let continuations = this.playlistVideoRenderer.continuations;
+        let playlistContent = this.playlistVideoRenderer.contents;
 
         // If there is continuations, it mean that the playlist is not fully loaded,
         // Request additional data until not futher videos to fetch
@@ -233,7 +208,10 @@ class GMScript {
                 this.playlistVideos = playlistContent;
                 this.enableRemoveButton();
             })
-            .catch(console.error);
+            .catch((err) => {
+                console.error(err);
+                console.error(this);
+            });
     }
 }
 
@@ -245,12 +223,59 @@ function cleanupDOM() {
     }
 }
 
+async function getFirstPlaylistData(ytcfgdata) {
+    const url = 'https://www.youtube.com/playlist?list=WL&pbj=1';
+    let resp = await fetch(url, {
+        "credentials": "include",
+        "headers": {
+            "X-YouTube-Client-Name": ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
+            "X-YouTube-Client-Version": ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
+            "X-YouTube-Device": ytcfgdata["DEVICE"],
+            "X-Youtube-Identity-Token": ytcfgdata["ID_TOKEN"],
+            "X-YouTube-Page-CL": ytcfgdata["PAGE_CL"],
+            "X-YouTube-Page-Label": ytcfgdata["PAGE_BUILD_LABEL"],
+            "X-YouTube-Variants-Checksum": ytcfgdata["VARIANTS_CHECKSUM"],
+        },
+        "referrer": "https://www.youtube.com/playlist?list=WL",
+        "method": "GET",
+        "mode": "cors"
+    });
+    const jsondata = await resp.json();
+    return _.get({jsondata}, 'jsondata[1].response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer');
+}
+
+async function getInitiaPlaylistVideoListRenderer(ytcfgdata) {
+    const pagedata = window.getPageData ? window.getPageData() : {data: {response: window.ytInitialData}};
+    if (_.get({pagedata}, 'pagedata.data.response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer')) {
+        // 100 videos data from playlist loaded by youtube
+        return pagedata.data.response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer;
+    } else {
+        return await getFirstPlaylistData(ytcfgdata);
+    }
+}
+
+async function main() {
+    try {
+        // Prefetched initial datas present in the page
+        const ytcfgdata = window.ytcfg.data_; // configuration of youtube app containing auth tokens
+        const playlistVideoRenderer = await getInitiaPlaylistVideoListRenderer(ytcfgdata);
+
+        if (ytcfgdata && playlistVideoRenderer) {
+            const script = new GMScript(ytcfgdata, playlistVideoRenderer);
+            script.run();
+        } else {
+            console.error('Missing ytconfig or playlist data: ', ytcfgdata, playlistVideoRenderer);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 
 // The following conditions and check are here to mitigate the "virtual" navigation of youtube
 // Without this fix, Tampermonkey fail to load our script on youtube without a full page reload.
 if (window.location.pathname === '/playlist' && window.location.search === '?list=WL') {
-    const script = new GMScript(window.ytcfg.data_, window.getPageData().data.response.contents.twoColumnBrowseResultsRenderer);
-    script.run();
+    main().catch(console.error);
 }
 
 history.pushState = (f => function pushState() {
@@ -277,13 +302,7 @@ window.addEventListener('yt-navigate-finish', () => {
 
 window.addEventListener('locationchange', function () {
     if (window.location.pathname === '/playlist' && window.location.search === '?list=WL') {
-        // TODO sometimes getPageData isn't included into the page, don't know why.
-        // Use ytInitialData as fallback option.
-        const pagedata = window.getPageData ? window.getPageData() : {data: {response: window.ytInitialData}}; // Prefetched initial datas present in the page
-        const ytcfgdata = window.ytcfg.data_; // configuration of youtube app containing auth tokens
-        const twoColumnBrowseResultsRenderer = pagedata.data.response.contents.twoColumnBrowseResultsRenderer; // 100 videos data from playlist loaded by youtube
-        const script = new GMScript(ytcfgdata, twoColumnBrowseResultsRenderer);
-        script.run();
+        main().catch(console.error);
     } else {
         cleanupDOM();
     }
