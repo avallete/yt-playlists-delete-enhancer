@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         YT Watch Later Delete Enhancer
-// @version      0.5
+// @version      0.6
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-watch-later-delete-enhancer
 // @support      https://github.com/avallete/yt-watch-later-delete-enhancer/issues
 // @updateURL    https://raw.githubusercontent.com/avallete/yt-watch-later-delete-enhancer/master/yt-watch-later-delete-enhancer.js
 // @downloadURL  https://raw.githubusercontent.com/avallete/yt-watch-later-delete-enhancer/master/yt-watch-later-delete-enhancer.js
-// @require      https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.7/polyfill.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js
 // @grant        none
 // @include      *//www.youtube.com/*
 // @namespace    https://greasyfork.org/fr/users/70224-avallete
@@ -34,16 +34,16 @@ class GMScript {
         return qs.join('&');
     }
 
-    JSON_to_URLEncoded(element,key,list){
-      let dlist = list || [];
-      if(typeof(element)=='object'){
-        for (let idx in element) {
-          this.JSON_to_URLEncoded(element[idx],key?key+'['+idx+']':idx,dlist);
+    JSON_to_URLEncoded(element, key, list) {
+        let dlist = list || [];
+        if (typeof (element) == 'object') {
+            for (let idx in element) {
+                this.JSON_to_URLEncoded(element[idx], key ? key + '[' + idx + ']' : idx, dlist);
+            }
+        } else {
+            dlist.push(key + '=' + encodeURIComponent(element));
         }
-      } else {
-        dlist.push(key+'='+encodeURIComponent(element));
-      }
-      return dlist.join('&');
+        return dlist.join('&');
     }
 
     enableRemoveButton() {
@@ -71,22 +71,22 @@ class GMScript {
     async getFirstPlaylistData() {
         const url = 'https://www.youtube.com/playlist?list=WL&pbj=1';
         let resp = await fetch(url, {
-                "credentials": "include",
-                "headers": {
-                    "X-YouTube-Client-Name": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
-                    "X-YouTube-Client-Version": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
-                    "X-YouTube-Device": this.ytcfgdata["DEVICE"],
-                    "X-Youtube-Identity-Token": this.ytcfgdata["ID_TOKEN"],
-                    "X-YouTube-Page-CL": this.ytcfgdata["PAGE_CL"],
-                    "X-YouTube-Page-Label": this.ytcfgdata["PAGE_BUILD_LABEL"],
-                    "X-YouTube-Variants-Checksum": this.ytcfgdata["VARIANTS_CHECKSUM"],
-                },
-                "referrer": "https://www.youtube.com/playlist?list=WL",
-                "method": "GET",
-                "mode": "cors"
-            });
-        const respjson = await resp.json();
-        return respjson[1]?.response?.contents?.twoColumnBrowseResultsRenderer;
+            "credentials": "include",
+            "headers": {
+                "X-YouTube-Client-Name": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
+                "X-YouTube-Client-Version": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
+                "X-YouTube-Device": this.ytcfgdata["DEVICE"],
+                "X-Youtube-Identity-Token": this.ytcfgdata["ID_TOKEN"],
+                "X-YouTube-Page-CL": this.ytcfgdata["PAGE_CL"],
+                "X-YouTube-Page-Label": this.ytcfgdata["PAGE_BUILD_LABEL"],
+                "X-YouTube-Variants-Checksum": this.ytcfgdata["VARIANTS_CHECKSUM"],
+            },
+            "referrer": "https://www.youtube.com/playlist?list=WL",
+            "method": "GET",
+            "mode": "cors"
+        });
+        const jsondata = await resp.json();
+        return _.get({jsondata}, 'jsondata[1].response.contents.twoColumnBrowseResultsRenderer');
     }
 
     async getAllPlaylistVideos() {
@@ -177,15 +177,15 @@ class GMScript {
 
     getVideosIdsToDelete(watchTimeValue, playlistVideos) {
         const idsToDelete = playlistVideos
-            .filter((itm) => !!itm?.playlistVideoRenderer?.thumbnailOverlays)
+            .filter((itm) => !!_.get({itm}, 'itm.playlistVideoRenderer.thumbnailOverlays'))
             .filter(
-                ({playlistVideoRenderer: { thumbnailOverlays: [ overlay, ] }}) => (
+                ({playlistVideoRenderer: {thumbnailOverlays: [overlay,]}}) => (
                     // If it's not the first element in array, the videos haven't been played yet
                     overlay.thumbnailOverlayResumePlaybackRenderer
                     && overlay.thumbnailOverlayResumePlaybackRenderer.percentDurationWatched >= watchTimeValue
                 )
             )
-            .map(({playlistVideoRenderer: {setVideoId: vid }}) => vid);
+            .map(({playlistVideoRenderer: {setVideoId: vid}}) => vid);
         return idsToDelete;
     }
 
@@ -253,33 +253,33 @@ if (window.location.pathname === '/playlist' && window.location.search === '?lis
     script.run();
 }
 
-history.pushState = ( f => function pushState(){
+history.pushState = (f => function pushState() {
     let ret = f.apply(this, arguments);
     window.dispatchEvent(new Event('pushstate'));
     window.dispatchEvent(new Event('locationchange'));
     return ret;
 })(history.pushState);
 
-history.replaceState = ( f => function replaceState(){
+history.replaceState = (f => function replaceState() {
     let ret = f.apply(this, arguments);
     window.dispatchEvent(new Event('replacestate'));
     window.dispatchEvent(new Event('locationchange'));
     return ret;
 })(history.replaceState);
 
-window.addEventListener('popstate',()=>{
+window.addEventListener('popstate', () => {
     window.dispatchEvent(new Event('locationchange'))
 });
 
-window.addEventListener('yt-navigate-finish',()=>{
+window.addEventListener('yt-navigate-finish', () => {
     window.dispatchEvent(new Event('locationchange'))
 });
 
-window.addEventListener('locationchange', function(){
+window.addEventListener('locationchange', function () {
     if (window.location.pathname === '/playlist' && window.location.search === '?list=WL') {
         // TODO sometimes getPageData isn't included into the page, don't know why.
         // Use ytInitialData as fallback option.
-        const pagedata = window.getPageData ? window.getPageData() : { data: { response:  window.ytInitialData } }; // Prefetched initial datas present in the page
+        const pagedata = window.getPageData ? window.getPageData() : {data: {response: window.ytInitialData}}; // Prefetched initial datas present in the page
         const ytcfgdata = window.ytcfg.data_; // configuration of youtube app containing auth tokens
         const twoColumnBrowseResultsRenderer = pagedata.data.response.contents.twoColumnBrowseResultsRenderer; // 100 videos data from playlist loaded by youtube
         const script = new GMScript(ytcfgdata, twoColumnBrowseResultsRenderer);
