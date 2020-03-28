@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YT Watch Later Delete Enhancer
-// @version      0.4
+// @version      0.5
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-watch-later-delete-enhancer
@@ -86,7 +86,7 @@ class GMScript {
                 "mode": "cors"
             });
         const respjson = await resp.json();
-        return respjson?.[1]?.response?.contents?.twoColumnBrowseResultsRenderer;
+        return respjson[1]?.response?.contents?.twoColumnBrowseResultsRenderer;
     }
 
     async getAllPlaylistVideos() {
