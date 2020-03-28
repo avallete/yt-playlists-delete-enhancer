@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YT Watch Later Delete Enhancer
-// @version      0.3
+// @version      0.4
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-watch-later-delete-enhancer
@@ -68,7 +68,32 @@ class GMScript {
         })}`;
     }
 
+    async getFirstPlaylistData() {
+        const url = 'https://www.youtube.com/playlist?list=WL&pbj=1';
+        let resp = await fetch(url, {
+                "credentials": "include",
+                "headers": {
+                    "X-YouTube-Client-Name": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
+                    "X-YouTube-Client-Version": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
+                    "X-YouTube-Device": this.ytcfgdata["DEVICE"],
+                    "X-Youtube-Identity-Token": this.ytcfgdata["ID_TOKEN"],
+                    "X-YouTube-Page-CL": this.ytcfgdata["PAGE_CL"],
+                    "X-YouTube-Page-Label": this.ytcfgdata["PAGE_BUILD_LABEL"],
+                    "X-YouTube-Variants-Checksum": this.ytcfgdata["VARIANTS_CHECKSUM"],
+                },
+                "referrer": "https://www.youtube.com/playlist?list=WL",
+                "method": "GET",
+                "mode": "cors"
+            });
+        const respjson = await resp.json();
+        return respjson?.[1]?.response?.contents?.twoColumnBrowseResultsRenderer;
+    }
+
     async getAllPlaylistVideos() {
+        if (!!this.twoColumnBrowseResultsRenderer) {
+            // If the playlist data isn't already loaded into the page, load it
+            this.twoColumnBrowseResultsRenderer = await this.getFirstPlaylistData();
+        }
         let continuations = this.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer.continuations;
         let playlistContent = this.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer.contents;
 
