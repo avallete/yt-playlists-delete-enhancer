@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YT Watch Later Delete Enhancer
-// @version      0.7
+// @version      0.8
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-watch-later-delete-enhancer
@@ -274,7 +274,8 @@ async function main() {
 
 // The following conditions and check are here to mitigate the "virtual" navigation of youtube
 // Without this fix, Tampermonkey fail to load our script on youtube without a full page reload.
-if (window.location.pathname === '/playlist' && window.location.search === '?list=WL') {
+let url = new URL(window.location.href);
+if (url.pathname === '/playlist' && url.searchParams.get("list") === 'WL') {
     main().catch(console.error);
 }
 
@@ -301,7 +302,8 @@ window.addEventListener('yt-navigate-finish', () => {
 });
 
 window.addEventListener('locationchange', function () {
-    if (window.location.pathname === '/playlist' && window.location.search === '?list=WL') {
+    url = new URL(window.location.href);
+    if (url.pathname === '/playlist' && url.searchParams.get("list") === 'WL') {
         main().catch(console.error);
     } else {
         cleanupDOM();
