@@ -154,8 +154,8 @@ class GMScript {
         const idsToDelete = playlistVideos
             .filter((itm) => !!_.get({itm}, 'itm.playlistVideoRenderer.thumbnailOverlays'))
             .filter(
-                ({playlistVideoRenderer: {thumbnailOverlays: [overlay,]}}) => (
-                    // If it's not the first element in array, the videos haven't been played yet
+                ({playlistVideoRenderer: {thumbnailOverlays: [, overlay]}}) => (
+                    // If it's not the second element in array, the videos haven't been played yet
                     overlay.thumbnailOverlayResumePlaybackRenderer
                     && overlay.thumbnailOverlayResumePlaybackRenderer.percentDurationWatched >= watchTimeValue
                 )
