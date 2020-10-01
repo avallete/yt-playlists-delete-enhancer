@@ -1,14 +1,14 @@
-# yt-watch-later-delete-enhancer
+# yt-playlists-delete-enhancer
 
 This is a little user script for Tampermonkey who aim to resolve a simple issue with Youtube:
 
-The lack of fine tuning about which videos you want to delete from your watch-later playlist.
-Youtube recently added a button "Delete watched videos" for the playlist. But this button will
+The lack of fine tuning about which videos you want to delete from your playlists.
+Youtube recently added a button "Delete watched videos" for the watch later playlist. But this button will
 delete EVERY started watched videos. Even the ones you didn't finished to watch yet.
 
 
 This script solve the issue by adding a button on Youtube to remove watched videos with more 
-than X percent from watch later playlist.
+than X percent from any playlist.
 
 
 ## Screenshot
