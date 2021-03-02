@@ -5,10 +5,10 @@
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-playlists-delete-enhancer
 // @support      https://github.com/avallete/yt-playlists-delete-enhancer/issues
-// @updateURL    https://raw.githubusercontent.com/avallete/yt-playlists-delete-enhancer/master/yt-playlists-delete-enhancer.js
-// @downloadURL  https://raw.githubusercontent.com/avallete/yt-playlists-delete-enhancer/master/yt-playlists-delete-enhancer.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.7/polyfill.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js
+// @require      https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js
 // @grant        none
 // @include      *//www.youtube.com/*
 // @namespace    https://greasyfork.org/fr/users/70224-avallete
@@ -25,6 +25,15 @@ class GMScript {
         this.ytcfgdata = ytcfgdata;
         this.playlistVideos = [];
         this.playlistName = playlistName;
+        this.baseRequestHeaders = {
+            "Content-Type": "application/json",
+            "X-Goog-Visitor-Id": this.ytcfgdata["VISITOR_DATA"],
+            "X-Youtube-Client-Name": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
+            "X-Youtube-Client-Version": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
+            // Those two are mandatory together to successfully perform request
+            "X-Goog-AuthUser": "0",
+            "X-Goog-PageId": this.ytcfgdata["DELEGATED_SESSION_ID"],
+        };
     }
 
     createUrlQueryString(queryDict) {
@@ -33,18 +42,6 @@ class GMScript {
             qs.push(`${encodeURI(key)}=${encodeURI(value)}`);
         }
         return qs.join('&');
-    }
-
-    JSON_to_URLEncoded(element, key, list) {
-        let dlist = list || [];
-        if (typeof (element) == 'object') {
-            for (let idx in element) {
-                this.JSON_to_URLEncoded(element[idx], key ? key + '[' + idx + ']' : idx, dlist);
-            }
-        } else {
-            dlist.push(key + '=' + encodeURIComponent(element));
-        }
-        return dlist.join('&');
     }
 
     enableRemoveButton() {
@@ -69,6 +66,23 @@ class GMScript {
         })}`;
     }
 
+    // Generate SAPISIDHASH header
+    getAuthorizationHeader() {
+        const time = Math.floor(Date.now() / 1000);
+        const origin = new URL(document.URL).origin;
+        const apisid = window.Cookies.get("SAPISID");
+        const shash = window.sha1(`${time} ${apisid} ${origin}`);
+        return `SAPISIDHASH ${time}_${shash}`;
+    }
+
+    getRequestHeaders() {
+        return {
+            ...this.baseRequestHeaders,
+            "Authorization": this.getAuthorizationHeader(),
+        }
+    }
+
+
     async getAllPlaylistVideos() {
         let continuations = this.playlistVideoRenderer.continuations;
         let playlistContent = this.playlistVideoRenderer.contents;
@@ -78,15 +92,7 @@ class GMScript {
         while (continuations && continuations.length > 0) {
             let resp = await fetch(this.getContinuationUrl(continuations[0].nextContinuationData), {
                 "credentials": "include",
-                "headers": {
-                    "X-YouTube-Client-Name": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
-                    "X-YouTube-Client-Version": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
-                    "X-YouTube-Device": this.ytcfgdata["DEVICE"],
-                    "X-Youtube-Identity-Token": this.ytcfgdata["ID_TOKEN"],
-                    "X-YouTube-Page-CL": this.ytcfgdata["PAGE_CL"],
-                    "X-YouTube-Page-Label": this.ytcfgdata["PAGE_BUILD_LABEL"],
-                    "X-YouTube-Variants-Checksum": this.ytcfgdata["VARIANTS_CHECKSUM"],
-                },
+                "headers": this.getRequestHeaders(),
                 "referrer": `https://www.youtube.com/playlist?list=${this.playlistName}`,
                 "method": "GET",
                 "mode": "cors"
@@ -102,49 +108,27 @@ class GMScript {
     }
 
     async removeVideosFromPlaylist(playlistId, videoIds) {
-        const urlparams = {
-            'sej': JSON.stringify({
-                "commandMetadata": {
-                    "webCommandMetadata": {
-                        "url": "/service_ajax",
-                        "sendPost": true,
-                        "apiUrl": "/youtubei/v1/browse/edit_playlist"
-                    }
-                },
-                "playlistEditEndpoint": {
-                    "playlistId": playlistId,
-                    "actions": videoIds.map((vid) => ({"setVideoId": vid, "action": "ACTION_REMOVE_VIDEO"})),
-                    "params": "CAE%3D",
-                    "clientActions": [
-                        {
-                            "playlistRemoveVideosAction": {
-                                "setVideoIds": videoIds.map((vid) => vid)
-                            }
-                        }
-                    ]
+        const body = {
+            actions: videoIds.map((vid) => ({"setVideoId": vid, "action": "ACTION_REMOVE_VIDEO"})),
+            "context": {
+                // The only mandatory context are those two client infos
+                "client": {
+                    "clientName": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
+                    "clientVersion": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
                 }
-            }),
-            'csn': this.ytcfgdata["client-screen-nonce"],
-            'session_token': this.ytcfgdata["XSRF_TOKEN"],
-        };
+            },
+            params: "CAFAAQ%3D%3D",
+            playlistId: playlistId,
+        }
         const params = {
             "credentials": "include",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "X-YouTube-Client-Name": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
-                "X-YouTube-Client-Version": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
-                "X-YouTube-Device": this.ytcfgdata["DEVICE"],
-                "X-Youtube-Identity-Token": this.ytcfgdata["ID_TOKEN"],
-                "X-YouTube-Page-CL": this.ytcfgdata["PAGE_CL"],
-                "X-YouTube-Page-Label": this.ytcfgdata["PAGE_BUILD_LABEL"],
-                "X-YouTube-Variants-Checksum": this.ytcfgdata["VARIANTS_CHECKSUM"],
-            },
+            "headers": this.getRequestHeaders(),
             "referrer": `https://www.youtube.com/playlist?list=${this.playlistName}`,
-            "body": this.JSON_to_URLEncoded(urlparams),
+            "body": JSON.stringify(body),
             "method": "POST",
             "mode": "cors"
         };
-        const resp = await fetch("https://www.youtube.com/service_ajax?name=playlistEditEndpoint", params);
+        const resp = await fetch(`https://www.youtube.com/youtubei/v1/browse/edit_playlist?key=${this.ytcfgdata["INNERTUBE_API_KEY"]}`, params);
         if (resp.status === 200) {
             return await resp.json();
         }
@@ -152,7 +136,7 @@ class GMScript {
     }
 
     getVideosIdsToDelete(watchTimeValue, playlistVideos) {
-        const idsToDelete = playlistVideos
+        return playlistVideos
             .filter((itm) => !!_.get({itm}, 'itm.playlistVideoRenderer.thumbnailOverlays'))
             .filter(
                 ({playlistVideoRenderer: {thumbnailOverlays: [, overlay]}}) => (
@@ -162,14 +146,13 @@ class GMScript {
                 )
             )
             .map(({playlistVideoRenderer: vid}) => (vid.setVideoId || vid.videoId));
-        return idsToDelete;
     }
 
     async handleRemoveVideosClickedEvent(watchTimeValue) {
         this.disableRemoveButton();
         let idsToDelete = this.getVideosIdsToDelete(watchTimeValue, this.playlistVideos);
         const respjson = await this.removeVideosFromPlaylist(this.playlistName, idsToDelete);
-        if (respjson.code === "SUCCESS") {
+        if (respjson.status === "STATUS_SUCCEEDED") {
             // TODO propagate the change directly to YT UI instead of reloading the all page
             location.reload();
         }
@@ -235,7 +218,6 @@ async function getFirstPlaylistData(ytcfgdata, playlistName) {
             "X-Youtube-Identity-Token": ytcfgdata["ID_TOKEN"],
             "X-YouTube-Page-CL": ytcfgdata["PAGE_CL"],
             "X-YouTube-Page-Label": ytcfgdata["PAGE_BUILD_LABEL"],
-            "X-YouTube-Variants-Checksum": ytcfgdata["VARIANTS_CHECKSUM"],
         },
         "referrer": `https://www.youtube.com/playlist?list=${playlistName}`,
         "method": "GET",
