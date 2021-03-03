@@ -9,6 +9,7 @@
 // @downloadURL  https://raw.githubusercontent.com/avallete/yt-playlists-delete-enhancer/master/yt-playlists-delete-enhancer.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.7/polyfill.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js
 // @grant        none
 // @include      *//www.youtube.com/*
 // @namespace    https://greasyfork.org/fr/users/70224-avallete
@@ -102,49 +103,45 @@ class GMScript {
     }
 
     async removeVideosFromPlaylist(playlistId, videoIds) {
-        const urlparams = {
-            'sej': JSON.stringify({
-                "commandMetadata": {
-                    "webCommandMetadata": {
-                        "url": "/service_ajax",
-                        "sendPost": true,
-                        "apiUrl": "/youtubei/v1/browse/edit_playlist"
-                    }
-                },
-                "playlistEditEndpoint": {
-                    "playlistId": playlistId,
-                    "actions": videoIds.map((vid) => ({"setVideoId": vid, "action": "ACTION_REMOVE_VIDEO"})),
-                    "params": "CAE%3D",
-                    "clientActions": [
-                        {
-                            "playlistRemoveVideosAction": {
-                                "setVideoIds": videoIds.map((vid) => vid)
-                            }
-                        }
-                    ]
-                }
-            }),
-            'csn': this.ytcfgdata["client-screen-nonce"],
-            'session_token': this.ytcfgdata["XSRF_TOKEN"],
-        };
+        const body = {};
+        body.context = this.ytcfgdata['INNERTUBE_CONTEXT'];
+        body.context.client.screenWidthPoints = window.innerWidth;
+        body.context.client.screenHeightPoints = window.innerHeight;
+        body.context.client.screenPixelDensity = Math.round(window.devicePixelRatio || 1);
+        body.context.client.screenDensityFloat = window.devicePixelRatio || 1;
+        body.context.client.utcOffsetMinutes = -Math.floor(new Date().getTimezoneOffset());
+        body.context.client.userInterfaceTheme = 'USER_INTERFACE_THEME_LIGHT';
+        body.context.request.internalExperimentFlags = [];
+        body.context.request.consistencyTokenJars = [];
+        body.context.user = {};
+        body.context.clientScreenNonce = this.ytcfgdata['client-screen-nonce'];
+
+        body.actions = videoIds.map(vid => ({removedVideoId: vid, action: "ACTION_REMOVE_VIDEO_BY_VIDEO_ID"}));
+        body.params = 'CAFAAQ%3D%3D';
+        body.playlistId = playlistId;
+
+        const cookies = ['SAPISID', '__Secure-3PAPISID'];
+        const sapisId = document.cookie.match('(^|;)\\s*' + `(${cookies.join('|')})` + '\\s*=\\s*([^;]+)')?.pop();
+        const time = Math.floor(new Date().getTime() / 1000);
+        const components = `${time} ${sapisId} https://www.youtube.com`;
+        const hash = CryptoJS.SHA1(components);
+        const sapisIdHash = `SAPISIDHASH ${time}_${hash}`;
+
         const params = {
-            "credentials": "include",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "X-YouTube-Client-Name": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
-                "X-YouTube-Client-Version": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
-                "X-YouTube-Device": this.ytcfgdata["DEVICE"],
-                "X-Youtube-Identity-Token": this.ytcfgdata["ID_TOKEN"],
-                "X-YouTube-Page-CL": this.ytcfgdata["PAGE_CL"],
-                "X-YouTube-Page-Label": this.ytcfgdata["PAGE_BUILD_LABEL"],
-                "X-YouTube-Variants-Checksum": this.ytcfgdata["VARIANTS_CHECKSUM"],
-            },
-            "referrer": `https://www.youtube.com/playlist?list=${this.playlistName}`,
-            "body": this.JSON_to_URLEncoded(urlparams),
-            "method": "POST",
-            "mode": "cors"
+          'credentials': 'include',
+          'headers': {
+            'Authorization': sapisIdHash,
+            'Content-Type': 'application/json',
+            'X-Goog-AuthUser': this.ytcfgdata['SESSION_INDEX'],
+            'X-Origin': window.location.origin
+          },
+          'referrer': window.location.href,
+          'body': JSON.stringify(body),
+          'method': 'POST',
+          'mode': 'cors'
         };
-        const resp = await fetch("https://www.youtube.com/service_ajax?name=playlistEditEndpoint", params);
+
+        const resp = await fetch(`https://www.youtube.com/youtubei/v1/browse/edit_playlist?key=${this.ytcfgdata['INNERTUBE_API_KEY']}`, params);
         if (resp.status === 200) {
             return await resp.json();
         }
