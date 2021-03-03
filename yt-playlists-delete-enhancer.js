@@ -158,7 +158,7 @@ class GMScript {
                     && overlay.thumbnailOverlayResumePlaybackRenderer.percentDurationWatched >= watchTimeValue
                 )
             )
-            .map(({playlistVideoRenderer: vid}) => (vid.setVideoId || vid.videoId));
+            .map(({playlistVideoRenderer: vid}) => (vid.videoId));
         return idsToDelete;
     }
 
