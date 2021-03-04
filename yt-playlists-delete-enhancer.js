@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YT Playlists Delete Enhancer
-// @version      1.0
+// @version      1.1
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-playlists-delete-enhancer
