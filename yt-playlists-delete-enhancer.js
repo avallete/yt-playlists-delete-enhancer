@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YT Playlists Delete Enhancer
-// @version      1.2
+// @version      1.3
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
 // @author       avallete
 // @homepage     https://github.com/avallete/yt-playlists-delete-enhancer
@@ -151,7 +151,9 @@ class GMScript {
                     && overlay.thumbnailOverlayResumePlaybackRenderer.percentDurationWatched >= watchTimeValue
                 )
             )
-            .map(({playlistVideoRenderer: vid}) => (vid.videoId));
+            // There was a reason for this "setVideoId", it's because they are not the same with videoId
+            // And we DO NEED the "sedVideoId" value to perform remove requests.
+            .map(({playlistVideoRenderer: vid}) => (vid.setVideoId || vid.videoId));
     }
 
     async handleRemoveVideosClickedEvent(watchTimeValue) {
