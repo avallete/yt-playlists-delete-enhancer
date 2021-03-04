@@ -162,8 +162,15 @@ class GMScript {
         if (idsToDelete.length) {
           const respjson = await this.removeVideosFromPlaylist(this.playlistName, idsToDelete);
           if (respjson.status === "STATUS_SUCCEEDED") {
-              // TODO propagate the change directly to YT UI instead of reloading the all page
-              location.reload();
+            idsToDelete.forEach(id => {
+              const videoId = this.playlistVideos.filter(v => v.playlistVideoRenderer.setVideoId == id)[0].playlistVideoRenderer.videoId;
+              const videoRenderer = document.querySelector(`ytd-playlist-video-renderer a[href^="/watch?v=${videoId}"]#thumbnail`);
+              if (videoRenderer) {
+                videoRenderer.parentElement.parentElement.parentElement.parentElement.remove();
+              } else {
+                window.location.reload();
+              }
+            }, this);
           }
         }
         this.enableRemoveButton();
