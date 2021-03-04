@@ -159,10 +159,12 @@ class GMScript {
     async handleRemoveVideosClickedEvent(watchTimeValue) {
         this.disableRemoveButton();
         let idsToDelete = this.getVideosIdsToDelete(watchTimeValue, this.playlistVideos);
-        const respjson = await this.removeVideosFromPlaylist(this.playlistName, idsToDelete);
-        if (respjson.status === "STATUS_SUCCEEDED") {
-            // TODO propagate the change directly to YT UI instead of reloading the all page
-            location.reload();
+        if (idsToDelete.length) {
+          const respjson = await this.removeVideosFromPlaylist(this.playlistName, idsToDelete);
+          if (respjson.status === "STATUS_SUCCEEDED") {
+              // TODO propagate the change directly to YT UI instead of reloading the all page
+              location.reload();
+          }
         }
         this.enableRemoveButton();
     }
