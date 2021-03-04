@@ -20,10 +20,9 @@
 
 class GMScript {
 
-    constructor(ytcfgdata, playlistVideoRenderer, playlistName) {
-        this.playlistVideoRenderer = playlistVideoRenderer;
+    constructor(ytcfgdata, playlistVideos, playlistName) {
         this.ytcfgdata = ytcfgdata;
-        this.playlistVideos = [];
+        this.playlistVideos = playlistVideos;
         this.playlistName = playlistName;
         this.baseRequestHeaders = {
             "Content-Type": "application/json",
@@ -36,12 +35,15 @@ class GMScript {
         };
     }
 
-    createUrlQueryString(queryDict) {
-        let qs = [];
-        for (const [key, value] of Object.entries(queryDict)) {
-            qs.push(`${encodeURI(key)}=${encodeURI(value)}`);
+    // Get the array of "playlistVideoRenderer" either from continuationsItems or playlistVideoListRenderer
+    // The last one should contain the continuation token if there is any.
+    // Return null otherwise
+    getPlaylistContinuationToken(playlistVideoListRendererContents) {
+        const lastItem = playlistVideoListRendererContents[playlistVideoListRendererContents.length - 1];
+        if (lastItem && lastItem["continuationItemRenderer"]) {
+            return _.get(lastItem, "continuationItemRenderer.continuationEndpoint.continuationCommand.token");
         }
-        return qs.join('&');
+        return null;
     }
 
     enableRemoveButton() {
@@ -56,14 +58,6 @@ class GMScript {
         if (button) {
             button.disabled = true;
         }
-    }
-
-    getContinuationUrl(continuationData) {
-        const {continuation} = continuationData;
-        return `https://www.youtube.com/browse_ajax?${this.createUrlQueryString({
-            ctoken: continuation,
-            continuation: continuation
-        })}`;
     }
 
     // Generate SAPISIDHASH header
@@ -82,29 +76,41 @@ class GMScript {
         }
     }
 
-
     async getAllPlaylistVideos() {
-        let continuations = this.playlistVideoRenderer.continuations;
-        let playlistContent = this.playlistVideoRenderer.contents;
+        let playlistItems = this.playlistVideos;
+        let continuationToken = this.getPlaylistContinuationToken(playlistItems);
 
         // If there is continuations, it mean that the playlist is not fully loaded,
         // Request additional data until not futher videos to fetch
-        while (continuations && continuations.length > 0) {
-            let resp = await fetch(this.getContinuationUrl(continuations[0].nextContinuationData), {
+        while (continuationToken) {
+            // Remove the last item from the playlist content wich is not a video but the object with continuation data
+            playlistItems.pop()
+            const body = {
+                "context": {
+                    // The only mandatory context are those two client infos
+                    "client": {
+                        "clientName": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_NAME"],
+                        "clientVersion": this.ytcfgdata["INNERTUBE_CONTEXT_CLIENT_VERSION"],
+                    }
+                },
+                "continuation": continuationToken,
+            }
+            let resp = await fetch(`https://www.youtube.com/youtubei/v1/browse?key=${this.ytcfgdata["INNERTUBE_API_KEY"]}`, {
                 "credentials": "include",
                 "headers": this.getRequestHeaders(),
+                "body": JSON.stringify(body),
                 "referrer": `https://www.youtube.com/playlist?list=${this.playlistName}`,
-                "method": "GET",
+                "method": "POST",
                 "mode": "cors"
             });
             if (resp.status === 200) {
                 const respjson = await resp.json();
-                const data = respjson[1].response.continuationContents.playlistVideoListContinuation.contents;
-                playlistContent = playlistContent.concat(data);
-                continuations = respjson[1].response.continuationContents.playlistVideoListContinuation.continuations;
+                const data = _.get(respjson, "onResponseReceivedActions[0].appendContinuationItemsAction.continuationItems")
+                playlistItems = playlistItems.concat(data);
+                continuationToken = this.getPlaylistContinuationToken(data);
             }
         }
-        return playlistContent;
+        return playlistItems;
     }
 
     async removeVideosFromPlaylist(playlistId, videoIds) {
@@ -145,7 +151,7 @@ class GMScript {
                     && overlay.thumbnailOverlayResumePlaybackRenderer.percentDurationWatched >= watchTimeValue
                 )
             )
-            .map(({playlistVideoRenderer: vid}) => (vid.setVideoId || vid.videoId));
+            .map(({playlistVideoRenderer: vid}) => (vid.videoId));
     }
 
     async handleRemoveVideosClickedEvent(watchTimeValue) {
@@ -238,7 +244,7 @@ async function main(playlistName) {
         const playlistVideoRenderer = await getInitiaPlaylistVideoListRenderer(ytcfgdata, playlistName);
 
         if (ytcfgdata && playlistVideoRenderer && playlistVideoRenderer.isEditable) {
-            const script = new GMScript(ytcfgdata, playlistVideoRenderer, playlistName);
+            const script = new GMScript(ytcfgdata, playlistVideoRenderer.contents || [], playlistName);
             script.run();
         } else {
             console.error('Missing ytconfig or playlist data or playlist is not editable: ', ytcfgdata, playlistVideoRenderer);
