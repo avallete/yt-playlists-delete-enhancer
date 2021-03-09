@@ -166,7 +166,7 @@ class GMScript {
               const videoId = this.playlistVideos.filter(v => v.playlistVideoRenderer.setVideoId == id)[0].playlistVideoRenderer.videoId;
               const videoRenderer = document.querySelector(`ytd-playlist-video-renderer a[href^="/watch?v=${videoId}"]#thumbnail`);
               if (videoRenderer) {
-                videoRenderer.parentElement.parentElement.parentElement.parentElement.remove();
+                videoRenderer.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
               } else {
                 window.location.reload();
               }
