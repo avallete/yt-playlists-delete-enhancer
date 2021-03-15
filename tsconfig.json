@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~src/*": ["./src/*"]
+    },
+    "target": "es6",
+    "strict": true,
+    "module": "commonjs",
+    "outDir": ".userscripter-temp",
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "lib": ["esnext", "dom"],
+    "jsx": "react",
+    "jsxFactory": "h"
+  },
+  "include": ["./src/*.d.ts", "./src/**/*.tsx", "./src/**/*.ts", "./test/**/*.ts", "./package.json"]
+}

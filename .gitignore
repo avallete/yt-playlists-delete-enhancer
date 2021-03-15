@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.awcache
+.idea
+node_modules/
+dist/
+.userscripter-temp/
+.eslintcache
+.nyc_output/
+coverage/
+cypress/videos/
+cypress/screenshots/
+.vscode
+.dccache

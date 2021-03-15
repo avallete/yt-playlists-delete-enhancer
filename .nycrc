@@ -1,0 +1,19 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "check-coverage": true,
+  "include": [
+    "src/**",
+    "metadata.ts"
+  ],
+  "exclude": [
+    "dist/**",
+    "cypress/**",
+    "test/**"
+  ],
+  "reporter": [
+    "text"
+  ],
+  "lines": 70,
+  "branches": 70,
+  "statements": 70
+}
