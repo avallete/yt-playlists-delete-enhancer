@@ -14,7 +14,11 @@ const webpackConfig = createWebpackConfig({
       now: new Date(),
     }),
     sassVariables: { CONFIG, SITE },
-    dateAsSemverVersion: false,
+    appendDateToVersion: {
+      development: false,
+      production: false,
+      nightly: false,
+    },
   },
   manifest: MANIFEST,
   metadata: METADATA,
