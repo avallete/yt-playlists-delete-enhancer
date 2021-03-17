@@ -5,11 +5,15 @@ import isOnPlaylistPage from '~src/operations/actions/is-on-playlist-page'
 
 const { main, cleanupDOM } = require('./yt-playlists-delete-enhancer')
 
-function logIsOnPlaylist() {
+function mainWrapper() {
+  const url = new URL(window.location.href)
+  const playlistName = url.searchParams.get('list')
+  main(playlistName)
+}
+
+function protectedMainWrapper() {
   if (isOnPlaylistPage(window)) {
-    const url = new URL(window.location.href)
-    const playlistName = url.searchParams.get('list')
-    main(playlistName)
+    mainWrapper()
     return
   }
   cleanupDOM()
@@ -17,10 +21,18 @@ function logIsOnPlaylist() {
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
   operation({
-    description: 'init the userscript',
+    description: 'run main if the script start on playlist page',
+    condition: isOnPlaylistPage,
+    action: () => {
+      mainWrapper()
+    },
+    deferUntil: DOMCONTENTLOADED,
+  }),
+  operation({
+    description: 'init yt-navigate-finish hooks to watch in-app navigation',
     condition: ALWAYS,
     action: () => {
-      addLocationChangeEventHooks(logIsOnPlaylist)
+      addLocationChangeEventHooks(protectedMainWrapper)
     },
     deferUntil: DOMCONTENTLOADED,
   }),
