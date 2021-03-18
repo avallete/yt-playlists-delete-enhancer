@@ -2,8 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~src/*": ["./src/*"],
-      "~lib/*": ["./src/lib/*"]
+      "~src/*": ["./src/*"]
     },
     "target": "es6",
     "strict": true,
@@ -18,5 +17,5 @@
     "jsx": "react",
     "jsxFactory": "h"
   },
-  "include": ["./src/*.d.ts", "./src/**/*.tsx", "./src/**/*.ts", "./src/**/*.js", "./test/**/*.ts", "./package.json"]
+  "include": ["./src/*.d.ts", "./src/**/*.tsx", "./src/**/*.ts", "./test/**/*.ts", "./metadata-config.json"]
 }

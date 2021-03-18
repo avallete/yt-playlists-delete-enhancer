@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["webpack.config.ts"]
+  "include": ["webpack.config.ts", "./metadata-config.json"]
 }

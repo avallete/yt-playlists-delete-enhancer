@@ -11,3 +11,5 @@ cypress/videos/
 cypress/screenshots/
 .vscode
 .dccache
+# is generated at build time, should not be commited
+metadata-config.json

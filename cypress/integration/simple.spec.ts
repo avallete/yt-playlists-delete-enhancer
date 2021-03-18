@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-import 'package-json-to-environment'
 import U from '~src/userscript'
 
 describe('test extension', () => {
