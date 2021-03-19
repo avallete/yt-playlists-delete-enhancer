@@ -31,29 +31,20 @@
   },
   "homepage": "https://github.com/avallete/yt-playlists-delete-enhancer#readme",
   "dependencies": {
-    "@typed/compose": "1.0.0",
-    "@types/app-root-path": "1.2.4",
-    "app-root-path": "3.0.0",
     "js-cookie": "2.2.1",
     "lodash.get": "4.4.2",
     "preact": "10.5.13",
     "sha1": "1.1.1",
-    "ts-preferences": "2.0.0",
     "userscript-metadata": "1.0.0",
-    "userscripter": "1.4.0",
-    "webextension-manifest": "1.0.0",
-    "webpack": "4.46.0",
-    "webpack-cli": "3.3.12"
-  },
-  "comments": {
-    "dependencies": "We use a custom userscripter while waiting for the merge of https://github.com/SimonAlling/userscripter/pull/38"
+    "userscripter": "1.4.0"
   },
   "ava": {
     "files": [
       "test/**/*"
     ],
     "extensions": [
-      "ts"
+      "ts",
+      "tsx"
     ],
     "require": [
       "./test/_setup-browser-environment",
@@ -95,6 +86,14 @@
     ]
   },
   "devDependencies": {
+    "@typed/compose": "1.0.0",
+    "@types/app-root-path": "1.2.4",
+    "app-root-path": "3.0.0",
+    "ts-preferences": "2.0.0",
+    "typescript": "^4.2.3",
+    "webextension-manifest": "1.0.0",
+    "webpack": "4.46.0",
+    "webpack-cli": "3.3.12",
     "@commitlint/cli": "12.0.1",
     "@commitlint/config-conventional": "12.0.1",
     "@istanbuljs/nyc-config-typescript": "1.0.1",
@@ -103,12 +102,15 @@
     "@semantic-release/git": "github:semantic-release/git",
     "@semantic-release/github": "github:semantic-release/github",
     "@semantic-release/release-notes-generator": "github:semantic-release/release-notes-generator",
+    "@testing-library/preact": "^2.0.1",
+    "@types/classnames": "^2.2.11",
     "@types/jsdom": "16.2.7",
     "@types/sinon": "9.0.11",
     "@typescript-eslint/eslint-plugin": "4.17.0",
     "@typescript-eslint/parser": "4.17.0",
     "ava": "3.15.0",
     "browser-env": "3.3.0",
+    "classnames": "^2.2.6",
     "cross-env": "7.0.3",
     "cypress": "6.7.1",
     "eslint": "7.22.0",
