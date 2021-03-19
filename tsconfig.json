@@ -14,8 +14,16 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "lib": ["esnext", "dom"],
-    "jsx": "react",
-    "jsxFactory": "h"
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   },
-  "include": ["./src/*.d.ts", "./src/**/*.tsx", "./src/**/*.ts", "./test/**/*.ts", "./metadata-config.json"]
+  "include": [
+    "./src/*.d.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.ts",
+    "./test/**/*.ts",
+    "./test/**/*.tsx",
+    "./metadata-config.json",
+    "test/remove-button.test.ts"
+  ]
 }

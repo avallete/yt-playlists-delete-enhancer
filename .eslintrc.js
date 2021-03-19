@@ -6,7 +6,7 @@ const jsExtends = ['airbnb-base', ...commonExtends]
 
 // Override some rules that we abuse into our tests
 const UNIT_TESTS_TS_OVERRIDE = {
-  files: ['test/**/*.ts'],
+  files: ['test/**/*.ts', 'test/**/*.tsx'],
   extends: [...unitTestsExtends, ...tsExtends],
   rules: {
     'radar/no-duplicate-string': 'off',
