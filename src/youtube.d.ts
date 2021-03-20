@@ -62,3 +62,25 @@ export type YTEvent =
   | 'yt-load-reload-continuation'
   | 'yt-dismissible-item-undismissed'
   | 'yt-dismissible-item-dismissed'
+
+export interface YTConfigData {
+  DEVICE: string
+  DELEGATED_SESSION_ID: string
+  ID_TOKEN: string
+  INNERTUBE_API_KEY: string
+  INNERTUBE_CONTEXT_CLIENT_NAME: string
+  INNERTUBE_CONTEXT_CLIENT_VERSION: string
+  PAGE_BUILD_LABEL: string
+  PAGE_CL: string
+  VISITOR_DATA: string
+  SAPISID: string
+  ORIGIN_URL: string
+}
+
+declare global {
+  interface Window {
+    ytcfg: {
+      data_: any
+    }
+  }
+}

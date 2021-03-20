@@ -47,6 +47,13 @@ const TS_OVERRIDE = {
     // disable for event handlers, use preact naming convention for scoped ignore rules
     // allow us to du currentTarget.value = 'something' into event handlers
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['currentTarget'] }],
+    'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
+    // DOM .append unavailable in typescript types definitions
+    'unicorn/prefer-dom-node-append': 'off',
+    // Since our final script is bundled, devDependencies and dependencies are just useful
+    // for semantic separation. Only include in dependencies the packages who the code actually
+    // end up into your final bundled file
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
   files: ['**/*.ts', '**/*.tsx'],
   parser: '@typescript-eslint/parser',
