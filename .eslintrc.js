@@ -43,6 +43,11 @@ const CYPRESS_JS_OVERRIDE = {
   },
 }
 const TS_OVERRIDE = {
+  rules: {
+    // disable for event handlers, use preact naming convention for scoped ignore rules
+    // allow us to du currentTarget.value = 'something' into event handlers
+    'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['currentTarget'] }],
+  },
   files: ['**/*.ts', '**/*.tsx'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
