@@ -1,5 +1,5 @@
 import sha1 from 'sha1'
-import { YTConfigData } from './youtube'
+import { YTConfigData, PlaylistVideo, Playlist, PlaylistContinuation } from './youtube'
 import { PlaylistNotEditableError } from '~src/errors'
 
 type YTHeaderKey =
@@ -19,23 +19,6 @@ type YTHeaderKey =
 type HeaderKey = 'Content-Type' | YTHeaderKey
 
 type Headers = Partial<Record<HeaderKey, string>>
-
-export interface PlaylistVideo {
-  videoId: string
-  percentDurationWatched: number
-}
-
-export interface PlaylistContinuation {
-  videos: PlaylistVideo[]
-  continuationToken?: string
-}
-
-export interface Playlist {
-  playlistId: string
-  isEditable: boolean
-  canReorder: boolean
-  continuations: PlaylistContinuation[]
-}
 
 const API_BASE_URL = new URL('https://www.youtube.com/youtubei/v1')
 const API_GET_PLAYLIST_VIDEOS_URL = new URL(`${API_BASE_URL}/browse`)
@@ -200,7 +183,7 @@ export async function removeVideosFromPlaylist(
   const headers = generateRequestHeaders(config, API_V1_REQUIRED_HEADERS)
   const body = {
     actions: videosToRemove.map(({ videoId }) => ({
-      removeVideoId: videoId,
+      removedVideoId: videoId,
       action: 'ACTION_REMOVE_VIDEO_BY_VIDEO_ID',
     })),
     context: {
