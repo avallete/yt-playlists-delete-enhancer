@@ -8,6 +8,7 @@
     "types": ["cypress"],
     "paths": {
       "~src/*": ["./src/*"],
+      "~components/*": ["./src/components/*"],
       "~lib/*": ["./src/lib/*"]
     },
     "preserveConstEnums": true,

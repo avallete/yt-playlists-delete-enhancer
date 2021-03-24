@@ -11,6 +11,7 @@ const UNIT_TESTS_TS_OVERRIDE = {
   rules: {
     'radar/no-duplicate-string': 'off',
     'no-unused-expressions': 'off',
+    'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
   },
 }
 const UNIT_TESTS_JS_OVERRIDE = {

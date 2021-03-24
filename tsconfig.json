@@ -2,7 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~src/*": ["./src/*"]
+      "~src/*": ["./src/*"],
+      "~components/*": ["./src/components/*"],
+      "~lib/*": ["./src/lib/*"]
     },
     "target": "es6",
     "strict": true,
