@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~src/*": ["./src/*"],
+      "~components/*": ["./src/components/*"],
+      "~lib/*": ["./src/lib/*"]
+    },
+    "target": "es6",
+    "strict": true,
+    "module": "commonjs",
+    "outDir": ".userscripter-temp",
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "lib": ["esnext", "dom"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  },
+  "include": [
+    "./src/*.d.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.ts",
+    "./test/**/*.ts",
+    "./test/**/*.tsx",
+    "./metadata-config.json",
+    "test/remove-button.test.ts"
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "version": "1.4.1",
+  "name": "yt-playlists-delete-enhancer",
+  "description": "Add a button to remove videos watched with more than X percent from watch later playlist.",
+  "private": true,
+  "scripts": {
+    "build-webpack-config": "tsc -p tsconfig.webpack.json",
+    "build-config-from-package-json": "npx json -j -f package.json name description repository bugs version homepage license author > metadata-config.json",
+    "build-userscript": "webpack --config ./.userscripter-temp/webpack.config.js",
+    "build": "npm run clean && npm run build-config-from-package-json && npm run build-webpack-config && npm run build-userscript && npm run clean",
+    "clean": "rm -rf .userscripter-temp",
+    "semantic-release": "semantic-release --debug",
+    "lint": "prettier --write . && eslint .",
+    "preunit-test": "npm run build-config-from-package-json",
+    "unit-test": "npx ava",
+    "pree2e-test": "cross-env NODE_ENV=test npm run build",
+    "e2e-test": "npx cypress run",
+    "test": "npm run unit-test && npm run e2e-test",
+    "coverage": "npx nyc npm run unit-test",
+    "coverage:all": "npx nyc --all npm run unit-test",
+    "coverage:report": "npx nyc --check-coverage=false report --reporter=json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:avallete/yt-playlists-delete-enhancer.git"
+  },
+  "author": "Andrew Valleteau <avallete@student.42.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avallete/yt-playlists-delete-enhancer/issues"
+  },
+  "homepage": "https://github.com/avallete/yt-playlists-delete-enhancer#readme",
+  "dependencies": {
+    "js-cookie": "2.2.1",
+    "lodash.get": "4.4.2",
+    "preact": "10.5.13",
+    "sha1": "1.1.1",
+    "userscript-metadata": "1.0.0",
+    "userscripter": "1.4.0"
+  },
+  "ava": {
+    "files": [
+      "test/**/*"
+    ],
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "require": [
+      "./test/_setup-browser-environment",
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{js,jsx,ts,tsx,css}": [
+      "eslint --cache --fix"
+    ]
+  },
+  "release": {
+    "branches": [
+      "master"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "12.0.1",
+    "@commitlint/config-conventional": "12.0.1",
+    "@istanbuljs/nyc-config-typescript": "1.0.1",
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/commit-analyzer": "github:semantic-release/commit-analyzer",
+    "@semantic-release/git": "github:semantic-release/git",
+    "@semantic-release/github": "github:semantic-release/github",
+    "@semantic-release/release-notes-generator": "github:semantic-release/release-notes-generator",
+    "@testing-library/preact": "^2.0.1",
+    "@typed/compose": "1.0.0",
+    "@types/app-root-path": "1.2.4",
+    "@types/classnames": "^2.2.11",
+    "@types/js-cookie": "^2.2.6",
+    "@types/jsdom": "16.2.7",
+    "@types/sha1": "^1.1.2",
+    "@types/sinon": "9.0.11",
+    "@typescript-eslint/eslint-plugin": "4.17.0",
+    "@typescript-eslint/parser": "4.17.0",
+    "app-root-path": "3.0.0",
+    "ava": "3.15.0",
+    "browser-env": "3.3.0",
+    "classnames": "^2.2.6",
+    "cross-env": "7.0.3",
+    "cypress": "6.7.1",
+    "eslint": "7.22.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-airbnb-typescript": "12.3.1",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-config-sinon": "4.0.0",
+    "eslint-import-resolver-typescript": "2.4.0",
+    "eslint-plugin-ava": "11.0.0",
+    "eslint-plugin-chai-friendly": "0.6.0",
+    "eslint-plugin-cypress": "2.11.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsdoc": "32.3.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-radar": "0.2.1",
+    "eslint-plugin-unicorn": "28.0.2",
+    "husky": "4.3.8",
+    "jsdom": "16.5.1",
+    "json": "10.0.0",
+    "lint-staged": "10.5.4",
+    "nyc": "15.1.0",
+    "prettier": "2.2.1",
+    "semantic-release": "17.4.2",
+    "sinon": "9.2.4",
+    "ts-node": "9.1.1",
+    "ts-preferences": "2.0.0",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "^4.2.3",
+    "webextension-manifest": "1.0.0",
+    "webpack": "4.46.0",
+    "webpack-cli": "3.3.12"
+  }
+}

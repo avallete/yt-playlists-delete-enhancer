@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "../",
+    "target": "es5",
+    "resolveJsonModule": true,
+    "lib": ["es5", "dom"],
+    "types": ["cypress"],
+    "paths": {
+      "~src/*": ["./src/*"],
+      "~components/*": ["./src/components/*"],
+      "~lib/*": ["./src/lib/*"]
+    },
+    "preserveConstEnums": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["./**/*.ts", "./package.json"],
+  "exclude": ["./test/*"]
+}
