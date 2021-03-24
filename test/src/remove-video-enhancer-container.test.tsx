@@ -1,7 +1,7 @@
 import test from 'ava'
 import assert from 'assert'
 import { render, fireEvent, screen, cleanup, waitFor } from '@testing-library/preact'
-import RemoveVideoEnhancerContainer, { INPUT_ALT } from '~src/remove-video-enhancer-container'
+import RemoveVideoEnhancerContainer, { INPUT_ALT } from '~src/components/remove-video-enhancer-container'
 
 test.afterEach.always(() => {
   cleanup()
