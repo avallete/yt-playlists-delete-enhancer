@@ -1,6 +1,7 @@
 import { JSX } from 'preact'
 import { useState } from 'preact/hooks'
-import RemoveButton from './remove-button'
+import U from '~src/userscript'
+import RemoveButton from '~components/remove-button'
 
 interface Properties {
   removeVideoHandler: (watchTimeValue: number) => Promise<void> | void
@@ -33,7 +34,7 @@ function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 99 }:
   }
 
   return (
-    <div id='yt-remove-video-enhancer-container' className='style-scope ytd-playlist-sidebar-renderer'>
+    <div id={U.id} className='style-scope ytd-playlist-sidebar-renderer'>
       <div className='style-scope ytd-menu-service-item-renderer' role='option' aria-disabled='false'>
         <p>Remove all videos who has been watched at more or equal X percent</p>
         <input

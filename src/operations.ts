@@ -1,26 +1,11 @@
-import { render } from 'preact'
 import { Operation, operation } from 'userscripter/lib/operations'
 import { ALWAYS, DOMCONTENTLOADED } from 'userscripter/lib/environment'
 import { get as CookieGet } from 'js-cookie'
-import U from '~src/userscript'
 import { YTConfigData } from '~src/youtube'
 import addLocationChangeEventHooks from '~src/operations/actions/add-location-change-event-hook'
-import isOnPlaylistPage from '~src/operations/actions/is-on-playlist-page'
+import isOnPlaylistPage from '~src/operations/conditions/is-on-playlist-page'
 import { XPATH } from '~src/selectors'
-import RemoveVideoEnhancerApp from '~src/remove-video-enhancer-app'
-
-function appendAppRoot() {
-  const container = document.evaluate(
-    XPATH.YT_PLAYLIST_SIDEBAR_ITEMS,
-    document,
-    undefined,
-    XPathResult.FIRST_ORDERED_NODE_TYPE
-  ).singleNodeValue
-  const appRoot = document.createElement('div')
-  appRoot.id = U.id
-  container?.appendChild(appRoot)
-  return appRoot
-}
+import appendAppToDom from '~src/operations/actions/append-app-to-dom'
 
 function mainWrapper() {
   const url = new URL(window.location.href)
@@ -40,10 +25,10 @@ function mainWrapper() {
     ORIGIN_URL: new URL(document.URL).origin,
   }
   /* eslint-enable no-underscore-dangle */
-  const appRoot = appendAppRoot()
-  render(<RemoveVideoEnhancerApp config={config} playlistName={playlistName} />, appRoot)
+  appendAppToDom(config, playlistName, XPATH.APP_RENDER_ROOT)
 }
 
+// Called every time app navigation occurs
 function protectedMainWrapper() {
   if (isOnPlaylistPage(window)) {
     mainWrapper()

@@ -30,8 +30,8 @@ const userscriptMetadata: UserscriptMetadata = {
   homepage: packageConfig.homepage,
   support: packageConfig.bugs.url,
   hostname: 'youtube.com', // Will be used to generate matches (see: metadata.ts)
-  sitename: packageConfig.repository.url, // Used to generate the downloadURL of your userscript into metadata.ts
-  repositoryURL: packageConfig.repository.url,
+  sitename: 'youtube',
+  repositoryURL: packageConfig.repository.url, // Used to generate the downloadURL of your userscript into metadata.ts
   license: packageConfig.license,
   run_at: 'document-idle',
   // Will be used to generate the downloadURL into metadata.ts
