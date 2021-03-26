@@ -1,7 +1,8 @@
-import { JSX } from 'preact'
 import { useState } from 'preact/hooks'
+import Button from 'preact-material-components/Button'
+import Slider from 'preact-material-components/Slider'
+import LinearProgress from 'preact-material-components/LinearProgress'
 import U from '~src/userscript'
-import RemoveButton from '~components/remove-button'
 
 interface Properties {
   removeVideoHandler: (watchTimeValue: number) => Promise<void> | void
@@ -21,42 +22,38 @@ function validate(value: any): boolean {
   return false
 }
 
-function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 99 }: Properties) {
+function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 100 }: Properties) {
   const [inputValue, setValue] = useState(initialValue)
   const [isReadyToRemove, setIsReadyToRemove] = useState(true)
 
-  function onChange({ currentTarget }: JSX.TargetedEvent<HTMLInputElement, Event>) {
-    if (validate(currentTarget.value)) {
-      setValue(Number(currentTarget.value))
-    } else {
-      currentTarget.value = inputValue.toString()
+  function onChange({ detail }: any) {
+    // eslint-disable-next-line no-underscore-dangle
+    const value = detail.foundation_.value_
+    if (validate(value)) {
+      setValue(value)
     }
   }
 
   return (
     <div id={U.id} className='style-scope ytd-playlist-sidebar-renderer'>
       <div className='style-scope ytd-menu-service-item-renderer' role='option' aria-disabled='false'>
-        <p>Remove all videos who has been watched at more or equal X percent</p>
-        <input
-          id='removeVideosEnhancerInput'
-          type='number'
-          value={inputValue}
-          onChange={onChange}
-          min='0'
-          max='100'
-          required
-          alt={INPUT_ALT}
-        />
-        <RemoveButton
+        <p>Remove all videos who has been watched at more or equal {inputValue} %</p>
+        <Slider min={0} max={100} step={5} value={inputValue} onChange={onChange} alt={INPUT_ALT} discrete />
+        <Button
+          raised
+          ripple
+          secondary
           alt={REMOVE_BUTTON_ALT}
           disabled={!isReadyToRemove}
-          id='removeVideosEnhancerButton'
           onClick={async () => {
             setIsReadyToRemove(false)
             await removeVideoHandler(inputValue)
             setIsReadyToRemove(true)
           }}
-        />
+        >
+          {!isReadyToRemove && <LinearProgress indeterminate />}
+          {isReadyToRemove && <div>Remove!</div>}
+        </Button>
       </div>
     </div>
   )

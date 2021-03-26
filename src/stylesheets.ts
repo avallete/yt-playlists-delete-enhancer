@@ -1,6 +1,13 @@
-import { Stylesheets } from 'userscripter/lib/stylesheets'
+import { Stylesheets, stylesheet } from 'userscripter/lib/stylesheets'
+import preactMaterialStyles from '~src/styles/preact-material.scss'
+import isOnPlaylistPage from './operations/conditions/is-on-playlist-page'
 
-const STYLESHEETS = {} as const
+const STYLESHEETS = {
+  preactMaterial: stylesheet({
+    condition: isOnPlaylistPage,
+    css: preactMaterialStyles,
+  }),
+} as const
 
 // This trick uncovers type errors in STYLESHEETS
 // while retaining the static knowledge of its properties
