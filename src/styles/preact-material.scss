@@ -1,0 +1,14 @@
+##{getGlobal("SITE.APP_ROOT_ID")} {
+  --mdc-theme-primary: #e10000;
+  --mdc-theme-on-primary: #fff;
+  --mdc-theme-accent: #e10000;
+  --mdc-theme-secondary: #e10000;
+  --mdc-theme-on-secondary: #fff;
+  --mdc-theme-background: #fff;
+  --mdc-theme-surface: #fff;
+  --mdc-theme-on-surface: #fff;
+}
+
+@import '~preact-material-components/Button/style.css';
+@import '~preact-material-components/Slider/style.css';
+@import '~preact-material-components/LinearProgress/style.css';

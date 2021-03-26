@@ -1,4 +1,5 @@
 import { Component } from 'preact'
+import LinearProgress from 'preact-material-components/LinearProgress'
 import U from '~src/userscript'
 import RemoveVideoEnhancerContainer from '~components/remove-video-enhancer-container'
 import { YTConfigData, Playlist } from '~src/youtube'
@@ -81,6 +82,10 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
       }
       return <div id={U.id}>Playlist isn't editable</div>
     }
-    return <div id={U.id}>Loading...</div>
+    return (
+      <div id={U.id}>
+        <LinearProgress indeterminate />
+      </div>
+    )
   }
 }
