@@ -1,10 +1,10 @@
+import { ALWAYS } from 'userscripter/lib/environment'
 import { Stylesheets, stylesheet } from 'userscripter/lib/stylesheets'
 import preactMaterialStyles from '~src/styles/preact-material.scss'
-import isOnPlaylistPage from './operations/conditions/is-on-playlist-page'
 
 const STYLESHEETS = {
   preactMaterial: stylesheet({
-    condition: isOnPlaylistPage,
+    condition: ALWAYS,
     css: preactMaterialStyles,
   }),
 } as const
