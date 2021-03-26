@@ -18,5 +18,5 @@ You can also go to the [GreasyFork](https://greasyfork.org/fr/scripts/398688-yt-
 
 ## Screenshot
 
-![screen1](https://user-images.githubusercontent.com/8771783/77522241-0a1ebf80-6ed8-11ea-84fc-400b178bdc7d.png)
-![screen2](https://user-images.githubusercontent.com/8771783/77522248-0c811980-6ed8-11ea-8f60-8ff91eb5e940.png)
+![screen1](https://user-images.githubusercontent.com/8771783/112699740-cbc23480-8e8c-11eb-9e60-a29ac6565e3e.png)
+![screen2](https://user-images.githubusercontent.com/8771783/112699743-ccf36180-8e8c-11eb-9929-8ad7c60fe08c.png)
