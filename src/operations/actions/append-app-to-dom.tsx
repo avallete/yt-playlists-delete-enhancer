@@ -7,7 +7,9 @@ export default function appendAppToDom(config: YTConfigData, playlistName: strin
   const elementToAppendTo = getElementsByXpath(xpathRoot)[0] as Element
   if (elementToAppendTo) {
     render(
-      <RemoveVideoEnhancerApp config={config} playlistName={playlistName} />,
+      // Use Date.now() to force re-mount component to trigger playlist fetch after yt-navigate-finish events
+      // See: #62
+      <RemoveVideoEnhancerApp key={Date.now()} config={config} playlistName={playlistName} />,
       elementToAppendTo,
       elementToAppendTo.lastElementChild as Element
     )
