@@ -108,7 +108,7 @@
     "app-root-path": "3.0.0",
     "ava": "3.15.0",
     "browser-env": "3.3.0",
-    "classnames": "2.2.6",
+    "classnames": "2.3.1",
     "cross-env": "7.0.3",
     "cypress": "6.8.0",
     "eslint": "7.23.0",
