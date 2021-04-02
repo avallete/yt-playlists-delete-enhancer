@@ -1,15 +1,20 @@
-# [1.5.0](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.4.2...v1.5.0) (2021-03-27)
+## [1.5.1](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.0...v1.5.1) (2021-04-02)
 
 
 ### Bug Fixes
 
-* inconsistencies on app mount between chrome and firefox ([bdb2d24](https://github.com/avallete/yt-playlists-delete-enhancer/commit/bdb2d24a73bd3ae6dae11de6fff561da952ceaa8))
-* style must load on any pages ([c3c6d31](https://github.com/avallete/yt-playlists-delete-enhancer/commit/c3c6d31b3463469b96e4dcf8cbd2b88b39cbff90))
+* **ui:** resolve bug when removing after navigation ([e789a2e](https://github.com/avallete/yt-playlists-delete-enhancer/commit/e789a2e6aaa873a6aa37633b8eae65beca3fdfcf)), closes [#62](https://github.com/avallete/yt-playlists-delete-enhancer/issues/62)
 
+# [1.5.0](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.4.2...v1.5.0) (2021-03-27)
+
+### Bug Fixes
+
+- inconsistencies on app mount between chrome and firefox ([bdb2d24](https://github.com/avallete/yt-playlists-delete-enhancer/commit/bdb2d24a73bd3ae6dae11de6fff561da952ceaa8))
+- style must load on any pages ([c3c6d31](https://github.com/avallete/yt-playlists-delete-enhancer/commit/c3c6d31b3463469b96e4dcf8cbd2b88b39cbff90))
 
 ### Features
 
-* add material design ([2101cc7](https://github.com/avallete/yt-playlists-delete-enhancer/commit/2101cc7fd38e41d48343bf168e582c3cf216c937)), closes [#10](https://github.com/avallete/yt-playlists-delete-enhancer/issues/10)
+- add material design ([2101cc7](https://github.com/avallete/yt-playlists-delete-enhancer/commit/2101cc7fd38e41d48343bf168e582c3cf216c937)), closes [#10](https://github.com/avallete/yt-playlists-delete-enhancer/issues/10)
 
 ## [1.4.2](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.4.1...v1.4.2) (2021-03-24)
 
