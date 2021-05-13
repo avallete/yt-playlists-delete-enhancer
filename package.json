@@ -87,8 +87,8 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "12.1.1",
-    "@commitlint/config-conventional": "12.1.1",
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
     "@istanbuljs/nyc-config-typescript": "1.0.1",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/commit-analyzer": "github:semantic-release/commit-analyzer",
