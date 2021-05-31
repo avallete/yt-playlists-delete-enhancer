@@ -1,9 +1,15 @@
-## [1.5.2](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.1...v1.5.2) (2021-04-11)
+## [1.5.3](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.2...v1.5.3) (2021-05-31)
 
 
 ### Bug Fixes
 
-* **typo:** grammar in button description ([4c6c557](https://github.com/avallete/yt-playlists-delete-enhancer/commit/4c6c557cf3cfb23c065564470645f9eca8e64f14))
+* undefined error ([#97](https://github.com/avallete/yt-playlists-delete-enhancer/issues/97)) ([2b03c48](https://github.com/avallete/yt-playlists-delete-enhancer/commit/2b03c48b45f59d45e1910e75baa823feba9af973))
+
+## [1.5.2](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.1...v1.5.2) (2021-04-11)
+
+### Bug Fixes
+
+- **typo:** grammar in button description ([4c6c557](https://github.com/avallete/yt-playlists-delete-enhancer/commit/4c6c557cf3cfb23c065564470645f9eca8e64f14))
 
 ## [1.5.1](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.0...v1.5.1) (2021-04-02)
 
