@@ -1,19 +1,17 @@
 import { XPATH } from '~src/selectors'
 import getElementsByXpath from '~src/lib/get-elements-by-xpath'
 import listMapSearch from '~src/lib/list-map-search'
-import { Playlist, PlaylistVideo } from '~src/youtube'
+import { PlaylistVideo } from '~src/youtube'
 
-function removeVideoWithYtAction(playlist: Playlist, videoId: String) {
+function removeVideoWithYtAction(videoId: String) {
   document.dispatchEvent(
     new CustomEvent('yt-action', {
       detail: {
-        actionName: 'yt-service-request',
+        actionName: 'yt-playlist-remove-videos-action',
         args: [
-          undefined,
           {
-            playlistEditEndpoint: {
-              clientActions: [{ playlistRemoveVideosAction: { setVideoIds: [videoId] } }],
-              playlistId: playlist.playlistId,
+            playlistRemoveVideosAction: {
+              setVideoIds: [videoId],
             },
           },
         ],
@@ -23,7 +21,7 @@ function removeVideoWithYtAction(playlist: Playlist, videoId: String) {
   )
 }
 
-export default function removeVideosFromPlaylist(playlist: Playlist, videosToDelete: PlaylistVideo[]) {
+export default function removeVideosFromPlaylist(videosToDelete: PlaylistVideo[]) {
   // cast Node as any to access .data property availlable on ytd-playlist-video-renderer elements
   const playlistVideoRendererNodes = getElementsByXpath(XPATH.YT_PLAYLIST_VIDEO_RENDERERS) as any[]
   // All videos to remove MAY be present in the UI because if there is more videos to remove
@@ -41,7 +39,7 @@ export default function removeVideosFromPlaylist(playlist: Playlist, videosToDel
       for (const element of htmlElements) {
         // eslint-disable-next-line no-underscore-dangle
         const videoId = element.__data.data.setVideoId
-        removeVideoWithYtAction(playlist, videoId)
+        removeVideoWithYtAction(videoId)
       }
       return
     }

@@ -44,7 +44,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
         try {
           await removeVideosFromPlaylist(this.props.config, playlist?.playlistId as string, toDeleteVideos)
           playlist.continuations[0].videos = toKeepVideos
-          removeVideosFromPlaylistUI(playlist, toDeleteVideos)
+          removeVideosFromPlaylistUI(toDeleteVideos)
           this.setState({ ...this.state, playlist })
         } catch (error) {
           this.setState({ ...this.state, errorMessages: [error.message] })
