@@ -4,7 +4,7 @@ import listMapSearch from '~src/lib/list-map-search'
 import { PlaylistVideo } from '~src/youtube'
 
 function removeVideoWithYtAction(videoId: String) {
-  document.dispatchEvent(
+  document.querySelectorAll('ytd-app')[0].dispatchEvent(
     new CustomEvent('yt-action', {
       detail: {
         actionName: 'yt-playlist-remove-videos-action',
