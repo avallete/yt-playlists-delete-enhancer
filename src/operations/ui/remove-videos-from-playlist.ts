@@ -26,9 +26,10 @@ export default function removeVideosFromPlaylist(videosToDelete: PlaylistVideo[]
   const playlistVideoRendererNodes = getElementsByXpath(XPATH.YT_PLAYLIST_VIDEO_RENDERERS) as any[]
   // All videos to remove MAY be present in the UI because if there is more videos to remove
   // than videos found into the UI, some removed videos aren't loaded in the UI
+  const uniqueVideosToDelete = [...new Map(videosToDelete.map((item) => [item.videoId, item])).values()]
   if (playlistVideoRendererNodes.length >= videosToDelete.length) {
     const searchMap = listMapSearch(
-      videosToDelete,
+      uniqueVideosToDelete,
       playlistVideoRendererNodes,
       (video) => video.videoId,
       (node) => node.data.videoId
