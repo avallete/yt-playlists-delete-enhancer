@@ -1,9 +1,16 @@
-## [1.5.4](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.3...v1.5.4) (2021-06-05)
+## [1.5.5](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.4...v1.5.5) (2022-01-29)
 
 
 ### Bug Fixes
 
-* video decrement when playlist contains one video ([#104](https://github.com/avallete/yt-playlists-delete-enhancer/issues/104)) ([8d51582](https://github.com/avallete/yt-playlists-delete-enhancer/commit/8d51582d411f37c266a09787a1850e3921eb85bd))
+* duplicate video removal ([#112](https://github.com/avallete/yt-playlists-delete-enhancer/issues/112)) ([3001009](https://github.com/avallete/yt-playlists-delete-enhancer/commit/30010099662770a20558472c10467cb3292dc398))
+* video removal event ([#111](https://github.com/avallete/yt-playlists-delete-enhancer/issues/111)) ([aa0dced](https://github.com/avallete/yt-playlists-delete-enhancer/commit/aa0dced69053e491ca048a3661f771e7419b6102))
+
+## [1.5.4](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.3...v1.5.4) (2021-06-05)
+
+### Bug Fixes
+
+- video decrement when playlist contains one video ([#104](https://github.com/avallete/yt-playlists-delete-enhancer/issues/104)) ([8d51582](https://github.com/avallete/yt-playlists-delete-enhancer/commit/8d51582d411f37c266a09787a1850e3921eb85bd))
 
 ## [1.5.3](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.2...v1.5.3) (2021-05-31)
 
