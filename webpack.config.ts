@@ -26,4 +26,8 @@ const webpackConfig = createWebpackConfig({
   env: process.env,
 })
 
+webpackConfig.optimization = {
+  minimize: false,
+}
+
 export default webpackConfig
