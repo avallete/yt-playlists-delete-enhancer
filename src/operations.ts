@@ -24,8 +24,12 @@ function mainWrapper() {
     SAPISID: CookieGet('SAPISID') as string,
     ORIGIN_URL: new URL(document.URL).origin,
   }
-  /* eslint-enable no-underscore-dangle */
-  appendAppToDom(config, playlistName, XPATH.APP_RENDER_ROOT)
+
+  document.addEventListener('yt-action', (event: any) => {
+    if (event.detail.actionName === 'ytd-update-grid-state-action') {
+      appendAppToDom(config, playlistName, XPATH.APP_RENDER_ROOT)
+    }
+  })
 }
 
 // Called every time app navigation occurs
