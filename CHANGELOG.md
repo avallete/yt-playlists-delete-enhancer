@@ -1,9 +1,15 @@
-## [1.5.6](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.5...v1.5.6) (2022-02-11)
+## [1.5.7](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.6...v1.5.7) (2022-02-11)
 
 
 ### Bug Fixes
 
-* append to dom ([#143](https://github.com/avallete/yt-playlists-delete-enhancer/issues/143)) ([a6de26a](https://github.com/avallete/yt-playlists-delete-enhancer/commit/a6de26a5bbcbc5cc3f8b33e93fe15479652dfa75))
+* remove minification on bundled code ([#145](https://github.com/avallete/yt-playlists-delete-enhancer/issues/145)) ([0e050da](https://github.com/avallete/yt-playlists-delete-enhancer/commit/0e050dab7ac7f777daee0fe3d97dec5d0772031a))
+
+## [1.5.6](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.5...v1.5.6) (2022-02-11)
+
+### Bug Fixes
+
+- append to dom ([#143](https://github.com/avallete/yt-playlists-delete-enhancer/issues/143)) ([a6de26a](https://github.com/avallete/yt-playlists-delete-enhancer/commit/a6de26a5bbcbc5cc3f8b33e93fe15479652dfa75))
 
 ## [1.5.5](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.4...v1.5.5) (2022-01-29)
 
