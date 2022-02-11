@@ -1,10 +1,16 @@
-## [1.5.5](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.4...v1.5.5) (2022-01-29)
+## [1.5.6](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.5...v1.5.6) (2022-02-11)
 
 
 ### Bug Fixes
 
-* duplicate video removal ([#112](https://github.com/avallete/yt-playlists-delete-enhancer/issues/112)) ([3001009](https://github.com/avallete/yt-playlists-delete-enhancer/commit/30010099662770a20558472c10467cb3292dc398))
-* video removal event ([#111](https://github.com/avallete/yt-playlists-delete-enhancer/issues/111)) ([aa0dced](https://github.com/avallete/yt-playlists-delete-enhancer/commit/aa0dced69053e491ca048a3661f771e7419b6102))
+* append to dom ([#143](https://github.com/avallete/yt-playlists-delete-enhancer/issues/143)) ([a6de26a](https://github.com/avallete/yt-playlists-delete-enhancer/commit/a6de26a5bbcbc5cc3f8b33e93fe15479652dfa75))
+
+## [1.5.5](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.4...v1.5.5) (2022-01-29)
+
+### Bug Fixes
+
+- duplicate video removal ([#112](https://github.com/avallete/yt-playlists-delete-enhancer/issues/112)) ([3001009](https://github.com/avallete/yt-playlists-delete-enhancer/commit/30010099662770a20558472c10467cb3292dc398))
+- video removal event ([#111](https://github.com/avallete/yt-playlists-delete-enhancer/issues/111)) ([aa0dced](https://github.com/avallete/yt-playlists-delete-enhancer/commit/aa0dced69053e491ca048a3661f771e7419b6102))
 
 ## [1.5.4](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.3...v1.5.4) (2021-06-05)
 
