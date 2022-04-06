@@ -1,6 +1,6 @@
 import sha1 from 'sha1'
 import { YTConfigData, PlaylistVideo, Playlist, PlaylistContinuation } from './youtube'
-import { PlaylistNotEditableError, PlaylistEmptyError } from '~src/errors'
+import { PlaylistNotEditableError, PlaylistEmptyError, PlaylistDataFetchError } from '~src/errors'
 
 type YTHeaderKey =
   | 'X-Goog-Visitor-Id'
@@ -113,8 +113,14 @@ async function fetchPlaylistInitialData(config: YTConfigData, playlistName: stri
     method: 'GET',
     mode: 'cors',
   })
-  const data = (await response.json())[1].response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
-    .sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer
+
+  let data
+  try {
+    data = (await response.json()).response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
+      .sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer
+  } catch {
+    throw PlaylistDataFetchError
+  }
 
   if (!data) {
     throw PlaylistEmptyError
