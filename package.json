@@ -106,7 +106,7 @@
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "app-root-path": "3.0.0",
-    "ava": "3.15.0",
+    "ava": "4.0.0",
     "browser-env": "3.3.0",
     "classnames": "2.3.1",
     "cross-env": "7.0.3",
