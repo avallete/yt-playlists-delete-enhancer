@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         yt-playlists-delete-enhancer
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
-// @version      1.5.7
+// @version      1.5.8
 // @author       Andrew Valleteau <avallete@student.42.fr>
 // @grant        none
 // @match        *://youtube.com/*
@@ -1220,11 +1220,10 @@ function toComment(sourceMap) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.XPATH = void 0;
 exports.XPATH = {
-    APP_RENDER_ROOT: '//ytd-playlist-sidebar-renderer/div[@id="items"]/*[last()]',
-    YT_PLAYLIST_SIDEBAR_ITEMS: '//ytd-playlist-sidebar-renderer/div[@id="items"]',
+    APP_RENDER_ROOT: '//div[@class="thumbnail-and-metadata-wrapper style-scope ytd-playlist-header-renderer"]/*[last()]',
     YT_PLAYLIST_VIDEO_RENDERERS: '//ytd-playlist-video-renderer',
-    YT_NUMBER_OF_VIDEOS_IN_PLAYLIST: '//ytd-playlist-sidebar-primary-info-renderer/div/yt-formatted-string/span[1]',
-    YT_NUMBER_OF_VIDEOS_IN_PLAYLIST_ONE_VIDEO: '//ytd-playlist-sidebar-primary-info-renderer/div/yt-formatted-string',
+    YT_NUMBER_OF_VIDEOS_IN_PLAYLIST: '//ytd-playlist-byline-renderer//div/yt-formatted-string/span[1]',
+    YT_NUMBER_OF_VIDEOS_IN_PLAYLIST_ONE_VIDEO: '//ytd-playlist-byline-renderer/div/yt-formatted-string',
 };
 exports.default = {
     XPATH: exports.XPATH,
@@ -1861,7 +1860,7 @@ exports.default = addLocationChangeEventHooks;
 /* 30 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.5.7\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
+module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.5.8\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
 
 /***/ }),
 /* 31 */
