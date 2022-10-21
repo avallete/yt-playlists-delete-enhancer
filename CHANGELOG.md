@@ -1,9 +1,8 @@
 ## [1.5.7](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.6...v1.5.7) (2022-02-11)
 
-
 ### Bug Fixes
 
-* remove minification on bundled code ([#145](https://github.com/avallete/yt-playlists-delete-enhancer/issues/145)) ([0e050da](https://github.com/avallete/yt-playlists-delete-enhancer/commit/0e050dab7ac7f777daee0fe3d97dec5d0772031a))
+- remove minification on bundled code ([#145](https://github.com/avallete/yt-playlists-delete-enhancer/issues/145)) ([0e050da](https://github.com/avallete/yt-playlists-delete-enhancer/commit/0e050dab7ac7f777daee0fe3d97dec5d0772031a))
 
 ## [1.5.6](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.5...v1.5.6) (2022-02-11)
 
