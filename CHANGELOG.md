@@ -1,3 +1,12 @@
+## [1.5.8](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.7...v1.5.8) (2022-10-21)
+
+
+### Bug Fixes
+
+* update package-lock ([c9e6697](https://github.com/avallete/yt-playlists-delete-enhancer/commit/c9e6697e2885bca40c53796da14a242d2ae8dc01))
+* update workflow ([7a23bb0](https://github.com/avallete/yt-playlists-delete-enhancer/commit/7a23bb0adce02b4158546ef087da14ebb420c57b))
+* yt selector update ([#176](https://github.com/avallete/yt-playlists-delete-enhancer/issues/176)) ([ce5b397](https://github.com/avallete/yt-playlists-delete-enhancer/commit/ce5b39742db7ba63d371a71220c81794159baf04))
+
 ## [1.5.7](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.6...v1.5.7) (2022-02-11)
 
 ### Bug Fixes
