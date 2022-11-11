@@ -1,0 +1,6 @@
+paths:
+- src
+paths-ignore:
+- cypress
+- dist
+- test
