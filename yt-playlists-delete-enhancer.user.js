@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         yt-playlists-delete-enhancer
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
-// @version      1.5.9
+// @version      1.5.10
 // @author       Andrew Valleteau <avallete@student.42.fr>
 // @grant        none
 // @match        *://youtube.com/*
@@ -1220,7 +1220,7 @@ function toComment(sourceMap) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.XPATH = void 0;
 exports.XPATH = {
-    APP_RENDER_ROOT: '//div[@class="immersive-header-content style-scope ytd-playlist-header-renderer"]',
+    APP_RENDER_ROOT: '//div[@class="style-scope ytd-playlist-sidebar-renderer"]',
     YT_PLAYLIST_VIDEO_RENDERERS: '//ytd-playlist-video-renderer',
     YT_NUMBER_OF_VIDEOS_IN_PLAYLIST: '//ytd-playlist-byline-renderer//div/yt-formatted-string/span[1]',
 };
@@ -1859,7 +1859,7 @@ exports.default = addLocationChangeEventHooks;
 /* 30 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.5.9\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
+module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.5.10\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
 
 /***/ }),
 /* 31 */
