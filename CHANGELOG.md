@@ -1,9 +1,15 @@
-## [1.5.9](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.8...v1.5.9) (2022-11-14)
+## [1.5.10](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.9...v1.5.10) (2022-11-17)
 
 
 ### Bug Fixes
 
-* **xpath:** Update XPath expressions and simplify single video behavior ([#189](https://github.com/avallete/yt-playlists-delete-enhancer/issues/189)) ([a01034b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/a01034b0d66bd2300c58406a5f626ba746b32da7))
+* **selector:** fix app root selector ([#195](https://github.com/avallete/yt-playlists-delete-enhancer/issues/195)) ([14bad6b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/14bad6be7563a832664143d2d81229cb767ac7fe))
+
+## [1.5.9](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.8...v1.5.9) (2022-11-14)
+
+### Bug Fixes
+
+- **xpath:** Update XPath expressions and simplify single video behavior ([#189](https://github.com/avallete/yt-playlists-delete-enhancer/issues/189)) ([a01034b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/a01034b0d66bd2300c58406a5f626ba746b32da7))
 
 ## [1.5.8](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.7...v1.5.8) (2022-10-21)
 
