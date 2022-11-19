@@ -1,6 +1,5 @@
 import { Component } from 'preact'
 import LinearProgress from 'preact-material-components/LinearProgress'
-import U from '~src/userscript'
 import RemoveVideoEnhancerContainer from '~components/remove-video-enhancer-container'
 import { YTConfigData, Playlist } from '~src/youtube'
 import { removeVideosFromPlaylist, fetchAllPlaylistContent } from '~src/yt-api'
@@ -74,16 +73,16 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
 
   render() {
     if (this.state?.errorMessages?.length) {
-      return <div id={U.id}>{this.state?.errorMessages.join(' ')}</div>
+      return <div>{this.state?.errorMessages.join(' ')}</div>
     }
     if (this.state?.playlist) {
       if (this.state.playlist.isEditable) {
         return <RemoveVideoEnhancerContainer removeVideoHandler={this.removeVideoHandler} />
       }
-      return <div id={U.id}>Playlist isn't editable</div>
+      return <div>Playlist isn't editable</div>
     }
     return (
-      <div id={U.id}>
+      <div>
         <LinearProgress indeterminate />
       </div>
     )

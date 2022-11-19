@@ -6,7 +6,8 @@ export default function removeVideosFromPlaylistUI(toDeleteVideos: PlaylistVideo
   try {
     removeVideosFromPlaylist(toDeleteVideos)
     decrementNumberOfVideosInPlaylist(toDeleteVideos.length)
-  } catch {
+  } catch (error) {
+    console.error(error)
     // If an error occurs while trying to dynamically update the UI
     // reload the page to update the UI
     window.location.reload()

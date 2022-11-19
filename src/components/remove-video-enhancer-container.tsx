@@ -2,7 +2,6 @@ import { useState } from 'preact/hooks'
 import Button from 'preact-material-components/Button'
 import Slider from 'preact-material-components/Slider'
 import LinearProgress from 'preact-material-components/LinearProgress'
-import U from '~src/userscript'
 
 interface Properties {
   removeVideoHandler: (watchTimeValue: number) => Promise<void> | void
@@ -35,7 +34,7 @@ function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 100 }
   }
 
   return (
-    <div id={U.id} className='style-scope ytd-playlist-sidebar-renderer'>
+    <div className='style-scope ytd-playlist-sidebar-renderer'>
       <div className='style-scope ytd-menu-service-item-renderer' role='option' aria-disabled='false'>
         <p>Remove all videos that have been watched to at least {inputValue}%</p>
         <Slider min={0} max={100} step={5} value={inputValue} onChange={onChange} alt={INPUT_ALT} discrete />
