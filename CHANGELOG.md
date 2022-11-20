@@ -1,9 +1,15 @@
-## [1.5.10](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.9...v1.5.10) (2022-11-17)
+## [1.5.11](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.10...v1.5.11) (2022-11-20)
 
 
 ### Bug Fixes
 
-* **selector:** fix app root selector ([#195](https://github.com/avallete/yt-playlists-delete-enhancer/issues/195)) ([14bad6b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/14bad6be7563a832664143d2d81229cb767ac7fe))
+* selector other than watchlater playlist ([#199](https://github.com/avallete/yt-playlists-delete-enhancer/issues/199)) ([8d76158](https://github.com/avallete/yt-playlists-delete-enhancer/commit/8d76158d21821ff264aafb86f0bc829aabfc4c4b))
+
+## [1.5.10](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.9...v1.5.10) (2022-11-17)
+
+### Bug Fixes
+
+- **selector:** fix app root selector ([#195](https://github.com/avallete/yt-playlists-delete-enhancer/issues/195)) ([14bad6b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/14bad6be7563a832664143d2d81229cb767ac7fe))
 
 ## [1.5.9](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.8...v1.5.9) (2022-11-14)
 
