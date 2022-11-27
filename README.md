@@ -9,6 +9,8 @@ delete EVERY started watched videos. Even the ones you didn't finished to watch 
 This script solve the issue by adding a button on Youtube to remove watched videos with more
 than X percent from any playlist.
 
+It also add a shortcut for each video in the list to quickly remove each video without the need to go into the sub-menu.
+
 # How to install ?
 
 You need to have [ViolentMonkey]() or [TamperMonkey]() extension installed in your browser.
@@ -20,3 +22,4 @@ You can also go to the [GreasyFork](https://greasyfork.org/fr/scripts/398688-yt-
 
 ![screen1](https://user-images.githubusercontent.com/8771783/112699740-cbc23480-8e8c-11eb-9e60-a29ac6565e3e.png)
 ![screen2](https://user-images.githubusercontent.com/8771783/112699743-ccf36180-8e8c-11eb-9929-8ad7c60fe08c.png)
+![screen2](https://user-images.githubusercontent.com/8771783/204144990-d31232e7-de94-49f6-bd75-3e3f98ad983e.png)
