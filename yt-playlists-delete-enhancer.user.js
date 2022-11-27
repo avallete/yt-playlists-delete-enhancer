@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         yt-playlists-delete-enhancer
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
-// @version      1.5.11
+// @version      1.6.0
 // @author       Andrew Valleteau <avallete@student.42.fr>
 // @grant        none
 // @match        *://youtube.com/*
@@ -97,7 +97,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 27);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -205,21 +205,6 @@ class MDCFoundation {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  module.exports["default"] = module.exports, module.exports.__esModule = true;
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
-/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -358,7 +343,114 @@ class MDCComponent {
 
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  module.exports["default"] = module.exports, module.exports.__esModule = true;
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(19)["default"];
+
+var assertThisInitialized = __webpack_require__(36);
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(38);
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -517,307 +609,34 @@ function getCorrectPropertyName(windowObj, eventType) {
 
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-module.exports = _interopRequireDefault;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-module.exports = _createClass;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(19)["default"];
-
-var assertThisInitialized = __webpack_require__(34);
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(36);
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
 /* 10 */
-/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stylesheet", function() { return stylesheet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "insert", function() { return insert; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enable", function() { return enable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "disable", function() { return disable; });
-const MATCH_ALL = "all";
-const MATCH_NONE = "not all";
-function stylesheet(spec) {
-    return spec;
-}
-function insert(stylesheets) {
-    const fragment = document.createDocumentFragment();
-    Object.entries(stylesheets).forEach(([_, sheet]) => {
-        const style = document.createElement("style");
-        if (sheet.id !== undefined)
-            style.id = sheet.id;
-        style.textContent = sheet.css;
-        style.media = sheet.condition(window) ? MATCH_ALL : MATCH_NONE;
-        fragment.appendChild(style);
-    });
-    document.documentElement.appendChild(fragment);
-}
-const setMediaQuery = (m) => (s) => {
-    const element = document.getElementById(s.id);
-    if (element !== null) {
-        element.setAttribute("media", m);
-    }
-};
-const enable = setMediaQuery(MATCH_ALL);
-const disable = setMediaQuery(MATCH_NONE);
-
-
-/***/ }),
-/* 11 */
-/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "operation", function() { return /* binding */ operation; });
-__webpack_require__.d(__webpack_exports__, "run", function() { return /* binding */ run; });
-
-// CONCATENATED MODULE: ./node_modules/ts-type-guards/dist/is.mjs
-const TYPE_GUARDS_PRIMITIVE = [isBoolean, isNumber, isString, isSymbol, isNull, isUndefined];
-function isBoolean(x) {
-    return typeof x === "boolean";
-}
-function isNumber(x) {
-    return typeof x === "number";
-}
-function isString(x) {
-    return typeof x === "string";
-}
-function isSymbol(x) {
-    return typeof x === "symbol";
-}
-function isNull(x) {
-    return x === null;
-}
-function isUndefined(x) {
-    return x === undefined;
-}
-function isPrimitive(x) {
-    return TYPE_GUARDS_PRIMITIVE.some(f => f(x));
-}
-function isNonPrimitive(x) {
-    return !isPrimitive(x);
-}
-function namedFunction(name, fun) {
-    return Object.defineProperty(fun, "name", { value: name, writable: false });
-}
-function namedTypeGuard(creator, type, typeGuard) {
-    return namedFunction(`${creator.name}(${type.name})`, typeGuard);
-}
-function is(type) {
-    if (isPrimitive(type)) {
-        return (_) => false;
-    }
-    return namedTypeGuard(is, type, (x) => x instanceof type);
-}
-function isLike(reference) {
-    for (const f of TYPE_GUARDS_PRIMITIVE) {
-        if (f(reference)) {
-            return (x) => f(x);
-        }
-    }
-    if (is(Array)(reference)) {
-        const referenceAsArray = reference;
-        return (x) => is(Array)(x) && (referenceAsArray.length > 0 ? x.every(isLike(referenceAsArray[0])) : true);
-    }
-    if (reference.constructor === Object) {
-        return (x) => (![undefined, null].includes(x)
-            &&
-                Object.keys(reference).every(k => isLike(reference[k])(x[k])));
-    }
-    if (reference.constructor instanceof Function) {
-        return is(reference.constructor);
-    }
-    throw new TypeError(isLike.name + ` cannot use this object as reference because it has no constructor: ` + JSON.stringify(reference));
-}
-//# sourceMappingURL=is.js.map
-// CONCATENATED MODULE: ./node_modules/userscripter/lib/operations.mjs
-
-const SUCCESS = undefined;
-function operation(spec) {
-    return spec;
-}
-function run(plan) {
-    function recurse(operations, failures, triesLeft) {
-        const lastTry = isNumber(triesLeft) && triesLeft <= 0;
-        const operationsToRunNow = [];
-        const remaining = [];
-        const readyState = document.readyState;
-        for (const o of operations) {
-            const shouldRunNow = o.deferUntil === undefined || o.deferUntil(readyState);
-            (shouldRunNow ? operationsToRunNow : remaining).push(o);
-        }
-        for (const o of operationsToRunNow) {
-            const result = tryToPerform(o);
-            if (result !== SUCCESS) {
-                switch (result.reason) {
-                    case 0:
-                        lastTry ? failures.push({ result, operation: o }) : remaining.push(o);
-                        break;
-                    case 1:
-                        failures.push({ result, operation: o });
-                        break;
-                }
-            }
-        }
-        if (remaining.length > 0) {
-            setTimeout(() => recurse(remaining, failures, (isNumber(triesLeft)
-                ? triesLeft - 1
-                : plan.tryUntil(readyState) ? plan.extraTries : undefined)), plan.interval);
-        }
-        else if (failures.length > 0) {
-            plan.handleFailures(failures);
-        }
-    }
-    recurse(plan.operations.filter(o => o.condition(window)), []);
-}
-function tryToPerform(o) {
-    const dependencies = o.dependencies === undefined ? {} : o.dependencies;
-    const queryResults = Object.entries(dependencies).map(([key, selector]) => ({
-        key, selector, element: document.querySelector(selector),
-    }));
-    const missingDependencies = queryResults.filter(x => isNull(x.element));
-    if (missingDependencies.length > 0) {
-        return { reason: 0, dependencies: missingDependencies };
-    }
-    const e = queryResults.reduce((acc, x) => Object.defineProperty(acc, x.key, { value: x.element }), {});
-    return fromActionResult(o.action(e));
-}
-function fromActionResult(r) {
-    return isString(r) ? { reason: 1, message: r } : SUCCESS;
-}
-
-
-/***/ }),
-/* 12 */
-/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ALWAYS", function() { return ALWAYS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NEVER", function() { return NEVER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOMCONTENTLOADED", function() { return DOMCONTENTLOADED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD", function() { return LOAD; });
-const ALWAYS = () => true;
-const NEVER = () => false;
-const DOMCONTENTLOADED = (state) => state !== "loading";
-const LOAD = (state) => state === "complete";
-
-
-/***/ }),
-/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(5);
+var _interopRequireDefault = __webpack_require__(4);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.MaterialComponent = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(6));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(5));
 
-var _createClass2 = _interopRequireDefault(__webpack_require__(7));
+var _createClass2 = _interopRequireDefault(__webpack_require__(6));
 
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(8));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(7));
 
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(2));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(3));
 
-var _inherits2 = _interopRequireDefault(__webpack_require__(9));
+var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
 var _typeof2 = _interopRequireDefault(__webpack_require__(19));
 
-var _ripple = __webpack_require__(64);
+var _ripple = __webpack_require__(21);
 
-var _bindDecorator = __webpack_require__(23);
+var _bindDecorator = __webpack_require__(24);
 
 var _preact = __webpack_require__(0);
 
@@ -1078,7 +897,7 @@ exports.default = _default;
 //# sourceMappingURL=MaterialComponent.js.map
 
 /***/ }),
-/* 14 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1178,41 +997,188 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 12 */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stylesheet", function() { return stylesheet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "insert", function() { return insert; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enable", function() { return enable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "disable", function() { return disable; });
+const MATCH_ALL = "all";
+const MATCH_NONE = "not all";
+function stylesheet(spec) {
+    return spec;
+}
+function insert(stylesheets) {
+    const fragment = document.createDocumentFragment();
+    Object.entries(stylesheets).forEach(([_, sheet]) => {
+        const style = document.createElement("style");
+        if (sheet.id !== undefined)
+            style.id = sheet.id;
+        style.textContent = sheet.css;
+        style.media = sheet.condition(window) ? MATCH_ALL : MATCH_NONE;
+        fragment.appendChild(style);
+    });
+    document.documentElement.appendChild(fragment);
+}
+const setMediaQuery = (m) => (s) => {
+    const element = document.getElementById(s.id);
+    if (element !== null) {
+        element.setAttribute("media", m);
+    }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-// This file is generated from package.json with build-config-from-package-json command
-// if you need to add or remove data from it, see package.json script section
-// Additional details: https://github.com/avallete/userscripter-boilerplate/issues/30
-const metadata_config_json_1 = __importDefault(__webpack_require__(30));
-const userscriptMetadata = {
-    id: metadata_config_json_1.default.name,
-    name: metadata_config_json_1.default.name,
-    description: metadata_config_json_1.default.description,
-    version: metadata_config_json_1.default.version,
-    author: metadata_config_json_1.default.author,
-    homepage: metadata_config_json_1.default.homepage,
-    support: metadata_config_json_1.default.bugs.url,
-    hostname: 'youtube.com',
-    sitename: 'youtube',
-    repositoryURL: metadata_config_json_1.default.repository.url,
-    license: metadata_config_json_1.default.license,
-    run_at: 'document-idle',
-    // Will be used to generate the downloadURL into metadata.ts
-    // Make sure it match the branch where final release are pushed (see .github/workflow/deploy-gh-pages.yml)
-    releaseBranch: 'gh-pages',
-};
-exports.default = userscriptMetadata;
+const enable = setMediaQuery(MATCH_ALL);
+const disable = setMediaQuery(MATCH_NONE);
 
 
 /***/ }),
-/* 16 */
+/* 13 */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "operation", function() { return /* binding */ operation; });
+__webpack_require__.d(__webpack_exports__, "run", function() { return /* binding */ run; });
+
+// CONCATENATED MODULE: ./node_modules/ts-type-guards/dist/is.mjs
+const TYPE_GUARDS_PRIMITIVE = [isBoolean, isNumber, isString, isSymbol, isNull, isUndefined];
+function isBoolean(x) {
+    return typeof x === "boolean";
+}
+function isNumber(x) {
+    return typeof x === "number";
+}
+function isString(x) {
+    return typeof x === "string";
+}
+function isSymbol(x) {
+    return typeof x === "symbol";
+}
+function isNull(x) {
+    return x === null;
+}
+function isUndefined(x) {
+    return x === undefined;
+}
+function isPrimitive(x) {
+    return TYPE_GUARDS_PRIMITIVE.some(f => f(x));
+}
+function isNonPrimitive(x) {
+    return !isPrimitive(x);
+}
+function namedFunction(name, fun) {
+    return Object.defineProperty(fun, "name", { value: name, writable: false });
+}
+function namedTypeGuard(creator, type, typeGuard) {
+    return namedFunction(`${creator.name}(${type.name})`, typeGuard);
+}
+function is(type) {
+    if (isPrimitive(type)) {
+        return (_) => false;
+    }
+    return namedTypeGuard(is, type, (x) => x instanceof type);
+}
+function isLike(reference) {
+    for (const f of TYPE_GUARDS_PRIMITIVE) {
+        if (f(reference)) {
+            return (x) => f(x);
+        }
+    }
+    if (is(Array)(reference)) {
+        const referenceAsArray = reference;
+        return (x) => is(Array)(x) && (referenceAsArray.length > 0 ? x.every(isLike(referenceAsArray[0])) : true);
+    }
+    if (reference.constructor === Object) {
+        return (x) => (![undefined, null].includes(x)
+            &&
+                Object.keys(reference).every(k => isLike(reference[k])(x[k])));
+    }
+    if (reference.constructor instanceof Function) {
+        return is(reference.constructor);
+    }
+    throw new TypeError(isLike.name + ` cannot use this object as reference because it has no constructor: ` + JSON.stringify(reference));
+}
+//# sourceMappingURL=is.js.map
+// CONCATENATED MODULE: ./node_modules/userscripter/lib/operations.mjs
+
+const SUCCESS = undefined;
+function operation(spec) {
+    return spec;
+}
+function run(plan) {
+    function recurse(operations, failures, triesLeft) {
+        const lastTry = isNumber(triesLeft) && triesLeft <= 0;
+        const operationsToRunNow = [];
+        const remaining = [];
+        const readyState = document.readyState;
+        for (const o of operations) {
+            const shouldRunNow = o.deferUntil === undefined || o.deferUntil(readyState);
+            (shouldRunNow ? operationsToRunNow : remaining).push(o);
+        }
+        for (const o of operationsToRunNow) {
+            const result = tryToPerform(o);
+            if (result !== SUCCESS) {
+                switch (result.reason) {
+                    case 0:
+                        lastTry ? failures.push({ result, operation: o }) : remaining.push(o);
+                        break;
+                    case 1:
+                        failures.push({ result, operation: o });
+                        break;
+                }
+            }
+        }
+        if (remaining.length > 0) {
+            setTimeout(() => recurse(remaining, failures, (isNumber(triesLeft)
+                ? triesLeft - 1
+                : plan.tryUntil(readyState) ? plan.extraTries : undefined)), plan.interval);
+        }
+        else if (failures.length > 0) {
+            plan.handleFailures(failures);
+        }
+    }
+    recurse(plan.operations.filter(o => o.condition(window)), []);
+}
+function tryToPerform(o) {
+    const dependencies = o.dependencies === undefined ? {} : o.dependencies;
+    const queryResults = Object.entries(dependencies).map(([key, selector]) => ({
+        key, selector, element: document.querySelector(selector),
+    }));
+    const missingDependencies = queryResults.filter(x => isNull(x.element));
+    if (missingDependencies.length > 0) {
+        return { reason: 0, dependencies: missingDependencies };
+    }
+    const e = queryResults.reduce((acc, x) => Object.defineProperty(acc, x.key, { value: x.element }), {});
+    return fromActionResult(o.action(e));
+}
+function fromActionResult(r) {
+    return isString(r) ? { reason: 1, message: r } : SUCCESS;
+}
+
+
+/***/ }),
+/* 14 */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ALWAYS", function() { return ALWAYS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NEVER", function() { return NEVER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOMCONTENTLOADED", function() { return DOMCONTENTLOADED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD", function() { return LOAD; });
+const ALWAYS = () => true;
+const NEVER = () => false;
+const DOMCONTENTLOADED = (state) => state !== "loading";
+const LOAD = (state) => state === "complete";
+
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1223,6 +1189,7 @@ exports.XPATH = {
     // We need two class selectors because youtube "custom playlist" and watch later have slightly different ui
     APP_RENDER_ROOT: '//div[@class="metadata-wrapper style-scope ytd-playlist-header-renderer" or @class="style-scope ytd-playlist-sidebar-primary-info-renderer"]',
     YT_PLAYLIST_VIDEO_RENDERERS: '//ytd-playlist-video-renderer',
+    YT_PLAYLIST_VIDEO_MENU: '//ytd-playlist-video-renderer//div[@id="menu"]',
     YT_NUMBER_OF_VIDEOS_IN_PLAYLIST: '//ytd-playlist-byline-renderer//div/yt-formatted-string/span[1]',
 };
 exports.default = {
@@ -1231,7 +1198,7 @@ exports.default = {
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1247,7 +1214,7 @@ function o(_,o,e,n,t){var f={};for(var l in o)"ref"!=l&&(f[l]=o[l]);var s,u,a={t
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1266,6 +1233,40 @@ function getElementsByXPath(xpath, parent) {
     return results;
 }
 exports.default = getElementsByXPath;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// This file is generated from package.json with build-config-from-package-json command
+// if you need to add or remove data from it, see package.json script section
+// Additional details: https://github.com/avallete/userscripter-boilerplate/issues/30
+const metadata_config_json_1 = __importDefault(__webpack_require__(32));
+const userscriptMetadata = {
+    id: metadata_config_json_1.default.name,
+    name: metadata_config_json_1.default.name,
+    description: metadata_config_json_1.default.description,
+    version: metadata_config_json_1.default.version,
+    author: metadata_config_json_1.default.author,
+    homepage: metadata_config_json_1.default.homepage,
+    support: metadata_config_json_1.default.bugs.url,
+    hostname: 'youtube.com',
+    sitename: 'youtube',
+    repositoryURL: metadata_config_json_1.default.repository.url,
+    license: metadata_config_json_1.default.license,
+    run_at: 'document-idle',
+    // Will be used to generate the downloadURL into metadata.ts
+    // Make sure it match the branch where final release are pushed (see .github/workflow/deploy-gh-pages.yml)
+    releaseBranch: 'gh-pages',
+};
+exports.default = userscriptMetadata;
 
 
 /***/ }),
@@ -1299,6 +1300,1171 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var superPropBase = __webpack_require__(37);
+
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    module.exports = _get = Reflect.get;
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  } else {
+    module.exports = _get = function _get(target, property, receiver) {
+      var base = superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+
+      return desc.value;
+    };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  }
+
+  return _get(target, property, receiver || target);
+}
+
+module.exports = _get;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "MDCRipple", function() { return /* binding */ ripple_MDCRipple; });
+__webpack_require__.d(__webpack_exports__, "MDCRippleFoundation", function() { return /* reexport */ ripple_foundation; });
+__webpack_require__.d(__webpack_exports__, "RippleCapableSurface", function() { return /* binding */ RippleCapableSurface; });
+__webpack_require__.d(__webpack_exports__, "util", function() { return /* reexport */ util_namespaceObject; });
+
+// NAMESPACE OBJECT: ./node_modules/@material/ripple/util.js
+var util_namespaceObject = {};
+__webpack_require__.r(util_namespaceObject);
+__webpack_require__.d(util_namespaceObject, "supportsCssVariables", function() { return supportsCssVariables; });
+__webpack_require__.d(util_namespaceObject, "applyPassive", function() { return applyPassive; });
+__webpack_require__.d(util_namespaceObject, "getMatchesProperty", function() { return getMatchesProperty; });
+__webpack_require__.d(util_namespaceObject, "getNormalizedEventCoords", function() { return getNormalizedEventCoords; });
+
+// EXTERNAL MODULE: ./node_modules/@material/base/component.js
+var component = __webpack_require__(2);
+
+// CONCATENATED MODULE: ./node_modules/@material/ripple/adapter.js
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Ripple. Provides an interface for managing
+ * - classes
+ * - dom
+ * - CSS variables
+ * - position
+ * - dimensions
+ * - scroll position
+ * - event handlers
+ * - unbounded, active and disabled states
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+class MDCRippleAdapter {
+  /** @return {boolean} */
+  browserSupportsCssVars() {}
+
+  /** @return {boolean} */
+  isUnbounded() {}
+
+  /** @return {boolean} */
+  isSurfaceActive() {}
+
+  /** @return {boolean} */
+  isSurfaceDisabled() {}
+
+  /** @param {string} className */
+  addClass(className) {}
+
+  /** @param {string} className */
+  removeClass(className) {}
+
+  /** @param {!EventTarget} target */
+  containsEventTarget(target) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  registerDocumentInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {string} evtType
+   * @param {!Function} handler
+   */
+  deregisterDocumentInteractionHandler(evtType, handler) {}
+
+  /**
+   * @param {!Function} handler
+   */
+  registerResizeHandler(handler) {}
+
+  /**
+   * @param {!Function} handler
+   */
+  deregisterResizeHandler(handler) {}
+
+  /**
+   * @param {string} varName
+   * @param {?number|string} value
+   */
+  updateCssVariable(varName, value) {}
+
+  /** @return {!ClientRect} */
+  computeBoundingRect() {}
+
+  /** @return {{x: number, y: number}} */
+  getWindowPageOffset() {}
+}
+
+/* harmony default export */ var adapter = (MDCRippleAdapter);
+
+// EXTERNAL MODULE: ./node_modules/@material/base/foundation.js
+var foundation = __webpack_require__(1);
+
+// CONCATENATED MODULE: ./node_modules/@material/ripple/constants.js
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+const cssClasses = {
+  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
+  // given that it's an 'upgrade' to an existing component. That being said it is the root
+  // CSS class that all other CSS classes derive from.
+  ROOT: 'mdc-ripple-upgraded',
+  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
+  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
+  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
+  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation',
+};
+
+const strings = {
+  VAR_LEFT: '--mdc-ripple-left',
+  VAR_TOP: '--mdc-ripple-top',
+  VAR_FG_SIZE: '--mdc-ripple-fg-size',
+  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
+  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
+  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end',
+};
+
+const numbers = {
+  PADDING: 10,
+  INITIAL_ORIGIN_SCALE: 0.6,
+  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
+  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
+  TAP_DELAY_MS: 300, // Delay between touch and simulated mouse events on touch devices
+};
+
+
+
+// CONCATENATED MODULE: ./node_modules/@material/ripple/util.js
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/**
+ * Stores result from supportsCssVariables to avoid redundant processing to detect CSS custom variable support.
+ * @private {boolean|undefined}
+ */
+let supportsCssVariables_;
+
+/**
+ * Stores result from applyPassive to avoid redundant processing to detect passive event listener support.
+ * @private {boolean|undefined}
+ */
+let supportsPassive_;
+
+/**
+ * @param {!Window} windowObj
+ * @return {boolean}
+ */
+function detectEdgePseudoVarBug(windowObj) {
+  // Detect versions of Edge with buggy var() support
+  // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
+  const document = windowObj.document;
+  const node = document.createElement('div');
+  node.className = 'mdc-ripple-surface--test-edge-var-bug';
+  document.body.appendChild(node);
+
+  // The bug exists if ::before style ends up propagating to the parent element.
+  // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
+  // but Firefox is known to support CSS custom properties correctly.
+  // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+  const computedStyle = windowObj.getComputedStyle(node);
+  const hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
+  node.remove();
+  return hasPseudoVarBug;
+}
+
+/**
+ * @param {!Window} windowObj
+ * @param {boolean=} forceRefresh
+ * @return {boolean|undefined}
+ */
+
+function supportsCssVariables(windowObj, forceRefresh = false) {
+  let supportsCssVariables = supportsCssVariables_;
+  if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
+    return supportsCssVariables;
+  }
+
+  const supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
+  if (!supportsFunctionPresent) {
+    return;
+  }
+
+  const explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
+  // See: https://bugs.webkit.org/show_bug.cgi?id=154669
+  // See: README section on Safari
+  const weAreFeatureDetectingSafari10plus = (
+    windowObj.CSS.supports('(--css-vars: yes)') &&
+    windowObj.CSS.supports('color', '#00000000')
+  );
+
+  if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
+    supportsCssVariables = !detectEdgePseudoVarBug(windowObj);
+  } else {
+    supportsCssVariables = false;
+  }
+
+  if (!forceRefresh) {
+    supportsCssVariables_ = supportsCssVariables;
+  }
+  return supportsCssVariables;
+}
+
+//
+/**
+ * Determine whether the current browser supports passive event listeners, and if so, use them.
+ * @param {!Window=} globalObj
+ * @param {boolean=} forceRefresh
+ * @return {boolean|{passive: boolean}}
+ */
+function applyPassive(globalObj = window, forceRefresh = false) {
+  if (supportsPassive_ === undefined || forceRefresh) {
+    let isSupported = false;
+    try {
+      globalObj.document.addEventListener('test', null, {get passive() {
+        isSupported = true;
+      }});
+    } catch (e) { }
+
+    supportsPassive_ = isSupported;
+  }
+
+  return supportsPassive_ ? {passive: true} : false;
+}
+
+/**
+ * @param {!Object} HTMLElementPrototype
+ * @return {!Array<string>}
+ */
+function getMatchesProperty(HTMLElementPrototype) {
+  return [
+    'webkitMatchesSelector', 'msMatchesSelector', 'matches',
+  ].filter((p) => p in HTMLElementPrototype).pop();
+}
+
+/**
+ * @param {!Event} ev
+ * @param {{x: number, y: number}} pageOffset
+ * @param {!ClientRect} clientRect
+ * @return {{x: number, y: number}}
+ */
+function getNormalizedEventCoords(ev, pageOffset, clientRect) {
+  const {x, y} = pageOffset;
+  const documentX = x + clientRect.left;
+  const documentY = y + clientRect.top;
+
+  let normalizedX;
+  let normalizedY;
+  // Determine touch point relative to the ripple container.
+  if (ev.type === 'touchstart') {
+    normalizedX = ev.changedTouches[0].pageX - documentX;
+    normalizedY = ev.changedTouches[0].pageY - documentY;
+  } else {
+    normalizedX = ev.pageX - documentX;
+    normalizedY = ev.pageY - documentY;
+  }
+
+  return {x: normalizedX, y: normalizedY};
+}
+
+
+
+// CONCATENATED MODULE: ./node_modules/@material/ripple/foundation.js
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+
+/**
+ * @typedef {{
+ *   isActivated: (boolean|undefined),
+ *   hasDeactivationUXRun: (boolean|undefined),
+ *   wasActivatedByPointer: (boolean|undefined),
+ *   wasElementMadeActive: (boolean|undefined),
+ *   activationEvent: Event,
+ *   isProgrammatic: (boolean|undefined)
+ * }}
+ */
+let ActivationStateType;
+
+/**
+ * @typedef {{
+ *   activate: (string|undefined),
+ *   deactivate: (string|undefined),
+ *   focus: (string|undefined),
+ *   blur: (string|undefined)
+ * }}
+ */
+let ListenerInfoType;
+
+/**
+ * @typedef {{
+ *   activate: function(!Event),
+ *   deactivate: function(!Event),
+ *   focus: function(),
+ *   blur: function()
+ * }}
+ */
+let ListenersType;
+
+/**
+ * @typedef {{
+ *   x: number,
+ *   y: number
+ * }}
+ */
+let PointType;
+
+// Activation events registered on the root element of each instance for activation
+const ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
+
+// Deactivation events registered on documentElement when a pointer-related down event occurs
+const POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
+
+// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
+/** @type {!Array<!EventTarget>} */
+let activatedTargets = [];
+
+/**
+ * @extends {MDCFoundation<!MDCRippleAdapter>}
+ */
+class foundation_MDCRippleFoundation extends foundation["a" /* default */] {
+  static get cssClasses() {
+    return cssClasses;
+  }
+
+  static get strings() {
+    return strings;
+  }
+
+  static get numbers() {
+    return numbers;
+  }
+
+  static get defaultAdapter() {
+    return {
+      browserSupportsCssVars: () => /* boolean - cached */ {},
+      isUnbounded: () => /* boolean */ {},
+      isSurfaceActive: () => /* boolean */ {},
+      isSurfaceDisabled: () => /* boolean */ {},
+      addClass: (/* className: string */) => {},
+      removeClass: (/* className: string */) => {},
+      containsEventTarget: (/* target: !EventTarget */) => {},
+      registerInteractionHandler: (/* evtType: string, handler: EventListener */) => {},
+      deregisterInteractionHandler: (/* evtType: string, handler: EventListener */) => {},
+      registerDocumentInteractionHandler: (/* evtType: string, handler: EventListener */) => {},
+      deregisterDocumentInteractionHandler: (/* evtType: string, handler: EventListener */) => {},
+      registerResizeHandler: (/* handler: EventListener */) => {},
+      deregisterResizeHandler: (/* handler: EventListener */) => {},
+      updateCssVariable: (/* varName: string, value: string */) => {},
+      computeBoundingRect: () => /* ClientRect */ {},
+      getWindowPageOffset: () => /* {x: number, y: number} */ {},
+    };
+  }
+
+  constructor(adapter) {
+    super(Object.assign(foundation_MDCRippleFoundation.defaultAdapter, adapter));
+
+    /** @private {number} */
+    this.layoutFrame_ = 0;
+
+    /** @private {!ClientRect} */
+    this.frame_ = /** @type {!ClientRect} */ ({width: 0, height: 0});
+
+    /** @private {!ActivationStateType} */
+    this.activationState_ = this.defaultActivationState_();
+
+    /** @private {number} */
+    this.initialSize_ = 0;
+
+    /** @private {number} */
+    this.maxRadius_ = 0;
+
+    /** @private {function(!Event)} */
+    this.activateHandler_ = (e) => this.activate_(e);
+
+    /** @private {function(!Event)} */
+    this.deactivateHandler_ = (e) => this.deactivate_(e);
+
+    /** @private {function(?Event=)} */
+    this.focusHandler_ = () => this.handleFocus();
+
+    /** @private {function(?Event=)} */
+    this.blurHandler_ = () => this.handleBlur();
+
+    /** @private {!Function} */
+    this.resizeHandler_ = () => this.layout();
+
+    /** @private {{left: number, top:number}} */
+    this.unboundedCoords_ = {
+      left: 0,
+      top: 0,
+    };
+
+    /** @private {number} */
+    this.fgScale_ = 0;
+
+    /** @private {number} */
+    this.activationTimer_ = 0;
+
+    /** @private {number} */
+    this.fgDeactivationRemovalTimer_ = 0;
+
+    /** @private {boolean} */
+    this.activationAnimationHasEnded_ = false;
+
+    /** @private {!Function} */
+    this.activationTimerCallback_ = () => {
+      this.activationAnimationHasEnded_ = true;
+      this.runDeactivationUXLogicIfReady_();
+    };
+
+    /** @private {?Event} */
+    this.previousActivationEvent_ = null;
+  }
+
+  /**
+   * We compute this property so that we are not querying information about the client
+   * until the point in time where the foundation requests it. This prevents scenarios where
+   * client-side feature-detection may happen too early, such as when components are rendered on the server
+   * and then initialized at mount time on the client.
+   * @return {boolean}
+   * @private
+   */
+  supportsPressRipple_() {
+    return this.adapter_.browserSupportsCssVars();
+  }
+
+  /**
+   * @return {!ActivationStateType}
+   */
+  defaultActivationState_() {
+    return {
+      isActivated: false,
+      hasDeactivationUXRun: false,
+      wasActivatedByPointer: false,
+      wasElementMadeActive: false,
+      activationEvent: null,
+      isProgrammatic: false,
+    };
+  }
+
+  /** @override */
+  init() {
+    const supportsPressRipple = this.supportsPressRipple_();
+
+    this.registerRootHandlers_(supportsPressRipple);
+
+    if (supportsPressRipple) {
+      const {ROOT, UNBOUNDED} = foundation_MDCRippleFoundation.cssClasses;
+      requestAnimationFrame(() => {
+        this.adapter_.addClass(ROOT);
+        if (this.adapter_.isUnbounded()) {
+          this.adapter_.addClass(UNBOUNDED);
+          // Unbounded ripples need layout logic applied immediately to set coordinates for both shade and ripple
+          this.layoutInternal_();
+        }
+      });
+    }
+  }
+
+  /** @override */
+  destroy() {
+    if (this.supportsPressRipple_()) {
+      if (this.activationTimer_) {
+        clearTimeout(this.activationTimer_);
+        this.activationTimer_ = 0;
+        this.adapter_.removeClass(foundation_MDCRippleFoundation.cssClasses.FG_ACTIVATION);
+      }
+
+      if (this.fgDeactivationRemovalTimer_) {
+        clearTimeout(this.fgDeactivationRemovalTimer_);
+        this.fgDeactivationRemovalTimer_ = 0;
+        this.adapter_.removeClass(foundation_MDCRippleFoundation.cssClasses.FG_DEACTIVATION);
+      }
+
+      const {ROOT, UNBOUNDED} = foundation_MDCRippleFoundation.cssClasses;
+      requestAnimationFrame(() => {
+        this.adapter_.removeClass(ROOT);
+        this.adapter_.removeClass(UNBOUNDED);
+        this.removeCssVars_();
+      });
+    }
+
+    this.deregisterRootHandlers_();
+    this.deregisterDeactivationHandlers_();
+  }
+
+  /**
+   * @param {boolean} supportsPressRipple Passed from init to save a redundant function call
+   * @private
+   */
+  registerRootHandlers_(supportsPressRipple) {
+    if (supportsPressRipple) {
+      ACTIVATION_EVENT_TYPES.forEach((type) => {
+        this.adapter_.registerInteractionHandler(type, this.activateHandler_);
+      });
+      if (this.adapter_.isUnbounded()) {
+        this.adapter_.registerResizeHandler(this.resizeHandler_);
+      }
+    }
+
+    this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
+  }
+
+  /**
+   * @param {!Event} e
+   * @private
+   */
+  registerDeactivationHandlers_(e) {
+    if (e.type === 'keydown') {
+      this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
+    } else {
+      POINTER_DEACTIVATION_EVENT_TYPES.forEach((type) => {
+        this.adapter_.registerDocumentInteractionHandler(type, this.deactivateHandler_);
+      });
+    }
+  }
+
+  /** @private */
+  deregisterRootHandlers_() {
+    ACTIVATION_EVENT_TYPES.forEach((type) => {
+      this.adapter_.deregisterInteractionHandler(type, this.activateHandler_);
+    });
+    this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
+    this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
+
+    if (this.adapter_.isUnbounded()) {
+      this.adapter_.deregisterResizeHandler(this.resizeHandler_);
+    }
+  }
+
+  /** @private */
+  deregisterDeactivationHandlers_() {
+    this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
+    POINTER_DEACTIVATION_EVENT_TYPES.forEach((type) => {
+      this.adapter_.deregisterDocumentInteractionHandler(type, this.deactivateHandler_);
+    });
+  }
+
+  /** @private */
+  removeCssVars_() {
+    const {strings} = foundation_MDCRippleFoundation;
+    Object.keys(strings).forEach((k) => {
+      if (k.indexOf('VAR_') === 0) {
+        this.adapter_.updateCssVariable(strings[k], null);
+      }
+    });
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  activate_(e) {
+    if (this.adapter_.isSurfaceDisabled()) {
+      return;
+    }
+
+    const activationState = this.activationState_;
+    if (activationState.isActivated) {
+      return;
+    }
+
+    // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
+    const previousActivationEvent = this.previousActivationEvent_;
+    const isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
+    if (isSameInteraction) {
+      return;
+    }
+
+    activationState.isActivated = true;
+    activationState.isProgrammatic = e === null;
+    activationState.activationEvent = e;
+    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : (
+      e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown'
+    );
+
+    const hasActivatedChild =
+      e && activatedTargets.length > 0 && activatedTargets.some((target) => this.adapter_.containsEventTarget(target));
+    if (hasActivatedChild) {
+      // Immediately reset activation state, while preserving logic that prevents touch follow-on events
+      this.resetActivationState_();
+      return;
+    }
+
+    if (e) {
+      activatedTargets.push(/** @type {!EventTarget} */ (e.target));
+      this.registerDeactivationHandlers_(e);
+    }
+
+    activationState.wasElementMadeActive = this.checkElementMadeActive_(e);
+    if (activationState.wasElementMadeActive) {
+      this.animateActivation_();
+    }
+
+    requestAnimationFrame(() => {
+      // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
+      activatedTargets = [];
+
+      if (!activationState.wasElementMadeActive && (e.key === ' ' || e.keyCode === 32)) {
+        // If space was pressed, try again within an rAF call to detect :active, because different UAs report
+        // active states inconsistently when they're called within event handling code:
+        // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
+        // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
+        // We try first outside rAF to support Edge, which does not exhibit this problem, but will crash if a CSS
+        // variable is set within a rAF callback for a submit button interaction (#2241).
+        activationState.wasElementMadeActive = this.checkElementMadeActive_(e);
+        if (activationState.wasElementMadeActive) {
+          this.animateActivation_();
+        }
+      }
+
+      if (!activationState.wasElementMadeActive) {
+        // Reset activation state immediately if element was not made active.
+        this.activationState_ = this.defaultActivationState_();
+      }
+    });
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  checkElementMadeActive_(e) {
+    return (e && e.type === 'keydown') ? this.adapter_.isSurfaceActive() : true;
+  }
+
+  /**
+   * @param {?Event=} event Optional event containing position information.
+   */
+  activate(event = null) {
+    this.activate_(event);
+  }
+
+  /** @private */
+  animateActivation_() {
+    const {VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END} = foundation_MDCRippleFoundation.strings;
+    const {FG_DEACTIVATION, FG_ACTIVATION} = foundation_MDCRippleFoundation.cssClasses;
+    const {DEACTIVATION_TIMEOUT_MS} = foundation_MDCRippleFoundation.numbers;
+
+    this.layoutInternal_();
+
+    let translateStart = '';
+    let translateEnd = '';
+
+    if (!this.adapter_.isUnbounded()) {
+      const {startPoint, endPoint} = this.getFgTranslationCoordinates_();
+      translateStart = `${startPoint.x}px, ${startPoint.y}px`;
+      translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
+    }
+
+    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
+    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
+    // Cancel any ongoing activation/deactivation animations
+    clearTimeout(this.activationTimer_);
+    clearTimeout(this.fgDeactivationRemovalTimer_);
+    this.rmBoundedActivationClasses_();
+    this.adapter_.removeClass(FG_DEACTIVATION);
+
+    // Force layout in order to re-trigger the animation.
+    this.adapter_.computeBoundingRect();
+    this.adapter_.addClass(FG_ACTIVATION);
+    this.activationTimer_ = setTimeout(() => this.activationTimerCallback_(), DEACTIVATION_TIMEOUT_MS);
+  }
+
+  /**
+   * @private
+   * @return {{startPoint: PointType, endPoint: PointType}}
+   */
+  getFgTranslationCoordinates_() {
+    const {activationEvent, wasActivatedByPointer} = this.activationState_;
+
+    let startPoint;
+    if (wasActivatedByPointer) {
+      startPoint = getNormalizedEventCoords(
+        /** @type {!Event} */ (activationEvent),
+        this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect()
+      );
+    } else {
+      startPoint = {
+        x: this.frame_.width / 2,
+        y: this.frame_.height / 2,
+      };
+    }
+    // Center the element around the start point.
+    startPoint = {
+      x: startPoint.x - (this.initialSize_ / 2),
+      y: startPoint.y - (this.initialSize_ / 2),
+    };
+
+    const endPoint = {
+      x: (this.frame_.width / 2) - (this.initialSize_ / 2),
+      y: (this.frame_.height / 2) - (this.initialSize_ / 2),
+    };
+
+    return {startPoint, endPoint};
+  }
+
+  /** @private */
+  runDeactivationUXLogicIfReady_() {
+    // This method is called both when a pointing device is released, and when the activation animation ends.
+    // The deactivation animation should only run after both of those occur.
+    const {FG_DEACTIVATION} = foundation_MDCRippleFoundation.cssClasses;
+    const {hasDeactivationUXRun, isActivated} = this.activationState_;
+    const activationHasEnded = hasDeactivationUXRun || !isActivated;
+
+    if (activationHasEnded && this.activationAnimationHasEnded_) {
+      this.rmBoundedActivationClasses_();
+      this.adapter_.addClass(FG_DEACTIVATION);
+      this.fgDeactivationRemovalTimer_ = setTimeout(() => {
+        this.adapter_.removeClass(FG_DEACTIVATION);
+      }, numbers.FG_DEACTIVATION_MS);
+    }
+  }
+
+  /** @private */
+  rmBoundedActivationClasses_() {
+    const {FG_ACTIVATION} = foundation_MDCRippleFoundation.cssClasses;
+    this.adapter_.removeClass(FG_ACTIVATION);
+    this.activationAnimationHasEnded_ = false;
+    this.adapter_.computeBoundingRect();
+  }
+
+  resetActivationState_() {
+    this.previousActivationEvent_ = this.activationState_.activationEvent;
+    this.activationState_ = this.defaultActivationState_();
+    // Touch devices may fire additional events for the same interaction within a short time.
+    // Store the previous event until it's safe to assume that subsequent events are for new interactions.
+    setTimeout(() => this.previousActivationEvent_ = null, foundation_MDCRippleFoundation.numbers.TAP_DELAY_MS);
+  }
+
+  /**
+   * @param {?Event} e
+   * @private
+   */
+  deactivate_(e) {
+    const activationState = this.activationState_;
+    // This can happen in scenarios such as when you have a keyup event that blurs the element.
+    if (!activationState.isActivated) {
+      return;
+    }
+
+    const state = /** @type {!ActivationStateType} */ (Object.assign({}, activationState));
+
+    if (activationState.isProgrammatic) {
+      const evtObject = null;
+      requestAnimationFrame(() => this.animateDeactivation_(evtObject, state));
+      this.resetActivationState_();
+    } else {
+      this.deregisterDeactivationHandlers_();
+      requestAnimationFrame(() => {
+        this.activationState_.hasDeactivationUXRun = true;
+        this.animateDeactivation_(e, state);
+        this.resetActivationState_();
+      });
+    }
+  }
+
+  /**
+   * @param {?Event=} event Optional event containing position information.
+   */
+  deactivate(event = null) {
+    this.deactivate_(event);
+  }
+
+  /**
+   * @param {Event} e
+   * @param {!ActivationStateType} options
+   * @private
+   */
+  animateDeactivation_(e, {wasActivatedByPointer, wasElementMadeActive}) {
+    if (wasActivatedByPointer || wasElementMadeActive) {
+      this.runDeactivationUXLogicIfReady_();
+    }
+  }
+
+  layout() {
+    if (this.layoutFrame_) {
+      cancelAnimationFrame(this.layoutFrame_);
+    }
+    this.layoutFrame_ = requestAnimationFrame(() => {
+      this.layoutInternal_();
+      this.layoutFrame_ = 0;
+    });
+  }
+
+  /** @private */
+  layoutInternal_() {
+    this.frame_ = this.adapter_.computeBoundingRect();
+    const maxDim = Math.max(this.frame_.height, this.frame_.width);
+
+    // Surface diameter is treated differently for unbounded vs. bounded ripples.
+    // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
+    // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
+    // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
+    // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
+    // `overflow: hidden`.
+    const getBoundedRadius = () => {
+      const hypotenuse = Math.sqrt(Math.pow(this.frame_.width, 2) + Math.pow(this.frame_.height, 2));
+      return hypotenuse + foundation_MDCRippleFoundation.numbers.PADDING;
+    };
+
+    this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
+
+    // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
+    this.initialSize_ = maxDim * foundation_MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
+    this.fgScale_ = this.maxRadius_ / this.initialSize_;
+
+    this.updateLayoutCssVars_();
+  }
+
+  /** @private */
+  updateLayoutCssVars_() {
+    const {
+      VAR_FG_SIZE, VAR_LEFT, VAR_TOP, VAR_FG_SCALE,
+    } = foundation_MDCRippleFoundation.strings;
+
+    this.adapter_.updateCssVariable(VAR_FG_SIZE, `${this.initialSize_}px`);
+    this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
+
+    if (this.adapter_.isUnbounded()) {
+      this.unboundedCoords_ = {
+        left: Math.round((this.frame_.width / 2) - (this.initialSize_ / 2)),
+        top: Math.round((this.frame_.height / 2) - (this.initialSize_ / 2)),
+      };
+
+      this.adapter_.updateCssVariable(VAR_LEFT, `${this.unboundedCoords_.left}px`);
+      this.adapter_.updateCssVariable(VAR_TOP, `${this.unboundedCoords_.top}px`);
+    }
+  }
+
+  /** @param {boolean} unbounded */
+  setUnbounded(unbounded) {
+    const {UNBOUNDED} = foundation_MDCRippleFoundation.cssClasses;
+    if (unbounded) {
+      this.adapter_.addClass(UNBOUNDED);
+    } else {
+      this.adapter_.removeClass(UNBOUNDED);
+    }
+  }
+
+  handleFocus() {
+    requestAnimationFrame(() =>
+      this.adapter_.addClass(foundation_MDCRippleFoundation.cssClasses.BG_FOCUSED));
+  }
+
+  handleBlur() {
+    requestAnimationFrame(() =>
+      this.adapter_.removeClass(foundation_MDCRippleFoundation.cssClasses.BG_FOCUSED));
+  }
+}
+
+/* harmony default export */ var ripple_foundation = (foundation_MDCRippleFoundation);
+
+// CONCATENATED MODULE: ./node_modules/@material/ripple/index.js
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+
+/**
+ * @extends MDCComponent<!MDCRippleFoundation>
+ */
+class ripple_MDCRipple extends component["a" /* default */] {
+  /** @param {...?} args */
+  constructor(...args) {
+    super(...args);
+
+    /** @type {boolean} */
+    this.disabled = false;
+
+    /** @private {boolean} */
+    this.unbounded_;
+  }
+
+  /**
+   * @param {!Element} root
+   * @param {{isUnbounded: (boolean|undefined)}=} options
+   * @return {!MDCRipple}
+   */
+  static attachTo(root, {isUnbounded = undefined} = {}) {
+    const ripple = new ripple_MDCRipple(root);
+    // Only override unbounded behavior if option is explicitly specified
+    if (isUnbounded !== undefined) {
+      ripple.unbounded = /** @type {boolean} */ (isUnbounded);
+    }
+    return ripple;
+  }
+
+  /**
+   * @param {!RippleCapableSurface} instance
+   * @return {!MDCRippleAdapter}
+   */
+  static createAdapter(instance) {
+    const MATCHES = getMatchesProperty(HTMLElement.prototype);
+
+    return {
+      browserSupportsCssVars: () => supportsCssVariables(window),
+      isUnbounded: () => instance.unbounded,
+      isSurfaceActive: () => instance.root_[MATCHES](':active'),
+      isSurfaceDisabled: () => instance.disabled,
+      addClass: (className) => instance.root_.classList.add(className),
+      removeClass: (className) => instance.root_.classList.remove(className),
+      containsEventTarget: (target) => instance.root_.contains(target),
+      registerInteractionHandler: (evtType, handler) =>
+        instance.root_.addEventListener(evtType, handler, applyPassive()),
+      deregisterInteractionHandler: (evtType, handler) =>
+        instance.root_.removeEventListener(evtType, handler, applyPassive()),
+      registerDocumentInteractionHandler: (evtType, handler) =>
+        document.documentElement.addEventListener(evtType, handler, applyPassive()),
+      deregisterDocumentInteractionHandler: (evtType, handler) =>
+        document.documentElement.removeEventListener(evtType, handler, applyPassive()),
+      registerResizeHandler: (handler) => window.addEventListener('resize', handler),
+      deregisterResizeHandler: (handler) => window.removeEventListener('resize', handler),
+      updateCssVariable: (varName, value) => instance.root_.style.setProperty(varName, value),
+      computeBoundingRect: () => instance.root_.getBoundingClientRect(),
+      getWindowPageOffset: () => ({x: window.pageXOffset, y: window.pageYOffset}),
+    };
+  }
+
+  /** @return {boolean} */
+  get unbounded() {
+    return this.unbounded_;
+  }
+
+  /** @param {boolean} unbounded */
+  set unbounded(unbounded) {
+    this.unbounded_ = Boolean(unbounded);
+    this.setUnbounded_();
+  }
+
+  /**
+   * Closure Compiler throws an access control error when directly accessing a
+   * protected or private property inside a getter/setter, like unbounded above.
+   * By accessing the protected property inside a method, we solve that problem.
+   * That's why this function exists.
+   * @private
+   */
+  setUnbounded_() {
+    this.foundation_.setUnbounded(this.unbounded_);
+  }
+
+  activate() {
+    this.foundation_.activate();
+  }
+
+  deactivate() {
+    this.foundation_.deactivate();
+  }
+
+  layout() {
+    this.foundation_.layout();
+  }
+
+  /**
+   * @return {!MDCRippleFoundation}
+   * @override
+   */
+  getDefaultFoundation() {
+    return new ripple_foundation(ripple_MDCRipple.createAdapter(this));
+  }
+
+  /** @override */
+  initialSyncWithDOM() {
+    this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
+  }
+}
+
+/**
+ * See Material Design spec for more details on when to use ripples.
+ * https://material.io/guidelines/motion/choreography.html#choreography-creation
+ * @record
+ */
+class RippleCapableSurface {}
+
+/** @protected {!Element} */
+RippleCapableSurface.prototype.root_;
+
+/**
+ * Whether or not the ripple bleeds out of the bounds of the element.
+ * @type {boolean|undefined}
+ */
+RippleCapableSurface.prototype.unbounded;
+
+/**
+ * Whether or not the ripple is attached to a disabled component.
+ * @type {boolean|undefined}
+ */
+RippleCapableSurface.prototype.disabled;
+
+
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 // This file cannot contain Webpack-resolved imports (e.g. "~src/foo").
@@ -1307,7 +2473,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.YT_LOCATION_CHANGE_EVENT = exports.APP_ROOT_ID = exports.HOSTNAME = exports.NAME = void 0;
-const userscript_1 = __importDefault(__webpack_require__(15));
+const userscript_1 = __importDefault(__webpack_require__(18));
 exports.NAME = userscript_1.default.sitename;
 exports.HOSTNAME = userscript_1.default.hostname;
 exports.APP_ROOT_ID = userscript_1.default.id;
@@ -1315,36 +2481,36 @@ exports.YT_LOCATION_CHANGE_EVENT = 'yt-navigate-finish';
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(5);
+var _interopRequireDefault = __webpack_require__(4);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.LinearProgress = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(6));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(5));
 
-var _createClass2 = _interopRequireDefault(__webpack_require__(7));
+var _createClass2 = _interopRequireDefault(__webpack_require__(6));
 
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(8));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(7));
 
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(2));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(3));
 
-var _get2 = _interopRequireDefault(__webpack_require__(22));
+var _get2 = _interopRequireDefault(__webpack_require__(20));
 
-var _inherits2 = _interopRequireDefault(__webpack_require__(9));
+var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
-var _linearProgress = __webpack_require__(65);
+var _linearProgress = __webpack_require__(68);
 
 var _preact = __webpack_require__(0);
 
-var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(13));
+var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(10));
 
 var LinearProgress =
 /*#__PURE__*/
@@ -1427,39 +2593,7 @@ exports.default = _default;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var superPropBase = __webpack_require__(35);
-
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    module.exports = _get = Reflect.get;
-    module.exports["default"] = module.exports, module.exports.__esModule = true;
-  } else {
-    module.exports = _get = function _get(target, property, receiver) {
-      var base = superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-
-      return desc.value;
-    };
-
-    module.exports["default"] = module.exports, module.exports.__esModule = true;
-  }
-
-  return _get(target, property, receiver || target);
-}
-
-module.exports = _get;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1493,7 +2627,29 @@ exports.default = bind;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useState", function() { return l; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useReducer", function() { return p; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useEffect", function() { return y; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useLayoutEffect", function() { return h; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useRef", function() { return s; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useImperativeHandle", function() { return _; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useMemo", function() { return d; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useCallback", function() { return A; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useContext", function() { return F; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useDebugValue", function() { return T; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useErrorBoundary", function() { return q; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+var t,u,r,o=0,i=[],c=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b,f=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r,e=preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed,a=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c,v=preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount;function m(t,r){preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h(u,t,o||r),o=0;var i=u.__H||(u.__H={__:[],__h:[]});return t>=i.__.length&&i.__.push({}),i.__[t]}function l(n){return o=1,p(w,n)}function p(n,r,o){var i=m(t++,2);return i.t=n,i.__c||(i.__=[o?o(r):w(void 0,r),function(n){var t=i.t(i.__[0],n);i.__[0]!==t&&(i.__=[t,i.__[1]],i.__c.setState({}))}],i.__c=u),i.__}function y(r,o){var i=m(t++,3);!preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s&&k(i.__H,o)&&(i.__=r,i.__H=o,u.__H.__h.push(i))}function h(r,o){var i=m(t++,4);!preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s&&k(i.__H,o)&&(i.__=r,i.__H=o,u.__h.push(i))}function s(n){return o=5,d(function(){return{current:n}},[])}function _(n,t,u){o=6,h(function(){"function"==typeof n?n(t()):n&&(n.current=t())},null==u?u:u.concat(n))}function d(n,u){var r=m(t++,7);return k(r.__H,u)&&(r.__=n(),r.__H=u,r.__h=n),r.__}function A(n,t){return o=8,d(function(){return n},t)}function F(n){var r=u.context[n.__c],o=m(t++,9);return o.__c=n,r?(null==o.__&&(o.__=!0,r.sub(u)),r.props.value):n.__}function T(t,u){preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue(u?u(t):t)}function q(n){var r=m(t++,10),o=l();return r.__=n,u.componentDidCatch||(u.componentDidCatch=function(n){r.__&&r.__(n),o[1](n)}),[o[0],function(){o[1](void 0)}]}function x(){i.forEach(function(t){if(t.__P)try{t.__H.__h.forEach(g),t.__H.__h.forEach(j),t.__H.__h=[]}catch(u){t.__H.__h=[],preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(u,t.__v)}}),i=[]}preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b=function(n){u=null,c&&c(n)},preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r=function(n){f&&f(n),t=0;var r=(u=n.__c).__H;r&&(r.__h.forEach(g),r.__h.forEach(j),r.__h=[])},preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed=function(t){e&&e(t);var o=t.__c;o&&o.__H&&o.__H.__h.length&&(1!==i.push(o)&&r===preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame||((r=preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame)||function(n){var t,u=function(){clearTimeout(r),b&&cancelAnimationFrame(t),setTimeout(n)},r=setTimeout(u,100);b&&(t=requestAnimationFrame(u))})(x)),u=void 0},preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c=function(t,u){u.some(function(t){try{t.__h.forEach(g),t.__h=t.__h.filter(function(n){return!n.__||j(n)})}catch(r){u.some(function(n){n.__h&&(n.__h=[])}),u=[],preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(r,t.__v)}}),a&&a(t,u)},preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount=function(t){v&&v(t);var u=t.__c;if(u&&u.__H)try{u.__H.__.forEach(g)}catch(t){preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(t,u.__v)}};var b="function"==typeof requestAnimationFrame;function g(n){var t=u;"function"==typeof n.__c&&n.__c(),u=t}function j(n){var t=u;n.__c=n.__(),u=t}function k(n,t){return!n||n.length!==t.length||t.some(function(t,u){return t!==n[u]})}function w(n,t){return"function"==typeof t?t(n):t}
+//# sourceMappingURL=hooks.module.js.map
+
+
+/***/ }),
+/* 26 */
 /***/ (function(module, exports) {
 
 var charenc = {
@@ -1532,7 +2688,7 @@ module.exports = charenc;
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1560,13 +2716,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const compose_1 = __webpack_require__(67);
-const userscripter_1 = __webpack_require__(63);
-const CONFIG = __importStar(__webpack_require__(26));
-const operations_1 = __importDefault(__webpack_require__(27));
-const SITE = __importStar(__webpack_require__(20));
-const stylesheets_1 = __importDefault(__webpack_require__(57));
-const userscript_1 = __importDefault(__webpack_require__(15));
+const compose_1 = __webpack_require__(71);
+const userscripter_1 = __webpack_require__(67);
+const CONFIG = __importStar(__webpack_require__(28));
+const operations_1 = __importDefault(__webpack_require__(29));
+const SITE = __importStar(__webpack_require__(22));
+const stylesheets_1 = __importDefault(__webpack_require__(60));
+const userscript_1 = __importDefault(__webpack_require__(18));
 const describeFailure = userscripter_1.errors.failureDescriber({
     siteName: SITE.NAME,
     extensionName: userscript_1.default.name,
@@ -1589,7 +2745,7 @@ userscripter_1.userscripter.run({
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1602,7 +2758,7 @@ exports.OPERATIONS_EXTRA_TRIES = 3;
 
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1611,13 +2767,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const operations_1 = __webpack_require__(11);
-const environment_1 = __webpack_require__(12);
-const js_cookie_1 = __webpack_require__(28);
-const add_location_change_event_hook_1 = __importDefault(__webpack_require__(29));
-const is_on_playlist_page_1 = __importDefault(__webpack_require__(31));
-const selectors_1 = __webpack_require__(16);
-const append_app_to_dom_1 = __importDefault(__webpack_require__(32));
+const operations_1 = __webpack_require__(13);
+const environment_1 = __webpack_require__(14);
+const js_cookie_1 = __webpack_require__(30);
+const add_location_change_event_hook_1 = __importDefault(__webpack_require__(31));
+const is_on_playlist_page_1 = __importDefault(__webpack_require__(33));
+const selectors_1 = __webpack_require__(15);
+const append_app_to_dom_1 = __importDefault(__webpack_require__(34));
 function mainWrapper() {
     const url = new URL(window.location.href);
     const playlistName = url.searchParams.get('list');
@@ -1669,7 +2825,7 @@ exports.default = OPERATIONS;
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -1842,13 +2998,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const site_1 = __webpack_require__(20);
+const site_1 = __webpack_require__(22);
 // Add location change event hooks
 function addLocationChangeEventHooks(callback) {
     window.addEventListener(site_1.YT_LOCATION_CHANGE_EVENT, callback);
@@ -1857,13 +3013,13 @@ exports.default = addLocationChangeEventHooks;
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.5.11\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
+module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.6.0\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1881,7 +3037,7 @@ exports.default = isOnPlaylistPage;
 
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1890,11 +3046,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsx_runtime_1 = __webpack_require__(17);
+const jsx_runtime_1 = __webpack_require__(16);
 const preact_1 = __webpack_require__(0);
-const get_elements_by_xpath_1 = __importDefault(__webpack_require__(18));
-const remove_video_enhancer_app_1 = __importDefault(__webpack_require__(33));
-const userscript_1 = __importDefault(__webpack_require__(15));
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(17));
+const remove_video_enhancer_app_1 = __importDefault(__webpack_require__(35));
+const userscript_1 = __importDefault(__webpack_require__(18));
 function appendAppToDom(config, playlistName, xpathRoot) {
     const existingElement = document.querySelector(`#${userscript_1.default.id}${playlistName}`);
     if (!existingElement) {
@@ -1916,7 +3072,7 @@ exports.default = appendAppToDom;
 
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1934,17 +3090,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsx_runtime_1 = __webpack_require__(17);
+const jsx_runtime_1 = __webpack_require__(16);
 const preact_1 = __webpack_require__(0);
-const LinearProgress_1 = __importDefault(__webpack_require__(21));
-const remove_video_enhancer_container_1 = __importDefault(__webpack_require__(37));
-const yt_api_1 = __webpack_require__(43);
-const partition_1 = __importDefault(__webpack_require__(52));
-const remove_videos_from_playlist_ui_1 = __importDefault(__webpack_require__(53));
+const LinearProgress_1 = __importDefault(__webpack_require__(23));
+const remove_video_enhancer_container_1 = __importDefault(__webpack_require__(39));
+const yt_api_1 = __webpack_require__(46);
+const partition_1 = __importDefault(__webpack_require__(55));
+const remove_videos_from_playlist_ui_1 = __importDefault(__webpack_require__(56));
 class RemoveVideoEnhancerApp extends preact_1.Component {
     constructor(properties) {
         super(properties);
         this.state = {};
+        this.removeVideoWatchedPercentHandler = this.removeVideoWatchedPercentHandler.bind(this);
         this.removeVideoHandler = this.removeVideoHandler.bind(this);
     }
     componentDidMount() {
@@ -1958,11 +3115,30 @@ class RemoveVideoEnhancerApp extends preact_1.Component {
             }
         });
     }
-    removeVideoHandler(watchTimeValue) {
+    removeVideoWatchedPercentHandler(watchTimeValue) {
         return __awaiter(this, void 0, void 0, function* () {
             const { playlist } = this.state;
             if (playlist && playlist.continuations[0].videos.length > 0) {
                 const [toDeleteVideos, toKeepVideos] = partition_1.default(playlist.continuations[0].videos, (v) => v.percentDurationWatched >= watchTimeValue);
+                if (toDeleteVideos.length > 0) {
+                    try {
+                        yield yt_api_1.removeVideosFromPlaylist(this.props.config, playlist === null || playlist === void 0 ? void 0 : playlist.playlistId, toDeleteVideos);
+                        playlist.continuations[0].videos = toKeepVideos;
+                        remove_videos_from_playlist_ui_1.default(toDeleteVideos);
+                        this.setState(Object.assign(Object.assign({}, this.state), { playlist }));
+                    }
+                    catch (error) {
+                        this.setState(Object.assign(Object.assign({}, this.state), { errorMessages: [error.message] }));
+                    }
+                }
+            }
+        });
+    }
+    removeVideoHandler(videoId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { playlist } = this.state;
+            if (playlist && playlist.continuations[0].videos.length > 0) {
+                const [toDeleteVideos, toKeepVideos] = partition_1.default(playlist.continuations[0].videos, (v) => v.videoId === videoId);
                 if (toDeleteVideos.length > 0) {
                     try {
                         yield yt_api_1.removeVideosFromPlaylist(this.props.config, playlist === null || playlist === void 0 ? void 0 : playlist.playlistId, toDeleteVideos);
@@ -2005,7 +3181,7 @@ class RemoveVideoEnhancerApp extends preact_1.Component {
         }
         if ((_d = this.state) === null || _d === void 0 ? void 0 : _d.playlist) {
             if (this.state.playlist.isEditable) {
-                return jsx_runtime_1.jsx(remove_video_enhancer_container_1.default, { removeVideoHandler: this.removeVideoHandler }, void 0);
+                return (jsx_runtime_1.jsx(remove_video_enhancer_container_1.default, { removeVideoWatchedPercentHandler: this.removeVideoWatchedPercentHandler, removeVideoHandler: this.removeVideoHandler }, void 0));
             }
             return jsx_runtime_1.jsx("div", { children: "Playlist isn't editable" }, void 0);
         }
@@ -2016,7 +3192,7 @@ exports.default = RemoveVideoEnhancerApp;
 
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports) {
 
 function _assertThisInitialized(self) {
@@ -2031,10 +3207,10 @@ module.exports = _assertThisInitialized;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getPrototypeOf = __webpack_require__(2);
+var getPrototypeOf = __webpack_require__(3);
 
 function _superPropBase(object, property) {
   while (!Object.prototype.hasOwnProperty.call(object, property)) {
@@ -2049,7 +3225,7 @@ module.exports = _superPropBase;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports) {
 
 function _setPrototypeOf(o, p) {
@@ -2066,7 +3242,7 @@ module.exports = _setPrototypeOf;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2085,11 +3261,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.REMOVE_BUTTON_ALT = exports.INPUT_ALT = void 0;
-const jsx_runtime_1 = __webpack_require__(17);
-const hooks_1 = __webpack_require__(38);
-const Button_1 = __importDefault(__webpack_require__(39));
-const Slider_1 = __importDefault(__webpack_require__(42));
-const LinearProgress_1 = __importDefault(__webpack_require__(21));
+const jsx_runtime_1 = __webpack_require__(16);
+const preact_1 = __webpack_require__(0);
+const hooks_1 = __webpack_require__(25);
+const Button_1 = __importDefault(__webpack_require__(40));
+const Slider_1 = __importDefault(__webpack_require__(43));
+const LinearProgress_1 = __importDefault(__webpack_require__(23));
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(17));
+const selectors_1 = __webpack_require__(15);
+const video_item_quick_delete_button_1 = __importDefault(__webpack_require__(44));
 exports.INPUT_ALT = 'Input number between 0 and 100 to choose under how much percentage of watched time a video should be removed';
 exports.REMOVE_BUTTON_ALT = 'Remove button to start removing videos';
 function validate(value) {
@@ -2099,7 +3279,7 @@ function validate(value) {
     }
     return false;
 }
-function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 100 }) {
+function RemoveVideoEnhancerContainer({ removeVideoWatchedPercentHandler, initialValue = 100, removeVideoHandler, }) {
     const [inputValue, setValue] = hooks_1.useState(initialValue);
     const [isReadyToRemove, setIsReadyToRemove] = hooks_1.useState(true);
     function onChange({ detail }) {
@@ -2109,11 +3289,26 @@ function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 100 }
             setValue(value);
         }
     }
+    const removeVideo = hooks_1.useCallback((videoId) => __awaiter(this, void 0, void 0, function* () {
+        yield removeVideoHandler(videoId);
+    }), []);
+    hooks_1.useEffect(() => {
+        var _a;
+        const menus = get_elements_by_xpath_1.default(selectors_1.XPATH.YT_PLAYLIST_VIDEO_MENU);
+        for (const element of menus) {
+            element.style.display = 'inline-flex';
+            preact_1.render(preact_1.h(video_item_quick_delete_button_1.default, {
+                // @ts-ignore element.data does not exists on types
+                videoId: (_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.data.videoId,
+                onClick: removeVideo,
+            }), element);
+        }
+    }, []);
     return (jsx_runtime_1.jsx("div", Object.assign({ className: 'style-scope ytd-playlist-sidebar-renderer' }, { children: jsx_runtime_1.jsxs("div", Object.assign({ className: 'style-scope ytd-menu-service-item-renderer', role: 'option', "aria-disabled": 'false' }, { children: [jsx_runtime_1.jsxs("p", { children: ["Remove all videos that have been watched to at least ", inputValue, "%"] }, void 0),
                 jsx_runtime_1.jsx(Slider_1.default, { min: 0, max: 100, step: 5, value: inputValue, onChange: onChange, alt: exports.INPUT_ALT, discrete: true }, void 0),
                 jsx_runtime_1.jsxs(Button_1.default, Object.assign({ raised: true, ripple: true, secondary: true, alt: exports.REMOVE_BUTTON_ALT, disabled: !isReadyToRemove, onClick: () => __awaiter(this, void 0, void 0, function* () {
                         setIsReadyToRemove(false);
-                        yield removeVideoHandler(inputValue);
+                        yield removeVideoWatchedPercentHandler(inputValue);
                         setIsReadyToRemove(true);
                     }) }, { children: [!isReadyToRemove && jsx_runtime_1.jsx(LinearProgress_1.default, { indeterminate: true }, void 0),
                         isReadyToRemove && jsx_runtime_1.jsx("div", { children: "Remove!" }, void 0)] }), void 0)] }), void 0) }), void 0));
@@ -2122,58 +3317,36 @@ exports.default = RemoveVideoEnhancerContainer;
 
 
 /***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useState", function() { return l; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useReducer", function() { return p; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useEffect", function() { return y; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useLayoutEffect", function() { return h; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useRef", function() { return s; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useImperativeHandle", function() { return _; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useMemo", function() { return d; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useCallback", function() { return A; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useContext", function() { return F; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useDebugValue", function() { return T; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useErrorBoundary", function() { return q; });
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-var t,u,r,o=0,i=[],c=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b,f=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r,e=preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed,a=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c,v=preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount;function m(t,r){preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h(u,t,o||r),o=0;var i=u.__H||(u.__H={__:[],__h:[]});return t>=i.__.length&&i.__.push({}),i.__[t]}function l(n){return o=1,p(w,n)}function p(n,r,o){var i=m(t++,2);return i.t=n,i.__c||(i.__=[o?o(r):w(void 0,r),function(n){var t=i.t(i.__[0],n);i.__[0]!==t&&(i.__=[t,i.__[1]],i.__c.setState({}))}],i.__c=u),i.__}function y(r,o){var i=m(t++,3);!preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s&&k(i.__H,o)&&(i.__=r,i.__H=o,u.__H.__h.push(i))}function h(r,o){var i=m(t++,4);!preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s&&k(i.__H,o)&&(i.__=r,i.__H=o,u.__h.push(i))}function s(n){return o=5,d(function(){return{current:n}},[])}function _(n,t,u){o=6,h(function(){"function"==typeof n?n(t()):n&&(n.current=t())},null==u?u:u.concat(n))}function d(n,u){var r=m(t++,7);return k(r.__H,u)&&(r.__=n(),r.__H=u,r.__h=n),r.__}function A(n,t){return o=8,d(function(){return n},t)}function F(n){var r=u.context[n.__c],o=m(t++,9);return o.__c=n,r?(null==o.__&&(o.__=!0,r.sub(u)),r.props.value):n.__}function T(t,u){preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue(u?u(t):t)}function q(n){var r=m(t++,10),o=l();return r.__=n,u.componentDidCatch||(u.componentDidCatch=function(n){r.__&&r.__(n),o[1](n)}),[o[0],function(){o[1](void 0)}]}function x(){i.forEach(function(t){if(t.__P)try{t.__H.__h.forEach(g),t.__H.__h.forEach(j),t.__H.__h=[]}catch(u){t.__H.__h=[],preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(u,t.__v)}}),i=[]}preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b=function(n){u=null,c&&c(n)},preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r=function(n){f&&f(n),t=0;var r=(u=n.__c).__H;r&&(r.__h.forEach(g),r.__h.forEach(j),r.__h=[])},preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed=function(t){e&&e(t);var o=t.__c;o&&o.__H&&o.__H.__h.length&&(1!==i.push(o)&&r===preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame||((r=preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame)||function(n){var t,u=function(){clearTimeout(r),b&&cancelAnimationFrame(t),setTimeout(n)},r=setTimeout(u,100);b&&(t=requestAnimationFrame(u))})(x)),u=void 0},preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c=function(t,u){u.some(function(t){try{t.__h.forEach(g),t.__h=t.__h.filter(function(n){return!n.__||j(n)})}catch(r){u.some(function(n){n.__h&&(n.__h=[])}),u=[],preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(r,t.__v)}}),a&&a(t,u)},preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount=function(t){v&&v(t);var u=t.__c;if(u&&u.__H)try{u.__H.__.forEach(g)}catch(t){preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(t,u.__v)}};var b="function"==typeof requestAnimationFrame;function g(n){var t=u;"function"==typeof n.__c&&n.__c(),u=t}function j(n){var t=u;n.__c=n.__(),u=t}function k(n,t){return!n||n.length!==t.length||t.some(function(t,u){return t!==n[u]})}function w(n,t){return"function"==typeof t?t(n):t}
-//# sourceMappingURL=hooks.module.js.map
-
-
-/***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(5);
+var _interopRequireDefault = __webpack_require__(4);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.Button = exports.ButtonIcon = void 0;
 
-var _createClass2 = _interopRequireDefault(__webpack_require__(7));
+var _createClass2 = _interopRequireDefault(__webpack_require__(6));
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(6));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(5));
 
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(8));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(7));
 
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(2));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(3));
 
-var _inherits2 = _interopRequireDefault(__webpack_require__(9));
+var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
 var _preact = __webpack_require__(0);
 
-var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(13));
+var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(10));
 
-var _Icon2 = _interopRequireDefault(__webpack_require__(40));
+var _Icon2 = _interopRequireDefault(__webpack_require__(41));
 
-var _generateThemeClass = _interopRequireDefault(__webpack_require__(41));
+var _generateThemeClass = _interopRequireDefault(__webpack_require__(42));
 
 var ButtonIcon =
 /*#__PURE__*/
@@ -2250,32 +3423,32 @@ default_1.Icon = ButtonIcon;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(5);
+var _interopRequireDefault = __webpack_require__(4);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.Icon = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(6));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(5));
 
-var _createClass2 = _interopRequireDefault(__webpack_require__(7));
+var _createClass2 = _interopRequireDefault(__webpack_require__(6));
 
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(8));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(7));
 
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(2));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(3));
 
-var _inherits2 = _interopRequireDefault(__webpack_require__(9));
+var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
 var _preact = __webpack_require__(0);
 
-var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(13));
+var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(10));
 
 var Icon =
 /*#__PURE__*/
@@ -2315,7 +3488,7 @@ exports.default = _default;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2332,40 +3505,40 @@ function _default(prop) {
 //# sourceMappingURL=generateThemeClass.js.map
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(5);
+var _interopRequireDefault = __webpack_require__(4);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.Slider = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(6));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(5));
 
-var _createClass2 = _interopRequireDefault(__webpack_require__(7));
+var _createClass2 = _interopRequireDefault(__webpack_require__(6));
 
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(8));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(7));
 
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(2));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(3));
 
-var _get2 = _interopRequireDefault(__webpack_require__(22));
+var _get2 = _interopRequireDefault(__webpack_require__(20));
 
-var _inherits2 = _interopRequireDefault(__webpack_require__(9));
+var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
 var _typeof2 = _interopRequireDefault(__webpack_require__(19));
 
-var _slider = __webpack_require__(66);
+var _slider = __webpack_require__(69);
 
-var _bindDecorator = __webpack_require__(23);
+var _bindDecorator = __webpack_require__(24);
 
 var _preact = __webpack_require__(0);
 
-var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(13));
+var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(10));
 
 var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {
   var c = arguments.length,
@@ -2532,7 +3705,165 @@ exports.default = _default;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 43 */
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_runtime_1 = __webpack_require__(16);
+const hooks_1 = __webpack_require__(25);
+const IconButton_1 = __importDefault(__webpack_require__(45));
+function VideoItemQuickDeleteButton(properties) {
+    const [loading, setLoading] = hooks_1.useState(false);
+    return (jsx_runtime_1.jsx(IconButton_1.default
+    // we use this order -1 to avoid the button sometimes being render AFTER the row menu when swtiching between playlist
+    , Object.assign({ 
+        // we use this order -1 to avoid the button sometimes being render AFTER the row menu when swtiching between playlist
+        style: { order: -1 }, onClick: () => __awaiter(this, void 0, void 0, function* () {
+            setLoading(true);
+            yield properties.onClick(properties.videoId);
+            setLoading(false);
+        }), disabled: loading }, { children: jsx_runtime_1.jsx(IconButton_1.default.Icon, Object.assign({ style: { color: '#e10000' } }, { children: "delete" }), void 0) }), void 0));
+}
+exports.default = VideoItemQuickDeleteButton;
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(4);
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.IconButton = exports.Icon = void 0;
+
+var _get2 = _interopRequireDefault(__webpack_require__(20));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(5));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(6));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(7));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(3));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(8));
+
+var _iconButton = __webpack_require__(70);
+
+var _preact = __webpack_require__(0);
+
+var _MaterialComponent3 = _interopRequireDefault(__webpack_require__(10));
+
+var Icon =
+/*#__PURE__*/
+function (_MaterialComponent) {
+  (0, _inherits2.default)(Icon, _MaterialComponent);
+
+  function Icon() {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Icon);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Icon).apply(this, arguments));
+    _this.componentName = 'icon-button__icon';
+    _this.mdcProps = ['on'];
+    return _this;
+  }
+
+  (0, _createClass2.default)(Icon, [{
+    key: "materialDom",
+    value: function materialDom(props) {
+      var IconElement = props.element || 'i';
+      return (0, _preact.h)(IconElement, Object.assign({
+        class: "material-icons"
+      }, props), props.children);
+    }
+  }]);
+  return Icon;
+}(_MaterialComponent3.default);
+
+exports.Icon = Icon;
+
+var IconButton =
+/*#__PURE__*/
+function (_MaterialComponent2) {
+  (0, _inherits2.default)(IconButton, _MaterialComponent2);
+
+  function IconButton() {
+    var _this2;
+
+    (0, _classCallCheck2.default)(this, IconButton);
+    _this2 = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(IconButton).apply(this, arguments));
+    _this2.componentName = 'icon-button';
+    _this2.mdcProps = [];
+    return _this2;
+  }
+
+  (0, _createClass2.default)(IconButton, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      (0, _get2.default)((0, _getPrototypeOf2.default)(IconButton.prototype), "componentDidMount", this).call(this);
+      this.MDComponent = new _iconButton.MDCIconButtonToggle(this.control);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      (0, _get2.default)((0, _getPrototypeOf2.default)(IconButton.prototype), "componentWillUnmount", this).call(this);
+
+      if (this.MDComponent) {
+        this.MDComponent.destroy();
+      }
+    }
+  }, {
+    key: "materialDom",
+    value: function materialDom(props) {
+      return (0, _preact.h)("button", Object.assign({
+        ref: this.setControlRef
+      }, props), this.props.children);
+    }
+  }]);
+  return IconButton;
+}(_MaterialComponent3.default);
+
+exports.IconButton = IconButton;
+
+var default_1 =
+/*#__PURE__*/
+function (_IconButton) {
+  (0, _inherits2.default)(default_1, _IconButton);
+
+  function default_1() {
+    (0, _classCallCheck2.default)(this, default_1);
+    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(default_1).apply(this, arguments));
+  }
+
+  return default_1;
+}(IconButton);
+
+exports.default = default_1;
+default_1.Icon = Icon;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2551,8 +3882,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.removeVideosFromPlaylist = exports.fetchAllPlaylistContent = void 0;
-const sha1_1 = __importDefault(__webpack_require__(44));
-const errors_1 = __webpack_require__(51);
+const sha1_1 = __importDefault(__webpack_require__(47));
+const errors_1 = __webpack_require__(54);
 const API_BASE_URL = new URL('https://www.youtube.com/youtubei/v1');
 const API_GET_PLAYLIST_VIDEOS_URL = new URL(`${API_BASE_URL}/browse`);
 const API_EDIT_PLAYLIST_VIDEOS_URL = new URL(`${API_GET_PLAYLIST_VIDEOS_URL}/edit_playlist`);
@@ -2737,13 +4068,13 @@ exports.removeVideosFromPlaylist = removeVideosFromPlaylist;
 
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {(function() {
-  var crypt = __webpack_require__(50),
-      utf8 = __webpack_require__(24).utf8,
-      bin = __webpack_require__(24).bin,
+  var crypt = __webpack_require__(53),
+      utf8 = __webpack_require__(26).utf8,
+      bin = __webpack_require__(26).bin,
 
   // The core
   sha1 = function (message) {
@@ -2823,10 +4154,10 @@ exports.removeVideosFromPlaylist = removeVideosFromPlaylist;
   module.exports = api;
 })();
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(45).Buffer))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(48).Buffer))
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2840,9 +4171,9 @@ exports.removeVideosFromPlaylist = removeVideosFromPlaylist;
 
 
 
-var base64 = __webpack_require__(47)
-var ieee754 = __webpack_require__(48)
-var isArray = __webpack_require__(49)
+var base64 = __webpack_require__(50)
+var ieee754 = __webpack_require__(51)
+var isArray = __webpack_require__(52)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -4620,10 +5951,10 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(46)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(49)))
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports) {
 
 var g;
@@ -4649,7 +5980,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4806,7 +6137,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports) {
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
@@ -4897,7 +6228,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -4908,7 +6239,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports) {
 
 (function() {
@@ -5010,7 +6341,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5024,7 +6355,7 @@ exports.PlaylistEmptyError = new Error('playlist is empty');
 
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5047,7 +6378,7 @@ exports.default = partition;
 
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5056,8 +6387,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const remove_videos_from_playlist_1 = __importDefault(__webpack_require__(54));
-const decrement_number_of_videos_in_playlist_1 = __importDefault(__webpack_require__(56));
+exports.removeVideoFromPlaylistUI = void 0;
+const remove_videos_from_playlist_1 = __importDefault(__webpack_require__(57));
+const decrement_number_of_videos_in_playlist_1 = __importDefault(__webpack_require__(59));
+function removeVideoFromPlaylistUI(videoId) {
+    try {
+        remove_videos_from_playlist_1.default([{ videoId, percentDurationWatched: 100 }]);
+        decrement_number_of_videos_in_playlist_1.default(1);
+    }
+    catch (error) {
+        console.error(error);
+        // If an error occurs while trying to dynamically update the UI
+        // reload the page to update the UI
+        window.location.reload();
+    }
+}
+exports.removeVideoFromPlaylistUI = removeVideoFromPlaylistUI;
 function removeVideosFromPlaylistUI(toDeleteVideos) {
     try {
         remove_videos_from_playlist_1.default(toDeleteVideos);
@@ -5074,7 +6419,7 @@ exports.default = removeVideosFromPlaylistUI;
 
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5083,9 +6428,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const selectors_1 = __webpack_require__(16);
-const get_elements_by_xpath_1 = __importDefault(__webpack_require__(18));
-const list_map_search_1 = __importDefault(__webpack_require__(55));
+const selectors_1 = __webpack_require__(15);
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(17));
+const list_map_search_1 = __importDefault(__webpack_require__(58));
 function removeVideoWithYtAction(videoId) {
     document.querySelectorAll('ytd-app')[0].dispatchEvent(new CustomEvent('yt-action', {
         detail: {
@@ -5126,7 +6471,7 @@ exports.default = removeVideosFromPlaylist;
 
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5175,7 +6520,7 @@ exports.default = listMapSearch;
 
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5184,8 +6529,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const selectors_1 = __webpack_require__(16);
-const get_elements_by_xpath_1 = __importDefault(__webpack_require__(18));
+const selectors_1 = __webpack_require__(15);
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(17));
 // Decrement the numbers of videos in the playlist in the UI
 function decrementNumberOfVideosInPlaylist(value) {
     const spanElement = get_elements_by_xpath_1.default(selectors_1.XPATH.YT_NUMBER_OF_VIDEOS_IN_PLAYLIST)[0];
@@ -5206,7 +6551,7 @@ exports.default = decrementNumberOfVideosInPlaylist;
 
 
 /***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5215,9 +6560,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const environment_1 = __webpack_require__(12);
-const stylesheets_1 = __webpack_require__(10);
-const preact_material_scss_1 = __importDefault(__webpack_require__(58));
+const environment_1 = __webpack_require__(14);
+const stylesheets_1 = __webpack_require__(12);
+const preact_material_scss_1 = __importDefault(__webpack_require__(61));
 const STYLESHEETS = {
     preactMaterial: stylesheets_1.stylesheet({
         condition: environment_1.ALWAYS,
@@ -5234,11 +6579,11 @@ exports.default = STYLESHEETS;
 
 
 /***/ }),
-/* 58 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(59);
+        var result = __webpack_require__(62);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -5248,33 +6593,36 @@ exports.default = STYLESHEETS;
     
 
 /***/ }),
-/* 59 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
-var ___CSS_LOADER_AT_RULE_IMPORT_0___ = __webpack_require__(60);
-var ___CSS_LOADER_AT_RULE_IMPORT_1___ = __webpack_require__(61);
-var ___CSS_LOADER_AT_RULE_IMPORT_2___ = __webpack_require__(62);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
+var ___CSS_LOADER_AT_RULE_IMPORT_0___ = __webpack_require__(63);
+var ___CSS_LOADER_AT_RULE_IMPORT_1___ = __webpack_require__(64);
+var ___CSS_LOADER_AT_RULE_IMPORT_2___ = __webpack_require__(65);
+var ___CSS_LOADER_AT_RULE_IMPORT_3___ = __webpack_require__(66);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 exports.i(___CSS_LOADER_AT_RULE_IMPORT_0___);
 exports.i(___CSS_LOADER_AT_RULE_IMPORT_1___);
 exports.i(___CSS_LOADER_AT_RULE_IMPORT_2___);
+exports.i(___CSS_LOADER_AT_RULE_IMPORT_3___);
 // Module
-exports.push([module.i, "#yt-playlists-delete-enhancer{--mdc-theme-primary: #e10000;--mdc-theme-on-primary: #fff;--mdc-theme-accent: #e10000;--mdc-theme-secondary: #e10000;--mdc-theme-on-secondary: #fff;--mdc-theme-background: #fff;--mdc-theme-surface: #fff;--mdc-theme-on-surface: #fff}\n", ""]);
+exports.push([module.i, "#yt-playlists-delete-enhancer{--mdc-theme-primary: #e10000;--mdc-theme-on-primary: #fff;--mdc-theme-accent: #e10000;--mdc-theme-secondary: #e10000;--mdc-theme-on-secondary: #fff;--mdc-theme-background: #fff;--mdc-theme-surface: #fff;--mdc-theme-on-surface: #fff}@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format(\"woff2\")}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-moz-font-feature-settings:'liga';-moz-osx-font-smoothing:grayscale}\n", ""]);
 // Exports
 exports.locals = {
-	"yt-playlists-delete-enhancer": "yt-playlists-delete-enhancer"
+	"yt-playlists-delete-enhancer": "yt-playlists-delete-enhancer",
+	"material-icons": "material-icons"
 };
 module.exports = exports;
 
 
 /***/ }),
-/* 60 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/*!\n Material Components for the Web\n Copyright (c) 2018 Google Inc.\n License: MIT\n*/\n@-webkit-keyframes mdc-ripple-fg-radius-in {\n  from {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@keyframes mdc-ripple-fg-radius-in {\n  from {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@-webkit-keyframes mdc-ripple-fg-opacity-in {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@keyframes mdc-ripple-fg-opacity-in {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@-webkit-keyframes mdc-ripple-fg-opacity-out {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n@keyframes mdc-ripple-fg-opacity-out {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n.mdc-ripple-surface--test-edge-var-bug {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden; }\n  .mdc-ripple-surface--test-edge-var-bug::before {\n    border: var(--mdc-ripple-surface-test-edge-var); }\n\n.mdc-button {\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 0.875rem;\n  line-height: 2.25rem;\n  font-weight: 500;\n  letter-spacing: 0.08929em;\n  text-decoration: none;\n  text-transform: uppercase;\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  will-change: transform, opacity;\n  padding: 0 8px 0 8px;\n  display: inline-flex;\n  position: relative;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  min-width: 64px;\n  height: 36px;\n  border: none;\n  outline: none;\n  /* @alternate */\n  line-height: inherit;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-appearance: none;\n  overflow: hidden;\n  vertical-align: middle;\n  border-radius: 2px; }\n  .mdc-button::before, .mdc-button::after {\n    position: absolute;\n    border-radius: 50%;\n    opacity: 0;\n    pointer-events: none;\n    content: \"\"; }\n  .mdc-button::before {\n    transition: opacity 15ms linear;\n    z-index: 1; }\n  .mdc-button.mdc-ripple-upgraded::before {\n    -webkit-transform: scale(var(--mdc-ripple-fg-scale, 1));\n            transform: scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-button.mdc-ripple-upgraded::after {\n    top: 0;\n    /* @noflip */\n    left: 0;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n  .mdc-button.mdc-ripple-upgraded--unbounded::after {\n    top: var(--mdc-ripple-top, 0);\n    /* @noflip */\n    left: var(--mdc-ripple-left, 0); }\n  .mdc-button.mdc-ripple-upgraded--foreground-activation::after {\n    -webkit-animation: 225ms :local(mdc-ripple-fg-radius-in) forwards, 75ms :local(mdc-ripple-fg-opacity-in) forwards;\n            animation: 225ms :local(mdc-ripple-fg-radius-in) forwards, 75ms :local(mdc-ripple-fg-opacity-in) forwards; }\n  .mdc-button.mdc-ripple-upgraded--foreground-deactivation::after {\n    -webkit-animation: 150ms :local(mdc-ripple-fg-opacity-out);\n            animation: 150ms :local(mdc-ripple-fg-opacity-out);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-button::before, .mdc-button::after {\n    top: calc(50% - 100%);\n    /* @noflip */\n    left: calc(50% - 100%);\n    width: 200%;\n    height: 200%; }\n  .mdc-button.mdc-ripple-upgraded::after {\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-button::-moz-focus-inner {\n    padding: 0;\n    border: 0; }\n  .mdc-button:active {\n    outline: none; }\n  .mdc-button:hover {\n    cursor: pointer; }\n  .mdc-button:disabled {\n    background-color: transparent;\n    color: rgba(0, 0, 0, 0.37);\n    cursor: default;\n    pointer-events: none; }\n  .mdc-button:not(:disabled) {\n    background-color: transparent; }\n  .mdc-button:not(:disabled) {\n    color: #6200ee;\n    /* @alternate */\n    color: var(--mdc-theme-primary, #6200ee); }\n  .mdc-button::before, .mdc-button::after {\n    background-color: #6200ee; }\n    @supports not (-ms-ime-align: auto) {\n      .mdc-button::before, .mdc-button::after {\n        /* @alternate */\n        background-color: var(--mdc-theme-primary, #6200ee); } }\n  .mdc-button:hover::before {\n    opacity: 0.04; }\n  .mdc-button:not(.mdc-ripple-upgraded):focus::before, .mdc-button.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-button:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-button:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.16; }\n  .mdc-button.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.16; }\n  .mdc-button .mdc-button__icon {\n    /* @noflip */\n    margin-left: 0;\n    /* @noflip */\n    margin-right: 8px;\n    display: inline-block;\n    width: 18px;\n    height: 18px;\n    font-size: 18px;\n    vertical-align: top; }\n    [dir=\"rtl\"] .mdc-button .mdc-button__icon, .mdc-button .mdc-button__icon[dir=\"rtl\"] {\n      /* @noflip */\n      margin-left: 8px;\n      /* @noflip */\n      margin-right: 0; }\n  .mdc-button svg.mdc-button__icon {\n    fill: currentColor; }\n\n.mdc-button--raised .mdc-button__icon,\n.mdc-button--unelevated .mdc-button__icon,\n.mdc-button--outlined .mdc-button__icon {\n  /* @noflip */\n  margin-left: -4px;\n  /* @noflip */\n  margin-right: 8px; }\n  [dir=\"rtl\"] .mdc-button--raised .mdc-button__icon, .mdc-button--raised .mdc-button__icon[dir=\"rtl\"], [dir=\"rtl\"]\n  .mdc-button--unelevated .mdc-button__icon,\n  .mdc-button--unelevated .mdc-button__icon[dir=\"rtl\"], [dir=\"rtl\"]\n  .mdc-button--outlined .mdc-button__icon,\n  .mdc-button--outlined .mdc-button__icon[dir=\"rtl\"] {\n    /* @noflip */\n    margin-left: 8px;\n    /* @noflip */\n    margin-right: -4px; }\n\n.mdc-button--raised,\n.mdc-button--unelevated {\n  padding: 0 16px 0 16px; }\n  .mdc-button--raised:disabled,\n  .mdc-button--unelevated:disabled {\n    background-color: rgba(0, 0, 0, 0.12);\n    color: rgba(0, 0, 0, 0.37); }\n  .mdc-button--raised:not(:disabled),\n  .mdc-button--unelevated:not(:disabled) {\n    background-color: #6200ee; }\n    @supports not (-ms-ime-align: auto) {\n      .mdc-button--raised:not(:disabled),\n      .mdc-button--unelevated:not(:disabled) {\n        /* @alternate */\n        background-color: var(--mdc-theme-primary, #6200ee); } }\n  .mdc-button--raised:not(:disabled),\n  .mdc-button--unelevated:not(:disabled) {\n    color: #fff;\n    /* @alternate */\n    color: var(--mdc-theme-on-primary, #fff); }\n  .mdc-button--raised::before, .mdc-button--raised::after,\n  .mdc-button--unelevated::before,\n  .mdc-button--unelevated::after {\n    background-color: #fff; }\n    @supports not (-ms-ime-align: auto) {\n      .mdc-button--raised::before, .mdc-button--raised::after,\n      .mdc-button--unelevated::before,\n      .mdc-button--unelevated::after {\n        /* @alternate */\n        background-color: var(--mdc-theme-on-primary, #fff); } }\n  .mdc-button--raised:hover::before,\n  .mdc-button--unelevated:hover::before {\n    opacity: 0.08; }\n  .mdc-button--raised:not(.mdc-ripple-upgraded):focus::before, .mdc-button--raised.mdc-ripple-upgraded--background-focused::before,\n  .mdc-button--unelevated:not(.mdc-ripple-upgraded):focus::before,\n  .mdc-button--unelevated.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.24; }\n  .mdc-button--raised:not(.mdc-ripple-upgraded)::after,\n  .mdc-button--unelevated:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-button--raised:not(.mdc-ripple-upgraded):active::after,\n  .mdc-button--unelevated:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.32; }\n  .mdc-button--raised.mdc-ripple-upgraded,\n  .mdc-button--unelevated.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.32; }\n\n.mdc-button--raised {\n  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);\n  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); }\n  .mdc-button--raised:hover, .mdc-button--raised:focus {\n    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); }\n  .mdc-button--raised:active {\n    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); }\n  .mdc-button--raised:disabled {\n    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }\n\n.mdc-button--outlined {\n  border-style: solid;\n  padding: 0 14px 0 14px;\n  border-width: 2px; }\n  .mdc-button--outlined:disabled {\n    border-color: rgba(0, 0, 0, 0.37); }\n  .mdc-button--outlined:not(:disabled) {\n    border-color: #6200ee;\n    /* @alternate */\n    border-color: var(--mdc-theme-primary, #6200ee); }\n\n.mdc-button--dense {\n  height: 32px;\n  font-size: .8125rem; }", ""]);
@@ -5300,11 +6648,11 @@ module.exports = exports;
 
 
 /***/ }),
-/* 61 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/*!\n Material Components for the Web\n Copyright (c) 2018 Google Inc.\n License: MIT\n*/\n@-webkit-keyframes mdc-slider-emphasize {\n  0% {\n    -webkit-animation-timing-function: ease-out;\n            animation-timing-function: ease-out; }\n  50% {\n    -webkit-animation-timing-function: ease-in;\n            animation-timing-function: ease-in;\n    -webkit-transform: scale(0.85);\n            transform: scale(0.85); }\n  100% {\n    -webkit-transform: scale(0.571);\n            transform: scale(0.571); } }\n\n@keyframes mdc-slider-emphasize {\n  0% {\n    -webkit-animation-timing-function: ease-out;\n            animation-timing-function: ease-out; }\n  50% {\n    -webkit-animation-timing-function: ease-in;\n            animation-timing-function: ease-in;\n    -webkit-transform: scale(0.85);\n            transform: scale(0.85); }\n  100% {\n    -webkit-transform: scale(0.571);\n            transform: scale(0.571); } }\n\n.mdc-slider {\n  position: relative;\n  width: 100%;\n  height: 48px;\n  cursor: pointer;\n  touch-action: pan-x;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track {\n    background-color: #018786;\n    /* @alternate */\n    background-color: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-container {\n    background-color: rgba(1, 135, 134, 0.26); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-marker::after,\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-marker-container::after {\n    background-color: #018786;\n    /* @alternate */\n    background-color: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__thumb {\n    fill: #018786;\n    /* @alternate */\n    fill: var(--mdc-theme-secondary, #018786);\n    stroke: #018786;\n    /* @alternate */\n    stroke: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__focus-ring {\n    background-color: #018786;\n    /* @alternate */\n    background-color: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__pin {\n    background-color: #018786;\n    /* @alternate */\n    background-color: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__pin {\n    color: white;\n    /* @alternate */\n    color: var(--mdc-theme-text-primary-on-dark, white); }\n  .mdc-slider--disabled {\n    cursor: auto; }\n    .mdc-slider--disabled .mdc-slider__track {\n      background-color: #9a9a9a; }\n    .mdc-slider--disabled .mdc-slider__track-container {\n      background-color: rgba(154, 154, 154, 0.26); }\n    .mdc-slider--disabled .mdc-slider__track-marker::after,\n    .mdc-slider--disabled .mdc-slider__track-marker-container::after {\n      background-color: #9a9a9a; }\n    .mdc-slider--disabled .mdc-slider__thumb {\n      fill: #9a9a9a;\n      stroke: #9a9a9a; }\n    .mdc-slider--disabled .mdc-slider__thumb {\n      /* @alternate */\n      stroke: white;\n      stroke: var(--mdc-slider-bg-color-behind-component, white); }\n  .mdc-slider:focus {\n    outline: none; }\n  .mdc-slider__track-container {\n    position: absolute;\n    top: 50%;\n    width: 100%;\n    height: 2px;\n    overflow: hidden; }\n  .mdc-slider__track {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-transform-origin: left top;\n            transform-origin: left top;\n    will-change: transform; }\n    .mdc-slider[dir=\"rtl\"] .mdc-slider__track,\n    [dir=\"rtl\"] .mdc-slider .mdc-slider__track {\n      -webkit-transform-origin: right top;\n              transform-origin: right top; }\n  .mdc-slider__track-marker-container {\n    display: flex;\n    margin-right: 0;\n    margin-left: -1px;\n    visibility: hidden; }\n    .mdc-slider[dir=\"rtl\"] .mdc-slider__track-marker-container,\n    [dir=\"rtl\"] .mdc-slider .mdc-slider__track-marker-container {\n      margin-right: -1px;\n      margin-left: 0; }\n    .mdc-slider__track-marker-container::after {\n      display: block;\n      width: 2px;\n      height: 2px;\n      content: \"\"; }\n  .mdc-slider__track-marker {\n    flex: 1; }\n    .mdc-slider__track-marker::after {\n      display: block;\n      width: 2px;\n      height: 2px;\n      content: \"\"; }\n    .mdc-slider__track-marker:first-child::after {\n      width: 3px; }\n  .mdc-slider__thumb-container {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 21px;\n    height: 100%;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    will-change: transform; }\n  .mdc-slider__thumb {\n    position: absolute;\n    top: 0;\n    left: 0;\n    -webkit-transform: scale(0.571);\n            transform: scale(0.571);\n    transition: fill 100ms ease-out, stroke 100ms ease-out, -webkit-transform 100ms ease-out;\n    transition: transform 100ms ease-out, fill 100ms ease-out, stroke 100ms ease-out;\n    transition: transform 100ms ease-out, fill 100ms ease-out, stroke 100ms ease-out, -webkit-transform 100ms ease-out;\n    stroke-width: 3.5; }\n  .mdc-slider__focus-ring {\n    width: 21px;\n    height: 21px;\n    transition: opacity 266.67ms ease-out, background-color 266.67ms ease-out, -webkit-transform 266.67ms ease-out;\n    transition: transform 266.67ms ease-out, opacity 266.67ms ease-out, background-color 266.67ms ease-out;\n    transition: transform 266.67ms ease-out, opacity 266.67ms ease-out, background-color 266.67ms ease-out, -webkit-transform 266.67ms ease-out;\n    border-radius: 50%;\n    opacity: 0; }\n  .mdc-slider__pin {\n    display: flex;\n    position: absolute;\n    top: 0;\n    left: 0;\n    align-items: center;\n    justify-content: center;\n    width: 26px;\n    height: 26px;\n    margin-top: -2px;\n    margin-left: -2px;\n    -webkit-transform: rotate(-45deg) scale(0) translate(0, 0);\n            transform: rotate(-45deg) scale(0) translate(0, 0);\n    transition: -webkit-transform 100ms ease-out;\n    transition: transform 100ms ease-out;\n    transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;\n    border-radius: 50% 50% 50% 0%;\n    z-index: 1; }\n  .mdc-slider__pin-value-marker {\n    font-family: Roboto, sans-serif;\n    -moz-osx-font-smoothing: grayscale;\n    -webkit-font-smoothing: antialiased;\n    font-size: 0.875rem;\n    line-height: 1.25rem;\n    font-weight: 400;\n    letter-spacing: 0.01786em;\n    text-decoration: inherit;\n    text-transform: inherit;\n    -webkit-transform: rotate(45deg);\n            transform: rotate(45deg); }\n\n.mdc-slider--active .mdc-slider__thumb {\n  -webkit-transform: scale3d(1, 1, 1);\n          transform: scale3d(1, 1, 1); }\n\n.mdc-slider--focus .mdc-slider__thumb {\n  -webkit-animation: mdc-slider-emphasize 266.67ms linear;\n          animation: mdc-slider-emphasize 266.67ms linear; }\n\n.mdc-slider--focus .mdc-slider__focus-ring {\n  -webkit-transform: scale3d(1.55, 1.55, 1.55);\n          transform: scale3d(1.55, 1.55, 1.55);\n  opacity: .25; }\n\n.mdc-slider--in-transit .mdc-slider__thumb {\n  transition-delay: 140ms; }\n\n.mdc-slider--in-transit .mdc-slider__thumb-container,\n.mdc-slider--in-transit .mdc-slider__track,\n.mdc-slider:focus:not(.mdc-slider--active) .mdc-slider__thumb-container,\n.mdc-slider:focus:not(.mdc-slider--active) .mdc-slider__track {\n  transition: -webkit-transform 80ms ease;\n  transition: transform 80ms ease;\n  transition: transform 80ms ease, -webkit-transform 80ms ease; }\n\n.mdc-slider--discrete.mdc-slider--active .mdc-slider__thumb {\n  -webkit-transform: scale(calc(12 / 21));\n          transform: scale(calc(12 / 21)); }\n\n.mdc-slider--discrete.mdc-slider--active .mdc-slider__pin {\n  -webkit-transform: rotate(-45deg) scale(1) translate(19px, -20px);\n          transform: rotate(-45deg) scale(1) translate(19px, -20px); }\n\n.mdc-slider--discrete.mdc-slider--focus .mdc-slider__thumb {\n  -webkit-animation: none;\n          animation: none; }\n\n.mdc-slider--discrete.mdc-slider--display-markers .mdc-slider__track-marker-container {\n  visibility: visible; }", ""]);
@@ -5332,11 +6680,11 @@ module.exports = exports;
 
 
 /***/ }),
-/* 62 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/*!\n Material Components for the Web\n Copyright (c) 2018 Google Inc.\n License: MIT\n*/\n@-webkit-keyframes primary-indeterminate-translate {\n  0% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  20% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  59.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n            animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n    -webkit-transform: translateX(83.67142%);\n            transform: translateX(83.67142%); }\n  100% {\n    -webkit-transform: translateX(200.61106%);\n            transform: translateX(200.61106%); } }\n\n@keyframes primary-indeterminate-translate {\n  0% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  20% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  59.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n            animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n    -webkit-transform: translateX(83.67142%);\n            transform: translateX(83.67142%); }\n  100% {\n    -webkit-transform: translateX(200.61106%);\n            transform: translateX(200.61106%); } }\n\n@-webkit-keyframes primary-indeterminate-scale {\n  0% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  36.65% {\n    -webkit-animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1);\n            animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1);\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  69.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1);\n            animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1);\n    -webkit-transform: scaleX(0.66148);\n            transform: scaleX(0.66148); }\n  100% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); } }\n\n@keyframes primary-indeterminate-scale {\n  0% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  36.65% {\n    -webkit-animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1);\n            animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1);\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  69.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1);\n            animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1);\n    -webkit-transform: scaleX(0.66148);\n            transform: scaleX(0.66148); }\n  100% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); } }\n\n@-webkit-keyframes secondary-indeterminate-translate {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n            animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  25% {\n    -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n            animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n    -webkit-transform: translateX(37.65191%);\n            transform: translateX(37.65191%); }\n  48.35% {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n            animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n    -webkit-transform: translateX(84.38617%);\n            transform: translateX(84.38617%); }\n  100% {\n    -webkit-transform: translateX(160.27778%);\n            transform: translateX(160.27778%); } }\n\n@keyframes secondary-indeterminate-translate {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n            animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  25% {\n    -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n            animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n    -webkit-transform: translateX(37.65191%);\n            transform: translateX(37.65191%); }\n  48.35% {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n            animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n    -webkit-transform: translateX(84.38617%);\n            transform: translateX(84.38617%); }\n  100% {\n    -webkit-transform: translateX(160.27778%);\n            transform: translateX(160.27778%); } }\n\n@-webkit-keyframes secondary-indeterminate-scale {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.20503, 0.05705, 0.57661, 0.45397);\n            animation-timing-function: cubic-bezier(0.20503, 0.05705, 0.57661, 0.45397);\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  19.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.15231, 0.19643, 0.64837, 1.00432);\n            animation-timing-function: cubic-bezier(0.15231, 0.19643, 0.64837, 1.00432);\n    -webkit-transform: scaleX(0.4571);\n            transform: scaleX(0.4571); }\n  44.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.25776, -0.00316, 0.21176, 1.38179);\n            animation-timing-function: cubic-bezier(0.25776, -0.00316, 0.21176, 1.38179);\n    -webkit-transform: scaleX(0.72796);\n            transform: scaleX(0.72796); }\n  100% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); } }\n\n@keyframes secondary-indeterminate-scale {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.20503, 0.05705, 0.57661, 0.45397);\n            animation-timing-function: cubic-bezier(0.20503, 0.05705, 0.57661, 0.45397);\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  19.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.15231, 0.19643, 0.64837, 1.00432);\n            animation-timing-function: cubic-bezier(0.15231, 0.19643, 0.64837, 1.00432);\n    -webkit-transform: scaleX(0.4571);\n            transform: scaleX(0.4571); }\n  44.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.25776, -0.00316, 0.21176, 1.38179);\n            animation-timing-function: cubic-bezier(0.25776, -0.00316, 0.21176, 1.38179);\n    -webkit-transform: scaleX(0.72796);\n            transform: scaleX(0.72796); }\n  100% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); } }\n\n@-webkit-keyframes buffering {\n  to {\n    -webkit-transform: translateX(-10px);\n            transform: translateX(-10px); } }\n\n@keyframes buffering {\n  to {\n    -webkit-transform: translateX(-10px);\n            transform: translateX(-10px); } }\n\n@-webkit-keyframes primary-indeterminate-translate-reverse {\n  0% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  20% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  59.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n            animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n    -webkit-transform: translateX(-83.67142%);\n            transform: translateX(-83.67142%); }\n  100% {\n    -webkit-transform: translateX(-200.61106%);\n            transform: translateX(-200.61106%); } }\n\n@keyframes primary-indeterminate-translate-reverse {\n  0% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  20% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  59.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n            animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n    -webkit-transform: translateX(-83.67142%);\n            transform: translateX(-83.67142%); }\n  100% {\n    -webkit-transform: translateX(-200.61106%);\n            transform: translateX(-200.61106%); } }\n\n@-webkit-keyframes secondary-indeterminate-translate-reverse {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n            animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  25% {\n    -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n            animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n    -webkit-transform: translateX(-37.65191%);\n            transform: translateX(-37.65191%); }\n  48.35% {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n            animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n    -webkit-transform: translateX(-84.38617%);\n            transform: translateX(-84.38617%); }\n  100% {\n    -webkit-transform: translateX(-160.27778%);\n            transform: translateX(-160.27778%); } }\n\n@keyframes secondary-indeterminate-translate-reverse {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n            animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  25% {\n    -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n            animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n    -webkit-transform: translateX(-37.65191%);\n            transform: translateX(-37.65191%); }\n  48.35% {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n            animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n    -webkit-transform: translateX(-84.38617%);\n            transform: translateX(-84.38617%); }\n  100% {\n    -webkit-transform: translateX(-160.27778%);\n            transform: translateX(-160.27778%); } }\n\n@-webkit-keyframes buffering-reverse {\n  to {\n    -webkit-transform: translateX(10px);\n            transform: translateX(10px); } }\n\n@keyframes buffering-reverse {\n  to {\n    -webkit-transform: translateX(10px);\n            transform: translateX(10px); } }\n\n.mdc-linear-progress {\n  position: relative;\n  width: 100%;\n  height: 4px;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0);\n  transition: opacity 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n  overflow: hidden; }\n  .mdc-linear-progress__bar {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-animation: none;\n            animation: none;\n    -webkit-transform-origin: top left;\n            transform-origin: top left;\n    transition: -webkit-transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n    transition: transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n    transition: transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1), -webkit-transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1); }\n  .mdc-linear-progress__bar-inner {\n    display: inline-block;\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-animation: none;\n            animation: none; }\n  .mdc-linear-progress__buffering-dots {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-animation: buffering 250ms infinite linear;\n            animation: buffering 250ms infinite linear;\n    background-repeat: repeat-x;\n    background-size: 10px 4px; }\n  .mdc-linear-progress__buffer {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-transform-origin: top left;\n            transform-origin: top left;\n    transition: -webkit-transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n    transition: transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n    transition: transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1), -webkit-transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1); }\n  .mdc-linear-progress__primary-bar {\n    -webkit-transform: scaleX(0);\n            transform: scaleX(0); }\n  .mdc-linear-progress__secondary-bar {\n    visibility: hidden; }\n  .mdc-linear-progress--indeterminate .mdc-linear-progress__bar {\n    transition: none; }\n  .mdc-linear-progress--indeterminate .mdc-linear-progress__primary-bar {\n    left: -145.166611%;\n    -webkit-animation: primary-indeterminate-translate 2s infinite linear;\n            animation: primary-indeterminate-translate 2s infinite linear; }\n    .mdc-linear-progress--indeterminate .mdc-linear-progress__primary-bar > .mdc-linear-progress__bar-inner {\n      -webkit-animation: primary-indeterminate-scale 2s infinite linear;\n              animation: primary-indeterminate-scale 2s infinite linear; }\n  .mdc-linear-progress--indeterminate .mdc-linear-progress__secondary-bar {\n    left: -54.888891%;\n    -webkit-animation: secondary-indeterminate-translate 2s infinite linear;\n            animation: secondary-indeterminate-translate 2s infinite linear;\n    visibility: visible; }\n    .mdc-linear-progress--indeterminate .mdc-linear-progress__secondary-bar > .mdc-linear-progress__bar-inner {\n      -webkit-animation: secondary-indeterminate-scale 2s infinite linear;\n              animation: secondary-indeterminate-scale 2s infinite linear; }\n  .mdc-linear-progress--reversed .mdc-linear-progress__bar,\n  .mdc-linear-progress--reversed .mdc-linear-progress__buffer {\n    right: 0;\n    -webkit-transform-origin: center right;\n            transform-origin: center right; }\n  .mdc-linear-progress--reversed .mdc-linear-progress__primary-bar {\n    -webkit-animation-name: primary-indeterminate-translate-reverse;\n            animation-name: primary-indeterminate-translate-reverse; }\n  .mdc-linear-progress--reversed .mdc-linear-progress__secondary-bar {\n    -webkit-animation-name: secondary-indeterminate-translate-reverse;\n            animation-name: secondary-indeterminate-translate-reverse; }\n  .mdc-linear-progress--reversed .mdc-linear-progress__buffering-dots {\n    -webkit-animation: buffering-reverse 250ms infinite linear;\n            animation: buffering-reverse 250ms infinite linear; }\n  .mdc-linear-progress--closed {\n    opacity: 0; }\n\n.mdc-linear-progress__bar-inner {\n  background-color: #6200ee;\n  /* @alternate */\n  background-color: var(--mdc-theme-primary, #6200ee); }\n\n.mdc-linear-progress__buffering-dots {\n  background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23e6e6e6'/%3E%3C/svg%3E\"); }\n\n.mdc-linear-progress__buffer {\n  background-color: #e6e6e6; }\n\n.mdc-linear-progress--indeterminate.mdc-linear-progress--reversed .mdc-linear-progress__primary-bar {\n  right: -145.166611%;\n  left: auto; }\n\n.mdc-linear-progress--indeterminate.mdc-linear-progress--reversed .mdc-linear-progress__secondary-bar {\n  right: -54.888891%;\n  left: auto; }", ""]);
@@ -5365,7 +6713,35 @@ module.exports = exports;
 
 
 /***/ }),
-/* 63 */
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "/*!\n Material Components for the Web\n Copyright (c) 2018 Google Inc.\n License: MIT\n*/\n@-webkit-keyframes mdc-ripple-fg-radius-in {\n  from {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@keyframes mdc-ripple-fg-radius-in {\n  from {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@-webkit-keyframes mdc-ripple-fg-opacity-in {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@keyframes mdc-ripple-fg-opacity-in {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@-webkit-keyframes mdc-ripple-fg-opacity-out {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n@keyframes mdc-ripple-fg-opacity-out {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n.mdc-ripple-surface--test-edge-var-bug {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden; }\n  .mdc-ripple-surface--test-edge-var-bug::before {\n    border: var(--mdc-ripple-surface-test-edge-var); }\n\n.mdc-icon-button {\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  will-change: transform, opacity;\n  width: 48px;\n  height: 48px;\n  padding: 12px;\n  font-size: 24px;\n  display: inline-block;\n  position: relative;\n  box-sizing: border-box;\n  border: none;\n  outline: none;\n  background-color: transparent;\n  fill: currentColor;\n  color: inherit;\n  text-decoration: none;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .mdc-icon-button::before, .mdc-icon-button::after {\n    position: absolute;\n    border-radius: 50%;\n    opacity: 0;\n    pointer-events: none;\n    content: \"\"; }\n  .mdc-icon-button::before {\n    transition: opacity 15ms linear;\n    z-index: 1; }\n  .mdc-icon-button.mdc-ripple-upgraded::before {\n    -webkit-transform: scale(var(--mdc-ripple-fg-scale, 1));\n            transform: scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-icon-button.mdc-ripple-upgraded::after {\n    top: 0;\n    /* @noflip */\n    left: 0;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n  .mdc-icon-button.mdc-ripple-upgraded--unbounded::after {\n    top: var(--mdc-ripple-top, 0);\n    /* @noflip */\n    left: var(--mdc-ripple-left, 0); }\n  .mdc-icon-button.mdc-ripple-upgraded--foreground-activation::after {\n    -webkit-animation: 225ms :local(mdc-ripple-fg-radius-in) forwards, 75ms :local(mdc-ripple-fg-opacity-in) forwards;\n            animation: 225ms :local(mdc-ripple-fg-radius-in) forwards, 75ms :local(mdc-ripple-fg-opacity-in) forwards; }\n  .mdc-icon-button.mdc-ripple-upgraded--foreground-deactivation::after {\n    -webkit-animation: 150ms :local(mdc-ripple-fg-opacity-out);\n            animation: 150ms :local(mdc-ripple-fg-opacity-out);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-icon-button::before, .mdc-icon-button::after {\n    top: calc(50% - 50%);\n    /* @noflip */\n    left: calc(50% - 50%);\n    width: 100%;\n    height: 100%; }\n  .mdc-icon-button.mdc-ripple-upgraded::before, .mdc-icon-button.mdc-ripple-upgraded::after {\n    top: var(--mdc-ripple-top, calc(50% - 50%));\n    /* @noflip */\n    left: var(--mdc-ripple-left, calc(50% - 50%));\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-icon-button.mdc-ripple-upgraded::after {\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-icon-button svg,\n  .mdc-icon-button img {\n    width: 24px;\n    height: 24px; }\n  .mdc-icon-button:disabled {\n    color: rgba(0, 0, 0, 0.38);\n    /* @alternate */\n    color: var(--mdc-theme-text-disabled-on-light, rgba(0, 0, 0, 0.38));\n    cursor: default;\n    pointer-events: none; }\n  .mdc-icon-button::before, .mdc-icon-button::after {\n    background-color: black; }\n  .mdc-icon-button:hover::before {\n    opacity: 0.04; }\n  .mdc-icon-button:not(.mdc-ripple-upgraded):focus::before, .mdc-icon-button.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-icon-button:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-icon-button:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.16; }\n  .mdc-icon-button.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.16; }\n\n.mdc-icon-button__icon {\n  display: inline-block; }\n  .mdc-icon-button__icon.mdc-icon-button__icon--on {\n    display: none; }\n\n.mdc-icon-button--on .mdc-icon-button__icon {\n  display: none; }\n  .mdc-icon-button--on .mdc-icon-button__icon.mdc-icon-button__icon--on {\n    display: inline-block; }", ""]);
+// Exports
+exports.locals = {
+	"mdc-ripple-surface--test-edge-var-bug": "mdc-ripple-surface--test-edge-var-bug",
+	"mdc-icon-button": "mdc-icon-button",
+	"mdc-ripple-upgraded": "mdc-ripple-upgraded",
+	"mdc-ripple-upgraded--unbounded": "mdc-ripple-upgraded--unbounded",
+	"mdc-ripple-upgraded--foreground-activation": "mdc-ripple-upgraded--foreground-activation",
+	"mdc-ripple-upgraded--foreground-deactivation": "mdc-ripple-upgraded--foreground-deactivation",
+	"mdc-ripple-upgraded--background-focused": "mdc-ripple-upgraded--background-focused",
+	"mdc-icon-button__icon": "mdc-icon-button__icon",
+	"mdc-icon-button__icon--on": "mdc-icon-button__icon--on",
+	"mdc-icon-button--on": "mdc-icon-button--on",
+	"mdc-ripple-fg-radius-in": "mdc-ripple-fg-radius-in",
+	"mdc-ripple-fg-opacity-in": "mdc-ripple-fg-opacity-in",
+	"mdc-ripple-fg-opacity-out": "mdc-ripple-fg-opacity-out"
+};
+module.exports = exports;
+
+
+/***/ }),
+/* 67 */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5410,7 +6786,7 @@ __webpack_require__.r(userscripter_namespaceObject);
 __webpack_require__.d(userscripter_namespaceObject, "run", function() { return run; });
 
 // EXTERNAL MODULE: ./node_modules/userscripter/lib/environment.mjs
-var environment = __webpack_require__(12);
+var environment = __webpack_require__(14);
 
 // CONCATENATED MODULE: ./node_modules/lines-unlines/dist/index.mjs
 function lines(s) {
@@ -5479,7 +6855,7 @@ function error(str) {
 }
 
 // EXTERNAL MODULE: ./node_modules/userscripter/lib/operations.mjs + 1 modules
-var operations = __webpack_require__(11);
+var operations = __webpack_require__(13);
 
 // CONCATENATED MODULE: ./node_modules/userscripter/lib/preferences.mjs
 
@@ -5546,7 +6922,7 @@ function assertUnreachable(x) {
 }
 
 // EXTERNAL MODULE: ./node_modules/userscripter/lib/stylesheets.mjs
-var stylesheets = __webpack_require__(10);
+var stylesheets = __webpack_require__(12);
 
 // CONCATENATED MODULE: ./node_modules/userscripter/lib/userscripter.mjs
 
@@ -5581,1140 +6957,7 @@ function attribute(id) {
 
 
 /***/ }),
-/* 64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "MDCRipple", function() { return /* binding */ ripple_MDCRipple; });
-__webpack_require__.d(__webpack_exports__, "MDCRippleFoundation", function() { return /* reexport */ ripple_foundation; });
-__webpack_require__.d(__webpack_exports__, "RippleCapableSurface", function() { return /* binding */ RippleCapableSurface; });
-__webpack_require__.d(__webpack_exports__, "util", function() { return /* reexport */ util_namespaceObject; });
-
-// NAMESPACE OBJECT: ./node_modules/@material/ripple/util.js
-var util_namespaceObject = {};
-__webpack_require__.r(util_namespaceObject);
-__webpack_require__.d(util_namespaceObject, "supportsCssVariables", function() { return supportsCssVariables; });
-__webpack_require__.d(util_namespaceObject, "applyPassive", function() { return applyPassive; });
-__webpack_require__.d(util_namespaceObject, "getMatchesProperty", function() { return getMatchesProperty; });
-__webpack_require__.d(util_namespaceObject, "getNormalizedEventCoords", function() { return getNormalizedEventCoords; });
-
-// EXTERNAL MODULE: ./node_modules/@material/base/component.js
-var component = __webpack_require__(3);
-
-// CONCATENATED MODULE: ./node_modules/@material/ripple/adapter.js
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Ripple. Provides an interface for managing
- * - classes
- * - dom
- * - CSS variables
- * - position
- * - dimensions
- * - scroll position
- * - event handlers
- * - unbounded, active and disabled states
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-class MDCRippleAdapter {
-  /** @return {boolean} */
-  browserSupportsCssVars() {}
-
-  /** @return {boolean} */
-  isUnbounded() {}
-
-  /** @return {boolean} */
-  isSurfaceActive() {}
-
-  /** @return {boolean} */
-  isSurfaceDisabled() {}
-
-  /** @param {string} className */
-  addClass(className) {}
-
-  /** @param {string} className */
-  removeClass(className) {}
-
-  /** @param {!EventTarget} target */
-  containsEventTarget(target) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  registerInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  deregisterInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  registerDocumentInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {string} evtType
-   * @param {!Function} handler
-   */
-  deregisterDocumentInteractionHandler(evtType, handler) {}
-
-  /**
-   * @param {!Function} handler
-   */
-  registerResizeHandler(handler) {}
-
-  /**
-   * @param {!Function} handler
-   */
-  deregisterResizeHandler(handler) {}
-
-  /**
-   * @param {string} varName
-   * @param {?number|string} value
-   */
-  updateCssVariable(varName, value) {}
-
-  /** @return {!ClientRect} */
-  computeBoundingRect() {}
-
-  /** @return {{x: number, y: number}} */
-  getWindowPageOffset() {}
-}
-
-/* harmony default export */ var adapter = (MDCRippleAdapter);
-
-// EXTERNAL MODULE: ./node_modules/@material/base/foundation.js
-var foundation = __webpack_require__(1);
-
-// CONCATENATED MODULE: ./node_modules/@material/ripple/constants.js
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-const cssClasses = {
-  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
-  // given that it's an 'upgrade' to an existing component. That being said it is the root
-  // CSS class that all other CSS classes derive from.
-  ROOT: 'mdc-ripple-upgraded',
-  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
-  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
-  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
-  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation',
-};
-
-const strings = {
-  VAR_LEFT: '--mdc-ripple-left',
-  VAR_TOP: '--mdc-ripple-top',
-  VAR_FG_SIZE: '--mdc-ripple-fg-size',
-  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
-  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
-  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end',
-};
-
-const numbers = {
-  PADDING: 10,
-  INITIAL_ORIGIN_SCALE: 0.6,
-  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
-  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
-  TAP_DELAY_MS: 300, // Delay between touch and simulated mouse events on touch devices
-};
-
-
-
-// CONCATENATED MODULE: ./node_modules/@material/ripple/util.js
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/**
- * Stores result from supportsCssVariables to avoid redundant processing to detect CSS custom variable support.
- * @private {boolean|undefined}
- */
-let supportsCssVariables_;
-
-/**
- * Stores result from applyPassive to avoid redundant processing to detect passive event listener support.
- * @private {boolean|undefined}
- */
-let supportsPassive_;
-
-/**
- * @param {!Window} windowObj
- * @return {boolean}
- */
-function detectEdgePseudoVarBug(windowObj) {
-  // Detect versions of Edge with buggy var() support
-  // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
-  const document = windowObj.document;
-  const node = document.createElement('div');
-  node.className = 'mdc-ripple-surface--test-edge-var-bug';
-  document.body.appendChild(node);
-
-  // The bug exists if ::before style ends up propagating to the parent element.
-  // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
-  // but Firefox is known to support CSS custom properties correctly.
-  // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-  const computedStyle = windowObj.getComputedStyle(node);
-  const hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
-  node.remove();
-  return hasPseudoVarBug;
-}
-
-/**
- * @param {!Window} windowObj
- * @param {boolean=} forceRefresh
- * @return {boolean|undefined}
- */
-
-function supportsCssVariables(windowObj, forceRefresh = false) {
-  let supportsCssVariables = supportsCssVariables_;
-  if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
-    return supportsCssVariables;
-  }
-
-  const supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
-  if (!supportsFunctionPresent) {
-    return;
-  }
-
-  const explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
-  // See: https://bugs.webkit.org/show_bug.cgi?id=154669
-  // See: README section on Safari
-  const weAreFeatureDetectingSafari10plus = (
-    windowObj.CSS.supports('(--css-vars: yes)') &&
-    windowObj.CSS.supports('color', '#00000000')
-  );
-
-  if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
-    supportsCssVariables = !detectEdgePseudoVarBug(windowObj);
-  } else {
-    supportsCssVariables = false;
-  }
-
-  if (!forceRefresh) {
-    supportsCssVariables_ = supportsCssVariables;
-  }
-  return supportsCssVariables;
-}
-
-//
-/**
- * Determine whether the current browser supports passive event listeners, and if so, use them.
- * @param {!Window=} globalObj
- * @param {boolean=} forceRefresh
- * @return {boolean|{passive: boolean}}
- */
-function applyPassive(globalObj = window, forceRefresh = false) {
-  if (supportsPassive_ === undefined || forceRefresh) {
-    let isSupported = false;
-    try {
-      globalObj.document.addEventListener('test', null, {get passive() {
-        isSupported = true;
-      }});
-    } catch (e) { }
-
-    supportsPassive_ = isSupported;
-  }
-
-  return supportsPassive_ ? {passive: true} : false;
-}
-
-/**
- * @param {!Object} HTMLElementPrototype
- * @return {!Array<string>}
- */
-function getMatchesProperty(HTMLElementPrototype) {
-  return [
-    'webkitMatchesSelector', 'msMatchesSelector', 'matches',
-  ].filter((p) => p in HTMLElementPrototype).pop();
-}
-
-/**
- * @param {!Event} ev
- * @param {{x: number, y: number}} pageOffset
- * @param {!ClientRect} clientRect
- * @return {{x: number, y: number}}
- */
-function getNormalizedEventCoords(ev, pageOffset, clientRect) {
-  const {x, y} = pageOffset;
-  const documentX = x + clientRect.left;
-  const documentY = y + clientRect.top;
-
-  let normalizedX;
-  let normalizedY;
-  // Determine touch point relative to the ripple container.
-  if (ev.type === 'touchstart') {
-    normalizedX = ev.changedTouches[0].pageX - documentX;
-    normalizedY = ev.changedTouches[0].pageY - documentY;
-  } else {
-    normalizedX = ev.pageX - documentX;
-    normalizedY = ev.pageY - documentY;
-  }
-
-  return {x: normalizedX, y: normalizedY};
-}
-
-
-
-// CONCATENATED MODULE: ./node_modules/@material/ripple/foundation.js
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-
-
-
-
-
-/**
- * @typedef {{
- *   isActivated: (boolean|undefined),
- *   hasDeactivationUXRun: (boolean|undefined),
- *   wasActivatedByPointer: (boolean|undefined),
- *   wasElementMadeActive: (boolean|undefined),
- *   activationEvent: Event,
- *   isProgrammatic: (boolean|undefined)
- * }}
- */
-let ActivationStateType;
-
-/**
- * @typedef {{
- *   activate: (string|undefined),
- *   deactivate: (string|undefined),
- *   focus: (string|undefined),
- *   blur: (string|undefined)
- * }}
- */
-let ListenerInfoType;
-
-/**
- * @typedef {{
- *   activate: function(!Event),
- *   deactivate: function(!Event),
- *   focus: function(),
- *   blur: function()
- * }}
- */
-let ListenersType;
-
-/**
- * @typedef {{
- *   x: number,
- *   y: number
- * }}
- */
-let PointType;
-
-// Activation events registered on the root element of each instance for activation
-const ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
-
-// Deactivation events registered on documentElement when a pointer-related down event occurs
-const POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup'];
-
-// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
-/** @type {!Array<!EventTarget>} */
-let activatedTargets = [];
-
-/**
- * @extends {MDCFoundation<!MDCRippleAdapter>}
- */
-class foundation_MDCRippleFoundation extends foundation["a" /* default */] {
-  static get cssClasses() {
-    return cssClasses;
-  }
-
-  static get strings() {
-    return strings;
-  }
-
-  static get numbers() {
-    return numbers;
-  }
-
-  static get defaultAdapter() {
-    return {
-      browserSupportsCssVars: () => /* boolean - cached */ {},
-      isUnbounded: () => /* boolean */ {},
-      isSurfaceActive: () => /* boolean */ {},
-      isSurfaceDisabled: () => /* boolean */ {},
-      addClass: (/* className: string */) => {},
-      removeClass: (/* className: string */) => {},
-      containsEventTarget: (/* target: !EventTarget */) => {},
-      registerInteractionHandler: (/* evtType: string, handler: EventListener */) => {},
-      deregisterInteractionHandler: (/* evtType: string, handler: EventListener */) => {},
-      registerDocumentInteractionHandler: (/* evtType: string, handler: EventListener */) => {},
-      deregisterDocumentInteractionHandler: (/* evtType: string, handler: EventListener */) => {},
-      registerResizeHandler: (/* handler: EventListener */) => {},
-      deregisterResizeHandler: (/* handler: EventListener */) => {},
-      updateCssVariable: (/* varName: string, value: string */) => {},
-      computeBoundingRect: () => /* ClientRect */ {},
-      getWindowPageOffset: () => /* {x: number, y: number} */ {},
-    };
-  }
-
-  constructor(adapter) {
-    super(Object.assign(foundation_MDCRippleFoundation.defaultAdapter, adapter));
-
-    /** @private {number} */
-    this.layoutFrame_ = 0;
-
-    /** @private {!ClientRect} */
-    this.frame_ = /** @type {!ClientRect} */ ({width: 0, height: 0});
-
-    /** @private {!ActivationStateType} */
-    this.activationState_ = this.defaultActivationState_();
-
-    /** @private {number} */
-    this.initialSize_ = 0;
-
-    /** @private {number} */
-    this.maxRadius_ = 0;
-
-    /** @private {function(!Event)} */
-    this.activateHandler_ = (e) => this.activate_(e);
-
-    /** @private {function(!Event)} */
-    this.deactivateHandler_ = (e) => this.deactivate_(e);
-
-    /** @private {function(?Event=)} */
-    this.focusHandler_ = () => this.handleFocus();
-
-    /** @private {function(?Event=)} */
-    this.blurHandler_ = () => this.handleBlur();
-
-    /** @private {!Function} */
-    this.resizeHandler_ = () => this.layout();
-
-    /** @private {{left: number, top:number}} */
-    this.unboundedCoords_ = {
-      left: 0,
-      top: 0,
-    };
-
-    /** @private {number} */
-    this.fgScale_ = 0;
-
-    /** @private {number} */
-    this.activationTimer_ = 0;
-
-    /** @private {number} */
-    this.fgDeactivationRemovalTimer_ = 0;
-
-    /** @private {boolean} */
-    this.activationAnimationHasEnded_ = false;
-
-    /** @private {!Function} */
-    this.activationTimerCallback_ = () => {
-      this.activationAnimationHasEnded_ = true;
-      this.runDeactivationUXLogicIfReady_();
-    };
-
-    /** @private {?Event} */
-    this.previousActivationEvent_ = null;
-  }
-
-  /**
-   * We compute this property so that we are not querying information about the client
-   * until the point in time where the foundation requests it. This prevents scenarios where
-   * client-side feature-detection may happen too early, such as when components are rendered on the server
-   * and then initialized at mount time on the client.
-   * @return {boolean}
-   * @private
-   */
-  supportsPressRipple_() {
-    return this.adapter_.browserSupportsCssVars();
-  }
-
-  /**
-   * @return {!ActivationStateType}
-   */
-  defaultActivationState_() {
-    return {
-      isActivated: false,
-      hasDeactivationUXRun: false,
-      wasActivatedByPointer: false,
-      wasElementMadeActive: false,
-      activationEvent: null,
-      isProgrammatic: false,
-    };
-  }
-
-  /** @override */
-  init() {
-    const supportsPressRipple = this.supportsPressRipple_();
-
-    this.registerRootHandlers_(supportsPressRipple);
-
-    if (supportsPressRipple) {
-      const {ROOT, UNBOUNDED} = foundation_MDCRippleFoundation.cssClasses;
-      requestAnimationFrame(() => {
-        this.adapter_.addClass(ROOT);
-        if (this.adapter_.isUnbounded()) {
-          this.adapter_.addClass(UNBOUNDED);
-          // Unbounded ripples need layout logic applied immediately to set coordinates for both shade and ripple
-          this.layoutInternal_();
-        }
-      });
-    }
-  }
-
-  /** @override */
-  destroy() {
-    if (this.supportsPressRipple_()) {
-      if (this.activationTimer_) {
-        clearTimeout(this.activationTimer_);
-        this.activationTimer_ = 0;
-        this.adapter_.removeClass(foundation_MDCRippleFoundation.cssClasses.FG_ACTIVATION);
-      }
-
-      if (this.fgDeactivationRemovalTimer_) {
-        clearTimeout(this.fgDeactivationRemovalTimer_);
-        this.fgDeactivationRemovalTimer_ = 0;
-        this.adapter_.removeClass(foundation_MDCRippleFoundation.cssClasses.FG_DEACTIVATION);
-      }
-
-      const {ROOT, UNBOUNDED} = foundation_MDCRippleFoundation.cssClasses;
-      requestAnimationFrame(() => {
-        this.adapter_.removeClass(ROOT);
-        this.adapter_.removeClass(UNBOUNDED);
-        this.removeCssVars_();
-      });
-    }
-
-    this.deregisterRootHandlers_();
-    this.deregisterDeactivationHandlers_();
-  }
-
-  /**
-   * @param {boolean} supportsPressRipple Passed from init to save a redundant function call
-   * @private
-   */
-  registerRootHandlers_(supportsPressRipple) {
-    if (supportsPressRipple) {
-      ACTIVATION_EVENT_TYPES.forEach((type) => {
-        this.adapter_.registerInteractionHandler(type, this.activateHandler_);
-      });
-      if (this.adapter_.isUnbounded()) {
-        this.adapter_.registerResizeHandler(this.resizeHandler_);
-      }
-    }
-
-    this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
-    this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
-  }
-
-  /**
-   * @param {!Event} e
-   * @private
-   */
-  registerDeactivationHandlers_(e) {
-    if (e.type === 'keydown') {
-      this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
-    } else {
-      POINTER_DEACTIVATION_EVENT_TYPES.forEach((type) => {
-        this.adapter_.registerDocumentInteractionHandler(type, this.deactivateHandler_);
-      });
-    }
-  }
-
-  /** @private */
-  deregisterRootHandlers_() {
-    ACTIVATION_EVENT_TYPES.forEach((type) => {
-      this.adapter_.deregisterInteractionHandler(type, this.activateHandler_);
-    });
-    this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
-    this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
-
-    if (this.adapter_.isUnbounded()) {
-      this.adapter_.deregisterResizeHandler(this.resizeHandler_);
-    }
-  }
-
-  /** @private */
-  deregisterDeactivationHandlers_() {
-    this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
-    POINTER_DEACTIVATION_EVENT_TYPES.forEach((type) => {
-      this.adapter_.deregisterDocumentInteractionHandler(type, this.deactivateHandler_);
-    });
-  }
-
-  /** @private */
-  removeCssVars_() {
-    const {strings} = foundation_MDCRippleFoundation;
-    Object.keys(strings).forEach((k) => {
-      if (k.indexOf('VAR_') === 0) {
-        this.adapter_.updateCssVariable(strings[k], null);
-      }
-    });
-  }
-
-  /**
-   * @param {?Event} e
-   * @private
-   */
-  activate_(e) {
-    if (this.adapter_.isSurfaceDisabled()) {
-      return;
-    }
-
-    const activationState = this.activationState_;
-    if (activationState.isActivated) {
-      return;
-    }
-
-    // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
-    const previousActivationEvent = this.previousActivationEvent_;
-    const isSameInteraction = previousActivationEvent && e && previousActivationEvent.type !== e.type;
-    if (isSameInteraction) {
-      return;
-    }
-
-    activationState.isActivated = true;
-    activationState.isProgrammatic = e === null;
-    activationState.activationEvent = e;
-    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : (
-      e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown'
-    );
-
-    const hasActivatedChild =
-      e && activatedTargets.length > 0 && activatedTargets.some((target) => this.adapter_.containsEventTarget(target));
-    if (hasActivatedChild) {
-      // Immediately reset activation state, while preserving logic that prevents touch follow-on events
-      this.resetActivationState_();
-      return;
-    }
-
-    if (e) {
-      activatedTargets.push(/** @type {!EventTarget} */ (e.target));
-      this.registerDeactivationHandlers_(e);
-    }
-
-    activationState.wasElementMadeActive = this.checkElementMadeActive_(e);
-    if (activationState.wasElementMadeActive) {
-      this.animateActivation_();
-    }
-
-    requestAnimationFrame(() => {
-      // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
-      activatedTargets = [];
-
-      if (!activationState.wasElementMadeActive && (e.key === ' ' || e.keyCode === 32)) {
-        // If space was pressed, try again within an rAF call to detect :active, because different UAs report
-        // active states inconsistently when they're called within event handling code:
-        // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
-        // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
-        // We try first outside rAF to support Edge, which does not exhibit this problem, but will crash if a CSS
-        // variable is set within a rAF callback for a submit button interaction (#2241).
-        activationState.wasElementMadeActive = this.checkElementMadeActive_(e);
-        if (activationState.wasElementMadeActive) {
-          this.animateActivation_();
-        }
-      }
-
-      if (!activationState.wasElementMadeActive) {
-        // Reset activation state immediately if element was not made active.
-        this.activationState_ = this.defaultActivationState_();
-      }
-    });
-  }
-
-  /**
-   * @param {?Event} e
-   * @private
-   */
-  checkElementMadeActive_(e) {
-    return (e && e.type === 'keydown') ? this.adapter_.isSurfaceActive() : true;
-  }
-
-  /**
-   * @param {?Event=} event Optional event containing position information.
-   */
-  activate(event = null) {
-    this.activate_(event);
-  }
-
-  /** @private */
-  animateActivation_() {
-    const {VAR_FG_TRANSLATE_START, VAR_FG_TRANSLATE_END} = foundation_MDCRippleFoundation.strings;
-    const {FG_DEACTIVATION, FG_ACTIVATION} = foundation_MDCRippleFoundation.cssClasses;
-    const {DEACTIVATION_TIMEOUT_MS} = foundation_MDCRippleFoundation.numbers;
-
-    this.layoutInternal_();
-
-    let translateStart = '';
-    let translateEnd = '';
-
-    if (!this.adapter_.isUnbounded()) {
-      const {startPoint, endPoint} = this.getFgTranslationCoordinates_();
-      translateStart = `${startPoint.x}px, ${startPoint.y}px`;
-      translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
-    }
-
-    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
-    this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
-    // Cancel any ongoing activation/deactivation animations
-    clearTimeout(this.activationTimer_);
-    clearTimeout(this.fgDeactivationRemovalTimer_);
-    this.rmBoundedActivationClasses_();
-    this.adapter_.removeClass(FG_DEACTIVATION);
-
-    // Force layout in order to re-trigger the animation.
-    this.adapter_.computeBoundingRect();
-    this.adapter_.addClass(FG_ACTIVATION);
-    this.activationTimer_ = setTimeout(() => this.activationTimerCallback_(), DEACTIVATION_TIMEOUT_MS);
-  }
-
-  /**
-   * @private
-   * @return {{startPoint: PointType, endPoint: PointType}}
-   */
-  getFgTranslationCoordinates_() {
-    const {activationEvent, wasActivatedByPointer} = this.activationState_;
-
-    let startPoint;
-    if (wasActivatedByPointer) {
-      startPoint = getNormalizedEventCoords(
-        /** @type {!Event} */ (activationEvent),
-        this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect()
-      );
-    } else {
-      startPoint = {
-        x: this.frame_.width / 2,
-        y: this.frame_.height / 2,
-      };
-    }
-    // Center the element around the start point.
-    startPoint = {
-      x: startPoint.x - (this.initialSize_ / 2),
-      y: startPoint.y - (this.initialSize_ / 2),
-    };
-
-    const endPoint = {
-      x: (this.frame_.width / 2) - (this.initialSize_ / 2),
-      y: (this.frame_.height / 2) - (this.initialSize_ / 2),
-    };
-
-    return {startPoint, endPoint};
-  }
-
-  /** @private */
-  runDeactivationUXLogicIfReady_() {
-    // This method is called both when a pointing device is released, and when the activation animation ends.
-    // The deactivation animation should only run after both of those occur.
-    const {FG_DEACTIVATION} = foundation_MDCRippleFoundation.cssClasses;
-    const {hasDeactivationUXRun, isActivated} = this.activationState_;
-    const activationHasEnded = hasDeactivationUXRun || !isActivated;
-
-    if (activationHasEnded && this.activationAnimationHasEnded_) {
-      this.rmBoundedActivationClasses_();
-      this.adapter_.addClass(FG_DEACTIVATION);
-      this.fgDeactivationRemovalTimer_ = setTimeout(() => {
-        this.adapter_.removeClass(FG_DEACTIVATION);
-      }, numbers.FG_DEACTIVATION_MS);
-    }
-  }
-
-  /** @private */
-  rmBoundedActivationClasses_() {
-    const {FG_ACTIVATION} = foundation_MDCRippleFoundation.cssClasses;
-    this.adapter_.removeClass(FG_ACTIVATION);
-    this.activationAnimationHasEnded_ = false;
-    this.adapter_.computeBoundingRect();
-  }
-
-  resetActivationState_() {
-    this.previousActivationEvent_ = this.activationState_.activationEvent;
-    this.activationState_ = this.defaultActivationState_();
-    // Touch devices may fire additional events for the same interaction within a short time.
-    // Store the previous event until it's safe to assume that subsequent events are for new interactions.
-    setTimeout(() => this.previousActivationEvent_ = null, foundation_MDCRippleFoundation.numbers.TAP_DELAY_MS);
-  }
-
-  /**
-   * @param {?Event} e
-   * @private
-   */
-  deactivate_(e) {
-    const activationState = this.activationState_;
-    // This can happen in scenarios such as when you have a keyup event that blurs the element.
-    if (!activationState.isActivated) {
-      return;
-    }
-
-    const state = /** @type {!ActivationStateType} */ (Object.assign({}, activationState));
-
-    if (activationState.isProgrammatic) {
-      const evtObject = null;
-      requestAnimationFrame(() => this.animateDeactivation_(evtObject, state));
-      this.resetActivationState_();
-    } else {
-      this.deregisterDeactivationHandlers_();
-      requestAnimationFrame(() => {
-        this.activationState_.hasDeactivationUXRun = true;
-        this.animateDeactivation_(e, state);
-        this.resetActivationState_();
-      });
-    }
-  }
-
-  /**
-   * @param {?Event=} event Optional event containing position information.
-   */
-  deactivate(event = null) {
-    this.deactivate_(event);
-  }
-
-  /**
-   * @param {Event} e
-   * @param {!ActivationStateType} options
-   * @private
-   */
-  animateDeactivation_(e, {wasActivatedByPointer, wasElementMadeActive}) {
-    if (wasActivatedByPointer || wasElementMadeActive) {
-      this.runDeactivationUXLogicIfReady_();
-    }
-  }
-
-  layout() {
-    if (this.layoutFrame_) {
-      cancelAnimationFrame(this.layoutFrame_);
-    }
-    this.layoutFrame_ = requestAnimationFrame(() => {
-      this.layoutInternal_();
-      this.layoutFrame_ = 0;
-    });
-  }
-
-  /** @private */
-  layoutInternal_() {
-    this.frame_ = this.adapter_.computeBoundingRect();
-    const maxDim = Math.max(this.frame_.height, this.frame_.width);
-
-    // Surface diameter is treated differently for unbounded vs. bounded ripples.
-    // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
-    // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
-    // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
-    // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
-    // `overflow: hidden`.
-    const getBoundedRadius = () => {
-      const hypotenuse = Math.sqrt(Math.pow(this.frame_.width, 2) + Math.pow(this.frame_.height, 2));
-      return hypotenuse + foundation_MDCRippleFoundation.numbers.PADDING;
-    };
-
-    this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
-
-    // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
-    this.initialSize_ = maxDim * foundation_MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE;
-    this.fgScale_ = this.maxRadius_ / this.initialSize_;
-
-    this.updateLayoutCssVars_();
-  }
-
-  /** @private */
-  updateLayoutCssVars_() {
-    const {
-      VAR_FG_SIZE, VAR_LEFT, VAR_TOP, VAR_FG_SCALE,
-    } = foundation_MDCRippleFoundation.strings;
-
-    this.adapter_.updateCssVariable(VAR_FG_SIZE, `${this.initialSize_}px`);
-    this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
-
-    if (this.adapter_.isUnbounded()) {
-      this.unboundedCoords_ = {
-        left: Math.round((this.frame_.width / 2) - (this.initialSize_ / 2)),
-        top: Math.round((this.frame_.height / 2) - (this.initialSize_ / 2)),
-      };
-
-      this.adapter_.updateCssVariable(VAR_LEFT, `${this.unboundedCoords_.left}px`);
-      this.adapter_.updateCssVariable(VAR_TOP, `${this.unboundedCoords_.top}px`);
-    }
-  }
-
-  /** @param {boolean} unbounded */
-  setUnbounded(unbounded) {
-    const {UNBOUNDED} = foundation_MDCRippleFoundation.cssClasses;
-    if (unbounded) {
-      this.adapter_.addClass(UNBOUNDED);
-    } else {
-      this.adapter_.removeClass(UNBOUNDED);
-    }
-  }
-
-  handleFocus() {
-    requestAnimationFrame(() =>
-      this.adapter_.addClass(foundation_MDCRippleFoundation.cssClasses.BG_FOCUSED));
-  }
-
-  handleBlur() {
-    requestAnimationFrame(() =>
-      this.adapter_.removeClass(foundation_MDCRippleFoundation.cssClasses.BG_FOCUSED));
-  }
-}
-
-/* harmony default export */ var ripple_foundation = (foundation_MDCRippleFoundation);
-
-// CONCATENATED MODULE: ./node_modules/@material/ripple/index.js
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-
-
-
-
-
-/**
- * @extends MDCComponent<!MDCRippleFoundation>
- */
-class ripple_MDCRipple extends component["a" /* default */] {
-  /** @param {...?} args */
-  constructor(...args) {
-    super(...args);
-
-    /** @type {boolean} */
-    this.disabled = false;
-
-    /** @private {boolean} */
-    this.unbounded_;
-  }
-
-  /**
-   * @param {!Element} root
-   * @param {{isUnbounded: (boolean|undefined)}=} options
-   * @return {!MDCRipple}
-   */
-  static attachTo(root, {isUnbounded = undefined} = {}) {
-    const ripple = new ripple_MDCRipple(root);
-    // Only override unbounded behavior if option is explicitly specified
-    if (isUnbounded !== undefined) {
-      ripple.unbounded = /** @type {boolean} */ (isUnbounded);
-    }
-    return ripple;
-  }
-
-  /**
-   * @param {!RippleCapableSurface} instance
-   * @return {!MDCRippleAdapter}
-   */
-  static createAdapter(instance) {
-    const MATCHES = getMatchesProperty(HTMLElement.prototype);
-
-    return {
-      browserSupportsCssVars: () => supportsCssVariables(window),
-      isUnbounded: () => instance.unbounded,
-      isSurfaceActive: () => instance.root_[MATCHES](':active'),
-      isSurfaceDisabled: () => instance.disabled,
-      addClass: (className) => instance.root_.classList.add(className),
-      removeClass: (className) => instance.root_.classList.remove(className),
-      containsEventTarget: (target) => instance.root_.contains(target),
-      registerInteractionHandler: (evtType, handler) =>
-        instance.root_.addEventListener(evtType, handler, applyPassive()),
-      deregisterInteractionHandler: (evtType, handler) =>
-        instance.root_.removeEventListener(evtType, handler, applyPassive()),
-      registerDocumentInteractionHandler: (evtType, handler) =>
-        document.documentElement.addEventListener(evtType, handler, applyPassive()),
-      deregisterDocumentInteractionHandler: (evtType, handler) =>
-        document.documentElement.removeEventListener(evtType, handler, applyPassive()),
-      registerResizeHandler: (handler) => window.addEventListener('resize', handler),
-      deregisterResizeHandler: (handler) => window.removeEventListener('resize', handler),
-      updateCssVariable: (varName, value) => instance.root_.style.setProperty(varName, value),
-      computeBoundingRect: () => instance.root_.getBoundingClientRect(),
-      getWindowPageOffset: () => ({x: window.pageXOffset, y: window.pageYOffset}),
-    };
-  }
-
-  /** @return {boolean} */
-  get unbounded() {
-    return this.unbounded_;
-  }
-
-  /** @param {boolean} unbounded */
-  set unbounded(unbounded) {
-    this.unbounded_ = Boolean(unbounded);
-    this.setUnbounded_();
-  }
-
-  /**
-   * Closure Compiler throws an access control error when directly accessing a
-   * protected or private property inside a getter/setter, like unbounded above.
-   * By accessing the protected property inside a method, we solve that problem.
-   * That's why this function exists.
-   * @private
-   */
-  setUnbounded_() {
-    this.foundation_.setUnbounded(this.unbounded_);
-  }
-
-  activate() {
-    this.foundation_.activate();
-  }
-
-  deactivate() {
-    this.foundation_.deactivate();
-  }
-
-  layout() {
-    this.foundation_.layout();
-  }
-
-  /**
-   * @return {!MDCRippleFoundation}
-   * @override
-   */
-  getDefaultFoundation() {
-    return new ripple_foundation(ripple_MDCRipple.createAdapter(this));
-  }
-
-  /** @override */
-  initialSyncWithDOM() {
-    this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
-  }
-}
-
-/**
- * See Material Design spec for more details on when to use ripples.
- * https://material.io/guidelines/motion/choreography.html#choreography-creation
- * @record
- */
-class RippleCapableSurface {}
-
-/** @protected {!Element} */
-RippleCapableSurface.prototype.root_;
-
-/**
- * Whether or not the ripple bleeds out of the bounds of the element.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.unbounded;
-
-/**
- * Whether or not the ripple is attached to a disabled component.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.disabled;
-
-
-
-
-/***/ }),
-/* 65 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6729,7 +6972,7 @@ __webpack_require__.d(__webpack_exports__, "MDCLinearProgress", function() { ret
 var foundation = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./node_modules/@material/base/component.js
-var component = __webpack_require__(3);
+var component = __webpack_require__(2);
 
 // CONCATENATED MODULE: ./node_modules/@material/base/index.js
 /**
@@ -6761,7 +7004,7 @@ var component = __webpack_require__(3);
 
 
 // EXTERNAL MODULE: ./node_modules/@material/animation/index.js
-var animation = __webpack_require__(4);
+var animation = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./node_modules/@material/linear-progress/constants.js
 /**
@@ -6979,7 +7222,7 @@ class linear_progress_MDCLinearProgress extends component["a" /* default */] {
 
 
 /***/ }),
-/* 66 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6991,7 +7234,7 @@ __webpack_require__.d(__webpack_exports__, "MDCSliderFoundation", function() { r
 __webpack_require__.d(__webpack_exports__, "MDCSlider", function() { return /* binding */ slider_MDCSlider; });
 
 // EXTERNAL MODULE: ./node_modules/@material/base/component.js
-var component = __webpack_require__(3);
+var component = __webpack_require__(2);
 
 // CONCATENATED MODULE: ./node_modules/@material/slider/constants.js
 /**
@@ -7252,7 +7495,7 @@ class MDCSliderAdapter {
 /* harmony default export */ var adapter = (MDCSliderAdapter);
 
 // EXTERNAL MODULE: ./node_modules/@material/animation/index.js
-var animation = __webpack_require__(4);
+var animation = __webpack_require__(9);
 
 // EXTERNAL MODULE: ./node_modules/@material/base/foundation.js
 var foundation = __webpack_require__(1);
@@ -8052,7 +8295,329 @@ class slider_MDCSlider extends component["a" /* default */] {
 
 
 /***/ }),
-/* 67 */
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "MDCIconButtonToggle", function() { return /* binding */ icon_button_MDCIconButtonToggle; });
+__webpack_require__.d(__webpack_exports__, "MDCIconButtonToggleFoundation", function() { return /* reexport */ icon_button_foundation; });
+
+// EXTERNAL MODULE: ./node_modules/@material/base/component.js
+var component = __webpack_require__(2);
+
+// EXTERNAL MODULE: ./node_modules/@material/base/foundation.js
+var foundation = __webpack_require__(1);
+
+// CONCATENATED MODULE: ./node_modules/@material/icon-button/adapter.js
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Icon Button Toggle. Provides an interface for managing
+ * - classes
+ * - dom
+ * - inner text
+ * - event handlers
+ * - event dispatch
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+
+class MDCIconButtonToggleAdapter {
+  /** @param {string} className */
+  addClass(className) {}
+
+  /** @param {string} className */
+  removeClass(className) {}
+
+  /**
+   * @param {string} className
+   * @return {boolean}
+   * */
+  hasClass(className) {}
+
+  /**
+   * @param {string} attrName
+   * @param {string} attrValue
+   */
+  setAttr(attrName, attrValue) {}
+
+  /** @param {!IconButtonToggleEvent} evtData */
+  notifyChange(evtData) {}
+}
+
+/**
+ * @typedef {{
+ *   isOn: boolean,
+ * }}
+ */
+let IconButtonToggleEvent;
+
+
+
+// CONCATENATED MODULE: ./node_modules/@material/icon-button/constants.js
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/** @enum {string} */
+const cssClasses = {
+  ROOT: 'mdc-icon-button',
+  ICON_BUTTON_ON: 'mdc-icon-button--on',
+};
+
+/** @enum {string} */
+const strings = {
+  ARIA_PRESSED: 'aria-pressed',
+  ARIA_LABEL: 'aria-label',
+  CHANGE_EVENT: 'MDCIconButtonToggle:change',
+};
+
+
+
+// CONCATENATED MODULE: ./node_modules/@material/icon-button/foundation.js
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+/* eslint-disable no-unused-vars */
+
+
+
+/**
+ * @extends {MDCFoundation<!MDCIconButtonToggleAdapter>}
+ */
+class foundation_MDCIconButtonToggleFoundation extends foundation["a" /* default */] {
+  static get cssClasses() {
+    return cssClasses;
+  }
+
+  static get strings() {
+    return strings;
+  }
+
+  static get defaultAdapter() {
+    return {
+      addClass: () => {},
+      removeClass: () => {},
+      hasClass: () => {},
+      setAttr: () => {},
+      notifyChange: () => {},
+    };
+  }
+
+  constructor(adapter) {
+    super(Object.assign(foundation_MDCIconButtonToggleFoundation.defaultAdapter, adapter));
+
+    /** @private {boolean} */
+    this.disabled_ = false;
+  }
+
+  init() {
+    this.adapter_.setAttr(strings.ARIA_PRESSED, `${this.isOn()}`);
+  }
+
+  handleClick() {
+    this.toggle();
+    this.adapter_.notifyChange(/** @type {!IconButtonToggleEvent} */ ({isOn: this.isOn()}));
+  }
+
+  /** @return {boolean} */
+  isOn() {
+    return this.adapter_.hasClass(cssClasses.ICON_BUTTON_ON);
+  }
+
+  /** @param {boolean=} isOn */
+  toggle(isOn = !this.isOn()) {
+    if (isOn) {
+      this.adapter_.addClass(cssClasses.ICON_BUTTON_ON);
+    } else {
+      this.adapter_.removeClass(cssClasses.ICON_BUTTON_ON);
+    }
+
+    this.adapter_.setAttr(strings.ARIA_PRESSED, `${isOn}`);
+  }
+}
+
+/** @record */
+class IconButtonToggleState {}
+
+/* harmony default export */ var icon_button_foundation = (foundation_MDCIconButtonToggleFoundation);
+
+// EXTERNAL MODULE: ./node_modules/@material/ripple/index.js + 4 modules
+var _material_ripple = __webpack_require__(21);
+
+// CONCATENATED MODULE: ./node_modules/@material/icon-button/index.js
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+/**
+ * @extends {MDCComponent<!MDCIconButtonToggleFoundation>}
+ */
+class icon_button_MDCIconButtonToggle extends component["a" /* default */] {
+  static attachTo(root) {
+    return new icon_button_MDCIconButtonToggle(root);
+  }
+
+  constructor(...args) {
+    super(...args);
+
+    /** @private {!MDCRipple} */
+    this.ripple_ = this.initRipple_();
+    /** @private {!Function} */
+    this.handleClick_;
+  }
+
+  /**
+   * @return {!MDCRipple}
+   * @private
+   */
+  initRipple_() {
+    const ripple = new _material_ripple["MDCRipple"](this.root_);
+    ripple.unbounded = true;
+    return ripple;
+  }
+
+  destroy() {
+    this.root_.removeEventListener('click', this.handleClick_);
+    this.ripple_.destroy();
+    super.destroy();
+  }
+
+  /** @return {!MDCIconButtonToggleFoundation} */
+  getDefaultFoundation() {
+    return new icon_button_foundation({
+      addClass: (className) => this.root_.classList.add(className),
+      removeClass: (className) => this.root_.classList.remove(className),
+      hasClass: (className) => this.root_.classList.contains(className),
+      setAttr: (attrName, attrValue) => this.root_.setAttribute(attrName, attrValue),
+      notifyChange: (evtData) => this.emit(icon_button_foundation.strings.CHANGE_EVENT, evtData),
+    });
+  }
+
+  initialSyncWithDOM() {
+    this.handleClick_ = this.foundation_.handleClick.bind(this.foundation_);
+    this.root_.addEventListener('click', this.handleClick_);
+  }
+
+  /** @return {!MDCRipple} */
+  get ripple() {
+    return this.ripple_;
+  }
+
+  /** @return {boolean} */
+  get on() {
+    return this.foundation_.isOn();
+  }
+
+  /** @param {boolean} isOn */
+  set on(isOn) {
+    this.foundation_.toggle(isOn);
+  }
+}
+
+
+
+
+/***/ }),
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
