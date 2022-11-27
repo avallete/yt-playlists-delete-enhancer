@@ -20,6 +20,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
   constructor(properties: Properties) {
     super(properties)
     this.state = {}
+    this.removeVideoWatchedPercentHandler = this.removeVideoWatchedPercentHandler.bind(this)
     this.removeVideoHandler = this.removeVideoHandler.bind(this)
   }
 
@@ -32,13 +33,30 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
     }
   }
 
-  async removeVideoHandler(watchTimeValue: number) {
+  async removeVideoWatchedPercentHandler(watchTimeValue: number) {
     const { playlist } = this.state
     if (playlist && playlist.continuations[0].videos.length > 0) {
       const [toDeleteVideos, toKeepVideos] = partition(
         playlist.continuations[0].videos,
         (v) => v.percentDurationWatched >= watchTimeValue
       )
+      if (toDeleteVideos.length > 0) {
+        try {
+          await removeVideosFromPlaylist(this.props.config, playlist?.playlistId as string, toDeleteVideos)
+          playlist.continuations[0].videos = toKeepVideos
+          removeVideosFromPlaylistUI(toDeleteVideos)
+          this.setState({ ...this.state, playlist })
+        } catch (error) {
+          this.setState({ ...this.state, errorMessages: [error.message] })
+        }
+      }
+    }
+  }
+
+  async removeVideoHandler(videoId: string) {
+    const { playlist } = this.state
+    if (playlist && playlist.continuations[0].videos.length > 0) {
+      const [toDeleteVideos, toKeepVideos] = partition(playlist.continuations[0].videos, (v) => v.videoId === videoId)
       if (toDeleteVideos.length > 0) {
         try {
           await removeVideosFromPlaylist(this.props.config, playlist?.playlistId as string, toDeleteVideos)
@@ -77,7 +95,12 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
     }
     if (this.state?.playlist) {
       if (this.state.playlist.isEditable) {
-        return <RemoveVideoEnhancerContainer removeVideoHandler={this.removeVideoHandler} />
+        return (
+          <RemoveVideoEnhancerContainer
+            removeVideoWatchedPercentHandler={this.removeVideoWatchedPercentHandler}
+            removeVideoHandler={this.removeVideoHandler}
+          />
+        )
       }
       return <div>Playlist isn't editable</div>
     }

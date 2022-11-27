@@ -1,10 +1,15 @@
-import { useState } from 'preact/hooks'
+import { h, render } from 'preact'
+import { useState, useEffect, useCallback } from 'preact/hooks'
 import Button from 'preact-material-components/Button'
 import Slider from 'preact-material-components/Slider'
 import LinearProgress from 'preact-material-components/LinearProgress'
+import getElementsByXpath from '~lib/get-elements-by-xpath'
+import { XPATH } from '~src/selectors'
+import VideoItemQuickDeleteButton from './video-item-quick-delete-button'
 
 interface Properties {
-  removeVideoHandler: (watchTimeValue: number) => Promise<void> | void
+  removeVideoWatchedPercentHandler: (watchTimeValue: number) => Promise<void> | void
+  removeVideoHandler: (videoId: string) => Promise<void> | void
   initialValue?: number
 }
 
@@ -21,7 +26,11 @@ function validate(value: any): boolean {
   return false
 }
 
-function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 100 }: Properties) {
+function RemoveVideoEnhancerContainer({
+  removeVideoWatchedPercentHandler,
+  initialValue = 100,
+  removeVideoHandler,
+}: Properties) {
   const [inputValue, setValue] = useState(initialValue)
   const [isReadyToRemove, setIsReadyToRemove] = useState(true)
 
@@ -32,6 +41,25 @@ function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 100 }
       setValue(value)
     }
   }
+
+  const removeVideo = useCallback(async (videoId: string) => {
+    await removeVideoHandler(videoId)
+  }, [])
+
+  useEffect(() => {
+    const menus = getElementsByXpath(XPATH.YT_PLAYLIST_VIDEO_MENU) as HTMLElement[]
+    for (const element of menus) {
+      element.style.display = 'inline-flex'
+      render(
+        h(VideoItemQuickDeleteButton, {
+          // @ts-ignore element.data does not exists on types
+          videoId: element.parentElement?.data.videoId,
+          onClick: removeVideo,
+        }),
+        element
+      )
+    }
+  }, [])
 
   return (
     <div className='style-scope ytd-playlist-sidebar-renderer'>
@@ -46,7 +74,7 @@ function RemoveVideoEnhancerContainer({ removeVideoHandler, initialValue = 100 }
           disabled={!isReadyToRemove}
           onClick={async () => {
             setIsReadyToRemove(false)
-            await removeVideoHandler(inputValue)
+            await removeVideoWatchedPercentHandler(inputValue)
             setIsReadyToRemove(true)
           }}
         >
