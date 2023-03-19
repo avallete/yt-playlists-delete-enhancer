@@ -6,6 +6,7 @@ import LinearProgress from 'preact-material-components/LinearProgress'
 import getElementsByXpath from '~lib/get-elements-by-xpath'
 import { XPATH } from '~src/selectors'
 import VideoItemQuickDeleteButton from './video-item-quick-delete-button'
+import debug from '~src/logger'
 
 interface Properties {
   removeVideoWatchedPercentHandler: (watchTimeValue: number) => Promise<void> | void
@@ -43,7 +44,9 @@ function RemoveVideoEnhancerContainer({
   }
 
   const removeVideo = useCallback(async (videoId: string) => {
+    debug('removeVideo clicked: ', videoId)
     await removeVideoHandler(videoId)
+    debug('removeVideo ended: ', videoId)
   }, [])
 
   useEffect(() => {

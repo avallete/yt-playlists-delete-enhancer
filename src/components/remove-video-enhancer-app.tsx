@@ -5,6 +5,7 @@ import { YTConfigData, Playlist } from '~src/youtube'
 import { removeVideosFromPlaylist, fetchAllPlaylistContent } from '~src/yt-api'
 import partition from '~lib/partition'
 import removeVideosFromPlaylistUI from '~src/operations/actions/remove-videos-from-playlist-ui'
+import debug from '~src/logger'
 
 interface Properties {
   config: YTConfigData
@@ -57,6 +58,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
     const { playlist } = this.state
     if (playlist && playlist.continuations[0].videos.length > 0) {
       const [toDeleteVideos, toKeepVideos] = partition(playlist.continuations[0].videos, (v) => v.videoId === videoId)
+      debug('removeVideoHandler: ', '\ntoDelete: ', toDeleteVideos, '\ntoKeep: ', toKeepVideos)
       if (toDeleteVideos.length > 0) {
         try {
           await removeVideosFromPlaylist(this.props.config, playlist?.playlistId as string, toDeleteVideos)
