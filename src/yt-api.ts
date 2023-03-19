@@ -1,6 +1,7 @@
 import sha1 from 'sha1'
 import { YTConfigData, PlaylistVideo, Playlist, PlaylistContinuation } from './youtube'
 import { PlaylistNotEditableError, PlaylistEmptyError } from '~src/errors'
+import debug from './logger'
 
 type YTHeaderKey =
   | 'X-Goog-Visitor-Id'
@@ -174,6 +175,7 @@ export async function fetchAllPlaylistContent(config: YTConfigData, playlistName
       videos = [...videos, ...continuation.videos]
     }
     playlist.continuations = [{ videos }]
+    debug('allPlaylist content: ', playlist)
     return playlist
   }
   throw PlaylistNotEditableError
@@ -202,6 +204,7 @@ export async function removeVideosFromPlaylist(
   }
 
   url.searchParams.append('key', config.INNERTUBE_API_KEY)
+  debug('removeVideosFromPlaylist: ', body)
   const response = await fetch(`${url}`, {
     credentials: 'include',
     headers,
@@ -210,7 +213,8 @@ export async function removeVideosFromPlaylist(
     mode: 'cors',
   })
   const data = await response.json()
-  if (data.status !== 'STATUS_SUCCEEDED') {
+  debug('removeVideosFromPlaylist result: ', data)
+  if (data.status === 'STATUS_SUCCEEDED') {
     return true
   }
   return false

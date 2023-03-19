@@ -2,8 +2,10 @@ import { XPATH } from '~src/selectors'
 import getElementsByXpath from '~src/lib/get-elements-by-xpath'
 import listMapSearch from '~src/lib/list-map-search'
 import { PlaylistVideo } from '~src/youtube'
+import debug from '~src/logger'
 
-function removeVideoWithYtAction(videoId: String) {
+function removeVideosWithYtAction(videoIds: Array<string>) {
+  debug('removeVideosWithYtAction: ', videoIds)
   document.querySelectorAll('ytd-app')[0].dispatchEvent(
     new CustomEvent('yt-action', {
       detail: {
@@ -11,7 +13,7 @@ function removeVideoWithYtAction(videoId: String) {
         args: [
           {
             playlistRemoveVideosAction: {
-              setVideoIds: [videoId],
+              setVideoIds: videoIds,
             },
           },
         ],
@@ -22,11 +24,14 @@ function removeVideoWithYtAction(videoId: String) {
 }
 
 export default function removeVideosFromPlaylist(videosToDelete: PlaylistVideo[]) {
+  debug('removeVideosFromPlaylist: ', videosToDelete)
   // cast Node as any to access .data property availlable on ytd-playlist-video-renderer elements
   const playlistVideoRendererNodes = getElementsByXpath(XPATH.YT_PLAYLIST_VIDEO_RENDERERS) as any[]
   // All videos to remove MAY be present in the UI because if there is more videos to remove
   // than videos found into the UI, some removed videos aren't loaded in the UI
   const uniqueVideosToDelete = [...new Map(videosToDelete.map((item) => [item.videoId, item])).values()]
+  debug('uniqueVideosToDelete: ', uniqueVideosToDelete)
+
   if (playlistVideoRendererNodes.length >= videosToDelete.length) {
     const searchMap = listMapSearch(
       uniqueVideosToDelete,
@@ -37,11 +42,9 @@ export default function removeVideosFromPlaylist(videosToDelete: PlaylistVideo[]
     // if all videos to remove are present in the UI
     if (searchMap) {
       const htmlElements = Object.values(searchMap)
-      for (const element of htmlElements) {
-        // eslint-disable-next-line no-underscore-dangle
-        const videoId = element.__data.data.setVideoId
-        removeVideoWithYtAction(videoId)
-      }
+      // eslint-disable-next-line no-underscore-dangle
+      const videoIds = htmlElements.map((element) => element.__data.data.setVideoId)
+      removeVideosWithYtAction(videoIds)
       return
     }
   }
