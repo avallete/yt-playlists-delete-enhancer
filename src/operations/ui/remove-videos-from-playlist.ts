@@ -39,7 +39,7 @@ export default function removeVideosFromPlaylist(videosToDelete: PlaylistVideo[]
       const htmlElements = Object.values(searchMap)
       for (const element of htmlElements) {
         // eslint-disable-next-line no-underscore-dangle
-        const videoId = element.__data.data.setVideoId
+        const videoId = element.data.setVideoId
         removeVideoWithYtAction(videoId)
       }
       return
