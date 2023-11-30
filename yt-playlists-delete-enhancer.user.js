@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         yt-playlists-delete-enhancer
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
-// @version      1.6.0
+// @version      1.6.1
 // @author       Andrew Valleteau <avallete@student.42.fr>
 // @grant        none
 // @match        *://youtube.com/*
@@ -3016,7 +3016,7 @@ exports.default = addLocationChangeEventHooks;
 /* 32 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.6.0\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
+module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.6.1\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
 
 /***/ }),
 /* 33 */
@@ -6459,7 +6459,7 @@ function removeVideosFromPlaylist(videosToDelete) {
             const htmlElements = Object.values(searchMap);
             for (const element of htmlElements) {
                 // eslint-disable-next-line no-underscore-dangle
-                const videoId = element.__data.data.setVideoId;
+                const videoId = element.data.setVideoId;
                 removeVideoWithYtAction(videoId);
             }
             return;
