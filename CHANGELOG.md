@@ -1,9 +1,15 @@
-# [1.6.0](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.11...v1.6.0) (2022-11-27)
+## [1.6.1](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.6.0...v1.6.1) (2023-11-30)
 
+
+### Bug Fixes
+
+* quick remove button download ([2e2b1f0](https://github.com/avallete/yt-playlists-delete-enhancer/commit/2e2b1f0d987c939ff9b54798bca7d0d6048fcb6c))
+
+# [1.6.0](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.11...v1.6.0) (2022-11-27)
 
 ### Features
 
-* add quick remove to playlist ([#200](https://github.com/avallete/yt-playlists-delete-enhancer/issues/200)) ([2eb5e91](https://github.com/avallete/yt-playlists-delete-enhancer/commit/2eb5e910778d1af85deac9a2eccb4a60b1b92df1))
+- add quick remove to playlist ([#200](https://github.com/avallete/yt-playlists-delete-enhancer/issues/200)) ([2eb5e91](https://github.com/avallete/yt-playlists-delete-enhancer/commit/2eb5e910778d1af85deac9a2eccb4a60b1b92df1))
 
 ## [1.5.11](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.5.10...v1.5.11) (2022-11-20)
 
