@@ -5,10 +5,12 @@ import Slider from 'preact-material-components/Slider'
 import LinearProgress from 'preact-material-components/LinearProgress'
 import getElementsByXpath from '~lib/get-elements-by-xpath'
 import { XPATH } from '~src/selectors'
+import VideoItemQuickResetButton from './video-item-quick-reset-button'
 import VideoItemQuickDeleteButton from './video-item-quick-delete-button'
 
 interface Properties {
   removeVideoWatchedPercentHandler: (watchTimeValue: number) => Promise<void> | void
+  resetVideoHandler: (videoId: string) => Promise<void> | void
   removeVideoHandler: (videoId: string) => Promise<void> | void
   initialValue?: number
 }
@@ -29,6 +31,7 @@ function validate(value: any): boolean {
 function RemoveVideoEnhancerContainer({
   removeVideoWatchedPercentHandler,
   initialValue = 100,
+  resetVideoHandler,
   removeVideoHandler,
 }: Properties) {
   const [inputValue, setValue] = useState(initialValue)
@@ -46,16 +49,27 @@ function RemoveVideoEnhancerContainer({
     await removeVideoHandler(videoId)
   }, [])
 
+  const resetVideo = useCallback(async (videoId: string) => {
+    await resetVideoHandler(videoId)
+  }, [])
+
   useEffect(() => {
     const menus = getElementsByXpath(XPATH.YT_PLAYLIST_VIDEO_MENU) as HTMLElement[]
     for (const element of menus) {
       element.style.display = 'inline-flex'
       render(
-        h(VideoItemQuickDeleteButton, {
-          // @ts-ignore element.data does not exists on types
-          videoId: element.parentElement?.data.videoId,
-          onClick: removeVideo,
-        }),
+        [
+          h(VideoItemQuickResetButton, {
+            // @ts-ignore element.data does not exists on types
+            videoId: element.parentElement?.data.videoId,
+            onClick: resetVideo,
+          }),
+          h(VideoItemQuickDeleteButton, {
+            // @ts-ignore element.data does not exists on types
+            videoId: element.parentElement?.data.videoId,
+            onClick: removeVideo,
+          }),
+        ],
         element
       )
     }
