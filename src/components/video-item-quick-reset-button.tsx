@@ -2,7 +2,7 @@ import { useState } from 'preact/hooks'
 
 import IconButton from 'preact-material-components/IconButton'
 
-function VideoItemQuickDeleteButton(properties: { videoId: string; onClick: (videoId: string) => Promise<void> }) {
+function VideoItemQuickResetButton(properties: { videoId: string; onClick: (videoId: string) => Promise<void> }) {
   const [loading, setLoading] = useState(false)
   return (
     <IconButton
@@ -14,11 +14,11 @@ function VideoItemQuickDeleteButton(properties: { videoId: string; onClick: (vid
         setLoading(false)
       }}
       disabled={loading}
-      title='Remove video'
+      title='Mark as unwatched'
     >
-      <IconButton.Icon style={{ color: '#e10000' }}>delete</IconButton.Icon>
+      <IconButton.Icon style={{ color: '#e10000' }}>refresh</IconButton.Icon>
     </IconButton>
   )
 }
 
-export default VideoItemQuickDeleteButton
+export default VideoItemQuickResetButton

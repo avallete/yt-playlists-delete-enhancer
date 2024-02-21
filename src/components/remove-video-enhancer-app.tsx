@@ -2,8 +2,9 @@ import { Component } from 'preact'
 import LinearProgress from 'preact-material-components/LinearProgress'
 import RemoveVideoEnhancerContainer from '~components/remove-video-enhancer-container'
 import { YTConfigData, Playlist } from '~src/youtube'
-import { removeVideosFromPlaylist, fetchAllPlaylistContent } from '~src/yt-api'
+import { removeWatchHistoryForVideo, removeVideosFromPlaylist, fetchAllPlaylistContent } from '~src/yt-api'
 import partition from '~lib/partition'
+import removeWatchedFromPlaylistUI from '~src/operations/actions/remove-watched-from-playlist-ui'
 import removeVideosFromPlaylistUI from '~src/operations/actions/remove-videos-from-playlist-ui'
 
 interface Properties {
@@ -21,6 +22,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
     super(properties)
     this.state = {}
     this.removeVideoWatchedPercentHandler = this.removeVideoWatchedPercentHandler.bind(this)
+    this.resetVideoHandler = this.resetVideoHandler.bind(this)
     this.removeVideoHandler = this.removeVideoHandler.bind(this)
   }
 
@@ -30,6 +32,15 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
       this.setState({ playlist })
     } catch (error) {
       this.setState({ errorMessages: [error.message] })
+    }
+  }
+
+  async resetVideoHandler(videoId: string) {
+    try {
+      await removeWatchHistoryForVideo(this.props.config, videoId)
+      removeWatchedFromPlaylistUI(videoId)
+    } catch (error) {
+      this.setState({ ...this.state, errorMessages: [error.message] })
     }
   }
 
@@ -98,6 +109,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
         return (
           <RemoveVideoEnhancerContainer
             removeVideoWatchedPercentHandler={this.removeVideoWatchedPercentHandler}
+            resetVideoHandler={this.resetVideoHandler}
             removeVideoHandler={this.removeVideoHandler}
           />
         )

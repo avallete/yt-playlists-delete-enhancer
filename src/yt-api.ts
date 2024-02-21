@@ -179,6 +179,88 @@ export async function fetchAllPlaylistContent(config: YTConfigData, playlistName
   throw PlaylistNotEditableError
 }
 
+async function getRemoveFromHistoryToken(videoId: string): Promise<string> {
+  const initDataRegex = /(?:window\["ytInitialData"]|ytInitialData)\W?=\W?({.*?});/
+  const result = await fetch('https://www.youtube.com/feed/history', {
+    credentials: 'include',
+    method: 'GET',
+    mode: 'cors',
+  })
+  const body = await result.text()
+
+  try {
+    const matchedData = body.match(initDataRegex)
+    if (!matchedData || !matchedData[1]) throw new Error('Failed to parse initData')
+    const initData = JSON.parse(matchedData[1])
+
+    const groups = initData?.contents?.twoColumnBrowseResultsRenderer?.tabs?.[0]?.tabRenderer?.content?.sectionListRenderer?.contents
+      .map((group: { itemSectionRenderer: object }) => group.itemSectionRenderer)
+      .filter(Boolean)
+
+    let matchingVideo
+    for (const item of groups) {
+      for (const { videoRenderer } of item.contents) {
+        if (videoRenderer?.videoId && videoId === videoRenderer?.videoId) {
+          matchingVideo = videoRenderer
+          break
+        }
+      }
+    }
+
+    if (!matchingVideo) {
+      throw new Error('Video not found in watch history')
+    }
+
+    return matchingVideo?.menu?.menuRenderer?.topLevelButtons?.[0]?.buttonRenderer?.serviceEndpoint?.feedbackEndpoint
+      ?.feedbackToken
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error)
+    throw new Error('Failed to parse initData')
+  }
+}
+
+const makeFeedbackPayload = (feedbackToken: string) => ({
+  context: {
+    client: {
+      hl: 'en',
+      clientName: 'WEB',
+      clientVersion: '2.20210711.07.00',
+    },
+    user: {
+      lockedSafetyMode: false,
+    },
+    request: {
+      useSsl: true,
+      internalExperimentFlags: [],
+      consistencyTokenJars: [],
+    },
+  },
+  isFeedbackTokenUnencrypted: false,
+  shouldMerge: false,
+  feedbackTokens: [feedbackToken],
+})
+
+async function sendFeedbackRequest(config: YTConfigData, feedbackToken: string) {
+  const url = `https://www.youtube.com/youtubei/v1/feedback?key=${config.INNERTUBE_API_KEY}`
+  const rawResponse = await fetch(url, {
+    method: 'POST',
+    headers: generateRequestHeaders(config, API_V1_REQUIRED_HEADERS),
+    body: JSON.stringify(makeFeedbackPayload(feedbackToken)),
+  })
+  const response = await rawResponse.json()
+  if (!response.feedbackResponses[0].isProcessed) {
+    throw new Error('Failed to remove video from watch history')
+  }
+}
+
+export async function removeWatchHistoryForVideo(config: YTConfigData, videoId: string) {
+  const feedbackToken = await getRemoveFromHistoryToken(videoId)
+  if (feedbackToken) {
+    await sendFeedbackRequest(config, feedbackToken)
+  }
+}
+
 export async function removeVideosFromPlaylist(
   config: YTConfigData,
   playlistId: string,
