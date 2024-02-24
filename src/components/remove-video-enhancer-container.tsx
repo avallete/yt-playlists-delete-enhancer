@@ -59,6 +59,11 @@ function RemoveVideoEnhancerContainer({
         element
       )
     }
+
+    const sidebar = getElementsByXpath(XPATH.YT_SIDEBAR_CONTAINER) as HTMLElement[]
+    if (sidebar.length > 0) {
+      sidebar[0].style.overflow = 'visible'
+    }
   }, [])
 
   return (
