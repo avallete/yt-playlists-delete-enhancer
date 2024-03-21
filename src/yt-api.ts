@@ -113,7 +113,7 @@ async function fetchPlaylistInitialData(config: YTConfigData, playlistName: stri
     method: 'GET',
     mode: 'cors',
   })
-  const data = (await response.json())[1].response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
+  const data = (await response.json()).response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
     .sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer
 
   if (!data) {
