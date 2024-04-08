@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         yt-playlists-delete-enhancer
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
-// @version      1.6.1
+// @version      1.6.2
 // @author       Andrew Valleteau <avallete@student.42.fr>
 // @grant        none
 // @match        *://youtube.com/*
@@ -3016,7 +3016,7 @@ exports.default = addLocationChangeEventHooks;
 /* 32 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.6.1\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
+module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.6.2\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
 
 /***/ }),
 /* 33 */
@@ -3969,7 +3969,7 @@ function fetchPlaylistInitialData(config, playlistName) {
             method: 'GET',
             mode: 'cors',
         });
-        const data = (yield response.json())[1].response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
+        const data = (yield response.json()).response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
             .sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer;
         if (!data) {
             throw errors_1.PlaylistEmptyError;
