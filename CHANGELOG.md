@@ -1,9 +1,20 @@
-## [1.6.2](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.6.1...v1.6.2) (2024-04-08)
+# [1.7.0](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.6.2...v1.7.0) (2024-05-06)
 
 
 ### Bug Fixes
 
-* undefined error ([#226](https://github.com/avallete/yt-playlists-delete-enhancer/issues/226)) ([ef135a3](https://github.com/avallete/yt-playlists-delete-enhancer/commit/ef135a31d4970538544b686c07cd2867c279e0bb))
+* slider truncation ([#223](https://github.com/avallete/yt-playlists-delete-enhancer/issues/223)) ([227640b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/227640b128f557b4c9259a88a4e45481f4a4d78a))
+
+
+### Features
+
+* add mark as unwatched button ([#222](https://github.com/avallete/yt-playlists-delete-enhancer/issues/222)) ([1ca7250](https://github.com/avallete/yt-playlists-delete-enhancer/commit/1ca725037caf0977b12d94f7f8d29260bd5bc3a6))
+
+## [1.6.2](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.6.1...v1.6.2) (2024-04-08)
+
+### Bug Fixes
+
+- undefined error ([#226](https://github.com/avallete/yt-playlists-delete-enhancer/issues/226)) ([ef135a3](https://github.com/avallete/yt-playlists-delete-enhancer/commit/ef135a31d4970538544b686c07cd2867c279e0bb))
 
 ## [1.6.1](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.6.0...v1.6.1) (2023-11-30)
 
