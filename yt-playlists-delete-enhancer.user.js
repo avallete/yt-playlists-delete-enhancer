@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         yt-playlists-delete-enhancer
 // @description  Add a button to remove videos watched with more than X percent from watch later playlist.
-// @version      1.6.2
+// @version      1.7.0
 // @author       Andrew Valleteau <avallete@student.42.fr>
 // @grant        none
 // @match        *://youtube.com/*
@@ -97,7 +97,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 27);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -412,7 +412,7 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 var _typeof = __webpack_require__(19)["default"];
 
-var assertThisInitialized = __webpack_require__(36);
+var assertThisInitialized = __webpack_require__(37);
 
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
@@ -429,7 +429,7 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var setPrototypeOf = __webpack_require__(38);
+var setPrototypeOf = __webpack_require__(39);
 
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
@@ -614,6 +614,65 @@ function getCorrectPropertyName(windowObj, eventType) {
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.XPATH = void 0;
+exports.XPATH = {
+    // We need two class selectors because youtube "custom playlist" and watch later have slightly different ui
+    APP_RENDER_ROOT: '//div[@class="metadata-wrapper style-scope ytd-playlist-header-renderer" or @class="style-scope ytd-playlist-sidebar-primary-info-renderer"]',
+    YT_PLAYLIST_VIDEO_RENDERERS: '//ytd-playlist-video-renderer',
+    YT_PLAYLIST_VIDEO_MENU: '//ytd-playlist-video-renderer//div[@id="menu"]',
+    YT_NUMBER_OF_VIDEOS_IN_PLAYLIST: '//ytd-playlist-byline-renderer//div/yt-formatted-string/span[1]',
+    YT_SIDEBAR_CONTAINER: '//div[@class="immersive-header-content style-scope ytd-playlist-header-renderer"]',
+};
+exports.default = {
+    XPATH: exports.XPATH,
+};
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jsx", function() { return o; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jsxs", function() { return o; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jsxDEV", function() { return o; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Fragment", function() { return preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"]; });
+
+function o(_,o,e,n,t){var f={};for(var l in o)"ref"!=l&&(f[l]=o[l]);var s,u,a={type:_,props:f,key:e,ref:o&&o.ref,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,__h:null,constructor:void 0,__v:++preact__WEBPACK_IMPORTED_MODULE_0__["options"].__v,__source:n,__self:t};if("function"==typeof _&&(s=_.defaultProps))for(u in s)void 0===f[u]&&(f[u]=s[u]);return preact__WEBPACK_IMPORTED_MODULE_0__["options"].vnode&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].vnode(a),a}
+//# sourceMappingURL=jsxRuntime.module.js.map
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// Query DOM Xpath and return an array of Node
+// Usage is similar to $x in console
+function getElementsByXPath(xpath, parent) {
+    const results = [];
+    const query = document.evaluate(xpath, parent || document, undefined, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE);
+    const length = query.snapshotLength;
+    for (let index = 0; index < length; index += 1) {
+        results.push(query.snapshotItem(index));
+    }
+    // force cast since we keep into snapshotLength limit, no item should be null
+    return results;
+}
+exports.default = getElementsByXPath;
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 var _interopRequireDefault = __webpack_require__(4);
 
@@ -634,9 +693,9 @@ var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
 var _typeof2 = _interopRequireDefault(__webpack_require__(19));
 
-var _ripple = __webpack_require__(21);
+var _ripple = __webpack_require__(22);
 
-var _bindDecorator = __webpack_require__(24);
+var _bindDecorator = __webpack_require__(25);
 
 var _preact = __webpack_require__(0);
 
@@ -897,7 +956,7 @@ exports.default = _default;
 //# sourceMappingURL=MaterialComponent.js.map
 
 /***/ }),
-/* 11 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -997,7 +1056,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1034,7 +1093,7 @@ const disable = setMediaQuery(MATCH_NONE);
 
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1162,7 +1221,7 @@ function fromActionResult(r) {
 
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1178,64 +1237,6 @@ const LOAD = (state) => state === "complete";
 
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.XPATH = void 0;
-exports.XPATH = {
-    // We need two class selectors because youtube "custom playlist" and watch later have slightly different ui
-    APP_RENDER_ROOT: '//div[@class="metadata-wrapper style-scope ytd-playlist-header-renderer" or @class="style-scope ytd-playlist-sidebar-primary-info-renderer"]',
-    YT_PLAYLIST_VIDEO_RENDERERS: '//ytd-playlist-video-renderer',
-    YT_PLAYLIST_VIDEO_MENU: '//ytd-playlist-video-renderer//div[@id="menu"]',
-    YT_NUMBER_OF_VIDEOS_IN_PLAYLIST: '//ytd-playlist-byline-renderer//div/yt-formatted-string/span[1]',
-};
-exports.default = {
-    XPATH: exports.XPATH,
-};
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jsx", function() { return o; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jsxs", function() { return o; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jsxDEV", function() { return o; });
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Fragment", function() { return preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"]; });
-
-function o(_,o,e,n,t){var f={};for(var l in o)"ref"!=l&&(f[l]=o[l]);var s,u,a={type:_,props:f,key:e,ref:o&&o.ref,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,__h:null,constructor:void 0,__v:++preact__WEBPACK_IMPORTED_MODULE_0__["options"].__v,__source:n,__self:t};if("function"==typeof _&&(s=_.defaultProps))for(u in s)void 0===f[u]&&(f[u]=s[u]);return preact__WEBPACK_IMPORTED_MODULE_0__["options"].vnode&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].vnode(a),a}
-//# sourceMappingURL=jsxRuntime.module.js.map
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-// Query DOM Xpath and return an array of Node
-// Usage is similar to $x in console
-function getElementsByXPath(xpath, parent) {
-    const results = [];
-    const query = document.evaluate(xpath, parent || document, undefined, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE);
-    const length = query.snapshotLength;
-    for (let index = 0; index < length; index += 1) {
-        results.push(query.snapshotItem(index));
-    }
-    // force cast since we keep into snapshotLength limit, no item should be null
-    return results;
-}
-exports.default = getElementsByXPath;
-
-
-/***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1248,7 +1249,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // This file is generated from package.json with build-config-from-package-json command
 // if you need to add or remove data from it, see package.json script section
 // Additional details: https://github.com/avallete/userscripter-boilerplate/issues/30
-const metadata_config_json_1 = __importDefault(__webpack_require__(32));
+const metadata_config_json_1 = __importDefault(__webpack_require__(33));
 const userscriptMetadata = {
     id: metadata_config_json_1.default.name,
     name: metadata_config_json_1.default.name,
@@ -1300,7 +1301,7 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var superPropBase = __webpack_require__(37);
+var superPropBase = __webpack_require__(38);
 
 function _get(target, property, receiver) {
   if (typeof Reflect !== "undefined" && Reflect.get) {
@@ -1330,6 +1331,28 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 /* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useState", function() { return l; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useReducer", function() { return p; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useEffect", function() { return y; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useLayoutEffect", function() { return h; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useRef", function() { return s; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useImperativeHandle", function() { return _; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useMemo", function() { return d; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useCallback", function() { return A; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useContext", function() { return F; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useDebugValue", function() { return T; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useErrorBoundary", function() { return q; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+var t,u,r,o=0,i=[],c=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b,f=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r,e=preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed,a=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c,v=preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount;function m(t,r){preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h(u,t,o||r),o=0;var i=u.__H||(u.__H={__:[],__h:[]});return t>=i.__.length&&i.__.push({}),i.__[t]}function l(n){return o=1,p(w,n)}function p(n,r,o){var i=m(t++,2);return i.t=n,i.__c||(i.__=[o?o(r):w(void 0,r),function(n){var t=i.t(i.__[0],n);i.__[0]!==t&&(i.__=[t,i.__[1]],i.__c.setState({}))}],i.__c=u),i.__}function y(r,o){var i=m(t++,3);!preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s&&k(i.__H,o)&&(i.__=r,i.__H=o,u.__H.__h.push(i))}function h(r,o){var i=m(t++,4);!preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s&&k(i.__H,o)&&(i.__=r,i.__H=o,u.__h.push(i))}function s(n){return o=5,d(function(){return{current:n}},[])}function _(n,t,u){o=6,h(function(){"function"==typeof n?n(t()):n&&(n.current=t())},null==u?u:u.concat(n))}function d(n,u){var r=m(t++,7);return k(r.__H,u)&&(r.__=n(),r.__H=u,r.__h=n),r.__}function A(n,t){return o=8,d(function(){return n},t)}function F(n){var r=u.context[n.__c],o=m(t++,9);return o.__c=n,r?(null==o.__&&(o.__=!0,r.sub(u)),r.props.value):n.__}function T(t,u){preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue(u?u(t):t)}function q(n){var r=m(t++,10),o=l();return r.__=n,u.componentDidCatch||(u.componentDidCatch=function(n){r.__&&r.__(n),o[1](n)}),[o[0],function(){o[1](void 0)}]}function x(){i.forEach(function(t){if(t.__P)try{t.__H.__h.forEach(g),t.__H.__h.forEach(j),t.__H.__h=[]}catch(u){t.__H.__h=[],preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(u,t.__v)}}),i=[]}preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b=function(n){u=null,c&&c(n)},preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r=function(n){f&&f(n),t=0;var r=(u=n.__c).__H;r&&(r.__h.forEach(g),r.__h.forEach(j),r.__h=[])},preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed=function(t){e&&e(t);var o=t.__c;o&&o.__H&&o.__H.__h.length&&(1!==i.push(o)&&r===preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame||((r=preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame)||function(n){var t,u=function(){clearTimeout(r),b&&cancelAnimationFrame(t),setTimeout(n)},r=setTimeout(u,100);b&&(t=requestAnimationFrame(u))})(x)),u=void 0},preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c=function(t,u){u.some(function(t){try{t.__h.forEach(g),t.__h=t.__h.filter(function(n){return!n.__||j(n)})}catch(r){u.some(function(n){n.__h&&(n.__h=[])}),u=[],preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(r,t.__v)}}),a&&a(t,u)},preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount=function(t){v&&v(t);var u=t.__c;if(u&&u.__H)try{u.__H.__.forEach(g)}catch(t){preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(t,u.__v)}};var b="function"==typeof requestAnimationFrame;function g(n){var t=u;"function"==typeof n.__c&&n.__c(),u=t}function j(n){var t=u;n.__c=n.__(),u=t}function k(n,t){return!n||n.length!==t.length||t.some(function(t,u){return t!==n[u]})}function w(n,t){return"function"==typeof t?t(n):t}
+//# sourceMappingURL=hooks.module.js.map
+
+
+/***/ }),
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2462,7 +2485,7 @@ RippleCapableSurface.prototype.disabled;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2481,7 +2504,7 @@ exports.YT_LOCATION_CHANGE_EVENT = 'yt-navigate-finish';
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2506,11 +2529,11 @@ var _get2 = _interopRequireDefault(__webpack_require__(20));
 
 var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
-var _linearProgress = __webpack_require__(68);
+var _linearProgress = __webpack_require__(70);
 
 var _preact = __webpack_require__(0);
 
-var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(10));
+var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(13));
 
 var LinearProgress =
 /*#__PURE__*/
@@ -2593,7 +2616,7 @@ exports.default = _default;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2627,29 +2650,128 @@ exports.default = bind;
 
 
 /***/ }),
-/* 25 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useState", function() { return l; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useReducer", function() { return p; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useEffect", function() { return y; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useLayoutEffect", function() { return h; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useRef", function() { return s; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useImperativeHandle", function() { return _; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useMemo", function() { return d; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useCallback", function() { return A; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useContext", function() { return F; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useDebugValue", function() { return T; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useErrorBoundary", function() { return q; });
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-var t,u,r,o=0,i=[],c=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b,f=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r,e=preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed,a=preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c,v=preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount;function m(t,r){preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].__h(u,t,o||r),o=0;var i=u.__H||(u.__H={__:[],__h:[]});return t>=i.__.length&&i.__.push({}),i.__[t]}function l(n){return o=1,p(w,n)}function p(n,r,o){var i=m(t++,2);return i.t=n,i.__c||(i.__=[o?o(r):w(void 0,r),function(n){var t=i.t(i.__[0],n);i.__[0]!==t&&(i.__=[t,i.__[1]],i.__c.setState({}))}],i.__c=u),i.__}function y(r,o){var i=m(t++,3);!preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s&&k(i.__H,o)&&(i.__=r,i.__H=o,u.__H.__h.push(i))}function h(r,o){var i=m(t++,4);!preact__WEBPACK_IMPORTED_MODULE_0__["options"].__s&&k(i.__H,o)&&(i.__=r,i.__H=o,u.__h.push(i))}function s(n){return o=5,d(function(){return{current:n}},[])}function _(n,t,u){o=6,h(function(){"function"==typeof n?n(t()):n&&(n.current=t())},null==u?u:u.concat(n))}function d(n,u){var r=m(t++,7);return k(r.__H,u)&&(r.__=n(),r.__H=u,r.__h=n),r.__}function A(n,t){return o=8,d(function(){return n},t)}function F(n){var r=u.context[n.__c],o=m(t++,9);return o.__c=n,r?(null==o.__&&(o.__=!0,r.sub(u)),r.props.value):n.__}function T(t,u){preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue&&preact__WEBPACK_IMPORTED_MODULE_0__["options"].useDebugValue(u?u(t):t)}function q(n){var r=m(t++,10),o=l();return r.__=n,u.componentDidCatch||(u.componentDidCatch=function(n){r.__&&r.__(n),o[1](n)}),[o[0],function(){o[1](void 0)}]}function x(){i.forEach(function(t){if(t.__P)try{t.__H.__h.forEach(g),t.__H.__h.forEach(j),t.__H.__h=[]}catch(u){t.__H.__h=[],preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(u,t.__v)}}),i=[]}preact__WEBPACK_IMPORTED_MODULE_0__["options"].__b=function(n){u=null,c&&c(n)},preact__WEBPACK_IMPORTED_MODULE_0__["options"].__r=function(n){f&&f(n),t=0;var r=(u=n.__c).__H;r&&(r.__h.forEach(g),r.__h.forEach(j),r.__h=[])},preact__WEBPACK_IMPORTED_MODULE_0__["options"].diffed=function(t){e&&e(t);var o=t.__c;o&&o.__H&&o.__H.__h.length&&(1!==i.push(o)&&r===preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame||((r=preact__WEBPACK_IMPORTED_MODULE_0__["options"].requestAnimationFrame)||function(n){var t,u=function(){clearTimeout(r),b&&cancelAnimationFrame(t),setTimeout(n)},r=setTimeout(u,100);b&&(t=requestAnimationFrame(u))})(x)),u=void 0},preact__WEBPACK_IMPORTED_MODULE_0__["options"].__c=function(t,u){u.some(function(t){try{t.__h.forEach(g),t.__h=t.__h.filter(function(n){return!n.__||j(n)})}catch(r){u.some(function(n){n.__h&&(n.__h=[])}),u=[],preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(r,t.__v)}}),a&&a(t,u)},preact__WEBPACK_IMPORTED_MODULE_0__["options"].unmount=function(t){v&&v(t);var u=t.__c;if(u&&u.__H)try{u.__H.__.forEach(g)}catch(t){preact__WEBPACK_IMPORTED_MODULE_0__["options"].__e(t,u.__v)}};var b="function"==typeof requestAnimationFrame;function g(n){var t=u;"function"==typeof n.__c&&n.__c(),u=t}function j(n){var t=u;n.__c=n.__(),u=t}function k(n,t){return!n||n.length!==t.length||t.some(function(t,u){return t!==n[u]})}function w(n,t){return"function"==typeof t?t(n):t}
-//# sourceMappingURL=hooks.module.js.map
 
+
+var _interopRequireDefault = __webpack_require__(4);
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.IconButton = exports.Icon = void 0;
+
+var _get2 = _interopRequireDefault(__webpack_require__(20));
+
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(5));
+
+var _createClass2 = _interopRequireDefault(__webpack_require__(6));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(7));
+
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(3));
+
+var _inherits2 = _interopRequireDefault(__webpack_require__(8));
+
+var _iconButton = __webpack_require__(72);
+
+var _preact = __webpack_require__(0);
+
+var _MaterialComponent3 = _interopRequireDefault(__webpack_require__(13));
+
+var Icon =
+/*#__PURE__*/
+function (_MaterialComponent) {
+  (0, _inherits2.default)(Icon, _MaterialComponent);
+
+  function Icon() {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Icon);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Icon).apply(this, arguments));
+    _this.componentName = 'icon-button__icon';
+    _this.mdcProps = ['on'];
+    return _this;
+  }
+
+  (0, _createClass2.default)(Icon, [{
+    key: "materialDom",
+    value: function materialDom(props) {
+      var IconElement = props.element || 'i';
+      return (0, _preact.h)(IconElement, Object.assign({
+        class: "material-icons"
+      }, props), props.children);
+    }
+  }]);
+  return Icon;
+}(_MaterialComponent3.default);
+
+exports.Icon = Icon;
+
+var IconButton =
+/*#__PURE__*/
+function (_MaterialComponent2) {
+  (0, _inherits2.default)(IconButton, _MaterialComponent2);
+
+  function IconButton() {
+    var _this2;
+
+    (0, _classCallCheck2.default)(this, IconButton);
+    _this2 = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(IconButton).apply(this, arguments));
+    _this2.componentName = 'icon-button';
+    _this2.mdcProps = [];
+    return _this2;
+  }
+
+  (0, _createClass2.default)(IconButton, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      (0, _get2.default)((0, _getPrototypeOf2.default)(IconButton.prototype), "componentDidMount", this).call(this);
+      this.MDComponent = new _iconButton.MDCIconButtonToggle(this.control);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      (0, _get2.default)((0, _getPrototypeOf2.default)(IconButton.prototype), "componentWillUnmount", this).call(this);
+
+      if (this.MDComponent) {
+        this.MDComponent.destroy();
+      }
+    }
+  }, {
+    key: "materialDom",
+    value: function materialDom(props) {
+      return (0, _preact.h)("button", Object.assign({
+        ref: this.setControlRef
+      }, props), this.props.children);
+    }
+  }]);
+  return IconButton;
+}(_MaterialComponent3.default);
+
+exports.IconButton = IconButton;
+
+var default_1 =
+/*#__PURE__*/
+function (_IconButton) {
+  (0, _inherits2.default)(default_1, _IconButton);
+
+  function default_1() {
+    (0, _classCallCheck2.default)(this, default_1);
+    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(default_1).apply(this, arguments));
+  }
+
+  return default_1;
+}(IconButton);
+
+exports.default = default_1;
+default_1.Icon = Icon;
+//# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 var charenc = {
@@ -2688,7 +2810,7 @@ module.exports = charenc;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2716,12 +2838,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const compose_1 = __webpack_require__(71);
-const userscripter_1 = __webpack_require__(67);
-const CONFIG = __importStar(__webpack_require__(28));
-const operations_1 = __importDefault(__webpack_require__(29));
-const SITE = __importStar(__webpack_require__(22));
-const stylesheets_1 = __importDefault(__webpack_require__(60));
+const compose_1 = __webpack_require__(73);
+const userscripter_1 = __webpack_require__(69);
+const CONFIG = __importStar(__webpack_require__(29));
+const operations_1 = __importDefault(__webpack_require__(30));
+const SITE = __importStar(__webpack_require__(23));
+const stylesheets_1 = __importDefault(__webpack_require__(62));
 const userscript_1 = __importDefault(__webpack_require__(18));
 const describeFailure = userscripter_1.errors.failureDescriber({
     siteName: SITE.NAME,
@@ -2745,7 +2867,7 @@ userscripter_1.userscripter.run({
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2758,7 +2880,7 @@ exports.OPERATIONS_EXTRA_TRIES = 3;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2767,13 +2889,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const operations_1 = __webpack_require__(13);
-const environment_1 = __webpack_require__(14);
-const js_cookie_1 = __webpack_require__(30);
-const add_location_change_event_hook_1 = __importDefault(__webpack_require__(31));
-const is_on_playlist_page_1 = __importDefault(__webpack_require__(33));
-const selectors_1 = __webpack_require__(15);
-const append_app_to_dom_1 = __importDefault(__webpack_require__(34));
+const operations_1 = __webpack_require__(16);
+const environment_1 = __webpack_require__(17);
+const js_cookie_1 = __webpack_require__(31);
+const add_location_change_event_hook_1 = __importDefault(__webpack_require__(32));
+const is_on_playlist_page_1 = __importDefault(__webpack_require__(34));
+const selectors_1 = __webpack_require__(10);
+const append_app_to_dom_1 = __importDefault(__webpack_require__(35));
 function mainWrapper() {
     const url = new URL(window.location.href);
     const playlistName = url.searchParams.get('list');
@@ -2825,7 +2947,7 @@ exports.default = OPERATIONS;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -2998,13 +3120,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const site_1 = __webpack_require__(22);
+const site_1 = __webpack_require__(23);
 // Add location change event hooks
 function addLocationChangeEventHooks(callback) {
     window.addEventListener(site_1.YT_LOCATION_CHANGE_EVENT, callback);
@@ -3013,13 +3135,13 @@ exports.default = addLocationChangeEventHooks;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.6.2\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
+module.exports = JSON.parse("{\"name\":\"yt-playlists-delete-enhancer\",\"description\":\"Add a button to remove videos watched with more than X percent from watch later playlist.\",\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:avallete/yt-playlists-delete-enhancer.git\"},\"bugs\":{\"url\":\"https://github.com/avallete/yt-playlists-delete-enhancer/issues\"},\"version\":\"1.7.0\",\"homepage\":\"https://github.com/avallete/yt-playlists-delete-enhancer#readme\",\"license\":\"MIT\",\"author\":\"Andrew Valleteau <avallete@student.42.fr>\"}");
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3037,7 +3159,7 @@ exports.default = isOnPlaylistPage;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3046,10 +3168,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsx_runtime_1 = __webpack_require__(16);
+const jsx_runtime_1 = __webpack_require__(11);
 const preact_1 = __webpack_require__(0);
-const get_elements_by_xpath_1 = __importDefault(__webpack_require__(17));
-const remove_video_enhancer_app_1 = __importDefault(__webpack_require__(35));
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(12));
+const remove_video_enhancer_app_1 = __importDefault(__webpack_require__(36));
 const userscript_1 = __importDefault(__webpack_require__(18));
 function appendAppToDom(config, playlistName, xpathRoot) {
     const existingElement = document.querySelector(`#${userscript_1.default.id}${playlistName}`);
@@ -3072,7 +3194,7 @@ exports.default = appendAppToDom;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3090,18 +3212,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsx_runtime_1 = __webpack_require__(16);
+const jsx_runtime_1 = __webpack_require__(11);
 const preact_1 = __webpack_require__(0);
-const LinearProgress_1 = __importDefault(__webpack_require__(23));
-const remove_video_enhancer_container_1 = __importDefault(__webpack_require__(39));
-const yt_api_1 = __webpack_require__(46);
-const partition_1 = __importDefault(__webpack_require__(55));
-const remove_videos_from_playlist_ui_1 = __importDefault(__webpack_require__(56));
+const LinearProgress_1 = __importDefault(__webpack_require__(24));
+const remove_video_enhancer_container_1 = __importDefault(__webpack_require__(40));
+const yt_api_1 = __webpack_require__(47);
+const partition_1 = __importDefault(__webpack_require__(56));
+const remove_watched_from_playlist_ui_1 = __importDefault(__webpack_require__(57));
+const remove_videos_from_playlist_ui_1 = __importDefault(__webpack_require__(58));
 class RemoveVideoEnhancerApp extends preact_1.Component {
     constructor(properties) {
         super(properties);
         this.state = {};
         this.removeVideoWatchedPercentHandler = this.removeVideoWatchedPercentHandler.bind(this);
+        this.resetVideoHandler = this.resetVideoHandler.bind(this);
         this.removeVideoHandler = this.removeVideoHandler.bind(this);
     }
     componentDidMount() {
@@ -3112,6 +3236,17 @@ class RemoveVideoEnhancerApp extends preact_1.Component {
             }
             catch (error) {
                 this.setState({ errorMessages: [error.message] });
+            }
+        });
+    }
+    resetVideoHandler(videoId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield yt_api_1.removeWatchHistoryForVideo(this.props.config, videoId);
+                remove_watched_from_playlist_ui_1.default(videoId);
+            }
+            catch (error) {
+                this.setState(Object.assign(Object.assign({}, this.state), { errorMessages: [error.message] }));
             }
         });
     }
@@ -3181,7 +3316,7 @@ class RemoveVideoEnhancerApp extends preact_1.Component {
         }
         if ((_d = this.state) === null || _d === void 0 ? void 0 : _d.playlist) {
             if (this.state.playlist.isEditable) {
-                return (jsx_runtime_1.jsx(remove_video_enhancer_container_1.default, { removeVideoWatchedPercentHandler: this.removeVideoWatchedPercentHandler, removeVideoHandler: this.removeVideoHandler }, void 0));
+                return (jsx_runtime_1.jsx(remove_video_enhancer_container_1.default, { removeVideoWatchedPercentHandler: this.removeVideoWatchedPercentHandler, resetVideoHandler: this.resetVideoHandler, removeVideoHandler: this.removeVideoHandler }, void 0));
             }
             return jsx_runtime_1.jsx("div", { children: "Playlist isn't editable" }, void 0);
         }
@@ -3192,7 +3327,7 @@ exports.default = RemoveVideoEnhancerApp;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 function _assertThisInitialized(self) {
@@ -3207,7 +3342,7 @@ module.exports = _assertThisInitialized;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getPrototypeOf = __webpack_require__(3);
@@ -3225,7 +3360,7 @@ module.exports = _superPropBase;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports) {
 
 function _setPrototypeOf(o, p) {
@@ -3242,7 +3377,7 @@ module.exports = _setPrototypeOf;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3261,15 +3396,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.REMOVE_BUTTON_ALT = exports.INPUT_ALT = void 0;
-const jsx_runtime_1 = __webpack_require__(16);
+const jsx_runtime_1 = __webpack_require__(11);
 const preact_1 = __webpack_require__(0);
-const hooks_1 = __webpack_require__(25);
-const Button_1 = __importDefault(__webpack_require__(40));
-const Slider_1 = __importDefault(__webpack_require__(43));
-const LinearProgress_1 = __importDefault(__webpack_require__(23));
-const get_elements_by_xpath_1 = __importDefault(__webpack_require__(17));
-const selectors_1 = __webpack_require__(15);
-const video_item_quick_delete_button_1 = __importDefault(__webpack_require__(44));
+const hooks_1 = __webpack_require__(21);
+const Button_1 = __importDefault(__webpack_require__(41));
+const Slider_1 = __importDefault(__webpack_require__(44));
+const LinearProgress_1 = __importDefault(__webpack_require__(24));
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(12));
+const selectors_1 = __webpack_require__(10);
+const video_item_quick_reset_button_1 = __importDefault(__webpack_require__(45));
+const video_item_quick_delete_button_1 = __importDefault(__webpack_require__(46));
 exports.INPUT_ALT = 'Input number between 0 and 100 to choose under how much percentage of watched time a video should be removed';
 exports.REMOVE_BUTTON_ALT = 'Remove button to start removing videos';
 function validate(value) {
@@ -3279,7 +3415,7 @@ function validate(value) {
     }
     return false;
 }
-function RemoveVideoEnhancerContainer({ removeVideoWatchedPercentHandler, initialValue = 100, removeVideoHandler, }) {
+function RemoveVideoEnhancerContainer({ removeVideoWatchedPercentHandler, initialValue = 100, resetVideoHandler, removeVideoHandler, }) {
     const [inputValue, setValue] = hooks_1.useState(initialValue);
     const [isReadyToRemove, setIsReadyToRemove] = hooks_1.useState(true);
     function onChange({ detail }) {
@@ -3292,16 +3428,30 @@ function RemoveVideoEnhancerContainer({ removeVideoWatchedPercentHandler, initia
     const removeVideo = hooks_1.useCallback((videoId) => __awaiter(this, void 0, void 0, function* () {
         yield removeVideoHandler(videoId);
     }), []);
+    const resetVideo = hooks_1.useCallback((videoId) => __awaiter(this, void 0, void 0, function* () {
+        yield resetVideoHandler(videoId);
+    }), []);
     hooks_1.useEffect(() => {
-        var _a;
+        var _a, _b;
         const menus = get_elements_by_xpath_1.default(selectors_1.XPATH.YT_PLAYLIST_VIDEO_MENU);
         for (const element of menus) {
             element.style.display = 'inline-flex';
-            preact_1.render(preact_1.h(video_item_quick_delete_button_1.default, {
-                // @ts-ignore element.data does not exists on types
-                videoId: (_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.data.videoId,
-                onClick: removeVideo,
-            }), element);
+            preact_1.render([
+                preact_1.h(video_item_quick_reset_button_1.default, {
+                    // @ts-ignore element.data does not exists on types
+                    videoId: (_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.data.videoId,
+                    onClick: resetVideo,
+                }),
+                preact_1.h(video_item_quick_delete_button_1.default, {
+                    // @ts-ignore element.data does not exists on types
+                    videoId: (_b = element.parentElement) === null || _b === void 0 ? void 0 : _b.data.videoId,
+                    onClick: removeVideo,
+                }),
+            ], element);
+        }
+        const sidebar = get_elements_by_xpath_1.default(selectors_1.XPATH.YT_SIDEBAR_CONTAINER);
+        if (sidebar.length > 0) {
+            sidebar[0].style.overflow = 'visible';
         }
     }, []);
     return (jsx_runtime_1.jsx("div", Object.assign({ className: 'style-scope ytd-playlist-sidebar-renderer' }, { children: jsx_runtime_1.jsxs("div", Object.assign({ className: 'style-scope ytd-menu-service-item-renderer', role: 'option', "aria-disabled": 'false' }, { children: [jsx_runtime_1.jsxs("p", { children: ["Remove all videos that have been watched to at least ", inputValue, "%"] }, void 0),
@@ -3317,7 +3467,7 @@ exports.default = RemoveVideoEnhancerContainer;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3342,11 +3492,11 @@ var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
 var _preact = __webpack_require__(0);
 
-var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(10));
+var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(13));
 
-var _Icon2 = _interopRequireDefault(__webpack_require__(41));
+var _Icon2 = _interopRequireDefault(__webpack_require__(42));
 
-var _generateThemeClass = _interopRequireDefault(__webpack_require__(42));
+var _generateThemeClass = _interopRequireDefault(__webpack_require__(43));
 
 var ButtonIcon =
 /*#__PURE__*/
@@ -3423,7 +3573,7 @@ default_1.Icon = ButtonIcon;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3448,7 +3598,7 @@ var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
 var _preact = __webpack_require__(0);
 
-var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(10));
+var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(13));
 
 var Icon =
 /*#__PURE__*/
@@ -3488,7 +3638,7 @@ exports.default = _default;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3505,7 +3655,7 @@ function _default(prop) {
 //# sourceMappingURL=generateThemeClass.js.map
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3532,13 +3682,13 @@ var _inherits2 = _interopRequireDefault(__webpack_require__(8));
 
 var _typeof2 = _interopRequireDefault(__webpack_require__(19));
 
-var _slider = __webpack_require__(69);
+var _slider = __webpack_require__(71);
 
-var _bindDecorator = __webpack_require__(24);
+var _bindDecorator = __webpack_require__(25);
 
 var _preact = __webpack_require__(0);
 
-var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(10));
+var _MaterialComponent2 = _interopRequireDefault(__webpack_require__(13));
 
 var __decorate = void 0 && (void 0).__decorate || function (decorators, target, key, desc) {
   var c = arguments.length,
@@ -3705,7 +3855,7 @@ exports.default = _default;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3723,10 +3873,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsx_runtime_1 = __webpack_require__(16);
-const hooks_1 = __webpack_require__(25);
-const IconButton_1 = __importDefault(__webpack_require__(45));
-function VideoItemQuickDeleteButton(properties) {
+const jsx_runtime_1 = __webpack_require__(11);
+const hooks_1 = __webpack_require__(21);
+const IconButton_1 = __importDefault(__webpack_require__(26));
+function VideoItemQuickResetButton(properties) {
     const [loading, setLoading] = hooks_1.useState(false);
     return (jsx_runtime_1.jsx(IconButton_1.default
     // we use this order -1 to avoid the button sometimes being render AFTER the row menu when swtiching between playlist
@@ -3736,131 +3886,10 @@ function VideoItemQuickDeleteButton(properties) {
             setLoading(true);
             yield properties.onClick(properties.videoId);
             setLoading(false);
-        }), disabled: loading }, { children: jsx_runtime_1.jsx(IconButton_1.default.Icon, Object.assign({ style: { color: '#e10000' } }, { children: "delete" }), void 0) }), void 0));
+        }), disabled: loading, title: 'Mark as unwatched' }, { children: jsx_runtime_1.jsx(IconButton_1.default.Icon, Object.assign({ style: { color: '#e10000' } }, { children: "refresh" }), void 0) }), void 0));
 }
-exports.default = VideoItemQuickDeleteButton;
+exports.default = VideoItemQuickResetButton;
 
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(4);
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.IconButton = exports.Icon = void 0;
-
-var _get2 = _interopRequireDefault(__webpack_require__(20));
-
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(5));
-
-var _createClass2 = _interopRequireDefault(__webpack_require__(6));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(7));
-
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(3));
-
-var _inherits2 = _interopRequireDefault(__webpack_require__(8));
-
-var _iconButton = __webpack_require__(70);
-
-var _preact = __webpack_require__(0);
-
-var _MaterialComponent3 = _interopRequireDefault(__webpack_require__(10));
-
-var Icon =
-/*#__PURE__*/
-function (_MaterialComponent) {
-  (0, _inherits2.default)(Icon, _MaterialComponent);
-
-  function Icon() {
-    var _this;
-
-    (0, _classCallCheck2.default)(this, Icon);
-    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Icon).apply(this, arguments));
-    _this.componentName = 'icon-button__icon';
-    _this.mdcProps = ['on'];
-    return _this;
-  }
-
-  (0, _createClass2.default)(Icon, [{
-    key: "materialDom",
-    value: function materialDom(props) {
-      var IconElement = props.element || 'i';
-      return (0, _preact.h)(IconElement, Object.assign({
-        class: "material-icons"
-      }, props), props.children);
-    }
-  }]);
-  return Icon;
-}(_MaterialComponent3.default);
-
-exports.Icon = Icon;
-
-var IconButton =
-/*#__PURE__*/
-function (_MaterialComponent2) {
-  (0, _inherits2.default)(IconButton, _MaterialComponent2);
-
-  function IconButton() {
-    var _this2;
-
-    (0, _classCallCheck2.default)(this, IconButton);
-    _this2 = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(IconButton).apply(this, arguments));
-    _this2.componentName = 'icon-button';
-    _this2.mdcProps = [];
-    return _this2;
-  }
-
-  (0, _createClass2.default)(IconButton, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      (0, _get2.default)((0, _getPrototypeOf2.default)(IconButton.prototype), "componentDidMount", this).call(this);
-      this.MDComponent = new _iconButton.MDCIconButtonToggle(this.control);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      (0, _get2.default)((0, _getPrototypeOf2.default)(IconButton.prototype), "componentWillUnmount", this).call(this);
-
-      if (this.MDComponent) {
-        this.MDComponent.destroy();
-      }
-    }
-  }, {
-    key: "materialDom",
-    value: function materialDom(props) {
-      return (0, _preact.h)("button", Object.assign({
-        ref: this.setControlRef
-      }, props), this.props.children);
-    }
-  }]);
-  return IconButton;
-}(_MaterialComponent3.default);
-
-exports.IconButton = IconButton;
-
-var default_1 =
-/*#__PURE__*/
-function (_IconButton) {
-  (0, _inherits2.default)(default_1, _IconButton);
-
-  function default_1() {
-    (0, _classCallCheck2.default)(this, default_1);
-    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(default_1).apply(this, arguments));
-  }
-
-  return default_1;
-}(IconButton);
-
-exports.default = default_1;
-default_1.Icon = Icon;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
 /* 46 */
@@ -3881,9 +3910,46 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.removeVideosFromPlaylist = exports.fetchAllPlaylistContent = void 0;
-const sha1_1 = __importDefault(__webpack_require__(47));
-const errors_1 = __webpack_require__(54);
+const jsx_runtime_1 = __webpack_require__(11);
+const hooks_1 = __webpack_require__(21);
+const IconButton_1 = __importDefault(__webpack_require__(26));
+function VideoItemQuickDeleteButton(properties) {
+    const [loading, setLoading] = hooks_1.useState(false);
+    return (jsx_runtime_1.jsx(IconButton_1.default
+    // we use this order -1 to avoid the button sometimes being render AFTER the row menu when swtiching between playlist
+    , Object.assign({ 
+        // we use this order -1 to avoid the button sometimes being render AFTER the row menu when swtiching between playlist
+        style: { order: -1 }, onClick: () => __awaiter(this, void 0, void 0, function* () {
+            setLoading(true);
+            yield properties.onClick(properties.videoId);
+            setLoading(false);
+        }), disabled: loading, title: 'Remove video' }, { children: jsx_runtime_1.jsx(IconButton_1.default.Icon, Object.assign({ style: { color: '#e10000' } }, { children: "delete" }), void 0) }), void 0));
+}
+exports.default = VideoItemQuickDeleteButton;
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeVideosFromPlaylist = exports.removeWatchHistoryForVideo = exports.fetchAllPlaylistContent = void 0;
+const sha1_1 = __importDefault(__webpack_require__(48));
+const errors_1 = __webpack_require__(55);
 const API_BASE_URL = new URL('https://www.youtube.com/youtubei/v1');
 const API_GET_PLAYLIST_VIDEOS_URL = new URL(`${API_BASE_URL}/browse`);
 const API_EDIT_PLAYLIST_VIDEOS_URL = new URL(`${API_GET_PLAYLIST_VIDEOS_URL}/edit_playlist`);
@@ -4031,6 +4097,86 @@ function fetchAllPlaylistContent(config, playlistName) {
     });
 }
 exports.fetchAllPlaylistContent = fetchAllPlaylistContent;
+function getRemoveFromHistoryToken(videoId) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+    return __awaiter(this, void 0, void 0, function* () {
+        const initDataRegex = /(?:window\["ytInitialData"]|ytInitialData)\W?=\W?({.*?});/;
+        const result = yield fetch('https://www.youtube.com/feed/history', {
+            credentials: 'include',
+            method: 'GET',
+            mode: 'cors',
+        });
+        const body = yield result.text();
+        try {
+            const matchedData = body.match(initDataRegex);
+            if (!matchedData || !matchedData[1])
+                throw new Error('Failed to parse initData');
+            const initData = JSON.parse(matchedData[1]);
+            const groups = (_g = (_f = (_e = (_d = (_c = (_b = (_a = initData === null || initData === void 0 ? void 0 : initData.contents) === null || _a === void 0 ? void 0 : _a.twoColumnBrowseResultsRenderer) === null || _b === void 0 ? void 0 : _b.tabs) === null || _c === void 0 ? void 0 : _c[0]) === null || _d === void 0 ? void 0 : _d.tabRenderer) === null || _e === void 0 ? void 0 : _e.content) === null || _f === void 0 ? void 0 : _f.sectionListRenderer) === null || _g === void 0 ? void 0 : _g.contents.map((group) => group.itemSectionRenderer).filter(Boolean);
+            let matchingVideo;
+            for (const item of groups) {
+                for (const { videoRenderer } of item.contents) {
+                    if ((videoRenderer === null || videoRenderer === void 0 ? void 0 : videoRenderer.videoId) && videoId === (videoRenderer === null || videoRenderer === void 0 ? void 0 : videoRenderer.videoId)) {
+                        matchingVideo = videoRenderer;
+                        break;
+                    }
+                }
+            }
+            if (!matchingVideo) {
+                throw new Error('Video not found in watch history');
+            }
+            return (_p = (_o = (_m = (_l = (_k = (_j = (_h = matchingVideo === null || matchingVideo === void 0 ? void 0 : matchingVideo.menu) === null || _h === void 0 ? void 0 : _h.menuRenderer) === null || _j === void 0 ? void 0 : _j.topLevelButtons) === null || _k === void 0 ? void 0 : _k[0]) === null || _l === void 0 ? void 0 : _l.buttonRenderer) === null || _m === void 0 ? void 0 : _m.serviceEndpoint) === null || _o === void 0 ? void 0 : _o.feedbackEndpoint) === null || _p === void 0 ? void 0 : _p.feedbackToken;
+        }
+        catch (error) {
+            // eslint-disable-next-line no-console
+            console.log(error);
+            throw new Error('Failed to parse initData');
+        }
+    });
+}
+const makeFeedbackPayload = (feedbackToken) => ({
+    context: {
+        client: {
+            hl: 'en',
+            clientName: 'WEB',
+            clientVersion: '2.20210711.07.00',
+        },
+        user: {
+            lockedSafetyMode: false,
+        },
+        request: {
+            useSsl: true,
+            internalExperimentFlags: [],
+            consistencyTokenJars: [],
+        },
+    },
+    isFeedbackTokenUnencrypted: false,
+    shouldMerge: false,
+    feedbackTokens: [feedbackToken],
+});
+function sendFeedbackRequest(config, feedbackToken) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const url = `https://www.youtube.com/youtubei/v1/feedback?key=${config.INNERTUBE_API_KEY}`;
+        const rawResponse = yield fetch(url, {
+            method: 'POST',
+            headers: generateRequestHeaders(config, API_V1_REQUIRED_HEADERS),
+            body: JSON.stringify(makeFeedbackPayload(feedbackToken)),
+        });
+        const response = yield rawResponse.json();
+        if (!response.feedbackResponses[0].isProcessed) {
+            throw new Error('Failed to remove video from watch history');
+        }
+    });
+}
+function removeWatchHistoryForVideo(config, videoId) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const feedbackToken = yield getRemoveFromHistoryToken(videoId);
+        if (feedbackToken) {
+            yield sendFeedbackRequest(config, feedbackToken);
+        }
+    });
+}
+exports.removeWatchHistoryForVideo = removeWatchHistoryForVideo;
 function removeVideosFromPlaylist(config, playlistId, videosToRemove) {
     return __awaiter(this, void 0, void 0, function* () {
         const url = new URL(`${API_EDIT_PLAYLIST_VIDEOS_URL}`);
@@ -4068,13 +4214,13 @@ exports.removeVideosFromPlaylist = removeVideosFromPlaylist;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {(function() {
-  var crypt = __webpack_require__(53),
-      utf8 = __webpack_require__(26).utf8,
-      bin = __webpack_require__(26).bin,
+  var crypt = __webpack_require__(54),
+      utf8 = __webpack_require__(27).utf8,
+      bin = __webpack_require__(27).bin,
 
   // The core
   sha1 = function (message) {
@@ -4154,10 +4300,10 @@ exports.removeVideosFromPlaylist = removeVideosFromPlaylist;
   module.exports = api;
 })();
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(48).Buffer))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(49).Buffer))
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4171,9 +4317,9 @@ exports.removeVideosFromPlaylist = removeVideosFromPlaylist;
 
 
 
-var base64 = __webpack_require__(50)
-var ieee754 = __webpack_require__(51)
-var isArray = __webpack_require__(52)
+var base64 = __webpack_require__(51)
+var ieee754 = __webpack_require__(52)
+var isArray = __webpack_require__(53)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -5951,10 +6097,10 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(49)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(50)))
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 var g;
@@ -5980,7 +6126,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6137,7 +6283,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
@@ -6228,7 +6374,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -6239,7 +6385,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports) {
 
 (function() {
@@ -6341,7 +6487,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6355,7 +6501,7 @@ exports.PlaylistEmptyError = new Error('playlist is empty');
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6378,7 +6524,30 @@ exports.default = partition;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(12));
+const selectors_1 = __webpack_require__(10);
+function removeWatchedFromPlaylistUI(videoId) {
+    const playlistVideoRendererNodes = get_elements_by_xpath_1.default(selectors_1.XPATH.YT_PLAYLIST_VIDEO_RENDERERS);
+    for (const video of playlistVideoRendererNodes) {
+        if (video.data.videoId === videoId) {
+            video.querySelector('#overlays ytd-thumbnail-overlay-resume-playback-renderer').remove();
+        }
+    }
+}
+exports.default = removeWatchedFromPlaylistUI;
+
+
+/***/ }),
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6388,8 +6557,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.removeVideoFromPlaylistUI = void 0;
-const remove_videos_from_playlist_1 = __importDefault(__webpack_require__(57));
-const decrement_number_of_videos_in_playlist_1 = __importDefault(__webpack_require__(59));
+const remove_videos_from_playlist_1 = __importDefault(__webpack_require__(59));
+const decrement_number_of_videos_in_playlist_1 = __importDefault(__webpack_require__(61));
 function removeVideoFromPlaylistUI(videoId) {
     try {
         remove_videos_from_playlist_1.default([{ videoId, percentDurationWatched: 100 }]);
@@ -6419,7 +6588,7 @@ exports.default = removeVideosFromPlaylistUI;
 
 
 /***/ }),
-/* 57 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6428,9 +6597,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const selectors_1 = __webpack_require__(15);
-const get_elements_by_xpath_1 = __importDefault(__webpack_require__(17));
-const list_map_search_1 = __importDefault(__webpack_require__(58));
+const selectors_1 = __webpack_require__(10);
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(12));
+const list_map_search_1 = __importDefault(__webpack_require__(60));
 function removeVideoWithYtAction(videoId) {
     document.querySelectorAll('ytd-app')[0].dispatchEvent(new CustomEvent('yt-action', {
         detail: {
@@ -6471,7 +6640,7 @@ exports.default = removeVideosFromPlaylist;
 
 
 /***/ }),
-/* 58 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6520,7 +6689,7 @@ exports.default = listMapSearch;
 
 
 /***/ }),
-/* 59 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6529,8 +6698,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const selectors_1 = __webpack_require__(15);
-const get_elements_by_xpath_1 = __importDefault(__webpack_require__(17));
+const selectors_1 = __webpack_require__(10);
+const get_elements_by_xpath_1 = __importDefault(__webpack_require__(12));
 // Decrement the numbers of videos in the playlist in the UI
 function decrementNumberOfVideosInPlaylist(value) {
     const spanElement = get_elements_by_xpath_1.default(selectors_1.XPATH.YT_NUMBER_OF_VIDEOS_IN_PLAYLIST)[0];
@@ -6551,7 +6720,7 @@ exports.default = decrementNumberOfVideosInPlaylist;
 
 
 /***/ }),
-/* 60 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6560,9 +6729,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const environment_1 = __webpack_require__(14);
-const stylesheets_1 = __webpack_require__(12);
-const preact_material_scss_1 = __importDefault(__webpack_require__(61));
+const environment_1 = __webpack_require__(17);
+const stylesheets_1 = __webpack_require__(15);
+const preact_material_scss_1 = __importDefault(__webpack_require__(63));
 const STYLESHEETS = {
     preactMaterial: stylesheets_1.stylesheet({
         condition: environment_1.ALWAYS,
@@ -6579,11 +6748,11 @@ exports.default = STYLESHEETS;
 
 
 /***/ }),
-/* 61 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(62);
+        var result = __webpack_require__(64);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -6593,15 +6762,15 @@ exports.default = STYLESHEETS;
     
 
 /***/ }),
-/* 62 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
-var ___CSS_LOADER_AT_RULE_IMPORT_0___ = __webpack_require__(63);
-var ___CSS_LOADER_AT_RULE_IMPORT_1___ = __webpack_require__(64);
-var ___CSS_LOADER_AT_RULE_IMPORT_2___ = __webpack_require__(65);
-var ___CSS_LOADER_AT_RULE_IMPORT_3___ = __webpack_require__(66);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
+var ___CSS_LOADER_AT_RULE_IMPORT_0___ = __webpack_require__(65);
+var ___CSS_LOADER_AT_RULE_IMPORT_1___ = __webpack_require__(66);
+var ___CSS_LOADER_AT_RULE_IMPORT_2___ = __webpack_require__(67);
+var ___CSS_LOADER_AT_RULE_IMPORT_3___ = __webpack_require__(68);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 exports.i(___CSS_LOADER_AT_RULE_IMPORT_0___);
 exports.i(___CSS_LOADER_AT_RULE_IMPORT_1___);
@@ -6618,11 +6787,11 @@ module.exports = exports;
 
 
 /***/ }),
-/* 63 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/*!\n Material Components for the Web\n Copyright (c) 2018 Google Inc.\n License: MIT\n*/\n@-webkit-keyframes mdc-ripple-fg-radius-in {\n  from {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@keyframes mdc-ripple-fg-radius-in {\n  from {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@-webkit-keyframes mdc-ripple-fg-opacity-in {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@keyframes mdc-ripple-fg-opacity-in {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@-webkit-keyframes mdc-ripple-fg-opacity-out {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n@keyframes mdc-ripple-fg-opacity-out {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n.mdc-ripple-surface--test-edge-var-bug {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden; }\n  .mdc-ripple-surface--test-edge-var-bug::before {\n    border: var(--mdc-ripple-surface-test-edge-var); }\n\n.mdc-button {\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 0.875rem;\n  line-height: 2.25rem;\n  font-weight: 500;\n  letter-spacing: 0.08929em;\n  text-decoration: none;\n  text-transform: uppercase;\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  will-change: transform, opacity;\n  padding: 0 8px 0 8px;\n  display: inline-flex;\n  position: relative;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  min-width: 64px;\n  height: 36px;\n  border: none;\n  outline: none;\n  /* @alternate */\n  line-height: inherit;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-appearance: none;\n  overflow: hidden;\n  vertical-align: middle;\n  border-radius: 2px; }\n  .mdc-button::before, .mdc-button::after {\n    position: absolute;\n    border-radius: 50%;\n    opacity: 0;\n    pointer-events: none;\n    content: \"\"; }\n  .mdc-button::before {\n    transition: opacity 15ms linear;\n    z-index: 1; }\n  .mdc-button.mdc-ripple-upgraded::before {\n    -webkit-transform: scale(var(--mdc-ripple-fg-scale, 1));\n            transform: scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-button.mdc-ripple-upgraded::after {\n    top: 0;\n    /* @noflip */\n    left: 0;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n  .mdc-button.mdc-ripple-upgraded--unbounded::after {\n    top: var(--mdc-ripple-top, 0);\n    /* @noflip */\n    left: var(--mdc-ripple-left, 0); }\n  .mdc-button.mdc-ripple-upgraded--foreground-activation::after {\n    -webkit-animation: 225ms :local(mdc-ripple-fg-radius-in) forwards, 75ms :local(mdc-ripple-fg-opacity-in) forwards;\n            animation: 225ms :local(mdc-ripple-fg-radius-in) forwards, 75ms :local(mdc-ripple-fg-opacity-in) forwards; }\n  .mdc-button.mdc-ripple-upgraded--foreground-deactivation::after {\n    -webkit-animation: 150ms :local(mdc-ripple-fg-opacity-out);\n            animation: 150ms :local(mdc-ripple-fg-opacity-out);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-button::before, .mdc-button::after {\n    top: calc(50% - 100%);\n    /* @noflip */\n    left: calc(50% - 100%);\n    width: 200%;\n    height: 200%; }\n  .mdc-button.mdc-ripple-upgraded::after {\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-button::-moz-focus-inner {\n    padding: 0;\n    border: 0; }\n  .mdc-button:active {\n    outline: none; }\n  .mdc-button:hover {\n    cursor: pointer; }\n  .mdc-button:disabled {\n    background-color: transparent;\n    color: rgba(0, 0, 0, 0.37);\n    cursor: default;\n    pointer-events: none; }\n  .mdc-button:not(:disabled) {\n    background-color: transparent; }\n  .mdc-button:not(:disabled) {\n    color: #6200ee;\n    /* @alternate */\n    color: var(--mdc-theme-primary, #6200ee); }\n  .mdc-button::before, .mdc-button::after {\n    background-color: #6200ee; }\n    @supports not (-ms-ime-align: auto) {\n      .mdc-button::before, .mdc-button::after {\n        /* @alternate */\n        background-color: var(--mdc-theme-primary, #6200ee); } }\n  .mdc-button:hover::before {\n    opacity: 0.04; }\n  .mdc-button:not(.mdc-ripple-upgraded):focus::before, .mdc-button.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-button:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-button:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.16; }\n  .mdc-button.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.16; }\n  .mdc-button .mdc-button__icon {\n    /* @noflip */\n    margin-left: 0;\n    /* @noflip */\n    margin-right: 8px;\n    display: inline-block;\n    width: 18px;\n    height: 18px;\n    font-size: 18px;\n    vertical-align: top; }\n    [dir=\"rtl\"] .mdc-button .mdc-button__icon, .mdc-button .mdc-button__icon[dir=\"rtl\"] {\n      /* @noflip */\n      margin-left: 8px;\n      /* @noflip */\n      margin-right: 0; }\n  .mdc-button svg.mdc-button__icon {\n    fill: currentColor; }\n\n.mdc-button--raised .mdc-button__icon,\n.mdc-button--unelevated .mdc-button__icon,\n.mdc-button--outlined .mdc-button__icon {\n  /* @noflip */\n  margin-left: -4px;\n  /* @noflip */\n  margin-right: 8px; }\n  [dir=\"rtl\"] .mdc-button--raised .mdc-button__icon, .mdc-button--raised .mdc-button__icon[dir=\"rtl\"], [dir=\"rtl\"]\n  .mdc-button--unelevated .mdc-button__icon,\n  .mdc-button--unelevated .mdc-button__icon[dir=\"rtl\"], [dir=\"rtl\"]\n  .mdc-button--outlined .mdc-button__icon,\n  .mdc-button--outlined .mdc-button__icon[dir=\"rtl\"] {\n    /* @noflip */\n    margin-left: 8px;\n    /* @noflip */\n    margin-right: -4px; }\n\n.mdc-button--raised,\n.mdc-button--unelevated {\n  padding: 0 16px 0 16px; }\n  .mdc-button--raised:disabled,\n  .mdc-button--unelevated:disabled {\n    background-color: rgba(0, 0, 0, 0.12);\n    color: rgba(0, 0, 0, 0.37); }\n  .mdc-button--raised:not(:disabled),\n  .mdc-button--unelevated:not(:disabled) {\n    background-color: #6200ee; }\n    @supports not (-ms-ime-align: auto) {\n      .mdc-button--raised:not(:disabled),\n      .mdc-button--unelevated:not(:disabled) {\n        /* @alternate */\n        background-color: var(--mdc-theme-primary, #6200ee); } }\n  .mdc-button--raised:not(:disabled),\n  .mdc-button--unelevated:not(:disabled) {\n    color: #fff;\n    /* @alternate */\n    color: var(--mdc-theme-on-primary, #fff); }\n  .mdc-button--raised::before, .mdc-button--raised::after,\n  .mdc-button--unelevated::before,\n  .mdc-button--unelevated::after {\n    background-color: #fff; }\n    @supports not (-ms-ime-align: auto) {\n      .mdc-button--raised::before, .mdc-button--raised::after,\n      .mdc-button--unelevated::before,\n      .mdc-button--unelevated::after {\n        /* @alternate */\n        background-color: var(--mdc-theme-on-primary, #fff); } }\n  .mdc-button--raised:hover::before,\n  .mdc-button--unelevated:hover::before {\n    opacity: 0.08; }\n  .mdc-button--raised:not(.mdc-ripple-upgraded):focus::before, .mdc-button--raised.mdc-ripple-upgraded--background-focused::before,\n  .mdc-button--unelevated:not(.mdc-ripple-upgraded):focus::before,\n  .mdc-button--unelevated.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.24; }\n  .mdc-button--raised:not(.mdc-ripple-upgraded)::after,\n  .mdc-button--unelevated:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-button--raised:not(.mdc-ripple-upgraded):active::after,\n  .mdc-button--unelevated:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.32; }\n  .mdc-button--raised.mdc-ripple-upgraded,\n  .mdc-button--unelevated.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.32; }\n\n.mdc-button--raised {\n  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);\n  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1); }\n  .mdc-button--raised:hover, .mdc-button--raised:focus {\n    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); }\n  .mdc-button--raised:active {\n    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); }\n  .mdc-button--raised:disabled {\n    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }\n\n.mdc-button--outlined {\n  border-style: solid;\n  padding: 0 14px 0 14px;\n  border-width: 2px; }\n  .mdc-button--outlined:disabled {\n    border-color: rgba(0, 0, 0, 0.37); }\n  .mdc-button--outlined:not(:disabled) {\n    border-color: #6200ee;\n    /* @alternate */\n    border-color: var(--mdc-theme-primary, #6200ee); }\n\n.mdc-button--dense {\n  height: 32px;\n  font-size: .8125rem; }", ""]);
@@ -6648,11 +6817,11 @@ module.exports = exports;
 
 
 /***/ }),
-/* 64 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/*!\n Material Components for the Web\n Copyright (c) 2018 Google Inc.\n License: MIT\n*/\n@-webkit-keyframes mdc-slider-emphasize {\n  0% {\n    -webkit-animation-timing-function: ease-out;\n            animation-timing-function: ease-out; }\n  50% {\n    -webkit-animation-timing-function: ease-in;\n            animation-timing-function: ease-in;\n    -webkit-transform: scale(0.85);\n            transform: scale(0.85); }\n  100% {\n    -webkit-transform: scale(0.571);\n            transform: scale(0.571); } }\n\n@keyframes mdc-slider-emphasize {\n  0% {\n    -webkit-animation-timing-function: ease-out;\n            animation-timing-function: ease-out; }\n  50% {\n    -webkit-animation-timing-function: ease-in;\n            animation-timing-function: ease-in;\n    -webkit-transform: scale(0.85);\n            transform: scale(0.85); }\n  100% {\n    -webkit-transform: scale(0.571);\n            transform: scale(0.571); } }\n\n.mdc-slider {\n  position: relative;\n  width: 100%;\n  height: 48px;\n  cursor: pointer;\n  touch-action: pan-x;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track {\n    background-color: #018786;\n    /* @alternate */\n    background-color: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-container {\n    background-color: rgba(1, 135, 134, 0.26); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-marker::after,\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-marker-container::after {\n    background-color: #018786;\n    /* @alternate */\n    background-color: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__thumb {\n    fill: #018786;\n    /* @alternate */\n    fill: var(--mdc-theme-secondary, #018786);\n    stroke: #018786;\n    /* @alternate */\n    stroke: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__focus-ring {\n    background-color: #018786;\n    /* @alternate */\n    background-color: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__pin {\n    background-color: #018786;\n    /* @alternate */\n    background-color: var(--mdc-theme-secondary, #018786); }\n  .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__pin {\n    color: white;\n    /* @alternate */\n    color: var(--mdc-theme-text-primary-on-dark, white); }\n  .mdc-slider--disabled {\n    cursor: auto; }\n    .mdc-slider--disabled .mdc-slider__track {\n      background-color: #9a9a9a; }\n    .mdc-slider--disabled .mdc-slider__track-container {\n      background-color: rgba(154, 154, 154, 0.26); }\n    .mdc-slider--disabled .mdc-slider__track-marker::after,\n    .mdc-slider--disabled .mdc-slider__track-marker-container::after {\n      background-color: #9a9a9a; }\n    .mdc-slider--disabled .mdc-slider__thumb {\n      fill: #9a9a9a;\n      stroke: #9a9a9a; }\n    .mdc-slider--disabled .mdc-slider__thumb {\n      /* @alternate */\n      stroke: white;\n      stroke: var(--mdc-slider-bg-color-behind-component, white); }\n  .mdc-slider:focus {\n    outline: none; }\n  .mdc-slider__track-container {\n    position: absolute;\n    top: 50%;\n    width: 100%;\n    height: 2px;\n    overflow: hidden; }\n  .mdc-slider__track {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-transform-origin: left top;\n            transform-origin: left top;\n    will-change: transform; }\n    .mdc-slider[dir=\"rtl\"] .mdc-slider__track,\n    [dir=\"rtl\"] .mdc-slider .mdc-slider__track {\n      -webkit-transform-origin: right top;\n              transform-origin: right top; }\n  .mdc-slider__track-marker-container {\n    display: flex;\n    margin-right: 0;\n    margin-left: -1px;\n    visibility: hidden; }\n    .mdc-slider[dir=\"rtl\"] .mdc-slider__track-marker-container,\n    [dir=\"rtl\"] .mdc-slider .mdc-slider__track-marker-container {\n      margin-right: -1px;\n      margin-left: 0; }\n    .mdc-slider__track-marker-container::after {\n      display: block;\n      width: 2px;\n      height: 2px;\n      content: \"\"; }\n  .mdc-slider__track-marker {\n    flex: 1; }\n    .mdc-slider__track-marker::after {\n      display: block;\n      width: 2px;\n      height: 2px;\n      content: \"\"; }\n    .mdc-slider__track-marker:first-child::after {\n      width: 3px; }\n  .mdc-slider__thumb-container {\n    position: absolute;\n    top: 15px;\n    left: 0;\n    width: 21px;\n    height: 100%;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    will-change: transform; }\n  .mdc-slider__thumb {\n    position: absolute;\n    top: 0;\n    left: 0;\n    -webkit-transform: scale(0.571);\n            transform: scale(0.571);\n    transition: fill 100ms ease-out, stroke 100ms ease-out, -webkit-transform 100ms ease-out;\n    transition: transform 100ms ease-out, fill 100ms ease-out, stroke 100ms ease-out;\n    transition: transform 100ms ease-out, fill 100ms ease-out, stroke 100ms ease-out, -webkit-transform 100ms ease-out;\n    stroke-width: 3.5; }\n  .mdc-slider__focus-ring {\n    width: 21px;\n    height: 21px;\n    transition: opacity 266.67ms ease-out, background-color 266.67ms ease-out, -webkit-transform 266.67ms ease-out;\n    transition: transform 266.67ms ease-out, opacity 266.67ms ease-out, background-color 266.67ms ease-out;\n    transition: transform 266.67ms ease-out, opacity 266.67ms ease-out, background-color 266.67ms ease-out, -webkit-transform 266.67ms ease-out;\n    border-radius: 50%;\n    opacity: 0; }\n  .mdc-slider__pin {\n    display: flex;\n    position: absolute;\n    top: 0;\n    left: 0;\n    align-items: center;\n    justify-content: center;\n    width: 26px;\n    height: 26px;\n    margin-top: -2px;\n    margin-left: -2px;\n    -webkit-transform: rotate(-45deg) scale(0) translate(0, 0);\n            transform: rotate(-45deg) scale(0) translate(0, 0);\n    transition: -webkit-transform 100ms ease-out;\n    transition: transform 100ms ease-out;\n    transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;\n    border-radius: 50% 50% 50% 0%;\n    z-index: 1; }\n  .mdc-slider__pin-value-marker {\n    font-family: Roboto, sans-serif;\n    -moz-osx-font-smoothing: grayscale;\n    -webkit-font-smoothing: antialiased;\n    font-size: 0.875rem;\n    line-height: 1.25rem;\n    font-weight: 400;\n    letter-spacing: 0.01786em;\n    text-decoration: inherit;\n    text-transform: inherit;\n    -webkit-transform: rotate(45deg);\n            transform: rotate(45deg); }\n\n.mdc-slider--active .mdc-slider__thumb {\n  -webkit-transform: scale3d(1, 1, 1);\n          transform: scale3d(1, 1, 1); }\n\n.mdc-slider--focus .mdc-slider__thumb {\n  -webkit-animation: mdc-slider-emphasize 266.67ms linear;\n          animation: mdc-slider-emphasize 266.67ms linear; }\n\n.mdc-slider--focus .mdc-slider__focus-ring {\n  -webkit-transform: scale3d(1.55, 1.55, 1.55);\n          transform: scale3d(1.55, 1.55, 1.55);\n  opacity: .25; }\n\n.mdc-slider--in-transit .mdc-slider__thumb {\n  transition-delay: 140ms; }\n\n.mdc-slider--in-transit .mdc-slider__thumb-container,\n.mdc-slider--in-transit .mdc-slider__track,\n.mdc-slider:focus:not(.mdc-slider--active) .mdc-slider__thumb-container,\n.mdc-slider:focus:not(.mdc-slider--active) .mdc-slider__track {\n  transition: -webkit-transform 80ms ease;\n  transition: transform 80ms ease;\n  transition: transform 80ms ease, -webkit-transform 80ms ease; }\n\n.mdc-slider--discrete.mdc-slider--active .mdc-slider__thumb {\n  -webkit-transform: scale(calc(12 / 21));\n          transform: scale(calc(12 / 21)); }\n\n.mdc-slider--discrete.mdc-slider--active .mdc-slider__pin {\n  -webkit-transform: rotate(-45deg) scale(1) translate(19px, -20px);\n          transform: rotate(-45deg) scale(1) translate(19px, -20px); }\n\n.mdc-slider--discrete.mdc-slider--focus .mdc-slider__thumb {\n  -webkit-animation: none;\n          animation: none; }\n\n.mdc-slider--discrete.mdc-slider--display-markers .mdc-slider__track-marker-container {\n  visibility: visible; }", ""]);
@@ -6680,11 +6849,11 @@ module.exports = exports;
 
 
 /***/ }),
-/* 65 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/*!\n Material Components for the Web\n Copyright (c) 2018 Google Inc.\n License: MIT\n*/\n@-webkit-keyframes primary-indeterminate-translate {\n  0% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  20% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  59.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n            animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n    -webkit-transform: translateX(83.67142%);\n            transform: translateX(83.67142%); }\n  100% {\n    -webkit-transform: translateX(200.61106%);\n            transform: translateX(200.61106%); } }\n\n@keyframes primary-indeterminate-translate {\n  0% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  20% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  59.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n            animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n    -webkit-transform: translateX(83.67142%);\n            transform: translateX(83.67142%); }\n  100% {\n    -webkit-transform: translateX(200.61106%);\n            transform: translateX(200.61106%); } }\n\n@-webkit-keyframes primary-indeterminate-scale {\n  0% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  36.65% {\n    -webkit-animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1);\n            animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1);\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  69.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1);\n            animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1);\n    -webkit-transform: scaleX(0.66148);\n            transform: scaleX(0.66148); }\n  100% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); } }\n\n@keyframes primary-indeterminate-scale {\n  0% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  36.65% {\n    -webkit-animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1);\n            animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1);\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  69.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1);\n            animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1);\n    -webkit-transform: scaleX(0.66148);\n            transform: scaleX(0.66148); }\n  100% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); } }\n\n@-webkit-keyframes secondary-indeterminate-translate {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n            animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  25% {\n    -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n            animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n    -webkit-transform: translateX(37.65191%);\n            transform: translateX(37.65191%); }\n  48.35% {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n            animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n    -webkit-transform: translateX(84.38617%);\n            transform: translateX(84.38617%); }\n  100% {\n    -webkit-transform: translateX(160.27778%);\n            transform: translateX(160.27778%); } }\n\n@keyframes secondary-indeterminate-translate {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n            animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  25% {\n    -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n            animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n    -webkit-transform: translateX(37.65191%);\n            transform: translateX(37.65191%); }\n  48.35% {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n            animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n    -webkit-transform: translateX(84.38617%);\n            transform: translateX(84.38617%); }\n  100% {\n    -webkit-transform: translateX(160.27778%);\n            transform: translateX(160.27778%); } }\n\n@-webkit-keyframes secondary-indeterminate-scale {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.20503, 0.05705, 0.57661, 0.45397);\n            animation-timing-function: cubic-bezier(0.20503, 0.05705, 0.57661, 0.45397);\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  19.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.15231, 0.19643, 0.64837, 1.00432);\n            animation-timing-function: cubic-bezier(0.15231, 0.19643, 0.64837, 1.00432);\n    -webkit-transform: scaleX(0.4571);\n            transform: scaleX(0.4571); }\n  44.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.25776, -0.00316, 0.21176, 1.38179);\n            animation-timing-function: cubic-bezier(0.25776, -0.00316, 0.21176, 1.38179);\n    -webkit-transform: scaleX(0.72796);\n            transform: scaleX(0.72796); }\n  100% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); } }\n\n@keyframes secondary-indeterminate-scale {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.20503, 0.05705, 0.57661, 0.45397);\n            animation-timing-function: cubic-bezier(0.20503, 0.05705, 0.57661, 0.45397);\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); }\n  19.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.15231, 0.19643, 0.64837, 1.00432);\n            animation-timing-function: cubic-bezier(0.15231, 0.19643, 0.64837, 1.00432);\n    -webkit-transform: scaleX(0.4571);\n            transform: scaleX(0.4571); }\n  44.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.25776, -0.00316, 0.21176, 1.38179);\n            animation-timing-function: cubic-bezier(0.25776, -0.00316, 0.21176, 1.38179);\n    -webkit-transform: scaleX(0.72796);\n            transform: scaleX(0.72796); }\n  100% {\n    -webkit-transform: scaleX(0.08);\n            transform: scaleX(0.08); } }\n\n@-webkit-keyframes buffering {\n  to {\n    -webkit-transform: translateX(-10px);\n            transform: translateX(-10px); } }\n\n@keyframes buffering {\n  to {\n    -webkit-transform: translateX(-10px);\n            transform: translateX(-10px); } }\n\n@-webkit-keyframes primary-indeterminate-translate-reverse {\n  0% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  20% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  59.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n            animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n    -webkit-transform: translateX(-83.67142%);\n            transform: translateX(-83.67142%); }\n  100% {\n    -webkit-transform: translateX(-200.61106%);\n            transform: translateX(-200.61106%); } }\n\n@keyframes primary-indeterminate-translate-reverse {\n  0% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  20% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  59.15% {\n    -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n            animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);\n    -webkit-transform: translateX(-83.67142%);\n            transform: translateX(-83.67142%); }\n  100% {\n    -webkit-transform: translateX(-200.61106%);\n            transform: translateX(-200.61106%); } }\n\n@-webkit-keyframes secondary-indeterminate-translate-reverse {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n            animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  25% {\n    -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n            animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n    -webkit-transform: translateX(-37.65191%);\n            transform: translateX(-37.65191%); }\n  48.35% {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n            animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n    -webkit-transform: translateX(-84.38617%);\n            transform: translateX(-84.38617%); }\n  100% {\n    -webkit-transform: translateX(-160.27778%);\n            transform: translateX(-160.27778%); } }\n\n@keyframes secondary-indeterminate-translate-reverse {\n  0% {\n    -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n            animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);\n    -webkit-transform: translateX(0);\n            transform: translateX(0); }\n  25% {\n    -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n            animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);\n    -webkit-transform: translateX(-37.65191%);\n            transform: translateX(-37.65191%); }\n  48.35% {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n            animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);\n    -webkit-transform: translateX(-84.38617%);\n            transform: translateX(-84.38617%); }\n  100% {\n    -webkit-transform: translateX(-160.27778%);\n            transform: translateX(-160.27778%); } }\n\n@-webkit-keyframes buffering-reverse {\n  to {\n    -webkit-transform: translateX(10px);\n            transform: translateX(10px); } }\n\n@keyframes buffering-reverse {\n  to {\n    -webkit-transform: translateX(10px);\n            transform: translateX(10px); } }\n\n.mdc-linear-progress {\n  position: relative;\n  width: 100%;\n  height: 4px;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0);\n  transition: opacity 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n  overflow: hidden; }\n  .mdc-linear-progress__bar {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-animation: none;\n            animation: none;\n    -webkit-transform-origin: top left;\n            transform-origin: top left;\n    transition: -webkit-transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n    transition: transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n    transition: transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1), -webkit-transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1); }\n  .mdc-linear-progress__bar-inner {\n    display: inline-block;\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-animation: none;\n            animation: none; }\n  .mdc-linear-progress__buffering-dots {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-animation: buffering 250ms infinite linear;\n            animation: buffering 250ms infinite linear;\n    background-repeat: repeat-x;\n    background-size: 10px 4px; }\n  .mdc-linear-progress__buffer {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-transform-origin: top left;\n            transform-origin: top left;\n    transition: -webkit-transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n    transition: transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);\n    transition: transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1), -webkit-transform 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1); }\n  .mdc-linear-progress__primary-bar {\n    -webkit-transform: scaleX(0);\n            transform: scaleX(0); }\n  .mdc-linear-progress__secondary-bar {\n    visibility: hidden; }\n  .mdc-linear-progress--indeterminate .mdc-linear-progress__bar {\n    transition: none; }\n  .mdc-linear-progress--indeterminate .mdc-linear-progress__primary-bar {\n    left: -145.166611%;\n    -webkit-animation: primary-indeterminate-translate 2s infinite linear;\n            animation: primary-indeterminate-translate 2s infinite linear; }\n    .mdc-linear-progress--indeterminate .mdc-linear-progress__primary-bar > .mdc-linear-progress__bar-inner {\n      -webkit-animation: primary-indeterminate-scale 2s infinite linear;\n              animation: primary-indeterminate-scale 2s infinite linear; }\n  .mdc-linear-progress--indeterminate .mdc-linear-progress__secondary-bar {\n    left: -54.888891%;\n    -webkit-animation: secondary-indeterminate-translate 2s infinite linear;\n            animation: secondary-indeterminate-translate 2s infinite linear;\n    visibility: visible; }\n    .mdc-linear-progress--indeterminate .mdc-linear-progress__secondary-bar > .mdc-linear-progress__bar-inner {\n      -webkit-animation: secondary-indeterminate-scale 2s infinite linear;\n              animation: secondary-indeterminate-scale 2s infinite linear; }\n  .mdc-linear-progress--reversed .mdc-linear-progress__bar,\n  .mdc-linear-progress--reversed .mdc-linear-progress__buffer {\n    right: 0;\n    -webkit-transform-origin: center right;\n            transform-origin: center right; }\n  .mdc-linear-progress--reversed .mdc-linear-progress__primary-bar {\n    -webkit-animation-name: primary-indeterminate-translate-reverse;\n            animation-name: primary-indeterminate-translate-reverse; }\n  .mdc-linear-progress--reversed .mdc-linear-progress__secondary-bar {\n    -webkit-animation-name: secondary-indeterminate-translate-reverse;\n            animation-name: secondary-indeterminate-translate-reverse; }\n  .mdc-linear-progress--reversed .mdc-linear-progress__buffering-dots {\n    -webkit-animation: buffering-reverse 250ms infinite linear;\n            animation: buffering-reverse 250ms infinite linear; }\n  .mdc-linear-progress--closed {\n    opacity: 0; }\n\n.mdc-linear-progress__bar-inner {\n  background-color: #6200ee;\n  /* @alternate */\n  background-color: var(--mdc-theme-primary, #6200ee); }\n\n.mdc-linear-progress__buffering-dots {\n  background-image: url(\"data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23e6e6e6'/%3E%3C/svg%3E\"); }\n\n.mdc-linear-progress__buffer {\n  background-color: #e6e6e6; }\n\n.mdc-linear-progress--indeterminate.mdc-linear-progress--reversed .mdc-linear-progress__primary-bar {\n  right: -145.166611%;\n  left: auto; }\n\n.mdc-linear-progress--indeterminate.mdc-linear-progress--reversed .mdc-linear-progress__secondary-bar {\n  right: -54.888891%;\n  left: auto; }", ""]);
@@ -6713,11 +6882,11 @@ module.exports = exports;
 
 
 /***/ }),
-/* 66 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(11);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(14);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/*!\n Material Components for the Web\n Copyright (c) 2018 Google Inc.\n License: MIT\n*/\n@-webkit-keyframes mdc-ripple-fg-radius-in {\n  from {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@keyframes mdc-ripple-fg-radius-in {\n  from {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1); }\n  to {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); } }\n\n@-webkit-keyframes mdc-ripple-fg-opacity-in {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@keyframes mdc-ripple-fg-opacity-in {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0; }\n  to {\n    opacity: var(--mdc-ripple-fg-opacity, 0); } }\n\n@-webkit-keyframes mdc-ripple-fg-opacity-out {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n@keyframes mdc-ripple-fg-opacity-out {\n  from {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0); }\n  to {\n    opacity: 0; } }\n\n.mdc-ripple-surface--test-edge-var-bug {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden; }\n  .mdc-ripple-surface--test-edge-var-bug::before {\n    border: var(--mdc-ripple-surface-test-edge-var); }\n\n.mdc-icon-button {\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  will-change: transform, opacity;\n  width: 48px;\n  height: 48px;\n  padding: 12px;\n  font-size: 24px;\n  display: inline-block;\n  position: relative;\n  box-sizing: border-box;\n  border: none;\n  outline: none;\n  background-color: transparent;\n  fill: currentColor;\n  color: inherit;\n  text-decoration: none;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .mdc-icon-button::before, .mdc-icon-button::after {\n    position: absolute;\n    border-radius: 50%;\n    opacity: 0;\n    pointer-events: none;\n    content: \"\"; }\n  .mdc-icon-button::before {\n    transition: opacity 15ms linear;\n    z-index: 1; }\n  .mdc-icon-button.mdc-ripple-upgraded::before {\n    -webkit-transform: scale(var(--mdc-ripple-fg-scale, 1));\n            transform: scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-icon-button.mdc-ripple-upgraded::after {\n    top: 0;\n    /* @noflip */\n    left: 0;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-transform-origin: center center;\n            transform-origin: center center; }\n  .mdc-icon-button.mdc-ripple-upgraded--unbounded::after {\n    top: var(--mdc-ripple-top, 0);\n    /* @noflip */\n    left: var(--mdc-ripple-left, 0); }\n  .mdc-icon-button.mdc-ripple-upgraded--foreground-activation::after {\n    -webkit-animation: 225ms :local(mdc-ripple-fg-radius-in) forwards, 75ms :local(mdc-ripple-fg-opacity-in) forwards;\n            animation: 225ms :local(mdc-ripple-fg-radius-in) forwards, 75ms :local(mdc-ripple-fg-opacity-in) forwards; }\n  .mdc-icon-button.mdc-ripple-upgraded--foreground-deactivation::after {\n    -webkit-animation: 150ms :local(mdc-ripple-fg-opacity-out);\n            animation: 150ms :local(mdc-ripple-fg-opacity-out);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1)); }\n  .mdc-icon-button::before, .mdc-icon-button::after {\n    top: calc(50% - 50%);\n    /* @noflip */\n    left: calc(50% - 50%);\n    width: 100%;\n    height: 100%; }\n  .mdc-icon-button.mdc-ripple-upgraded::before, .mdc-icon-button.mdc-ripple-upgraded::after {\n    top: var(--mdc-ripple-top, calc(50% - 50%));\n    /* @noflip */\n    left: var(--mdc-ripple-left, calc(50% - 50%));\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-icon-button.mdc-ripple-upgraded::after {\n    width: var(--mdc-ripple-fg-size, 100%);\n    height: var(--mdc-ripple-fg-size, 100%); }\n  .mdc-icon-button svg,\n  .mdc-icon-button img {\n    width: 24px;\n    height: 24px; }\n  .mdc-icon-button:disabled {\n    color: rgba(0, 0, 0, 0.38);\n    /* @alternate */\n    color: var(--mdc-theme-text-disabled-on-light, rgba(0, 0, 0, 0.38));\n    cursor: default;\n    pointer-events: none; }\n  .mdc-icon-button::before, .mdc-icon-button::after {\n    background-color: black; }\n  .mdc-icon-button:hover::before {\n    opacity: 0.04; }\n  .mdc-icon-button:not(.mdc-ripple-upgraded):focus::before, .mdc-icon-button.mdc-ripple-upgraded--background-focused::before {\n    transition-duration: 75ms;\n    opacity: 0.12; }\n  .mdc-icon-button:not(.mdc-ripple-upgraded)::after {\n    transition: opacity 150ms linear; }\n  .mdc-icon-button:not(.mdc-ripple-upgraded):active::after {\n    transition-duration: 75ms;\n    opacity: 0.16; }\n  .mdc-icon-button.mdc-ripple-upgraded {\n    --mdc-ripple-fg-opacity: 0.16; }\n\n.mdc-icon-button__icon {\n  display: inline-block; }\n  .mdc-icon-button__icon.mdc-icon-button__icon--on {\n    display: none; }\n\n.mdc-icon-button--on .mdc-icon-button__icon {\n  display: none; }\n  .mdc-icon-button--on .mdc-icon-button__icon.mdc-icon-button__icon--on {\n    display: inline-block; }", ""]);
@@ -6741,7 +6910,7 @@ module.exports = exports;
 
 
 /***/ }),
-/* 67 */
+/* 69 */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6786,7 +6955,7 @@ __webpack_require__.r(userscripter_namespaceObject);
 __webpack_require__.d(userscripter_namespaceObject, "run", function() { return run; });
 
 // EXTERNAL MODULE: ./node_modules/userscripter/lib/environment.mjs
-var environment = __webpack_require__(14);
+var environment = __webpack_require__(17);
 
 // CONCATENATED MODULE: ./node_modules/lines-unlines/dist/index.mjs
 function lines(s) {
@@ -6855,7 +7024,7 @@ function error(str) {
 }
 
 // EXTERNAL MODULE: ./node_modules/userscripter/lib/operations.mjs + 1 modules
-var operations = __webpack_require__(13);
+var operations = __webpack_require__(16);
 
 // CONCATENATED MODULE: ./node_modules/userscripter/lib/preferences.mjs
 
@@ -6922,7 +7091,7 @@ function assertUnreachable(x) {
 }
 
 // EXTERNAL MODULE: ./node_modules/userscripter/lib/stylesheets.mjs
-var stylesheets = __webpack_require__(12);
+var stylesheets = __webpack_require__(15);
 
 // CONCATENATED MODULE: ./node_modules/userscripter/lib/userscripter.mjs
 
@@ -6957,7 +7126,7 @@ function attribute(id) {
 
 
 /***/ }),
-/* 68 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7222,7 +7391,7 @@ class linear_progress_MDCLinearProgress extends component["a" /* default */] {
 
 
 /***/ }),
-/* 69 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8295,7 +8464,7 @@ class slider_MDCSlider extends component["a" /* default */] {
 
 
 /***/ }),
-/* 70 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8518,7 +8687,7 @@ class IconButtonToggleState {}
 /* harmony default export */ var icon_button_foundation = (foundation_MDCIconButtonToggleFoundation);
 
 // EXTERNAL MODULE: ./node_modules/@material/ripple/index.js + 4 modules
-var _material_ripple = __webpack_require__(21);
+var _material_ripple = __webpack_require__(22);
 
 // CONCATENATED MODULE: ./node_modules/@material/icon-button/index.js
 /**
@@ -8617,7 +8786,7 @@ class icon_button_MDCIconButtonToggle extends component["a" /* default */] {
 
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
