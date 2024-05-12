@@ -59,7 +59,7 @@ function generateRequestHeaders(config: YTConfigData, headerKeys: HeaderKey[] = 
     'X-YouTube-Page-CL': config.PAGE_CL,
     'X-YouTube-Page-Label': config.PAGE_BUILD_LABEL,
     // Those two are mandatory together to successfully perform request
-    'X-Goog-AuthUser': '0',
+    'X-Goog-AuthUser': '1',
     'X-Goog-PageId': config.DELEGATED_SESSION_ID,
     Authorization: `SAPISIDHASH ${generateSAPISIDHASH(config.ORIGIN_URL, config.SAPISID)}`,
   }
