@@ -95,7 +95,7 @@
     "@semantic-release/git": "github:semantic-release/git",
     "@semantic-release/github": "github:semantic-release/github",
     "@semantic-release/release-notes-generator": "github:semantic-release/release-notes-generator",
-    "@testing-library/preact": "2.0.1",
+    "@testing-library/preact": "3.2.4",
     "@typed/compose": "1.0.0",
     "@types/app-root-path": "1.2.4",
     "@types/classnames": "2.2.11",
