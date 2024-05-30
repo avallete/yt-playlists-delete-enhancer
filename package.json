@@ -100,7 +100,7 @@
     "@types/app-root-path": "1.2.4",
     "@types/classnames": "2.2.11",
     "@types/js-cookie": "2.2.6",
-    "@types/jsdom": "16.2.10",
+    "@types/jsdom": "21.1.7",
     "@types/sha1": "1.1.2",
     "@types/sinon": "9.0.11",
     "@typescript-eslint/eslint-plugin": "4.20.0",
