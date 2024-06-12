@@ -37,7 +37,7 @@
     "preact-material-components": "1.6.1",
     "sha1": "1.1.1",
     "userscript-metadata": "1.0.0",
-    "userscripter": "1.4.0"
+    "userscripter": "2.0.0"
   },
   "ava": {
     "files": [
@@ -138,7 +138,7 @@
     "tsconfig-paths": "3.9.0",
     "typescript": "4.2.3",
     "webextension-manifest": "1.0.0",
-    "webpack": "4.46.0",
+    "webpack": "5.92.0",
     "webpack-cli": "4.6.0"
   }
 }
