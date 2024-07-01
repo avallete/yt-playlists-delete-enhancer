@@ -33,7 +33,7 @@
   "dependencies": {
     "js-cookie": "2.2.1",
     "lodash.get": "4.4.2",
-    "preact": "10.5.13",
+    "preact": "10.22.1",
     "preact-material-components": "1.6.1",
     "sha1": "1.1.1",
     "userscript-metadata": "1.0.0",
