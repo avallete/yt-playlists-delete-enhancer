@@ -63,7 +63,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
       )
       if (toDeleteVideos.length > 0) {
         try {
-          await removeVideosFromPlaylist(this.props.config, playlist?.playlistId as string, toDeleteVideos)
+          await removeVideosFromPlaylist(playlist?.playlistId as string, toDeleteVideos)
           playlist.continuations[0].videos = toKeepVideos
           removeVideosFromPlaylistUI(toDeleteVideos)
           this.setState({ ...this.state, playlist })
@@ -80,7 +80,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
       const [toDeleteVideos, toKeepVideos] = partition(playlist.continuations[0].videos, (v) => v.videoId === videoId)
       if (toDeleteVideos.length > 0) {
         try {
-          await removeVideosFromPlaylist(this.props.config, playlist?.playlistId as string, toDeleteVideos)
+          await removeVideosFromPlaylist(playlist?.playlistId as string, toDeleteVideos)
           playlist.continuations[0].videos = toKeepVideos
           removeVideosFromPlaylistUI(toDeleteVideos)
           this.setState({ ...this.state, playlist })

@@ -1,4 +1,5 @@
 import sha1 from 'sha1'
+import { Innertube } from "youtubei.js"
 import { PlaylistNotEditableError, PlaylistEmptyError } from '~src/errors'
 import { YTConfigData, PlaylistVideo, Playlist, PlaylistContinuation } from './youtube'
 
@@ -20,7 +21,6 @@ type Headers = Partial<Record<HeaderKey, string>>
 
 const API_BASE_URL = new URL('https://www.youtube.com/youtubei/v1')
 const API_GET_PLAYLIST_VIDEOS_URL = new URL(`${API_BASE_URL}/browse`)
-const API_EDIT_PLAYLIST_VIDEOS_URL = new URL(`${API_GET_PLAYLIST_VIDEOS_URL}/edit_playlist`)
 const BASE_REFERER_URL = new URL('https://www.youtube.com/playlist')
 const API_V1_REQUIRED_HEADERS: HeaderKey[] = [
   'Content-Type',
@@ -263,35 +263,18 @@ export async function removeWatchHistoryForVideo(config: YTConfigData, videoId: 
 }
 
 export async function removeVideosFromPlaylist(
-  config: YTConfigData,
   playlistId: string,
   videosToRemove: PlaylistVideo[],
 ): Promise<boolean> {
-  const url = new URL(`${API_EDIT_PLAYLIST_VIDEOS_URL}`)
-  const headers = generateRequestHeaders(config, API_V1_REQUIRED_HEADERS)
-  const body = {
-    actions: videosToRemove.map(({ videoId }) => ({
-      removedVideoId: videoId,
-      action: 'ACTION_REMOVE_VIDEO_BY_VIDEO_ID',
-    })),
-    context: {
-      client: {
-        clientName: config.INNERTUBE_CONTEXT_CLIENT_NAME,
-        clientVersion: config.INNERTUBE_CONTEXT_CLIENT_VERSION,
-      },
-    },
-    params: 'CAFAAQ%3D%3D',
-    playlistId,
-  }
-
-  url.searchParams.append('key', config.INNERTUBE_API_KEY)
-  const response = await fetch(`${url}`, {
-    credentials: 'include',
-    headers,
-    body: JSON.stringify(body),
-    method: 'POST',
-    mode: 'cors',
+  const youtube = await Innertube.create({
+    cookie: document.cookie,
+    fetch: (...args) => fetch(...args),
   })
-  const data = await response.json()
-  return data.status !== 'STATUS_SUCCEEDED'
+
+  try {
+    await youtube.playlist.removeVideos(playlistId, videosToRemove.map(({ videoId }) => videoId))
+    return true
+  } catch (error) {
+    return false
+  }
 }
