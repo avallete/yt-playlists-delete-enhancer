@@ -37,7 +37,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
 
   async resetVideoHandler(videoId: string) {
     try {
-      await removeWatchHistoryForVideo(this.props.config, videoId)
+      await removeWatchHistoryForVideo(videoId)
       removeWatchedFromPlaylistUI(videoId)
       const { playlist } = this.state
       if (playlist) {

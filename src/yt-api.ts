@@ -221,44 +221,25 @@ async function getRemoveFromHistoryToken(videoId: string): Promise<string> {
   }
 }
 
-const makeFeedbackPayload = (feedbackToken: string) => ({
-  context: {
-    client: {
-      hl: 'en',
-      clientName: 'WEB',
-      clientVersion: '2.20210711.07.00',
-    },
-    user: {
-      lockedSafetyMode: false,
-    },
-    request: {
-      useSsl: true,
-      internalExperimentFlags: [],
-      consistencyTokenJars: [],
-    },
-  },
-  isFeedbackTokenUnencrypted: false,
-  shouldMerge: false,
-  feedbackTokens: [feedbackToken],
-})
-
-async function sendFeedbackRequest(config: YTConfigData, feedbackToken: string) {
-  const url = `https://www.youtube.com/youtubei/v1/feedback?key=${config.INNERTUBE_API_KEY}`
-  const rawResponse = await fetch(url, {
-    method: 'POST',
-    headers: generateRequestHeaders(config, API_V1_REQUIRED_HEADERS),
-    body: JSON.stringify(makeFeedbackPayload(feedbackToken)),
+async function sendFeedbackRequest(feedbackToken: string) {
+  const youtube = await Innertube.create({
+    cookie: document.cookie,
+    fetch: (...args) => fetch(...args),
   })
-  const response = await rawResponse.json()
+
+  const body = {feedbackTokens: [feedbackToken]}
+  const result = await youtube.actions.execute('/feedback', body)
+  const response = result.data
+
   if (!response.feedbackResponses[0].isProcessed) {
     throw new Error('Failed to remove video from watch history')
   }
 }
 
-export async function removeWatchHistoryForVideo(config: YTConfigData, videoId: string) {
+export async function removeWatchHistoryForVideo(videoId: string) {
   const feedbackToken = await getRemoveFromHistoryToken(videoId)
   if (feedbackToken) {
-    await sendFeedbackRequest(config, feedbackToken)
+    await sendFeedbackRequest(feedbackToken)
   }
 }
 
