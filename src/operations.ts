@@ -26,7 +26,7 @@ function mainWrapper() {
   }
 
   document.addEventListener('yt-action', (event: any) => {
-    if (event.detail.actionName === 'ytd-update-grid-state-action') {
+    if (event.detail.actionName === 'yt-service-request') {
       appendAppToDom(config, playlistName, XPATH.APP_RENDER_ROOT)
     }
   })
