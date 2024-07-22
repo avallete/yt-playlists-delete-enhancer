@@ -39,6 +39,12 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
     try {
       await removeWatchHistoryForVideo(this.props.config, videoId)
       removeWatchedFromPlaylistUI(videoId)
+      const { playlist } = this.state
+      playlist?.continuations[0].videos.forEach((v) => {
+        if (v.videoId === videoId) {
+          v.percentDurationWatched = 0
+        }
+      })
     } catch (error) {
       this.setState({ ...this.state, errorMessages: [(error as Error).message] })
     }
