@@ -25,7 +25,7 @@ test('listMapSearch: should early break when all needles are found', (t) => {
       { id: 1, value: '41' },
     ],
     needleKeyGetSpy,
-    haystackKeyGetSpy
+    haystackKeyGetSpy,
   )
   t.deepEqual(result, { 1: { id: 1, value: '42' } })
   t.true(needleKeyGetSpy.calledOnceWith({ id: 1 }))
@@ -41,7 +41,7 @@ test('listMapSearch: should early break when all needles are larger than haystac
       { id: 1, value: '41' },
     ],
     needleKeyGetSpy,
-    haystackKeyGetSpy
+    haystackKeyGetSpy,
   )
   t.is(result, false)
   t.true(needleKeyGetSpy.notCalled)
@@ -60,7 +60,7 @@ test('listMapSearch: should not be troubled by duplicates in haystack and keep t
       { id: 2, value: '69' },
     ],
     getIdAsString,
-    getIdAsString
+    getIdAsString,
   )
   t.deepEqual(result, { '1': { id: 1, value: '42' }, '2': { id: 2, value: '69' } })
 })
@@ -73,7 +73,7 @@ test('listMapSearch: should return false after all haystack has been tried', (t)
       { id: 3, value: '69' },
     ],
     getIdAsString,
-    getIdAsString
+    getIdAsString,
   )
   t.is(result, false)
 })
@@ -90,7 +90,7 @@ test('listMapSearch: needle can be plain array', (t) => {
       { id: 2, value: '69' },
     ],
     (index) => index,
-    getId
+    getId,
   )
   t.deepEqual(result, { 1: { id: 1, value: '42' }, 2: { id: 2, value: '69' } })
 })

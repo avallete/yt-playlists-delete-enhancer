@@ -15,7 +15,7 @@ test.beforeEach(() => {
         </ol>
       </span>
       <div id='42'></div>
-    </div>
+    </div>,
   )
   container = result.container
 })
@@ -34,7 +34,7 @@ test.serial('getElementsByXpath: should return array with the matching nodes in 
       <li>One</li>
       <li>Two</li>
       <li>Three</li>
-    </>
+    </>,
   )
   const expected = [
     expectedSnap.container.childNodes.item(0),
@@ -53,7 +53,7 @@ test.serial('getElementsByXpath: should work without parent element and use docu
       <li>One</li>
       <li>Two</li>
       <li>Three</li>
-    </>
+    </>,
   )
   const expected = [
     expectedSnap.container.childNodes.item(0),

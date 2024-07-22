@@ -1,9 +1,8 @@
 ## [1.7.1](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.7.0...v1.7.1) (2024-05-12)
 
-
 ### Bug Fixes
 
-* api continuation requests ([#242](https://github.com/avallete/yt-playlists-delete-enhancer/issues/242)) ([87c238b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/87c238b4d25777172d99f7c80475563cbae6e3ec))
+- api continuation requests ([#242](https://github.com/avallete/yt-playlists-delete-enhancer/issues/242)) ([87c238b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/87c238b4d25777172d99f7c80475563cbae6e3ec))
 
 # [1.7.0](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.6.2...v1.7.0) (2024-05-06)
 

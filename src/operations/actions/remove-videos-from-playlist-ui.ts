@@ -7,6 +7,7 @@ export function removeVideoFromPlaylistUI(videoId: string) {
     removeVideosFromPlaylist([{ videoId, percentDurationWatched: 100 }])
     decrementNumberOfVideosInPlaylist(1)
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error)
     // If an error occurs while trying to dynamically update the UI
     // reload the page to update the UI
@@ -19,6 +20,7 @@ export default function removeVideosFromPlaylistUI(toDeleteVideos: PlaylistVideo
     removeVideosFromPlaylist(toDeleteVideos)
     decrementNumberOfVideosInPlaylist(toDeleteVideos.length)
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error)
     // If an error occurs while trying to dynamically update the UI
     // reload the page to update the UI
