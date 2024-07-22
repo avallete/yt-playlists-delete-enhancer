@@ -31,7 +31,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
       const playlist = await fetchAllPlaylistContent(this.props.config, this.props.playlistName)
       this.setState({ playlist })
     } catch (error) {
-      this.setState({ errorMessages: [error.message] })
+      this.setState({ errorMessages: [(error as Error).message] })
     }
   }
 
@@ -40,7 +40,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
       await removeWatchHistoryForVideo(this.props.config, videoId)
       removeWatchedFromPlaylistUI(videoId)
     } catch (error) {
-      this.setState({ ...this.state, errorMessages: [error.message] })
+      this.setState({ ...this.state, errorMessages: [(error as Error).message] })
     }
   }
 
@@ -58,7 +58,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
           removeVideosFromPlaylistUI(toDeleteVideos)
           this.setState({ ...this.state, playlist })
         } catch (error) {
-          this.setState({ ...this.state, errorMessages: [error.message] })
+          this.setState({ ...this.state, errorMessages: [(error as Error).message] })
         }
       }
     }
@@ -75,7 +75,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
           removeVideosFromPlaylistUI(toDeleteVideos)
           this.setState({ ...this.state, playlist })
         } catch (error) {
-          this.setState({ ...this.state, errorMessages: [error.message] })
+          this.setState({ ...this.state, errorMessages: [(error as Error).message] })
         }
       }
     }
@@ -95,7 +95,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
         const playlist = await fetchAllPlaylistContent(this.props.config, this.props.playlistName)
         this.setState({ playlist })
       } catch (error) {
-        this.setState({ errorMessages: [error.message] })
+        this.setState({ errorMessages: [(error as Error).message] })
       }
     }
   }

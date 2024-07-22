@@ -1,6 +1,6 @@
 const unitTestsExtends = ['plugin:ava/recommended']
 const cypressTestsExtends = ['plugin:cypress/recommended', 'eslint-config-sinon', 'plugin:chai-friendly/recommended']
-const commonExtends = ['plugin:prettier/recommended', 'plugin:unicorn/recommended', 'plugin:radar/recommended']
+const commonExtends = ['plugin:prettier/recommended', 'plugin:unicorn/recommended', 'plugin:sonarjs/recommended']
 const tsExtends = ['airbnb-typescript/base', ...commonExtends]
 const jsExtends = ['airbnb-base', ...commonExtends]
 
@@ -9,7 +9,7 @@ const UNIT_TESTS_TS_OVERRIDE = {
   files: ['test/**/*.ts', 'test/**/*.tsx'],
   extends: [...unitTestsExtends, ...tsExtends],
   rules: {
-    'radar/no-duplicate-string': 'off',
+    'sonarjs/no-duplicate-string': 'off',
     'no-unused-expressions': 'off',
     'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
   },
@@ -18,7 +18,7 @@ const UNIT_TESTS_JS_OVERRIDE = {
   files: ['test/**/*.js'],
   extends: [...unitTestsExtends, ...jsExtends],
   rules: {
-    'radar/no-duplicate-string': 'off',
+    'sonarjs/no-duplicate-string': 'off',
     'no-unused-expressions': 'off',
   },
 }
@@ -26,7 +26,7 @@ const CYPRESS_TS_OVERRIDE = {
   files: ['cypress/**/*.ts'],
   extends: [...cypressTestsExtends, ...tsExtends],
   rules: {
-    'radar/no-duplicate-string': 'off',
+    'sonarjs/no-duplicate-string': 'off',
     'no-unused-expressions': 'off',
   },
 }
@@ -37,7 +37,7 @@ const CYPRESS_JS_OVERRIDE = {
     ecmaVersion: 2020,
   },
   rules: {
-    'radar/no-duplicate-string': 'off',
+    'sonarjs/no-duplicate-string': 'off',
     'no-unused-expressions': 'off',
     quotes: 'off',
     semi: 'off',
