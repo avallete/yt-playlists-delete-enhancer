@@ -40,11 +40,15 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
       await removeWatchHistoryForVideo(this.props.config, videoId)
       removeWatchedFromPlaylistUI(videoId)
       const { playlist } = this.state
-      playlist?.continuations[0].videos.forEach((v) => {
-        if (v.videoId === videoId) {
-          v.percentDurationWatched = 0
+      if (playlist) {
+        for (const v of playlist.continuations[0].videos) {
+          if (v.videoId === videoId) {
+            v.percentDurationWatched = 0
+          }
         }
-      })
+      } else {
+        throw new Error('Playlist not found')
+      }
     } catch (error) {
       this.setState({ ...this.state, errorMessages: [(error as Error).message] })
     }
@@ -55,7 +59,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
     if (playlist && playlist.continuations[0].videos.length > 0) {
       const [toDeleteVideos, toKeepVideos] = partition(
         playlist.continuations[0].videos,
-        (v) => v.percentDurationWatched >= watchTimeValue
+        (v) => v.percentDurationWatched >= watchTimeValue,
       )
       if (toDeleteVideos.length > 0) {
         try {
@@ -88,10 +92,7 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
   }
 
   shouldComponentUpdate(nextProperties: Properties) {
-    if (nextProperties.playlistName !== this.state?.playlist?.playlistId) {
-      return true
-    }
-    return false
+    return nextProperties.playlistName !== this.state?.playlist?.playlistId
   }
 
   async componentDidUpdate(previousProperties: Properties) {

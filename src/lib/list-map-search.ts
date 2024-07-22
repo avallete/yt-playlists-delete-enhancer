@@ -15,7 +15,7 @@ export default function listMapSearch<T, U, K extends keyof any>(
   needles: Array<T>,
   haystack: Array<U>,
   needleKeyGetter: (item: T) => K,
-  haystackKeyGetter: (item: U) => K
+  haystackKeyGetter: (item: U) => K,
 ): Record<K, U> | false {
   const searchMap: Record<K, U | undefined> = {} as Record<K, U>
   // We cannot found all our needles into our haystack

@@ -12,6 +12,7 @@ export default function decrementNumberOfVideosInPlaylist(value: number) {
     // - The "There are no videos in this playlist yet" text
     // - The "No videos" text
     // Both strings are not part of the `yt.msgs_` object to use for localization
+    // eslint-disable-next-line no-console
     console.log('empty playlist reload')
     window.location.reload()
   }

@@ -1,12 +1,10 @@
 import sha1 from 'sha1'
-import { YTConfigData, PlaylistVideo, Playlist, PlaylistContinuation } from './youtube'
 import { PlaylistNotEditableError, PlaylistEmptyError } from '~src/errors'
+import { YTConfigData, PlaylistVideo, Playlist, PlaylistContinuation } from './youtube'
 
 type YTHeaderKey =
   | 'X-Goog-Visitor-Id'
-  // eslint-disable-next-line radar/no-duplicate-string
   | 'X-YouTube-Client-Name'
-  // eslint-disable-next-line radar/no-duplicate-string
   | 'X-YouTube-Client-Version'
   | 'X-YouTube-Device'
   | 'X-YouTube-Identity-Token'
@@ -45,6 +43,7 @@ const API_REQUIRED_HEADERS: HeaderKey[] = [
 function generateSAPISIDHASH(origin: string, sapisid: string, date: Date = new Date()): string {
   const roundedTimestamp = Math.floor(date.getTime() / 1000)
   // deepcode ignore InsecureHash: we need to replicate youtube webapp behavior
+  // eslint-disable-next-line sonarjs/no-nested-template-literals
   return `${roundedTimestamp}_${sha1(`${roundedTimestamp} ${sapisid} ${origin}`)}`
 }
 
@@ -72,21 +71,19 @@ function generateRequestHeaders(config: YTConfigData, headerKeys: HeaderKey[] = 
 }
 
 function extractPlaylistVideoListRendererContents(playlistVideoListContents: Array<any>): PlaylistVideo[] {
-  return playlistVideoListContents.map(
-    (item): PlaylistVideo => {
-      return {
-        videoId: item.playlistVideoRenderer.videoId,
-        percentDurationWatched:
-          item.playlistVideoRenderer.thumbnailOverlays[1].thumbnailOverlayResumePlaybackRenderer
-            ?.percentDurationWatched || 0,
-      }
+  return playlistVideoListContents.map((item): PlaylistVideo => {
+    return {
+      videoId: item.playlistVideoRenderer.videoId,
+      percentDurationWatched:
+        item.playlistVideoRenderer.thumbnailOverlays[1].thumbnailOverlayResumePlaybackRenderer
+          ?.percentDurationWatched || 0,
     }
-  )
+  })
 }
 
 function extractPlaylistContinuation(playlistContents: Array<any>): PlaylistContinuation {
   // ContinuationToken should be in the last item of the playlist contents
-  const lastItem = playlistContents[playlistContents.length - 1]
+  const lastItem = playlistContents.at(-1)
   if (lastItem && lastItem.continuationItemRenderer) {
     // Remove last item from playlist contents since it contain continuationItem
     playlistContents.pop()
@@ -113,8 +110,10 @@ async function fetchPlaylistInitialData(config: YTConfigData, playlistName: stri
     method: 'GET',
     mode: 'cors',
   })
-  const data = (await response.json()).response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
-    .sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer
+  const respJson = await response.json()
+  const data =
+    respJson.response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer
+      .contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer
 
   if (!data) {
     throw PlaylistEmptyError
@@ -130,7 +129,7 @@ async function fetchPlaylistInitialData(config: YTConfigData, playlistName: stri
 
 async function fetchPlaylistContinuation(
   config: YTConfigData,
-  continuation: PlaylistContinuation
+  continuation: PlaylistContinuation,
 ): Promise<PlaylistContinuation> {
   const url = new URL(`${API_GET_PLAYLIST_VIDEOS_URL}`)
   const headers = generateRequestHeaders(config, API_V1_REQUIRED_HEADERS)
@@ -152,7 +151,8 @@ async function fetchPlaylistContinuation(
     method: 'POST',
     mode: 'cors',
   })
-  const data = (await response.json()).onResponseReceivedActions[0].appendContinuationItemsAction.continuationItems
+  const responseJson = await response.json()
+  const data = responseJson.onResponseReceivedActions[0].appendContinuationItemsAction.continuationItems
   return extractPlaylistContinuation(data)
 }
 
@@ -160,11 +160,11 @@ export async function fetchAllPlaylistContent(config: YTConfigData, playlistName
   const playlist = await fetchPlaylistInitialData(config, playlistName)
   if (playlist.isEditable) {
     // If all data has been retrieved, the last continuation item token will be undefined
-    while (playlist.continuations[playlist.continuations.length - 1].continuationToken !== undefined) {
+    while (playlist.continuations.at(-1)?.continuationToken !== undefined) {
       playlist.continuations.push(
         // We need the next continuationToken to launch the next request
         // eslint-disable-next-line no-await-in-loop
-        await fetchPlaylistContinuation(config, playlist.continuations[playlist.continuations.length - 1])
+        await fetchPlaylistContinuation(config, playlist.continuations.at(-1)!),
       )
     }
     // Merge all the videos into a single PlaylistContinuation
@@ -193,9 +193,10 @@ async function getRemoveFromHistoryToken(videoId: string): Promise<string> {
     if (!matchedData || !matchedData[1]) throw new Error('Failed to parse initData')
     const initData = JSON.parse(matchedData[1])
 
-    const groups = initData?.contents?.twoColumnBrowseResultsRenderer?.tabs?.[0]?.tabRenderer?.content?.sectionListRenderer?.contents
-      .map((group: { itemSectionRenderer: object }) => group.itemSectionRenderer)
-      .filter(Boolean)
+    const groups =
+      initData?.contents?.twoColumnBrowseResultsRenderer?.tabs?.[0]?.tabRenderer?.content?.sectionListRenderer?.contents
+        .map((group: { itemSectionRenderer: object }) => group.itemSectionRenderer)
+        .filter(Boolean)
 
     let matchingVideo
     for (const item of groups) {
@@ -264,7 +265,7 @@ export async function removeWatchHistoryForVideo(config: YTConfigData, videoId: 
 export async function removeVideosFromPlaylist(
   config: YTConfigData,
   playlistId: string,
-  videosToRemove: PlaylistVideo[]
+  videosToRemove: PlaylistVideo[],
 ): Promise<boolean> {
   const url = new URL(`${API_EDIT_PLAYLIST_VIDEOS_URL}`)
   const headers = generateRequestHeaders(config, API_V1_REQUIRED_HEADERS)
@@ -292,8 +293,5 @@ export async function removeVideosFromPlaylist(
     mode: 'cors',
   })
   const data = await response.json()
-  if (data.status !== 'STATUS_SUCCEEDED') {
-    return true
-  }
-  return false
+  return data.status !== 'STATUS_SUCCEEDED'
 }

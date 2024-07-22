@@ -1,5 +1,5 @@
 const unitTestsExtends = ['plugin:ava/recommended']
-const cypressTestsExtends = ['plugin:cypress/recommended', 'eslint-config-sinon', 'plugin:chai-friendly/recommended']
+const cypressTestsExtends = ['plugin:cypress/recommended', 'plugin:chai-friendly/recommended']
 const commonExtends = ['plugin:prettier/recommended', 'plugin:unicorn/recommended', 'plugin:sonarjs/recommended']
 const tsExtends = ['airbnb-typescript/base', ...commonExtends]
 const jsExtends = ['airbnb-base', ...commonExtends]
@@ -60,6 +60,7 @@ const TS_OVERRIDE = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.eslint.json',
+    // eslint-disable-next-line unicorn/prefer-module
     tsconfigRootDir: __dirname,
   },
   plugins: ['@typescript-eslint'],
@@ -72,6 +73,7 @@ const TS_OVERRIDE = {
   overrides: [UNIT_TESTS_TS_OVERRIDE, CYPRESS_TS_OVERRIDE],
 }
 
+// eslint-disable-next-line unicorn/prefer-module
 module.exports = {
   extends: jsExtends,
   overrides: [UNIT_TESTS_JS_OVERRIDE, CYPRESS_JS_OVERRIDE, TS_OVERRIDE],

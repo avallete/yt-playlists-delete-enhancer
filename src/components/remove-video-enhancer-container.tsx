@@ -22,10 +22,7 @@ export const REMOVE_BUTTON_ALT = 'Remove button to start removing videos'
 
 function validate(value: any): boolean {
   const numberValue = Number(value)
-  if (Number.isSafeInteger(numberValue) && numberValue >= 0 && numberValue <= 100) {
-    return true
-  }
-  return false
+  return !!(Number.isSafeInteger(numberValue) && numberValue >= 0 && numberValue <= 100)
 }
 
 function RemoveVideoEnhancerContainer({
@@ -70,7 +67,7 @@ function RemoveVideoEnhancerContainer({
             onClick: removeVideo,
           }),
         ],
-        element
+        element,
       )
     }
 

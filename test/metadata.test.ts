@@ -20,25 +20,25 @@ test.afterEach(() => {
 test('generateDownloadUrlFromRepositoryUrl: should extract repo from github ssh url', (t) => {
   t.is(
     generateDownloadUrlFromRepositoryUrl('git@github.com:some-user/my-repo.git'),
-    `https://raw.githubusercontent.com/some-user/my-repo/stubreleaseBranch/stubid.user.js`
+    `https://raw.githubusercontent.com/some-user/my-repo/stubreleaseBranch/stubid.user.js`,
   )
 })
 test('generateDownloadUrlFromRepositoryUrl: should extract repo from github https url', (t) => {
   t.is(
     generateDownloadUrlFromRepositoryUrl('https://github.com/some-user/my-repo.git'),
-    `https://raw.githubusercontent.com/some-user/my-repo/stubreleaseBranch/stubid.user.js`
+    `https://raw.githubusercontent.com/some-user/my-repo/stubreleaseBranch/stubid.user.js`,
   )
 })
 test('generateDownloadUrlFromRepositoryUrl: should extract repo from git:// url', (t) => {
   t.is(
     generateDownloadUrlFromRepositoryUrl('git://github.com/some-user/my-repo.git'),
-    `https://raw.githubusercontent.com/some-user/my-repo/stubreleaseBranch/stubid.user.js`
+    `https://raw.githubusercontent.com/some-user/my-repo/stubreleaseBranch/stubid.user.js`,
   )
 })
 test('generateDownloadUrlFromRepositoryUrl: should extract repo from git+ssh:// url', (t) => {
   t.is(
     generateDownloadUrlFromRepositoryUrl('git+ssh://github.com/some-user/my-repo.git'),
-    `https://raw.githubusercontent.com/some-user/my-repo/stubreleaseBranch/stubid.user.js`
+    `https://raw.githubusercontent.com/some-user/my-repo/stubreleaseBranch/stubid.user.js`,
   )
 })
 test('generateDownloadUrlFromRepositoryUrl: should return empty string if non-git url', (t) => {

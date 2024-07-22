@@ -17,7 +17,7 @@ function removeVideoWithYtAction(videoId: String) {
         ],
         returnValue: [],
       },
-    })
+    }),
   )
 }
 
@@ -32,7 +32,7 @@ export default function removeVideosFromPlaylist(videosToDelete: PlaylistVideo[]
       uniqueVideosToDelete,
       playlistVideoRendererNodes,
       (video) => video.videoId,
-      (node) => node.data.videoId
+      (node) => node.data.videoId,
     )
     // if all videos to remove are present in the UI
     if (searchMap) {

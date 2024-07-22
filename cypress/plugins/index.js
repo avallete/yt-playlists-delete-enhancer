@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 /// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -12,7 +13,7 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 // eslint-disable-next-line import/no-extraneous-dependencies
-const path = require('path')
+const path = require('node:path')
 
 const DIST_PATH = path.resolve(path.join(__dirname, '..', '..', 'dist'))
 
