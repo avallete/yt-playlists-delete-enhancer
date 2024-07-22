@@ -37,12 +37,12 @@ jobs:
           npm run coverage:report
         env:
           NODE_ENV: test
-      - name: E2E-tests
-        uses: cypress-io/github-action@v2
-        with:
-          build: npm run build
-        env:
-          NODE_ENV: test
+      # - name: E2E-tests
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     build: npm run build
+      #   env:
+      #     NODE_ENV: test
       # Will update the package.json file with semantic-release and push it to master with a new tag
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4

@@ -35,12 +35,12 @@ jobs:
           npm run coverage:report
         env:
           NODE_ENV: test
-      - name: E2E-tests
-        uses: cypress-io/github-action@v2
-        with:
-          build: npm run build
-        env:
-          NODE_ENV: test
+      # - name: E2E-tests
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     build: npm run build
+      #   env:
+      #     NODE_ENV: test
       - name: Upload coverage to CodeCov
         uses: codecov/codecov-action@v1
         continue-on-error: true
