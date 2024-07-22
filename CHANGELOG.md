@@ -1,3 +1,13 @@
+## [1.7.2](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.7.1...v1.7.2) (2024-07-22)
+
+
+### Bug Fixes
+
+* app initialization ([#272](https://github.com/avallete/yt-playlists-delete-enhancer/issues/272)) ([98b1b5e](https://github.com/avallete/yt-playlists-delete-enhancer/commit/98b1b5ea7cfe9155e40d604cba252314bf64a5cd))
+* dependencies and use Node.js 16 ([#261](https://github.com/avallete/yt-playlists-delete-enhancer/issues/261)) ([a06fdd6](https://github.com/avallete/yt-playlists-delete-enhancer/commit/a06fdd642a7b64b7f1b2960680cad920030d9082))
+* lintings ([#276](https://github.com/avallete/yt-playlists-delete-enhancer/issues/276)) ([22314c2](https://github.com/avallete/yt-playlists-delete-enhancer/commit/22314c2d966e5d9b9ddcaecb15dfe6cf94d613b9))
+* prevent videos from being removed after reset ([#260](https://github.com/avallete/yt-playlists-delete-enhancer/issues/260)) ([7cc139b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/7cc139bb2ab632ab1280dcac6f191b5fcf794c7d))
+
 ## [1.7.1](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.7.0...v1.7.1) (2024-05-12)
 
 ### Bug Fixes
