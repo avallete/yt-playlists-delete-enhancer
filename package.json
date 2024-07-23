@@ -135,7 +135,7 @@
     "ts-node": "10.9.2",
     "ts-preferences": "2.0.0",
     "tsconfig-paths": "4.2.0",
-    "typescript": "5.4.3",
+    "typescript": "5.5.4",
     "webextension-manifest": "1.0.0",
     "webpack": "4.46.0",
     "webpack-cli": "4.6.0"
