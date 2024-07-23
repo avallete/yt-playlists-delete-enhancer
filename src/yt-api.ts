@@ -19,18 +19,7 @@ type HeaderKey = 'Content-Type' | YTHeaderKey
 
 type Headers = Partial<Record<HeaderKey, string>>
 
-const API_BASE_URL = new URL('https://www.youtube.com/youtubei/v1')
-const API_GET_PLAYLIST_VIDEOS_URL = new URL(`${API_BASE_URL}/browse`)
 const BASE_REFERER_URL = new URL('https://www.youtube.com/playlist')
-const API_V1_REQUIRED_HEADERS: HeaderKey[] = [
-  'Content-Type',
-  'Authorization',
-  'X-Goog-Visitor-Id',
-  'X-YouTube-Client-Name',
-  'X-YouTube-Client-Version',
-  'X-Goog-AuthUser',
-  'X-Goog-PageId',
-]
 const API_REQUIRED_HEADERS: HeaderKey[] = [
   'X-YouTube-Client-Name',
   'X-YouTube-Client-Version',
@@ -128,31 +117,17 @@ async function fetchPlaylistInitialData(config: YTConfigData, playlistName: stri
 }
 
 async function fetchPlaylistContinuation(
-  config: YTConfigData,
-  continuation: PlaylistContinuation,
+  continuation: PlaylistContinuation
 ): Promise<PlaylistContinuation> {
-  const url = new URL(`${API_GET_PLAYLIST_VIDEOS_URL}`)
-  const headers = generateRequestHeaders(config, API_V1_REQUIRED_HEADERS)
-  const body = {
-    context: {
-      client: {
-        clientName: config.INNERTUBE_CONTEXT_CLIENT_NAME,
-        clientVersion: config.INNERTUBE_CONTEXT_CLIENT_VERSION,
-      },
-    },
-    continuation: continuation.continuationToken,
-  }
-
-  url.searchParams.append('key', config.INNERTUBE_API_KEY)
-  const response = await fetch(`${url}`, {
-    credentials: 'include',
-    headers,
-    body: JSON.stringify(body),
-    method: 'POST',
-    mode: 'cors',
+  const youtube = await Innertube.create({
+    cookie: document.cookie,
+    fetch: (...args) => fetch(...args),
   })
-  const responseJson = await response.json()
-  const data = responseJson.onResponseReceivedActions[0].appendContinuationItemsAction.continuationItems
+
+  const body = {continuation: continuation.continuationToken}
+  const result = await youtube.actions.execute('/browse', body)
+  const data = result.data.onResponseReceivedActions?.[0].appendContinuationItemsAction.continuationItems
+
   return extractPlaylistContinuation(data)
 }
 
@@ -164,7 +139,7 @@ export async function fetchAllPlaylistContent(config: YTConfigData, playlistName
       playlist.continuations.push(
         // We need the next continuationToken to launch the next request
         // eslint-disable-next-line no-await-in-loop
-        await fetchPlaylistContinuation(config, playlist.continuations.at(-1)!),
+        await fetchPlaylistContinuation(playlist.continuations.at(-1)!),
       )
     }
     // Merge all the videos into a single PlaylistContinuation
