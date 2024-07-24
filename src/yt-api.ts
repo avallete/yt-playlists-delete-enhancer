@@ -1,74 +1,6 @@
-import sha1 from 'sha1'
+import { Innertube } from "youtubei.js"
 import { PlaylistNotEditableError, PlaylistEmptyError } from '~src/errors'
 import { YTConfigData, PlaylistVideo, Playlist, PlaylistContinuation } from './youtube'
-
-type YTHeaderKey =
-  | 'X-Goog-Visitor-Id'
-  | 'X-YouTube-Client-Name'
-  | 'X-YouTube-Client-Version'
-  | 'X-YouTube-Device'
-  | 'X-YouTube-Identity-Token'
-  | 'X-YouTube-Page-CL'
-  | 'X-YouTube-Page-Label'
-  | 'X-Goog-AuthUser'
-  | 'X-Goog-PageId'
-  | 'Authorization'
-
-type HeaderKey = 'Content-Type' | YTHeaderKey
-
-type Headers = Partial<Record<HeaderKey, string>>
-
-const API_BASE_URL = new URL('https://www.youtube.com/youtubei/v1')
-const API_GET_PLAYLIST_VIDEOS_URL = new URL(`${API_BASE_URL}/browse`)
-const API_EDIT_PLAYLIST_VIDEOS_URL = new URL(`${API_GET_PLAYLIST_VIDEOS_URL}/edit_playlist`)
-const BASE_REFERER_URL = new URL('https://www.youtube.com/playlist')
-const API_V1_REQUIRED_HEADERS: HeaderKey[] = [
-  'Content-Type',
-  'Authorization',
-  'X-Goog-Visitor-Id',
-  'X-YouTube-Client-Name',
-  'X-YouTube-Client-Version',
-  'X-Goog-AuthUser',
-  'X-Goog-PageId',
-]
-const API_REQUIRED_HEADERS: HeaderKey[] = [
-  'X-YouTube-Client-Name',
-  'X-YouTube-Client-Version',
-  'X-YouTube-Device',
-  'X-YouTube-Identity-Token',
-  'X-YouTube-Page-CL',
-  'X-YouTube-Page-Label',
-]
-
-function generateSAPISIDHASH(origin: string, sapisid: string, date: Date = new Date()): string {
-  const roundedTimestamp = Math.floor(date.getTime() / 1000)
-  // deepcode ignore InsecureHash: we need to replicate youtube webapp behavior
-  // eslint-disable-next-line sonarjs/no-nested-template-literals
-  return `${roundedTimestamp}_${sha1(`${roundedTimestamp} ${sapisid} ${origin}`)}`
-}
-
-function generateRequestHeaders(config: YTConfigData, headerKeys: HeaderKey[] = []): Headers {
-  const allHeaders: Headers = {
-    'Content-Type': 'application/json',
-    'X-Goog-Visitor-Id': config.VISITOR_DATA,
-    'X-YouTube-Client-Name': config.INNERTUBE_CONTEXT_CLIENT_NAME,
-    'X-YouTube-Client-Version': config.INNERTUBE_CONTEXT_CLIENT_VERSION,
-    'X-YouTube-Device': config.DEVICE,
-    'X-YouTube-Identity-Token': config.ID_TOKEN,
-    'X-YouTube-Page-CL': config.PAGE_CL,
-    'X-YouTube-Page-Label': config.PAGE_BUILD_LABEL,
-    // Those two are mandatory together to successfully perform request
-    'X-Goog-AuthUser': '1',
-    'X-Goog-PageId': config.DELEGATED_SESSION_ID,
-    Authorization: `SAPISIDHASH ${generateSAPISIDHASH(config.ORIGIN_URL, config.SAPISID)}`,
-  }
-  const result: Headers = {}
-  // Add each wanted header key to result headers
-  for (const headerKey of headerKeys) {
-    result[headerKey] = allHeaders[headerKey]
-  }
-  return result
-}
 
 function extractPlaylistVideoListRendererContents(playlistVideoListContents: Array<any>): PlaylistVideo[] {
   return playlistVideoListContents.map((item): PlaylistVideo => {
@@ -98,22 +30,22 @@ function extractPlaylistContinuation(playlistContents: Array<any>): PlaylistCont
 }
 
 async function fetchPlaylistInitialData(config: YTConfigData, playlistName: string): Promise<Playlist> {
-  const url = new URL(`${BASE_REFERER_URL}`)
-  const headers = generateRequestHeaders(config, API_REQUIRED_HEADERS)
+  const youtube = await Innertube.create({
+    cookie: document.cookie,
+    fetch: (input, init = {}) => {
+      const headers = new Headers();
+      headers.append('X-YouTube-Client-Name', config.INNERTUBE_CONTEXT_CLIENT_NAME)
+      headers.append('X-YouTube-Client-Version', config.INNERTUBE_CONTEXT_CLIENT_VERSION)
+      headers.append('X-YouTube-Device', config.DEVICE)
+      headers.append('X-YouTube-Identity-Token', config.ID_TOKEN)
+      init.headers = headers;
+      return fetch(input, init);
+    }
+  });
 
-  url.searchParams.append('list', playlistName)
-  // Get the first page data for the playlist
-  url.searchParams.append('pbj', '1')
-  const response = await fetch(`${url}`, {
-    credentials: 'include',
-    headers,
-    method: 'GET',
-    mode: 'cors',
-  })
-  const respJson = await response.json()
-  const data =
-    respJson.response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer
-      .contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer
+  const response = await youtube.session.http.fetch(`/playlist?list=${playlistName}&pbj=1`, {baseURL: 'https://www.youtube.com'});
+  const data = (await response.json()).response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
+    .sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer;
 
   if (!data) {
     throw PlaylistEmptyError
@@ -128,31 +60,17 @@ async function fetchPlaylistInitialData(config: YTConfigData, playlistName: stri
 }
 
 async function fetchPlaylistContinuation(
-  config: YTConfigData,
-  continuation: PlaylistContinuation,
+  continuation: PlaylistContinuation
 ): Promise<PlaylistContinuation> {
-  const url = new URL(`${API_GET_PLAYLIST_VIDEOS_URL}`)
-  const headers = generateRequestHeaders(config, API_V1_REQUIRED_HEADERS)
-  const body = {
-    context: {
-      client: {
-        clientName: config.INNERTUBE_CONTEXT_CLIENT_NAME,
-        clientVersion: config.INNERTUBE_CONTEXT_CLIENT_VERSION,
-      },
-    },
-    continuation: continuation.continuationToken,
-  }
-
-  url.searchParams.append('key', config.INNERTUBE_API_KEY)
-  const response = await fetch(`${url}`, {
-    credentials: 'include',
-    headers,
-    body: JSON.stringify(body),
-    method: 'POST',
-    mode: 'cors',
+  const youtube = await Innertube.create({
+    cookie: document.cookie,
+    fetch: (...args) => fetch(...args),
   })
-  const responseJson = await response.json()
-  const data = responseJson.onResponseReceivedActions[0].appendContinuationItemsAction.continuationItems
+
+  const body = {continuation: continuation.continuationToken}
+  const result = await youtube.actions.execute('/browse', body)
+  const data = result.data.onResponseReceivedActions?.[0].appendContinuationItemsAction.continuationItems
+
   return extractPlaylistContinuation(data)
 }
 
@@ -164,7 +82,7 @@ export async function fetchAllPlaylistContent(config: YTConfigData, playlistName
       playlist.continuations.push(
         // We need the next continuationToken to launch the next request
         // eslint-disable-next-line no-await-in-loop
-        await fetchPlaylistContinuation(config, playlist.continuations.at(-1)!),
+        await fetchPlaylistContinuation(playlist.continuations.at(-1)!),
       )
     }
     // Merge all the videos into a single PlaylistContinuation
@@ -221,77 +139,41 @@ async function getRemoveFromHistoryToken(videoId: string): Promise<string> {
   }
 }
 
-const makeFeedbackPayload = (feedbackToken: string) => ({
-  context: {
-    client: {
-      hl: 'en',
-      clientName: 'WEB',
-      clientVersion: '2.20210711.07.00',
-    },
-    user: {
-      lockedSafetyMode: false,
-    },
-    request: {
-      useSsl: true,
-      internalExperimentFlags: [],
-      consistencyTokenJars: [],
-    },
-  },
-  isFeedbackTokenUnencrypted: false,
-  shouldMerge: false,
-  feedbackTokens: [feedbackToken],
-})
-
-async function sendFeedbackRequest(config: YTConfigData, feedbackToken: string) {
-  const url = `https://www.youtube.com/youtubei/v1/feedback?key=${config.INNERTUBE_API_KEY}`
-  const rawResponse = await fetch(url, {
-    method: 'POST',
-    headers: generateRequestHeaders(config, API_V1_REQUIRED_HEADERS),
-    body: JSON.stringify(makeFeedbackPayload(feedbackToken)),
+async function sendFeedbackRequest(feedbackToken: string) {
+  const youtube = await Innertube.create({
+    cookie: document.cookie,
+    fetch: (...args) => fetch(...args),
   })
-  const response = await rawResponse.json()
+
+  const body = {feedbackTokens: [feedbackToken]}
+  const result = await youtube.actions.execute('/feedback', body)
+  const response = result.data
+
   if (!response.feedbackResponses[0].isProcessed) {
     throw new Error('Failed to remove video from watch history')
   }
 }
 
-export async function removeWatchHistoryForVideo(config: YTConfigData, videoId: string) {
+export async function removeWatchHistoryForVideo(videoId: string) {
   const feedbackToken = await getRemoveFromHistoryToken(videoId)
   if (feedbackToken) {
-    await sendFeedbackRequest(config, feedbackToken)
+    await sendFeedbackRequest(feedbackToken)
   }
 }
 
 export async function removeVideosFromPlaylist(
-  config: YTConfigData,
   playlistId: string,
   videosToRemove: PlaylistVideo[],
 ): Promise<boolean> {
-  const url = new URL(`${API_EDIT_PLAYLIST_VIDEOS_URL}`)
-  const headers = generateRequestHeaders(config, API_V1_REQUIRED_HEADERS)
-  const body = {
-    actions: videosToRemove.map(({ videoId }) => ({
-      removedVideoId: videoId,
-      action: 'ACTION_REMOVE_VIDEO_BY_VIDEO_ID',
-    })),
-    context: {
-      client: {
-        clientName: config.INNERTUBE_CONTEXT_CLIENT_NAME,
-        clientVersion: config.INNERTUBE_CONTEXT_CLIENT_VERSION,
-      },
-    },
-    params: 'CAFAAQ%3D%3D',
-    playlistId,
-  }
-
-  url.searchParams.append('key', config.INNERTUBE_API_KEY)
-  const response = await fetch(`${url}`, {
-    credentials: 'include',
-    headers,
-    body: JSON.stringify(body),
-    method: 'POST',
-    mode: 'cors',
+  const youtube = await Innertube.create({
+    cookie: document.cookie,
+    fetch: (...args) => fetch(...args),
   })
-  const data = await response.json()
-  return data.status !== 'STATUS_SUCCEEDED'
+
+  try {
+    await youtube.playlist.removeVideos(playlistId, videosToRemove.map(({ videoId }) => videoId))
+    return true
+  } catch (error) {
+    return false
+  }
 }
