@@ -132,7 +132,7 @@
     "nyc": "15.1.0",
     "prettier": "3.2.5",
     "semantic-release": "23.0.5",
-    "sinon": "17.0.1",
+    "sinon": "18.0.0",
     "ts-node": "10.9.2",
     "ts-preferences": "2.0.0",
     "tsconfig-paths": "4.2.0",
