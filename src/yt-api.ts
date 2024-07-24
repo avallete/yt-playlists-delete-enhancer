@@ -97,46 +97,23 @@ export async function fetchAllPlaylistContent(config: YTConfigData, playlistName
   throw PlaylistNotEditableError
 }
 
-async function getRemoveFromHistoryToken(videoId: string): Promise<string> {
-  const initDataRegex = /(?:window\["ytInitialData"]|ytInitialData)\W?=\W?({.*?});/
-  const result = await fetch('https://www.youtube.com/feed/history', {
-    credentials: 'include',
-    method: 'GET',
-    mode: 'cors',
+async function getFeedbackToken(videoId: string): Promise<string | undefined> {
+  const youtube = await Innertube.create({
+    cookie: document.cookie,
+    fetch: (...args) => fetch(...args),
   })
-  const body = await result.text()
 
-  try {
-    const matchedData = body.match(initDataRegex)
-    if (!matchedData || !matchedData[1]) throw new Error('Failed to parse initData')
-    const initData = JSON.parse(matchedData[1])
+  const history = await youtube.getHistory()
 
-    const groups =
-      initData?.contents?.twoColumnBrowseResultsRenderer?.tabs?.[0]?.tabRenderer?.content?.sectionListRenderer?.contents
-        .map((group: { itemSectionRenderer: object }) => group.itemSectionRenderer)
-        .filter(Boolean)
-
-    let matchingVideo
-    for (const item of groups) {
-      for (const { videoRenderer } of item.contents) {
-        if (videoRenderer?.videoId && videoId === videoRenderer?.videoId) {
-          matchingVideo = videoRenderer
-          break
-        }
+  for (const section of history.sections) {
+    for (const content of section.contents) {
+      if (content.hasKey('id') && content.id === videoId) {
+        return content.hasKey('menu') && content.menu.top_level_buttons[0].endpoint.payload.feedbackToken
       }
     }
-
-    if (!matchingVideo) {
-      throw new Error('Video not found in watch history')
-    }
-
-    return matchingVideo?.menu?.menuRenderer?.topLevelButtons?.[0]?.buttonRenderer?.serviceEndpoint?.feedbackEndpoint
-      ?.feedbackToken
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error)
-    throw new Error('Failed to parse initData')
   }
+
+  throw new Error('No token found in watch history')
 }
 
 async function sendFeedbackRequest(feedbackToken: string) {
@@ -155,7 +132,7 @@ async function sendFeedbackRequest(feedbackToken: string) {
 }
 
 export async function removeWatchHistoryForVideo(videoId: string) {
-  const feedbackToken = await getRemoveFromHistoryToken(videoId)
+  const feedbackToken = await getFeedbackToken(videoId)
   if (feedbackToken) {
     await sendFeedbackRequest(feedbackToken)
   }
