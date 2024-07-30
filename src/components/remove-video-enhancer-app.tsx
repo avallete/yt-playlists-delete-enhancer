@@ -91,8 +91,11 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
     }
   }
 
-  shouldComponentUpdate(nextProperties: Properties) {
-    return nextProperties.playlistName !== this.state?.playlist?.playlistId
+  shouldComponentUpdate(nextProperties: Properties, nextState: State) {
+    const playlistIdChanged = nextProperties.playlistName !== this.state?.playlist?.playlistId
+    const errorsChanged = nextState.errorMessages !== this.state.errorMessages
+
+    return playlistIdChanged || errorsChanged
   }
 
   async componentDidUpdate(previousProperties: Properties) {
