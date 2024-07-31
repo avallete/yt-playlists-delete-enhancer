@@ -2,12 +2,13 @@ import { Operation, operation } from 'userscripter/lib/operations'
 import { ALWAYS, DOMCONTENTLOADED } from 'userscripter/lib/environment'
 import { get as CookieGet } from 'js-cookie'
 import { YTConfigData } from '~src/youtube'
+import addPlaylistReadyEventHook from '~src/operations/actions/add-playlist-ready-event-hook'
 import addLocationChangeEventHooks from '~src/operations/actions/add-location-change-event-hook'
 import isOnPlaylistPage from '~src/operations/conditions/is-on-playlist-page'
 import { XPATH } from '~src/selectors'
 import appendAppToDom from '~src/operations/actions/append-app-to-dom'
 
-function mainWrapper() {
+function mainWrapper(reinit: boolean | undefined = false) {
   const url = new URL(window.location.href)
   const playlistName = url.searchParams.get('list') as string
   /* eslint-disable no-underscore-dangle */
@@ -25,11 +26,7 @@ function mainWrapper() {
     ORIGIN_URL: new URL(document.URL).origin,
   }
 
-  document.addEventListener('yt-action', (event: any) => {
-    if (event.detail.actionName === 'yt-service-request') {
-      appendAppToDom(config, playlistName, XPATH.APP_RENDER_ROOT)
-    }
-  })
+  appendAppToDom(config, playlistName, XPATH.APP_RENDER_ROOT, reinit)
 }
 
 // Called every time app navigation occurs
@@ -44,7 +41,7 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
     description: 'run main if the script start on playlist page',
     condition: isOnPlaylistPage,
     action: () => {
-      mainWrapper()
+      addPlaylistReadyEventHook(mainWrapper)
     },
     deferUntil: DOMCONTENTLOADED,
   }),
