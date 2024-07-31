@@ -4,9 +4,10 @@ import RemoveVideoEnhancerApp from '~components/remove-video-enhancer-app'
 import { YTConfigData } from '~src/youtube'
 import U from '~src/userscript'
 
-export default function appendAppToDom(config: YTConfigData, playlistName: string, xpathRoot: string) {
+export default function appendAppToDom(config: YTConfigData, playlistName: string, xpathRoot: string, reinit: boolean) {
   const existingElement = document.querySelector(`#${U.id}${playlistName}`)
-  if (!existingElement) {
+
+  if (!existingElement || reinit) {
     const elementToAppendTo = getElementsByXpath(xpathRoot)
       // get only currently visibles elements because youtube hide elements instead of removing them from the DOM
       .find((element: any) => element.offsetHeight > 0 || element.offsetWidth > 0) as Element
