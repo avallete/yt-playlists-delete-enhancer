@@ -6,6 +6,7 @@ function extractPlaylistVideoListRendererContents(playlistVideoListContents: Arr
   return playlistVideoListContents.map((item): PlaylistVideo => {
     return {
       videoId: item.playlistVideoRenderer.videoId,
+      setVideoId: item.playlistVideoRenderer.setVideoId,
       percentDurationWatched:
         item.playlistVideoRenderer.thumbnailOverlays[1].thumbnailOverlayResumePlaybackRenderer
           ?.percentDurationWatched || 0,
@@ -146,8 +147,13 @@ export async function removeVideosFromPlaylist(playlistId: string, videosToRemov
     fetch: (...arguments_) => fetch(...arguments_),
   })
 
-  await youtube.playlist.removeVideos(
-    playlistId,
-    videosToRemove.map(({ videoId }) => videoId),
-  )
+  const body = {
+    playlist_id: playlistId,
+    actions: videosToRemove.map((video) => ({
+      action: 'ACTION_REMOVE_VIDEO',
+      set_video_id: video.setVideoId,
+    })),
+  }
+
+  await youtube.actions.execute('/browse/edit_playlist', body)
 }
