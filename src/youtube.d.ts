@@ -26,7 +26,8 @@ export interface YTConfigData {
 }
 
 export interface PlaylistVideo {
-  videoId: string
+  videoId?: string
+  setVideoId: string
   percentDurationWatched: number
 }
 

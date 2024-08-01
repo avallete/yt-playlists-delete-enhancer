@@ -2,9 +2,9 @@ import removeVideosFromPlaylist from '~src/operations/ui/remove-videos-from-play
 import decrementNumberOfVideosInPlaylist from '~src/operations/ui/decrement-number-of-videos-in-playlist'
 import { PlaylistVideo } from '~src/youtube'
 
-export function removeVideoFromPlaylistUI(videoId: string) {
+export function removeVideoFromPlaylistUI(setVideoId: string) {
   try {
-    removeVideosFromPlaylist([{ videoId, percentDurationWatched: 100 }])
+    removeVideosFromPlaylist([{ setVideoId, percentDurationWatched: 100 }])
     decrementNumberOfVideosInPlaylist(1)
   } catch (error) {
     // eslint-disable-next-line no-console

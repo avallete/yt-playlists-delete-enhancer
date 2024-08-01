@@ -74,10 +74,12 @@ export default class RemoveVideoEnhancerApp extends Component<Properties, State>
     }
   }
 
-  async removeVideoHandler(videoId: string) {
+  async removeVideoHandler(setVideoId: string) {
     const { playlist } = this.state
     if (playlist && playlist.continuations[0].videos.length > 0) {
-      const [toDeleteVideos, toKeepVideos] = partition(playlist.continuations[0].videos, (v) => v.videoId === videoId)
+      const [toDeleteVideos, toKeepVideos] = partition(playlist.continuations[0].videos, (v) => {
+        return v.setVideoId === setVideoId
+      })
       if (toDeleteVideos.length > 0) {
         try {
           await removeVideosFromPlaylist(playlist?.playlistId as string, toDeleteVideos)

@@ -11,7 +11,7 @@ import VideoItemQuickDeleteButton from './video-item-quick-delete-button'
 interface Properties {
   removeVideoWatchedPercentHandler: (watchTimeValue: number) => Promise<void> | void
   resetVideoHandler: (videoId: string) => Promise<void> | void
-  removeVideoHandler: (videoId: string) => Promise<void> | void
+  removeVideoHandler: (setVideoId: string) => Promise<void> | void
   initialValue?: number
 }
 
@@ -42,8 +42,8 @@ function RemoveVideoEnhancerContainer({
     }
   }
 
-  const removeVideo = useCallback(async (videoId: string) => {
-    await removeVideoHandler(videoId)
+  const removeVideo = useCallback(async (setVideoId: string) => {
+    await removeVideoHandler(setVideoId)
   }, [])
 
   const resetVideo = useCallback(async (videoId: string) => {
@@ -63,7 +63,7 @@ function RemoveVideoEnhancerContainer({
           }),
           h(VideoItemQuickDeleteButton, {
             // @ts-ignore element.data does not exists on types
-            videoId: element.parentElement?.data.videoId,
+            setVideoId: element.parentElement?.data.setVideoId,
             onClick: removeVideo,
           }),
         ],

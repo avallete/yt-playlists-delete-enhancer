@@ -31,16 +31,16 @@ export default function removeVideosFromPlaylist(videosToDelete: PlaylistVideo[]
     const searchMap = listMapSearch(
       uniqueVideosToDelete,
       playlistVideoRendererNodes,
-      (video) => video.videoId,
-      (node) => node.data.videoId,
+      (video) => video.setVideoId,
+      (node) => node.data.setVideoId,
     )
     // if all videos to remove are present in the UI
     if (searchMap) {
       const htmlElements = Object.values(searchMap)
       for (const element of htmlElements) {
         // eslint-disable-next-line no-underscore-dangle
-        const videoId = element.data.setVideoId
-        removeVideoWithYtAction(videoId)
+        const { setVideoId } = element.data
+        removeVideoWithYtAction(setVideoId)
       }
       return
     }
