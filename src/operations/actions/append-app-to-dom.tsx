@@ -12,15 +12,18 @@ export default function appendAppToDom(config: YTConfigData, playlistName: strin
       .find((element: any) => element.offsetHeight > 0 || element.offsetWidth > 0) as Element
     // Use Date.now() to force re-mount component to trigger playlist fetch after yt-navigate-finish events
     // See: #62
+
+    const style = playlistName === 'WL' ? '' : 'position: absolute; bottom: -112px; color: white; width: 100%;'
     const AppContainer = (
-      <div id={`${U.id}${playlistName}`} key={Date.now()}>
+      <div id={`${U.id}${playlistName}`} key={Date.now()} style={style}>
         <RemoveVideoEnhancerApp key={Date.now()} config={config} playlistName={playlistName} />
       </div>
     )
-    if (elementToAppendTo) {
-      render(AppContainer, elementToAppendTo, elementToAppendTo.lastElementChild as Element)
-    } else {
-      throw new Error(`Cannot found ${xpathRoot} in the DOM`)
+
+    if (!elementToAppendTo) {
+      throw new Error(`Element with xpath ${xpathRoot} not found in the DOM`)
     }
+
+    render(AppContainer, elementToAppendTo, elementToAppendTo.lastElementChild as Element)
   }
 }
