@@ -37,7 +37,7 @@
     "preact-material-components": "1.6.1",
     "sha1": "1.1.1",
     "userscript-metadata": "1.1.0",
-    "userscripter": "2.0.0",
+    "userscripter": "5.1.0",
     "youtubei.js": "^10.1.0"
   },
   "ava": {
