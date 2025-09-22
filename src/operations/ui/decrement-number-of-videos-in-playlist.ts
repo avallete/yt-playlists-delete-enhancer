@@ -4,9 +4,14 @@ import getElementsByXpath from '~src/lib/get-elements-by-xpath'
 // Decrement the numbers of videos in the playlist in the UI
 export default function decrementNumberOfVideosInPlaylist(value: number) {
   const spanElement: HTMLSpanElement = getElementsByXpath(XPATH.YT_NUMBER_OF_VIDEOS_IN_PLAYLIST)[0] as HTMLSpanElement
-  if (spanElement) {
-    const newValue = Number(spanElement.textContent) - value
-    spanElement.textContent = `${newValue}`
+  if (spanElement.textContent) {
+    if (/video/.test(spanElement.textContent)) {
+      const [number, text] = spanElement.textContent.split(' ')
+      spanElement.textContent = `${Number(number) - value} ${text}`
+    } else {
+      const newValue = Number(spanElement.textContent) - value
+      spanElement.textContent = `${newValue}`
+    }
   } else {
     // A reload is performed to properly restore the state of an empty playlist:
     // - The "There are no videos in this playlist yet" text
