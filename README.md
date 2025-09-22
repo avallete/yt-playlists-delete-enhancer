@@ -14,6 +14,25 @@
 
 The playlist delete enhancer functionality has been integrated into ImprovedTube via [PR #3167](https://github.com/code-charity/youtube/pull/3167). You'll get the same functionality plus many more YouTube improvements.
 
+### 🔄 How to migrate:
+
+1. **Install ImprovedTube**:
+   - **Chrome/Edge**: [Chrome Web Store](https://chrome.google.com/webstore/detail/improve-youtube-open-sour/bnomihfieiccainjcjblhegjgglakjdd)
+   - **Firefox**: [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/youtube-addon/)
+
+2. **Find the playlist cleaner feature**:
+   - Open ImprovedTube settings (click the extension icon)
+   - Navigate to **Playlist** section
+   - Look for **"Playlist cleaner"** or **"Delete enhancer"** options
+
+3. **Configure the same functionality**:
+   - Set your preferred watch percentage threshold (same as this userscript)
+   - Enable the feature for your playlists
+
+4. **Remove this userscript**:
+   - Disable/remove this userscript from TamperMonkey/ViolentMonkey
+   - The functionality will now be handled by ImprovedTube
+
 ### Why migrate?
 
 1. **🔄 Active Development**: ImprovedTube is actively maintained with regular updates
