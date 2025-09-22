@@ -1,12 +1,33 @@
-## [1.7.2](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.7.1...v1.7.2) (2024-07-22)
+# [DEPRECATED] (2025-09-22)
 
+### 🚨 EXTENSION DEPRECATED
+
+This extension has been officially deprecated as of September 22, 2025. The functionality has been integrated into the [ImprovedTube Chrome Extension](https://github.com/code-charity/youtube) via [PR #3167](https://github.com/code-charity/youtube/pull/3167).
+
+**Migration Path:**
+
+- **Chrome/Edge**: Install [ImprovedTube from Chrome Web Store](https://chrome.google.com/webstore/detail/improve-youtube-open-sour/bnomihfieiccainjcjblhegjgglakjdd)
+- **Firefox**: Install [ImprovedTube from Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/youtube-addon/)
+
+ImprovedTube provides the same playlist delete enhancer functionality plus 200+ additional YouTube enhancements.
+
+### Changes in this deprecation release:
+
+- Added deprecation warning in README.md
+- Added deprecation notice in userscript that displays to users
+- Updated package.json description to indicate deprecation
+- Documented migration path to ImprovedTube extension
+
+---
+
+## [1.7.2](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.7.1...v1.7.2) (2024-07-22)
 
 ### Bug Fixes
 
-* app initialization ([#272](https://github.com/avallete/yt-playlists-delete-enhancer/issues/272)) ([98b1b5e](https://github.com/avallete/yt-playlists-delete-enhancer/commit/98b1b5ea7cfe9155e40d604cba252314bf64a5cd))
-* dependencies and use Node.js 16 ([#261](https://github.com/avallete/yt-playlists-delete-enhancer/issues/261)) ([a06fdd6](https://github.com/avallete/yt-playlists-delete-enhancer/commit/a06fdd642a7b64b7f1b2960680cad920030d9082))
-* lintings ([#276](https://github.com/avallete/yt-playlists-delete-enhancer/issues/276)) ([22314c2](https://github.com/avallete/yt-playlists-delete-enhancer/commit/22314c2d966e5d9b9ddcaecb15dfe6cf94d613b9))
-* prevent videos from being removed after reset ([#260](https://github.com/avallete/yt-playlists-delete-enhancer/issues/260)) ([7cc139b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/7cc139bb2ab632ab1280dcac6f191b5fcf794c7d))
+- app initialization ([#272](https://github.com/avallete/yt-playlists-delete-enhancer/issues/272)) ([98b1b5e](https://github.com/avallete/yt-playlists-delete-enhancer/commit/98b1b5ea7cfe9155e40d604cba252314bf64a5cd))
+- dependencies and use Node.js 16 ([#261](https://github.com/avallete/yt-playlists-delete-enhancer/issues/261)) ([a06fdd6](https://github.com/avallete/yt-playlists-delete-enhancer/commit/a06fdd642a7b64b7f1b2960680cad920030d9082))
+- lintings ([#276](https://github.com/avallete/yt-playlists-delete-enhancer/issues/276)) ([22314c2](https://github.com/avallete/yt-playlists-delete-enhancer/commit/22314c2d966e5d9b9ddcaecb15dfe6cf94d613b9))
+- prevent videos from being removed after reset ([#260](https://github.com/avallete/yt-playlists-delete-enhancer/issues/260)) ([7cc139b](https://github.com/avallete/yt-playlists-delete-enhancer/commit/7cc139bb2ab632ab1280dcac6f191b5fcf794c7d))
 
 ## [1.7.1](https://github.com/avallete/yt-playlists-delete-enhancer/compare/v1.7.0...v1.7.1) (2024-05-12)
 
