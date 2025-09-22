@@ -1,4 +1,4 @@
-import { Innertube } from "youtubei.js"
+import { Innertube } from 'youtubei.js'
 import { PlaylistNotEditableError, PlaylistEmptyError } from '~src/errors'
 import { YTConfigData, PlaylistVideo, Playlist, PlaylistContinuation } from './youtube'
 
@@ -6,6 +6,7 @@ function extractPlaylistVideoListRendererContents(playlistVideoListContents: Arr
   return playlistVideoListContents.map((item): PlaylistVideo => {
     return {
       videoId: item.playlistVideoRenderer.videoId,
+      setVideoId: item.playlistVideoRenderer.setVideoId,
       percentDurationWatched:
         item.playlistVideoRenderer.thumbnailOverlays[1].thumbnailOverlayResumePlaybackRenderer
           ?.percentDurationWatched || 0,
@@ -33,19 +34,23 @@ async function fetchPlaylistInitialData(config: YTConfigData, playlistName: stri
   const youtube = await Innertube.create({
     cookie: document.cookie,
     fetch: (input, init = {}) => {
-      const headers = new Headers();
+      const headers = new Headers()
       headers.append('X-YouTube-Client-Name', config.INNERTUBE_CONTEXT_CLIENT_NAME)
       headers.append('X-YouTube-Client-Version', config.INNERTUBE_CONTEXT_CLIENT_VERSION)
       headers.append('X-YouTube-Device', config.DEVICE)
       headers.append('X-YouTube-Identity-Token', config.ID_TOKEN)
-      init.headers = headers;
-      return fetch(input, init);
-    }
-  });
+      const options = { ...init, headers }
+      return fetch(input, options)
+    },
+  })
 
-  const response = await youtube.session.http.fetch(`/playlist?list=${playlistName}&pbj=1`, {baseURL: 'https://www.youtube.com'});
-  const data = (await response.json()).response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content
-    .sectionListRenderer.contents[0].itemSectionRenderer.contents[0].playlistVideoListRenderer;
+  const response = await youtube.session.http.fetch(`/playlist?list=${playlistName}&pbj=1`, {
+    baseURL: 'https://www.youtube.com',
+  })
+  const json = await response.json()
+  const data =
+    json.response.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0]
+      .itemSectionRenderer.contents[0].playlistVideoListRenderer
 
   if (!data) {
     throw PlaylistEmptyError
@@ -59,15 +64,13 @@ async function fetchPlaylistInitialData(config: YTConfigData, playlistName: stri
   }
 }
 
-async function fetchPlaylistContinuation(
-  continuation: PlaylistContinuation
-): Promise<PlaylistContinuation> {
+async function fetchPlaylistContinuation(continuation: PlaylistContinuation): Promise<PlaylistContinuation> {
   const youtube = await Innertube.create({
     cookie: document.cookie,
-    fetch: (...args) => fetch(...args),
+    fetch: (...arguments_) => fetch(...arguments_),
   })
 
-  const body = {continuation: continuation.continuationToken}
+  const body = { continuation: continuation.continuationToken }
   const result = await youtube.actions.execute('/browse', body)
   const data = result.data.onResponseReceivedActions?.[0].appendContinuationItemsAction.continuationItems
 
@@ -100,7 +103,7 @@ export async function fetchAllPlaylistContent(config: YTConfigData, playlistName
 async function getFeedbackToken(videoId: string): Promise<string | undefined> {
   const youtube = await Innertube.create({
     cookie: document.cookie,
-    fetch: (...args) => fetch(...args),
+    fetch: (...arguments_) => fetch(...arguments_),
   })
 
   const history = await youtube.getHistory()
@@ -119,10 +122,10 @@ async function getFeedbackToken(videoId: string): Promise<string | undefined> {
 async function sendFeedbackRequest(feedbackToken: string) {
   const youtube = await Innertube.create({
     cookie: document.cookie,
-    fetch: (...args) => fetch(...args),
+    fetch: (...arguments_) => fetch(...arguments_),
   })
 
-  const body = {feedbackTokens: [feedbackToken]}
+  const body = { feedbackTokens: [feedbackToken] }
   const result = await youtube.actions.execute('/feedback', body)
   const response = result.data
 
@@ -138,19 +141,19 @@ export async function removeWatchHistoryForVideo(videoId: string) {
   }
 }
 
-export async function removeVideosFromPlaylist(
-  playlistId: string,
-  videosToRemove: PlaylistVideo[],
-): Promise<boolean> {
+export async function removeVideosFromPlaylist(playlistId: string, videosToRemove: PlaylistVideo[]) {
   const youtube = await Innertube.create({
     cookie: document.cookie,
-    fetch: (...args) => fetch(...args),
+    fetch: (...arguments_) => fetch(...arguments_),
   })
 
-  try {
-    await youtube.playlist.removeVideos(playlistId, videosToRemove.map(({ videoId }) => videoId))
-    return true
-  } catch (error) {
-    return false
+  const body = {
+    playlist_id: playlistId,
+    actions: videosToRemove.map((video) => ({
+      action: 'ACTION_REMOVE_VIDEO',
+      set_video_id: video.setVideoId,
+    })),
   }
+
+  await youtube.actions.execute('/browse/edit_playlist', body)
 }

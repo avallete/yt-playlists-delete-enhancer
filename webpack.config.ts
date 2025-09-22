@@ -33,10 +33,10 @@ webpackConfig.optimization = {
 export default {
   ...webpackConfig,
   resolve: {
-      ...webpackConfig.resolve,
-      alias: {
-          ...webpackConfig.resolve?.alias,
-          'youtubei.js': 'node_modules/youtubei.js/bundle/browser.js'
-      },
+    ...webpackConfig.resolve,
+    alias: {
+      ...webpackConfig.resolve?.alias,
+      'youtubei.js': 'node_modules/youtubei.js/bundle/browser.js',
+    },
   },
-};
+}
