@@ -141,16 +141,11 @@ export async function removeWatchHistoryForVideo(videoId: string) {
 export async function removeVideosFromPlaylist(
   playlistId: string,
   videosToRemove: PlaylistVideo[],
-): Promise<boolean> {
+) {
   const youtube = await Innertube.create({
     cookie: document.cookie,
     fetch: (...args) => fetch(...args),
   })
 
-  try {
-    await youtube.playlist.removeVideos(playlistId, videosToRemove.map(({ videoId }) => videoId))
-    return true
-  } catch (error) {
-    return false
-  }
+  await youtube.playlist.removeVideos(playlistId, videosToRemove.map(({ videoId }) => videoId))
 }
