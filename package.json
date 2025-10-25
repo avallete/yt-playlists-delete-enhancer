@@ -138,7 +138,7 @@
     "tsconfig-paths": "4.2.0",
     "typescript": "5.4.3",
     "webextension-manifest": "1.0.0",
-    "webpack": "4.46.0",
+    "webpack": "5.94.0",
     "webpack-cli": "4.6.0"
   }
 }
